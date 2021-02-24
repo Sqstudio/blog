@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>斯樵工坊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="斯樵工坊">
+<meta property="og:url" content="http://sqstudio.com/page/3/index.html">
+<meta property="og:site_name" content="斯樵工坊">
+<meta property="og:locale">
+<meta property="article:author" content="斯樵">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="斯樵工坊" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">斯樵工坊</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sqstudio.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-unity之查找资源被哪里引用了" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/02/23/unity%E4%B9%8B%E6%9F%A5%E6%89%BE%E8%B5%84%E6%BA%90%E8%A2%AB%E5%93%AA%E9%87%8C%E5%BC%95%E7%94%A8%E4%BA%86/" class="article-date">
+  <time class="dt-published" datetime="2017-02-23T03:25:15.000Z" itemprop="datePublished">2017-02-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Unity3D/">Unity3D</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/02/23/unity%E4%B9%8B%E6%9F%A5%E6%89%BE%E8%B5%84%E6%BA%90%E8%A2%AB%E5%93%AA%E9%87%8C%E5%BC%95%E7%94%A8%E4%BA%86/">Unity之查找资源被哪里引用了</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>有时候要删除一个资源，就需要先查看下被哪里引用了，防止误删。Unity提供了一个方法 AssetDatabase.GetDependencies()，但是它只能查找这个资源引用了那些资源。 但是我想要的是查找某个资源被那些资源引用了，这是两种相反的查找公式。 网上找到一个查找脚本，速度很快，不过只能在Mac上用。右键选择一个资源，点击 Find References，会在Console面板上输出结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line">using UnityEditor;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line"></span><br><span class="line">public class FindProject &#123;</span><br><span class="line"></span><br><span class="line">#if UNITY_EDITOR_OSX</span><br><span class="line"></span><br><span class="line">[MenuItem(&quot;Assets&#x2F;Find References In Project&quot;, false, 2000)]</span><br><span class="line">private static void FindProjectReferences()</span><br><span class="line">&#123;</span><br><span class="line">string appDataPath &#x3D; Application.dataPath;</span><br><span class="line">string output &#x3D; &quot;&quot;;</span><br><span class="line">string selectedAssetPath &#x3D; AssetDatabase.GetAssetPath (Selection.activeObject);</span><br><span class="line">List&lt;string&gt; references &#x3D; new List&lt;string&gt;();</span><br><span class="line"></span><br><span class="line">string guid &#x3D; AssetDatabase.AssetPathToGUID (selectedAssetPath);</span><br><span class="line"></span><br><span class="line">var psi &#x3D; new System.Diagnostics.ProcessStartInfo();</span><br><span class="line">psi.WindowStyle &#x3D; System.Diagnostics.ProcessWindowStyle.Maximized;</span><br><span class="line">psi.FileName &#x3D; &quot;&#x2F;usr&#x2F;bin&#x2F;mdfind&quot;;</span><br><span class="line">psi.Arguments &#x3D; &quot;-onlyin &quot; + Application.dataPath + &quot; &quot; + guid;</span><br><span class="line">psi.UseShellExecute &#x3D; false;</span><br><span class="line">psi.RedirectStandardOutput &#x3D; true;</span><br><span class="line">psi.RedirectStandardError &#x3D; true;</span><br><span class="line"></span><br><span class="line">System.Diagnostics.Process process &#x3D; new System.Diagnostics.Process();</span><br><span class="line">process.StartInfo &#x3D; psi;</span><br><span class="line"></span><br><span class="line">process.OutputDataReceived +&#x3D; (sender, e) &#x3D;&gt; &#123;</span><br><span class="line">if(string.IsNullOrEmpty(e.Data))</span><br><span class="line">return;</span><br><span class="line"></span><br><span class="line">string relativePath &#x3D; &quot;Assets&quot; + e.Data.Replace(appDataPath, &quot;&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; skip the meta file of whatever we have selected</span><br><span class="line">if(relativePath &#x3D;&#x3D; selectedAssetPath + &quot;.meta&quot;)</span><br><span class="line">return;</span><br><span class="line"></span><br><span class="line">references.Add(relativePath);</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">process.ErrorDataReceived +&#x3D; (sender, e) &#x3D;&gt; &#123;</span><br><span class="line">if(string.IsNullOrEmpty(e.Data))</span><br><span class="line">return;</span><br><span class="line"></span><br><span class="line">output +&#x3D; &quot;Error: &quot; + e.Data + &quot;\n&quot;;</span><br><span class="line">&#125;;</span><br><span class="line">process.Start();</span><br><span class="line">process.BeginOutputReadLine();</span><br><span class="line">process.BeginErrorReadLine();</span><br><span class="line"></span><br><span class="line">process.WaitForExit(2000);</span><br><span class="line"></span><br><span class="line">foreach(var file in references)&#123;</span><br><span class="line">output +&#x3D; file + &quot;\n&quot;;</span><br><span class="line">Debug.Log(file, AssetDatabase.LoadMainAssetAtPath(file));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Debug.LogWarning(references.Count + &quot; references found for object &quot; + Selection.activeObject.name + &quot;\n\n&quot; + output);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2017/02/23/unity%E4%B9%8B%E6%9F%A5%E6%89%BE%E8%B5%84%E6%BA%90%E8%A2%AB%E5%93%AA%E9%87%8C%E5%BC%95%E7%94%A8%E4%BA%86/" data-id="ckljj0p8o006krpeya2b7hz6q" data-title="Unity之查找资源被哪里引用了" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Find-References/" rel="tag">Find References</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-pip安装依赖于six的库失败的解决方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/02/22/pip%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E4%BA%8Esix%E7%9A%84%E5%BA%93%E5%A4%B1%E8%B4%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2017-02-22T11:13:50.000Z" itemprop="datePublished">2017-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/02/22/pip%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E4%BA%8Esix%E7%9A%84%E5%BA%93%E5%A4%B1%E8%B4%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">Pip安装依赖于six的库失败的解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天在安装 google-api-python-client库时，six库一直报错升级不了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Installing collected packages: six</span><br><span class="line">Found existing installation: six 1.4.1</span><br><span class="line">DEPRECATION: Uninstalling a distutils installed project (six) has been deprecated and will be removed in a future version. This is due to the fact that uninstalling a distutils project will only partially uninstall the project.</span><br><span class="line">Uninstalling six-1.4.1:</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>参考github上的解决办法：<a target="_blank" rel="noopener" href="https://github.com/pypa/pip/issues/3165">https://github.com/pypa/pip/issues/3165</a> 将安装命令改成如下即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install --upgrade google-api-python-client --ignore-installed six</span><br></pre></td></tr></table></figure>
+
+<p>即使用参数–ignore-installed来忽略本地安装的six。</p>
+<blockquote>
+<p>原因可能是Apple预安装的这个six库出于安全原因被设置为sudo也不可以执行操作，所以需要依赖于高版本的库就需要更新six，但是没有six的权限，所以就回报错。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2017/02/22/pip%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E4%BA%8Esix%E7%9A%84%E5%BA%93%E5%A4%B1%E8%B4%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-id="ckljj0p8a005krpey3qqocgi6" data-title="Pip安装依赖于six的库失败的解决方法" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pip/" rel="tag">pip</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-unity之文本text颜色渐变" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/02/15/unity%E4%B9%8B%E6%96%87%E6%9C%ACtext%E9%A2%9C%E8%89%B2%E6%B8%90%E5%8F%98/" class="article-date">
+  <time class="dt-published" datetime="2017-02-15T10:16:11.000Z" itemprop="datePublished">2017-02-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Unity3D/">Unity3D</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/02/15/unity%E4%B9%8B%E6%96%87%E6%9C%ACtext%E9%A2%9C%E8%89%B2%E6%B8%90%E5%8F%98/">Unity之文本Text颜色渐变</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Unity的UGUI的Text只能设置单个颜色，由于项目需求，需要Text有渐变色，在网上找了几篇，发型都在用一个叫 TextVerticalGradientThreeColor的组件，不过这个组件虽然支持三种颜色，但是不能更改颜色数量和渐变位置，还是太方便，怎么办呢？那就花点时间自己造轮子吧。 <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2017/02/UnityTextGradientColor.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2017/02/UnityTextGradientColor.jpg"></a> TextGradientColor可配合自带的Outline和Shadow使用，上下顺序不同，渲染出来的效果也有差别，可以自己试试。 代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine.UI;</span><br><span class="line"></span><br><span class="line">namespace UI.Extension</span><br><span class="line">&#123;</span><br><span class="line">&#x2F;&#x2F;和文本的 Shadow 和 outline 效果配合 ， 渲染顺序不一样，效果也不一样</span><br><span class="line"></span><br><span class="line">[AddComponentMenu (&quot;UI&#x2F;Effects&#x2F;Text Gradient Color&quot;)]</span><br><span class="line">[RequireComponent (typeof(Text))]</span><br><span class="line">public class TextGradientColor : BaseMeshEffect</span><br><span class="line">&#123;</span><br><span class="line">public Gradient gradientColor &#x3D; new Gradient ();</span><br><span class="line">&#x2F;&#x2F;是否垂直方向</span><br><span class="line">public bool isVertical &#x3D; true;</span><br><span class="line">&#x2F;&#x2F;是否叠加原有颜色</span><br><span class="line">public bool isMultiplyTextColor &#x3D; false;</span><br><span class="line">protected TextGradientColor ()</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void ModifyVertices (VertexHelper vh)</span><br><span class="line">&#123;</span><br><span class="line">List&lt;UIVertex&gt; verts &#x3D; new List&lt;UIVertex&gt; (vh.currentVertCount);</span><br><span class="line">vh.GetUIVertexStream (verts);</span><br><span class="line">vh.Clear ();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;每个字母 分为两个三角形,6个顶点，如下图 0和5位置相同 2和3位置相同</span><br><span class="line">&#x2F;**</span><br><span class="line"> *   5-0 ---- 1</span><br><span class="line"> *     \    </span><br><span class="line"> *      \   </span><br><span class="line"> *       \  </span><br><span class="line"> *        \ </span><br><span class="line"> *    4-----3-2</span><br><span class="line"> **&#x2F;</span><br><span class="line"></span><br><span class="line">int step &#x3D; 6;</span><br><span class="line">for (int i &#x3D; 0; i &lt; verts.Count; i +&#x3D; step) &#123;</span><br><span class="line"></span><br><span class="line">UIVertex start1, start2, end1, end2, current1, current2;</span><br><span class="line">if (isVertical) &#123;</span><br><span class="line">start1 &#x3D; verts [i + 0];</span><br><span class="line">start2 &#x3D; verts [i + 1];</span><br><span class="line">end1 &#x3D; verts [i + 4];</span><br><span class="line">end2 &#x3D; verts [i + 3];</span><br><span class="line">&#125; else &#123;</span><br><span class="line">start1 &#x3D; verts [i + 0];</span><br><span class="line">start2 &#x3D; verts [i + 4];</span><br><span class="line">end1 &#x3D; verts [i + 1];</span><br><span class="line">end2 &#x3D; verts [i + 2];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for (int j &#x3D; 0; j &lt; gradientColor.colorKeys.Length; j++) &#123;</span><br><span class="line">GradientColorKey colorKey &#x3D; gradientColor.colorKeys [j];</span><br><span class="line">if (j &#x3D;&#x3D; 0) &#123;</span><br><span class="line">multiplyColor (start1,colorKey.color);</span><br><span class="line">multiplyColor (start2,colorKey.color);</span><br><span class="line">&#125; else if (j &#x3D;&#x3D; gradientColor.colorKeys.Length - 1) &#123;</span><br><span class="line">multiplyColor (end1,colorKey.color);</span><br><span class="line">multiplyColor (end2,colorKey.color);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;right</span><br><span class="line">vh.AddVert (start1);</span><br><span class="line">vh.AddVert (start2);</span><br><span class="line">vh.AddVert (end2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;left</span><br><span class="line">vh.AddVert (end2);</span><br><span class="line">vh.AddVert (end1);</span><br><span class="line">vh.AddVert (start1);</span><br><span class="line"></span><br><span class="line">&#125; else &#123;</span><br><span class="line">&#x2F;&#x2F; create right</span><br><span class="line">current2 &#x3D; CreateVertexByTime (start2, end2, colorKey.time);</span><br><span class="line">vh.AddVert (start1);</span><br><span class="line">vh.AddVert (start2);</span><br><span class="line">vh.AddVert (current2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; create left</span><br><span class="line">current1 &#x3D; CreateVertexByTime (start1, end1, colorKey.time);</span><br><span class="line">vh.AddVert (current2);</span><br><span class="line">vh.AddVert (current1);</span><br><span class="line">vh.AddVert (start1);</span><br><span class="line"></span><br><span class="line">start1 &#x3D; current1;</span><br><span class="line">start2 &#x3D; current2;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;添加三角形</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;每个字母的顶点数量</span><br><span class="line">int stepVertCount &#x3D; (gradientColor.colorKeys.Length - 1) * 2 * 3;</span><br><span class="line">for (int i &#x3D; 0; i &lt; vh.currentVertCount; i +&#x3D; stepVertCount) &#123;</span><br><span class="line">for (int m &#x3D; 0; m &lt; stepVertCount; m +&#x3D; 3) &#123;</span><br><span class="line">vh.AddTriangle (i + m + 0, i + m + 1, i + m + 2);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private UIVertex multiplyColor(ref UIVertex vertex, Color color)</span><br><span class="line">&#123;</span><br><span class="line">if (isMultiplyTextColor)</span><br><span class="line">vertex.color &#x3D; Multiply (vertex.color, color);</span><br><span class="line">else</span><br><span class="line">vertex.color &#x3D; color;</span><br><span class="line">return vertex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static Color32 Multiply(Color32 a, Color32 b)</span><br><span class="line">&#123;</span><br><span class="line">a.r &#x3D; (byte)((a.r * b.r) &gt;&gt; 8);</span><br><span class="line">a.g &#x3D; (byte)((a.g * b.g) &gt;&gt; 8);</span><br><span class="line">a.b &#x3D; (byte)((a.b * b.b) &gt;&gt; 8);</span><br><span class="line">a.a &#x3D; (byte)((a.a * b.a) &gt;&gt; 8);</span><br><span class="line">return a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;根据比例创建顶点 （time这里是gradientColor里的比例）</span><br><span class="line">private UIVertex CreateVertexByTime (UIVertex start, UIVertex end, float time)</span><br><span class="line">&#123;</span><br><span class="line">UIVertex center &#x3D; new UIVertex ();</span><br><span class="line">center.normal &#x3D; Vector3.Lerp (start.normal, end.normal, time);</span><br><span class="line">center.position &#x3D; Vector3.Lerp (start.position, end.position, time);</span><br><span class="line">center.tangent &#x3D; Vector4.Lerp (start.tangent, end.tangent, time);</span><br><span class="line">center.uv0 &#x3D; Vector2.Lerp (start.uv0, end.uv0, time);</span><br><span class="line">center.uv1 &#x3D; Vector2.Lerp (start.uv1, end.uv1, time);</span><br><span class="line">center.color &#x3D;  gradientColor.Evaluate (time);</span><br><span class="line"></span><br><span class="line">if (isMultiplyTextColor) &#123;</span><br><span class="line">&#x2F;&#x2F;multiply color</span><br><span class="line">var color &#x3D; Color.Lerp(start.color, end.color, time);</span><br><span class="line">center.color &#x3D; Multiply (color, gradientColor.Evaluate (time));</span><br><span class="line">&#125; else &#123;</span><br><span class="line">center.color &#x3D; gradientColor.Evaluate (time);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#region implemented abstract members of BaseMeshEffect</span><br><span class="line"></span><br><span class="line">public override void ModifyMesh (VertexHelper vh)</span><br><span class="line">&#123;</span><br><span class="line">if (!this.IsActive ()) &#123;</span><br><span class="line">return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ModifyVertices (vh);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#endregion</span><br><span class="line">&#125;</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2017/02/15/unity%E4%B9%8B%E6%96%87%E6%9C%ACtext%E9%A2%9C%E8%89%B2%E6%B8%90%E5%8F%98/" data-id="ckljj0p8n006irpeycqym6r1d" data-title="Unity之文本Text颜色渐变" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Text/" rel="tag">Text</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-wordpress提示在裁剪您的图像时发生了错误的解决方" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/02/14/wordpress%E6%8F%90%E7%A4%BA%E5%9C%A8%E8%A3%81%E5%89%AA%E6%82%A8%E7%9A%84%E5%9B%BE%E5%83%8F%E6%97%B6%E5%8F%91%E7%94%9F%E4%BA%86%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9/" class="article-date">
+  <time class="dt-published" datetime="2017-02-14T15:42:58.000Z" itemprop="datePublished">2017-02-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/02/14/wordpress%E6%8F%90%E7%A4%BA%E5%9C%A8%E8%A3%81%E5%89%AA%E6%82%A8%E7%9A%84%E5%9B%BE%E5%83%8F%E6%97%B6%E5%8F%91%E7%94%9F%E4%BA%86%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9/">WordPress提示“在裁剪您的图像时发生了错误”的解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>问题：在WordPress中使用裁剪图片功能时，出现:”在裁剪您的图像时发生了错误。”或者”There has been an error cropping your image.” 原因：缺少PHP GD库。 Ubuntu下运行： [c]sudo apt-get install php5-gd[/c] CentOS下运行： [csharp]yum install php-gd[/csharp] 安装PHP-GD库后重启服务器即可使用~</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2017/02/14/wordpress%E6%8F%90%E7%A4%BA%E5%9C%A8%E8%A3%81%E5%89%AA%E6%82%A8%E7%9A%84%E5%9B%BE%E5%83%8F%E6%97%B6%E5%8F%91%E7%94%9F%E4%BA%86%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9/" data-id="ckljj0p8t006urpey7ofjbrzi" data-title="WordPress提示“在裁剪您的图像时发生了错误”的解决方法" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-nginx、php-fpm、mysql用户权限解析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/01/24/nginx%E3%80%81php-fpm%E3%80%81mysql%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E8%A7%A3%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2017-01-24T10:21:57.000Z" itemprop="datePublished">2017-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/01/24/nginx%E3%80%81php-fpm%E3%80%81mysql%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E8%A7%A3%E6%9E%90/">nginx、php-fpm、mysql用户权限解析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/zrp2013/p/4183546.html">http://www.cnblogs.com/zrp2013/p/4183546.html</a></p>
+<h2 id="三者之间的关系"><a href="#三者之间的关系" class="headerlink" title="三者之间的关系"></a>三者之间的关系</h2><p>nginx本身不能处理PHP，它只是个web服务器。当接收到客户端请求后，如果是php请求，则转发给php解释器处理，并把结果返回给客户端。如果是静态页面的话，nginx自身处理，然后把结果返回给客户端。 Nginx下php解释器使用最多的就是fastcgi。一般情况nginx把php请求转发给fastcgi管理进程处理，fastcgi管理进程选择cgi子进程进行处理，然后把处理结果返回给nginx。 在这个过程中就牵涉到两个用户，一个是nginx运行的用户，一个是php-fpm运行的用户。如果访问的是一个静态文件的话，则只需要nginx运行的用户对文件具有读权限或者读写权限。 而如果访问的是一个php文件的话，则首先需要nginx运行的用户对文件有读取权限，读取到文件后发现是一个php文件，则转发给php-fpm，此时则需要php-fpm用户对文件具有有读权限或者读写权限。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2017/01/24/nginx%E3%80%81php-fpm%E3%80%81mysql%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E8%A7%A3%E6%9E%90/" data-id="ckljj0p86005arpey0ujv4nl8" data-title="nginx、php-fpm、mysql用户权限解析" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mac下自启动svn服务" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/12/22/mac%E4%B8%8B%E8%87%AA%E5%90%AF%E5%8A%A8svn%E6%9C%8D%E5%8A%A1/" class="article-date">
+  <time class="dt-published" datetime="2016-12-22T11:31:43.000Z" itemprop="datePublished">2016-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/12/22/mac%E4%B8%8B%E8%87%AA%E5%90%AF%E5%8A%A8svn%E6%9C%8D%E5%8A%A1/">Mac下自启动SVN服务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Mac本地svn服务，需要我们在终端执行相关的命令才能启动svnserve服务。 为了免去每次启动时都需要手动输入相关的启动服务的命令，那么就需要我们编写一个shell脚本命令。在每次电脑开机启动时就自动执行该脚本里的命令，那么我们的服务就会自动启动，免去了手动输入命令的麻烦。</p>
+<blockquote>
+<p>#!/bin/bash svnserve -d -r ~/Documents/svn</p>
+</blockquote>
+<p>svnserve -d -r /你的SVN服务器路径   (建议使用相对路径,否则运行时会提示会找不该路径) 保存成可执行文件shell 也就是.sh脚本。(可以在一个没有格式的txt文本里编辑，然后再保存，修改后缀名为.sh) 然后更改该脚本权限为可执行。 chmod 711 localsvnserverstart.sh  (文件名可自定义) 是否可执行，可以验证一下。在终端中cd到该.sh所在的目录下，执行命令：./localsvnserverstart.sh 如果终端没有任何错误输出，可以到活动监视器里进行搜索：svnserve 查看是否有该服务已经启动了。 如何需要在开机时就启动该服务那么就需要进行以下操作了 进入系统偏好设置-用户与群组-登陆项 在管理员用户头像哪里有个登陆项，点击后会有一个列表框，点击添加，找到你你写的shell脚本，添加上去，并勾选这个选项(不需要勾选上，因为勾选的话，表示登录是隐藏应用程序)，让其在开机启动是执行。</p>
+<hr>
+<p>如果想在打开终端的时候，执行命令，可以在 ~/.bash_profile 文件里添加命令即可</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2016/12/22/mac%E4%B8%8B%E8%87%AA%E5%90%AF%E5%8A%A8svn%E6%9C%8D%E5%8A%A1/" data-id="ckljj0p850055rpey9ts1hgwd" data-title="Mac下自启动SVN服务" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-linux安装mysql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/12/21/linux%E5%AE%89%E8%A3%85mysql/" class="article-date">
+  <time class="dt-published" datetime="2016-12-21T10:24:58.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/12/21/linux%E5%AE%89%E8%A3%85mysql/">Linux安装配置MySql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1、安装客户端和服务器端"><a href="#1、安装客户端和服务器端" class="headerlink" title="1、安装客户端和服务器端"></a>1、安装客户端和服务器端</h1><p>[codesyntax lang=”bash”]</p>
+<p>#确认mysql是否已安装<br>yum list installed mysql*<br>rpm -qa  grep mysql*</p>
+<p>#查看是否有安装包<br>yum list mysql*</p>
+<p>#安装mysql客户端<br>yum install mysql</p>
+<p>#安装mysql 服务器端<br>yum install mysql-server<br>yum install mysql-devel</p>
+<p>[/codesyntax]  </p>
+<h1 id="2、启动、停止设置"><a href="#2、启动、停止设置" class="headerlink" title="2、启动、停止设置"></a>2、启动、停止设置</h1><p>数据库字符集设置 mysql配置文件/etc/my.cnf中加入default-character-set=utf8 [codesyntax lang=”bash”]</p>
+<p>#启动mysql服务：<br>service mysqld start<br>#或者<br>/etc/init.d/mysqld start</p>
+<p>#设置开机启动：<br>chkconfig –add mysqld<br>chkconfig mysqld on</p>
+<p>#查看开机启动设置是否成功<br>chkconfig –list  grep mysql*<br>mysqld 0:关闭 1:关闭 2:启用 3:启用 4:启用 5:启用 6:关闭</p>
+<p>#停止mysql服务：<br>service mysqld stop</p>
+<p>[/codesyntax]    </p>
+<h1 id="3-创建或修改密码："><a href="#3-创建或修改密码：" class="headerlink" title="3.创建或修改密码："></a>3.创建或修改密码：</h1><p>a.例如你的 root用户现在没有密码，你希望的密码修改为123456，那么命令是：</p>
+<blockquote>
+<p>mysqladmin -u root password 123456</p>
+</blockquote>
+<p>b.如果你的root现在有密码了（123456），那么修改密码为abcdef的命令是：</p>
+<blockquote>
+<p>mysqladmin -u root -p password abcdef</p>
+</blockquote>
+<p>注意，命令回车后会问你旧密码，输入旧密码123456之后命令完成，密码修改成功。</p>
+<h1 id="4-开启远程访问权限"><a href="#4-开启远程访问权限" class="headerlink" title="4.开启远程访问权限"></a>4.开启远程访问权限</h1><p>  4.1、登陆mysql</p>
+<blockquote>
+<p>mysql -u root -p</p>
+</blockquote>
+<p>4.2.修改mysql库的user表，将host项，从localhost改为%。%这里表示的是允许任意host访问，如果只允许某一个ip访问，则可改为相应的ip，比如可以将localhost改为192.168.1.123，这表示只允许局域网的192.168.1.123这个ip远程访问mysql。</p>
+<blockquote>
+<p>mysql&gt; use mysql; mysql&gt; update user set host = ‘%’ where user = ‘root’; mysql&gt; select host, user from user; mysql&gt; flush privileges;</p>
+</blockquote>
+<h1 id="5-防火墙开放3306端口"><a href="#5-防火墙开放3306端口" class="headerlink" title="5.防火墙开放3306端口"></a>5.防火墙开放3306端口</h1><p>[codesyntax lang=”bash”]</p>
+<p>#打开防火墙配置文件<br>vi  /etc/sysconfig/iptables</p>
+<p>#增加下面一行<br>-A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT</p>
+<p>#重启防火墙<br>service  iptables restart</p>
+<p>[/codesyntax]  </p>
+<h1 id="6-查看mysql-状态"><a href="#6-查看mysql-状态" class="headerlink" title="6. 查看mysql 状态"></a>6. 查看mysql 状态</h1><blockquote>
+<p># ps -e grep mysqld</p>
+<p>13085 pts/1 00:00:00 mysqld_safe</p>
+<p>13190 pts/1 00:00:00 mysqld</p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>service mysqld status</p>
+</blockquote>
+<h1 id="7-修改mysql端口"><a href="#7-修改mysql端口" class="headerlink" title="7.修改mysql端口"></a>7.修改mysql端口</h1><p>为了安全，不采用默认端口3306，改为3506</p>
+<p>7.1. 登录mysql</p>
+<blockquote>
+<p>[root@test /]# mysql -u root -p</p>
+<p>Enter password:</p>
+</blockquote>
+<p>7.2. 使用命令show global variables like ‘port’;查看端口号</p>
+<blockquote>
+<p>mysql&gt; show global variables like ‘port’; +—————+——-+ Variable_name Value +—————+——-+ port 3306 +—————+——-+</p>
+</blockquote>
+<p>7.3. 修改端口，编辑/etc/my.cnf文件，早期版本有可能是my.conf文件名，增加端口参数，并且设定端口，注意该端口未被使用，保存退出。</p>
+<blockquote>
+<p>[root@test etc]# vi my.cnf [mysqld] port=3506 datadir=/var/lib/mysql socket=/var/lib/mysql/mysql.sock</p>
+</blockquote>
+<p>7.4.重启mysql</p>
+<blockquote>
+<p>service mysqld restart</p>
+</blockquote>
+<p>再次查看，端口已经变为3506</p>
+<blockquote>
+<p>mysql&gt; show global variables like ‘port’; +—————+——-+ Variable_name Value +—————+——-+ port 3506 +—————+——-+</p>
+</blockquote>
+<h1 id="8、mysql的几个重要目录"><a href="#8、mysql的几个重要目录" class="headerlink" title="8、mysql的几个重要目录"></a>8、mysql的几个重要目录</h1><p>8.1数据库目录 /var/lib/mysql/ 8.2配置文件 /usr/share /mysql（mysql.server命令及配置文件） 8.3相关命令 /usr/bin（mysqladmin mysqldump等命令） 8.4启动脚本 /etc/rc.d/init.d/（启动脚本文件mysql的目录）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2016/12/21/linux%E5%AE%89%E8%A3%85mysql/" data-id="ckljj0p7w004mrpey2ozccf2m" data-title="Linux安装配置MySql" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-linux下安装shadowsock" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/12/21/linux%E4%B8%8B%E5%AE%89%E8%A3%85shadowsock/" class="article-date">
+  <time class="dt-published" datetime="2016-12-21T06:34:43.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>►<a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/12/21/linux%E4%B8%8B%E5%AE%89%E8%A3%85shadowsock/">Linux下安装ShadowSocks</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>服务器环境：CentOS6.5 ，Python3.5，服务器pip可用。 1.安装和配置：</p>
+<blockquote>
+<p>pip install shadowsocks</p>
+</blockquote>
+<p>创建配置文件：</p>
+<pre><code>vi /etc/shadowsocks.json
+</code></pre>
+<blockquote>
+<p>{<br>    “server”:”0.0.0.0”,<br>    “server_port”:8989,<br>    “local_address”: “127.0.0.1”,<br>    “local_port”:1080,<br>    “password”:”yourpassword”,<br>    “timeout”:600,<br>    “method”:”aes-256-cfb”,<br>    “fast_open”: false,<br>    “workers”: 1<br>}</p>
+</blockquote>
+<p>各字段的含义：</p>
+<ul>
+<li>  server：服务器 IP (IPv4/IPv6)，注意这也将是服务端监听的 IP 地址</li>
+<li>  server_port：监听的服务器端口</li>
+<li>  local_address：本地监听的 IP 地址</li>
+<li>  local_port：本地端端口</li>
+<li>  password：用来加密的密码</li>
+<li>  timeout：超时时间（秒）</li>
+<li>  method：加密方法，可选择 “bf-cfb”, “aes-256-cfb”, “des-cfb”, “rc4”, 等等。默认是一种不安全的加密，推荐用 “aes-256-cfb”</li>
+<li>  works：works数量，默认为 1</li>
+<li>  fast_open：true 或 false。如果你的服务器 Linux 内核在3.7+，可以开启 fast_open 以降低延迟。开启方法：</li>
+</ul>
+<blockquote>
+<p>echo 3 &gt; /proc/sys/net/ipv4/tcp_fastopen</p>
+</blockquote>
+<p>开启之后，将 fast_open 的配置设置为 true 即可。   <strong>2、 命令行参数（服务器端启动命令）</strong> ssserver -c /etc/shadowsocks.json 如果想在后台一直运行Shadowsocks，启动命令如下： nohup ssserver -c /etc/shadowsocks.json &gt; /dev/null 2&gt;&amp;1 &amp; <strong>备注：</strong>关于nohup，是可以让程序在后台运行的命令。 同时可以用命令行参数覆盖 /etc/shadowsocks.json 里的设置： sslocal -s 服务器地址 -p 服务器端口 -l 本地端端口 -k 密码 -m 加密方法 ssserver -p 服务器端口 -k 密码 -m 加密方法 <strong>备注：</strong>sslocal是客户端程序；ssserver是服务端程序。   <strong>5、 防火墙设置（如有）</strong> 编辑防火墙配置文件/etc/sysconfig/iptables，将服务器端口（server_port）放行。 新增一条防火墙规则：</p>
+<blockquote>
+<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 8989 -j ACCEPT</p>
+</blockquote>
+<p>如果找不到 文件/etc/sysconfig/iptables， 可以使用命令行：</p>
+<blockquote>
+<p>iptables -A INPUT -m state –state NEW -m tcp -p tcp –dport 8989 -j ACCEPT service iptables save</p>
+</blockquote>
+<p>重启防火墙iptables： service iptables restart 至此，服务器端的 Shadowsocks 安装和配置完毕。</p>
+<hr>
+<p>等等…， 为什么能访问百度，访问不了facebook，啊？ 服务器是国内的！！！吐血三升！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2016/12/21/linux%E4%B8%8B%E5%AE%89%E8%A3%85shadowsock/" data-id="ckljj0p7v004krpey75it5jy9" data-title="Linux下安装ShadowSocks" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks/" rel="tag">shadowsocks</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-linuxcentos-升级-python-至-3-x" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/12/20/linuxcentos-%E5%8D%87%E7%BA%A7-python-%E8%87%B3-3-x/" class="article-date">
+  <time class="dt-published" datetime="2016-12-20T14:56:58.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/12/20/linuxcentos-%E5%8D%87%E7%BA%A7-python-%E8%87%B3-3-x/">Linux(CentOS) 升级 Python 至 3.x</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>CentOS 6.5 中默认安装了 Python，版本比较低（2.6.6），为了使用新版 3.x，需要对旧版本进行升级。 由于很多基本的命令、软件包都依赖旧版本，比如：yum。所以，在更新 Python 时，建议不要删除旧版本（新旧版本可以共存）。  </p>
+<blockquote>
+<p>1.查看 Python 版本号</p>
+</blockquote>
+<p>当 Linux 上安装 Python 后（默认安装），只需要输入简单的命令，就可以查看 Python 的版本号： [codesyntax lang=”php”]</p>
+<p>python -V<br>Python 2.6.6</p>
+<p>[/codesyntax]</p>
+<blockquote>
+<p>2.下载新版本</p>
+</blockquote>
+<p>进入 <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/" title="Python下载页面">Python下载页面</a>，选择需要的版本。 这里，我选择的版本是 3.5.2 。 [codesyntax lang=”bash”]</p>
+<p>wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz">https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz</a></p>
+<p>[/codesyntax] 国外链接网速较慢，可以找下国内的资源。</p>
+<blockquote>
+<p>3.解压安装</p>
+</blockquote>
+<p>[codesyntax lang=”bash”]</p>
+<p>#解压<br>tar -zxvf Python-3.5.2.tgz</p>
+<p>#进入目录<br>cd Python-3.5.2</p>
+<p>#配置<br>./configure</p>
+<p>make</p>
+<p>make install</p>
+<p>[/codesyntax]</p>
+<blockquote>
+<p>4.验证</p>
+</blockquote>
+<p>安装成功以后，就可以查看 Python 的版本了 [codesyntax lang=”bash”]</p>
+<p># python -V<br>Python 2.6.6</p>
+<h1 id="python3-V"><a href="#python3-V" class="headerlink" title="python3 -V"></a>python3 -V</h1><p>Python 3.5.2</p>
+<p>[/codesyntax] 一个是旧版本 2.x，另外一个是新版本 3.x。 <strong>注意：</strong>在 /usr/local/bin/ 下有一个 python3 的链接，指向 bin 目录下的 python 3.5。</p>
+<blockquote>
+<p>5.设置 3.x 为默认版本</p>
+</blockquote>
+<p>查看 Python 的路径，在 /usr/bin 下面。可以看到 python 链接的是 python 2.6，所以，执行 python 就相当于执行 python 2.6。 [codesyntax lang=”bash”]</p>
+<p># ls -al /usr/bin  grep python<br>-rwxr-xr-x.   1 root root       6832 Nov 23  2013 abrt-action-analyze-python<br>-rwxr-xr-x.   2 root root       4864 Jan 22  2014 python<br>lrwxrwxrwx.   1 root root          6 Aug 14  2014 python2 -&gt; python<br>-rwxr-xr-x.   2 root root       4864 Jan 22  2014 python2.6</p>
+<p>[/codesyntax] 修改链接： [codesyntax lang=”bash”]</p>
+<p>#将原来 python 的软链接重命名：<br>mv /usr/bin/python /usr/bin/python.bak</p>
+<p>#将 python 链接至 python3：<br>ln -s /usr/local/bin/python3 /usr/bin/python</p>
+<p>#再查看 Python 的版本<br>python -V<br>Python 3.5.2</p>
+<p>[/codesyntax] 输出的是 3.x，说明已经使用的是 python3了  </p>
+<blockquote>
+<p>6.配置yum</p>
+</blockquote>
+<p>升级 Python 之后，由于将默认的 python 指向了 python3，yum 不能正常使用，需要编辑 yum 的配置文件： [codesyntax lang=”bash”]</p>
+<p>vim /usr/bin/yum</p>
+<p>[/codesyntax] 将 #!/usr/bin/python 改为 #!/usr/bin/python2.7，保存退出即可   至此，终于大功告成了！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2016/12/20/linuxcentos-%E5%8D%87%E7%BA%A7-python-%E8%87%B3-3-x/" data-id="ckljj0p7u004hrpeyhfks7143" data-title="Linux(CentOS) 升级 Python 至 3.x" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-轻松学英语" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/09/20/%E8%BD%BB%E6%9D%BE%E5%AD%A6%E8%8B%B1%E8%AF%AD/" class="article-date">
+  <time class="dt-published" datetime="2016-09-20T09:59:07.000Z" itemprop="datePublished">2016-09-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/09/20/%E8%BD%BB%E6%9D%BE%E5%AD%A6%E8%8B%B1%E8%AF%AD/">轻松学英语</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>  ————轻松学英语第一步：建立英语思维 为什么大家学英语学得这么累，最后依然对英语糊糊涂涂？原因只有一个——就是我们的学习能力太差了！！我们的老师太笨了！！！ 这篇文章主要是给大家讲英语的基本结构， 看了这篇文章，你们会突然就明白，英语怎么会如此简单！！ 首先我们来看下面这两张地图（左边是中国地图，右边是英国地图）： 例如，我们中国人一见面第一句话是——“你吃了吗。” 英国人一见面的第一句话是——“今天天气怎么样？ what’s the weather like? 为什么中国人一见面就问：你吃了吗？ 英国人一见面就问：天气怎么样？ 咱们来看看语言是怎么来的…… 首先，咱们中国人在中国的土地上生活了五千多年。我们中国人靠什么生活了五千年之久？靠种地！！！也就是说五千多年来，我们都是靠种地为生，咱们中国人是地地道道的农民。农民种地需要土地肥沃，需要气候条件好，这样粮食才会多。中国土地肥沃吗？不肥沃。气候条件好吗？也不好。因此收的粮食自然也就不多。粮食一不多，就导致中国人最关心的事就是“吃饱”，所以一见面就问“你吃了吗？”。从这我们可以看出中国的地理环境决定了中国人在这块土地上干嘛？——种地。种地就决定了粮食不够吃。粮食不够吃，就决定了中国人的语言特点，第一句话就是——“你吃了吗？”，因此，中国的地理环境就决定了中国人的语言。 咱们再来看英国人的语言。英国人一见面就说“今天天气怎么样？”。咱们把英国人为什么问“今天天气怎么样”这个问题弄明白，学英语的问题就全解决了。从上面的英国地图，我们可以看到英国人是住在一个岛上，四周都是大海。既然是一个住在岛上的民族，他们用得着像我们中国人一样种地吗？咱们中国人种地春天播种，秋天收获，忙一年才收获那么两三次，多累呀！！所以他们犯不着跟我们中国人一样种地，打渔就好啦，吃现成的。三百六十五天，想什么时候吃就什么时候打，自然也就不缺吃的。既然英国人不缺吃的，那他们在什么情况下才会挨饿? 要是天气刮风下雨他们还能出海打渔吗？不能吧？所以只要一刮风下雨，他们就没法出海了，不出海就打不到鱼，自然也就挨饿。所以英国人最关心的是天气，见面必问“今天天气怎么样？”。英国的地理环境决定了英国的语言，这个岛国就决定了英国人的思维方式，也决定了它的语言特点。世界上任何一个民族，你只要听这个民族的第一句话，就知道这个民族的特点。 咱们再来举一个例子：日本。日本的第一句话是：“昂吧里嘛斯（音译）”也就是“努力吧”的意思。咱们先来看看日本的地理环境：首先，日本也是一个岛，它不像英国这个岛，鱼多的是，只要天气好就不会挨饿，所以英国人先关心天气。从地图上看，可以知道，日本比较靠近咱们东北，是一个纬度很高的地方。纬度高，说明这个地方冷。天气一冷，种粮食就不容易长。由于这个地方水冷，鱼自然也不爱去。那么就造成日本收获粮食少，打渔又打不到的局面，收成很困难。那么日本靠什么存活到今天？“昂吧里嘛斯.”努力吧！ 你看我们中国人的特色，刚出来就问：你吃了吗？那日本人呢，你刚一进厕所，他就“昂吧里嘛斯，昂吧里嘛斯。”上厕所他也“努力吧”。 一个民族的思维习惯是改不了的。一个民族的地理环境就决定了这个民族的思维习惯。这个思维习惯，就决定它的语言特点。 咱们学英语为什么学不会？问题出在哪里？——我们一直在拿“农民”的思维去学英语，去学“渔民”的语言。怎么可能学得会呢？以前的老师也是在用农民的思维在教我们，所以写出来的句子还是农民。你怎么样才能改变，把学英语变得简单？你要改变你的思维方式。用渔民的思维方式去学英语。建立一个渔民的思维方式难不难？我告诉你，一点都那不难，非常非常简单。 渔民的思维方式非常简单，它的语言特点也非常简单。它比我们农民简单得多得多。咱们举个例子：过马路 中国人过马路 英国人过马路 咱们来看看中国人过马路是怎么过的？想从哪过就从哪过，对不对？十个中国人过马路，会从十个不同的地方过。如果是十个英国人呢？他们都会老老实实的走人行横道。你看中国马路跟英国马路就知道了。中国的马路中间都有一个栏杆，这个栏杆就是为了防止咱们中国人横穿马路。结果，走不过我们就跨栏，看我们中国人有运动精神吧？跨着，跨着，跨出了个刘翔来……英国人马路中间都没有栏杆，可是他们都不横穿马路，都走人行道。为什么？——渔民！！ 为什么中国人过马路想从哪过就从哪过呢？我们来看看中国人五千年来是怎么生存的。我们是农民。我们是个体经营，知道吗？我在我的地里种土豆，你管得着吗？我种玉米，你管得着吗？我六点钟下地，你管得着吗？我八点钟下地，你管得着吗？我今天不去了，你管得着吗？所以农民是我想干什么，他就干什么。所以到今天，他想从哪过他就从哪过。这是个体。 咱们再看看英国人，英国人是渔民吧？英国人是在海里打渔。一个在海里打渔的民族必须要用大船吧？用一个小船能行吗？到海里就翻了。它必须要用大船。一个大船必须有五个人，十个人。必须有掌舵的，有升帆的，有撒网的，有划桨的。那么英国人这五千年它是怎么作业的？集体，团体。所以咱们来看：比如我是船长，我说六点钟上船起航，所有的人都怎么样？都要六点钟来。我说向东划，所有人都要向东使劲。所以它形成了一种思维方式。就是说非常守规矩，非常讲秩序。你看我们中国人，公共汽车一来的时候“呼~~”都往那挤。而英国不是，英国人：“即使剩下一个人，它也老老实实地排成一队。它的生产生活方式就决定了这个民族的特点。 现在咱们再来说语言，前面我们说了：一个民族的思维方式就决定了这个民族的语言特点。中国人的说话特点是想怎么说就怎么说。也就是一个意思让十个中国人来表达，十个人会说出十句话，十个不同的表达方式。而让英国人表达一个意思，就跟他们都走人行横道一样，十个英国人说出的话一模一样。所以这种语言非常非常简单。简单到让人难以置信。不像我们的语言，我们语言到今天为止，你想把中国的语言统一起来是非常困难的。现在我们来看看中文复杂到什么程度，例如：我们可以把一个东西叫做一支笔、一张纸、一台电脑、一块眼镜、一条毛巾、一张桌子……但是英国人呢？a，一个a，全解决了。他搞不清我们中国人在干什么。你们累不累啊？我们就这么累。英语就像刚才我说的那个a的表现形式，它跟中国完全不同。我们中国人最擅长把简单问题复杂化，而英国人最擅长把复杂问题简单化。 英语简单到什么程度？我来告诉你，英语只有三个句子。对，你没看错，英语就只有三个句子。英国人就会说三个句子，英国人要是说第四个句子，我爬楼上跳下去摔死。一个民族语言表达只有三个句子的时候，你就知道它有多么简单！！有多么容易学！！ 我用最快的速度把这三个句子给你们讲一遍，因为我不讲得那么细，只是给你们介绍一下。主要是让你们明白它有多么简单！！ 比如，我们看这个句子：The man is a teacher. 这句话怎么翻译？——这个人是一个老师。 The man 是什么意思？ Is是什么意思？ Teacher是什么意思？ 如果有人说：Is是“是”的意思，那就完啦。这是什么人？农民！！为什么？——他（她）在学英语的第一天就被老师一脚踹粪坑里了，得花一辈子从那粪坑里往外爬。 因为把“is”当“是”了。这样就惨啦！！ Is是“是”，they are teachers的“are”也是“是”。那英语就没办法学了。 这样的话“How are you ? ”就变成“怎么是你”了。 “How old are you? ”就变成“怎么老是你”了。 然后“天天向上”就“good good study,day day up.” “人山人海”就“people many people see. ” “给你点颜色看看”就“give you color to see see.” 结果全是拿英文单词按中国人的思维方式拼出来的句子，翻译出来的句子全是这玩意，根本不是英文。所以我们以前是用什么思维方式在学英文？农民！！ 我们再来看看“渔民”的思维方式。咱们看下面几个句子： 这个人是一个老师。(英文怎么说？)—— The man is a teacher. 刚好和中文对上“人——man 是——is 老师——teacher” 再看这个句子： 他很忙。——中国人说“他很忙。” 中文有“是”吗？——没有！ 英国人怎么说？He is busy. 英文要不要“is”？一定要有。 第三个句子： 她在教室里。 中文里有“是”吗?——没有。 英文怎么说？——She is in the classroom。 你看，中文一会有是，一会没有。而英文怎么样？非有这个“is”不可。那我们首先就要搞清楚，英国人为什么非要跟这个“is”没完没了？ 我们说过了， 英国人只有三个句子，它只会说三句话。那么，一个民族只会说三句话的时候，首先就要区分出来这三句话。靠什么来区分呢？我举个例子，开奥运会，有三个国家参加奥运会。老远，我们就说美国队出来了。怎么知道美国队出来了？美国队举着美国国旗。我们说英国队出来了，英国队举着英国国旗。一看五星红旗，我们就知道谁出来啦？中国队。英国人说每一句话的时候它最在乎谁？在乎那面旗子。英文的第一面旗子就是“is 、am、are”当你发现一个句子有“is、am、are”的时候，你就知道英国人想说什么啦！！英国人想说： 当“is”后面是名词的时候，它表示是什么。—— 什么人、什么东西是什么。 当“is”后面是形容词的时候，它表示怎么啦。——什么人、什么东西怎么啦？ 当“is”后面是一个介词加名词（我们叫它介词短语）的时候，它表示在什么地方。——什么人、什么东西在什么地方。 要是你明白了上面说的，你就明白了英语的三分之一。这种句型就叫：主系表。“is/am/are”就是这个句型的灵魂。这个句子就是三个单词：主、系、表。 主语永远是名词，人或者物。 表语呢？有三种可能性：一种是“名词”，表示“是什么”。 二是“形容词”，表示“怎么了”。 三是“介词短语”，表示“在什么地方”。 掌握了这个句型，就掌握了英语的三分之一。剩下的就是要牢牢记住这个“be(is/am/are)”的变化。 比如:现在时——is/am/are 过去时——was/were 将来时——will be 完成时——have been 过去完成时——had been 将来完成时——will have been 非常简单，一下子就记住了。你们看： 你有钱。——You are rich. 你将来有钱。——You will be rich. 完成时呢？——You have been rich. 过去完成时——You had been rich. 将来完成时——you will have been rich. 过去将来完成时 ——You would have been rich. ·········· 一共就八句话，这个句型就学完了。学这么点就学了英语的三分之一 ———————————————————————————————- 你们之前为什么出问题了？咱们来看看问题出在哪···· 看这个句子：The man is a teacher. Man 是什么词？——名词 Teacher 什么词？——名词 in the classroom。Classroom什么词？——名词 我们来看看英语是怎么变长的。因为英语一变长，咱们就乱了。 比如我说：从英国来的那个人在教室里。（从这里有些人就开始乱啦） “英国来的”我们用什么介词？——From “从英国来”——From England 从英国来的（介词短语）那个人在教室里。——从这句话可以看出，咱们中国人“在用介词短语做定语的时候，修饰哪个名词放在哪个名词的前面。” The man from england（介词短语） is in the classroom。——英国人“在用介词短语做定语的时，放在修饰名词的后面。” 再看:she is in the classroom. 她在教室里。 她在二楼的教室里。用英文怎么说？——she is in the classroom on the second the floor. “on the second the floor”为什么放在“classroom”后面？修饰哪个名词放在哪个名词的后面。 大家按照上面说的，试着把下面句子翻译成英文试试，体会一下： 这个人在二楼的教室里。——The man is in the classroom on the second floor. 这个人在大楼的二层的教室里。——The man is in the classroom on the second floor in the building. 哪个“building”? In the school ； 哪个“school”? In shanghai；哪个“shanghai”？In china.这个句子就这么一下子长下去。你们把它翻译成中文，再体会体会英文，一下子就全明白了。中文怎么说：这个人在中国上海的学校大楼的二楼的教室里。——我们关心的是这个人在哪？而我们的语言中偏偏把这个人放哪啦？放后面。而英文放哪？“the man is in the classroom”。英文把重要的放前面。 比如： 桌子上的钱是我的。——中国人先说桌子上，然后再说钱是我的。而英国人怎么说？“Money on the desk is mine.它把“money “放前面。钱重要还是桌子重要？钱！！ 为什么我们中国人把不重要的放前面？因为我们是农民。农民为什么有这种毛病？农民是春天播种，秋天收获。他收了粮食以后，这个农民是先吃好的还是先吃次的？先吃次的。好粮食可以存，一直存到第二年的秋天。次粮食是不能存的，所以它一直先吃次的，吃吃吃吃，吃到好的，吃到第二年秋天。要不然我们这个民族就饿死了。而渔民是怎么样的？渔民三百六十五天，天天能打到鱼。打到鱼他先吃好的还是先吃次的？先吃好的。为什么？这鱼不能放啊，第二天它臭了，晚上就臭了。所以它先吃好的，把坏的扔了。所以它的思维，你看它总是把好东西放哪？放前面，重要的总是放前面。它的生活习惯决定了它的思维方式。包括我们中国人的饺子。吃过饺子吧？哪里好吃？馅！！馅在里面呢，它把好东西包里面。吃过包子吗？吃过馅饼吗？吃过月饼吗？吃过汤圆吗？吃过馄饨吗？你们看，中国人都把好东西干嘛？包里面了。它的习俗和我们的思维模式一模一样。你们看英国人吃什么？ 吃过批萨吗？馅在哪？表面！！吃过蛋糕吗？奶油在哪？表面！！一个民族的地理环境，就决定了一个民族的思维方式，思维方式就决定了它的语言特点。 到此为止，我们学了英语的三分之一了。这个句子最重要的就是主系表，那个“Be（is/am/are)”。然后这里把我们搞糊涂的是什么？英国人用介词短语做定语放在哪？修饰哪个名词放哪个名词的后面。一个一个往后放。 我们再看第二个句子，我们在每个句子上都出现问题。 “There is a table in the room.”翻译成中文怎么翻？——房间里有一张桌子 In the room 什么意思？ A table 什么意思？ there is 什么意思？ 要是有人说“there is”是“有”的意思，那就麻烦了！！又是农民的思维方式。 我告诉你，“There is” 在英文中什么意思也没有，它是英文中的第二面旗子。当你发现一个句子里有“there is”你就知道英国举起第二面旗子。英国人举第二面旗子的时候，你就知道英国人想说：什么地方有什么。 例如： 桌子上有一本书。——There is a book on the table. 桌子上有一只猪。——There is a pig on the table.你如果不想让猪在桌子上怎么办？把它扔厕所里去。There is a pig in the WC. 就这样，英语的三分之二学完了！！ 剩下的就是旗子“there be”的变化了。 单数用“there is” 复数用“there are” 过去式用“there was” 将来时“there will be” 过去将来“There would be” ………… 因为我们以前不认识这面旗子，所以我们糊涂了。 咱们看： 桌子上有一本书。There is a book on the desk. 教室的桌子上有一本书。There is a book on the desk in the classroom. 二楼的教室里有一本书。There is a book in the classroom on the second floor. 大楼的二层的教室里有一本书。There is a book in theclassroom on the second floor in the building. 看上面的句子看出来了吗？英文都是把重要的放前面，越不重要的越往后甩！ 咱们用中文来对比一下： 如果我说：上海市（你们知道我后面要说什么吗？）浦东区（我后面要说什么？）一所学校（后面还说什么？）大楼的，二层的（知道我说什么了吗？）图书馆···的桌子上···有一个钱包。——上海市浦东区一所学校的大楼的二层的图书馆的桌子上有一个钱包。 你们听我说完才知道，噢！有一个钱包。 我还没说完呢，还有个“吗？”字 知道我加个“吗”是什么意思吧？我在问你们呢！！ 刚才那句话连起来就是：上海市浦东区一所学校的大楼的二层的图书馆的桌子上有一个钱包吗？ 所以说中文你没有听到最后一个单词，你就不知道它要表达什么。 咱们来看这句话用英文怎么说：Is there（你看，英国人一说“is there”知道英国人干嘛吗？在问你。在问你“什么地方有什么”）a wallet(钱包）on the desk in the library on the second floor in the buiding in the school in PuDong in ShangHai. 看这个句子，英国人把“旗子”举在哪？最前面。从“is there”这面旗子中可以看出： 句子在问“什么地方有什么”。“is there”表示有一个。 有两个就是“are there” 什么时候有？现在有（现在时）。 过去有就是“were there” 将来有就是“will there be” 所以说英国人把旗子举在前面，一看旗子就知道英国人想说什么 为什么我们的听力很差? 什么原因？农民！！听听力的时候，我们老等那“吗”呢。英国人那“吗”在哪？中国人“吗”在后面，英国人“妈”在前头。学英语最关键就是英国那个魂，它每个句子都举着一面旗子。 所以英国人只要一开口，一说“is there” ——说句不好听的，他们一撅屁股就知道他们想干嘛。英国人写的文章，我都不用看，眼一扫，看三个单词我都知道它要干什么。中国人不一样啊！中国人不到最后不知道他要干什么。英语是一门非常非常简单的语言，所以···· 三个句子我讲了两个啦，讲了英语的三分之二。什么是魂——旗子，三面旗子我们讲了两面。 我们要弄明白中国人说话为什么不举“旗子”。中国人说话你分不了，为什么？农民！！农民是不会举“旗子”的。不知道大家下过乡看农民种地吗？我们有没有见过这种情况：老刘早上起来下地时，举着个“老刘”的旗子？老张起来举个“老张”的旗子？——没有，一个村子里谁都认识谁，一共才五米十米地。英国人为什么要举旗子？因为它在海里，海里的船都挂有旗子吧？老远看到旗子，噢 ~~知道这是张家的，知道这是李家的。你看，海里每条船都挂有国旗吧？ 中国的船挂着五星红旗。连英国的强盗都举着旗，海盗旗，一个骷髅，两把刀一架。连英国强盗都举着旗子。你见过中国海盗举着旗子去抢东西吗？找死呢！！所以英国人很在乎那面“旗子”。因为它是在海里生存的民族，而我们是在陆地上生存的。这个不一样，它语言也不一样，所以这面旗子非常重要！！ 你们试着翻译一下下面这个句子 1.有个从英国来的学生在教室里。 2.每个成功的男人背后都有一个女人。是不是什么地方有什么？ 背后（behind）——介词 是不是什么地方有什么？一看什么地方有什么，第一想到的是什么？举什么旗子。介词短语放在哪个名词后面就修饰哪个名词。 1.There is a student from England in the classroom. 2.There is a woman behind every successful man. 什么地方有什么先举“there is” 。 我们到现在学了两面旗子 什么时候举“be(is/am/are)?————什么是什么 什么怎么了 什么在什么地方 第二面“there be”———— 什么地方有什么 最后记住： 介词短语做定语，修饰哪个名词放在哪个名词的后面。 我们再学第三个句子，英语就学完啦。你要是找出第四个，我爬到楼顶上跳下去。 学了六七年都学不明白的英语，一个小时弄得明明白白&lt;四&gt;剩下最后的一个句子，也就是第三个句子，它的“旗子”是“动词（do)”。 这个句子更简单，我们来看： The students study english.学生们学英语。——这个句子叫主谓宾。 主语是什么？学生(student） 什么是这个句子的灵魂？study 第三个句子就这样学完了！！ 你们看这个句子，可以知道，它和中文的说法一模一样： 中文：学生们学英语 英文：Students study english. 中文：我爱你 英文：I love you. 这个句子跟中文一样：主谓宾。 第三个句子咱们为什么犯错误呢？我们来看： 中国人说：学生们学英语。如果要加点修饰成分，就变成：学生们努力学英语。“努力”我们在语法上叫什么？状语——状语是用来修饰动词的。 中文的句子形式是：主状谓宾 英文的句子形式是：主谓宾状 学生们 努力 学 英语 翻译成英文就是： Students study english hard. ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ 主语 状语 谓语 宾语 主语 谓语 宾语 状语 咱们把下面这个句子翻译成中文看： The students study english hard for the test on Sunday in the classroom in the school in Shanghai. 学生们为了考试在上海的一所学校的教室里努力地学英语。 翻译成中文什么特点？它又把重要的放后面去了。咱们关心的是“学生们干什么”，结果中文扯了半天。 而英文怎么样？——Students study english. 以前我见过有人把“学生们学了五年英语”翻译成“ Study five years english student.”——这是“中国人的思维”。注意：英文一定是主谓宾状！！ 看上面句子我们知道：英国人先告诉你——学生们学英语（Students study english）；怎么学？——hard ；什么时候学？——on Sunday ；为什么学？——for the test；在哪学？——in the school。 明白了吗？非常简单！！ 比如： 中国人说：我爱你 英国人说：I love you. 中英文一样，没问题！！ 如果我们要加上修饰成分呢？比如一个中国男生跟一个女生表白： 中国人说：我非常非常非常非常非常……爱你（急死她，然后才出来“爱你”） 英国人说：I love you very very very……（你爱怎么very怎么very ，反正我知道你爱我） 你看，中国人怎么样？ 它把不重要的放前面，而英国人永远把重要的放前面。这是谁的思维方式？渔民。 所有的社会现象都不难理解，为什么？大家知道金融风暴吧？为什么美国会出现金融风暴？——渔民。渔民为什么出金融风暴？因为渔民总是先吃好吃的，先过好日子，哪怕是借钱也要先过好日子，大家都借钱。好日子过完后，钱还不起了，不就出现金融风暴了吗？我们中国有没有可能出现金融风暴？不可能。我们是农民，把“好日子”都存银行里了，所以我们不可能出现金融风暴。所有的现象都是两个民族的差异造成的。 OK!!我们把三个句子学完啦！！ 最后这个句子，是我们用得最多的，我们来看它麻烦在哪？英文最麻烦的就是这面旗子，大家想学好英语就得把旗子弄得滚瓜烂熟…… 例如：you study english.什么时？——现在时； 过去时呢？——you studied english； 将来时？——you will study english； 将来还会学到“you are going to study english.” 不知道你们能不能区分什么时候用“ you will study english ”，什么时候用“you are going to study english”？ 英国人表示“一定”的时候用“will”，比如：I will study english.——我一定要学英语； 比如“人人都得死”——Everyone will died. 而“be going to”表示“可能，打算”，I’m going to study english.——我打算学英语。 如果你妈让你好好学英语，你回答“I’m going to（我打算），就跟没说一样。 有人要死了，交代后事:替我照顾女儿。你答“I will” ，要是你答“I’m going to”就惨了，听到你这么说，他的眼睛还能闭上吗？ 有一个人他爸病了，护士跟他说，你爸不行了:“your father is going to died.” 不能说“your father will died（你爸死定了）.” 我们送人经常说：“I will never forget you.”我永远不会把你忘了。你不能说：“I’m going to forget you.”我还不打算把你忘了。 所以想学好这个句子对“动词”一定要熟。英语学那么久，就是学三面“旗子”。 你要滚瓜烂熟： You study english. You studid english. You will study english. You would study english. You are studing english. You were studing english. You will be study english. You would be study english. You have studing english. You had studing english. You will have…… You would have …… 然后完成进行时： You have been study english. You had been study english. 每一个时态表示什么样的概念你要弄得清清楚楚。 英语只要你学会三个句子，把“时态”搞清楚，英语就不用学了。 有些同学问我英语从句。我告诉你，只要三个句子没问题，从句就没问题。 我给你们看看英语从句，瞬间就把它弄熟： I know the teacher.什么意思？——我知道这个老师。这是个什么句子？——主 谓 宾 什么叫做从句？ 我把宾语变成一个句子叫什么从句？宾语从句。 比如： I know that he studies english. I know that he is rich. I know that there is a wallet on the desk. 看到上面这些句子了吧？都是：主谓宾。 宾语从句是什么？看明白了吗？宾语从句就是大句子里套小句子。小句子是几个？三个，又开始重新排列那三个句子。所谓宾语从句就是把宾语变成句子。只要是句子怎么办？ 又是举三面旗子。那么很多人说，这个“that”是干什么的？这个“that” 什么意义都没有。英文用“that”告诉你：从句开始啦！！多好啊！！它提醒你从句开始啦！！小心，三个句子我又要重新排列啦。你还要给我再举旗子。多简单！！ 掌握宾语从句的关键是什么？记住连词。连词有多少个？就这么几个： 人不知道用什么？用“who” 东西不知道用什么？用“what” 时间不知道用“when” 地点不知道用“where” 原因不知道用什么？用“Why” 连词就只有上面这些！！ 英国人把连词放哪？放在从句的开始。举例： 我不知道你为什么学英语：I don’t know why you studyenglish. 我不知道你什么时候学英语：I don’t know when you studyenglish. 我不知道你在哪学英语：I don’t know where youstudy english. OK！！就这样，宾语从句就学完啦…… 我们已经把所有宾语从句学完啦。 宾语从句学会了，其它从句就全会了。 表语从句呢？把表语变成一个句子就叫表语从句。举例： 问题（question)是谁学英语？——The question is who study english. 问题是你什么时候学英语？——The question is when you study english. 问题是你在哪学英语？——The question is where youstudy english. 你把句子原封不动放在表语的位置，就叫表语从句。还用学吗？ 把一个句子放在主语的位置就叫主语从句。就这么点事……看下面的句子： The car is what he want.——汽车就是他想要的东西。（“主系表”句型。表语是什么？什么东西不知道用什么代替？——what） 看见没有？如果我把主语变成一个句子，叫主语从句。把表语变成一个句子，叫表语从句。 你想要的东西就是我想要的东西。怎么翻译？（东西“what”是不是连词？要把连词放哪？前面） ——You want is what I want. 你的汽车就是我想要的东西——your car is what I want. 这个女孩就是我喜欢的人。（女孩就不能用“what”啦，该用“who”）——The girl is who I like. 他喜欢的那个人就是我喜欢的那个人。Who he loves is who I love. 假如你追一个女孩，她不喜欢你，你说：你去哪我就去哪。——where you will go is where I will go. 你只要遵循三个句子，所有从句全会！！ 定语从句就是把定语变成一个句子。前面说了，我们把定语放在哪里？修饰哪个名词放在哪个名词后面，我们把这个地方变成一个句子就OK了。 咱们来看： 这是教我们的（定语）老师。——This is the teacher who teaches us.（“主谓宾”句型） 首先，这个人是老师 who是什么？——主语 Teaches——教 大句子里套着一个小句子 如果定语是定人就用“who”，定物就用“what/which”，定时间就用“when” ……这样就全会了。 The person who knows “how” will always have a job.——一个知道怎么做的人将来总会找到工作。 The person 后面跟着什么从句？一看有“who”，名词后面有“who”就知道是“定语从句” The person who knows “why” will always be his boss. ——一个知道为什么这样做的人将来就是老板。 所以你们学英语别只光会拼命学，光拼命学没用，你要知道为什么这样子，英语是怎么来的，它是一种什么样的思维方式，这样学起来就非常非常简单…… 后期继续针对英语进行讲解，欢迎大家继续关注·············</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2016/09/20/%E8%BD%BB%E6%9D%BE%E5%AD%A6%E8%8B%B1%E8%AF%AD/" data-id="ckljj0pb500ekrpey93khd7gu" data-title="轻松学英语" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Previo</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/">Siguiente &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorías</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS3%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" rel="tag">AS3定义变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS3%E6%8E%A2%E7%A9%B6/" rel="tag">AS3探究</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Air/" rel="tag">Air</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Air-for-Android/" rel="tag">Air for Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bitmap/" rel="tag">Bitmap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ContextMenu/" rel="tag">ContextMenu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/File/" rel="tag">File</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/File%E7%9B%AE%E5%BD%95/" rel="tag">File目录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Find-References/" rel="tag">Find References</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flash%E8%BF%90%E8%A1%8C%E6%97%B6%E8%B7%AF%E7%BA%BF%E5%9B%BE/" rel="tag">Flash运行时路线图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IAP/" rel="tag">IAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LitJson/" rel="tag">LitJson</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MonoDevelop/" rel="tag">MonoDevelop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Particle/" rel="tag">Particle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPG%E6%B8%B8%E6%88%8F/" rel="tag">RPG游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scale9Grid/" rel="tag">Scale9Grid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service/" rel="tag">Service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Text/" rel="tag">Text</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TexturePacker/" rel="tag">TexturePacker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDID/" rel="tag">UDID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XCode/" rel="tag">XCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adb/" rel="tag">adb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adobe/" rel="tag">adobe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adt%E6%89%93%E5%8C%85/" rel="tag">adt打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ane/" rel="tag">ane</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ant/" rel="tag">ant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/assets/" rel="tag">assets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atf/" rel="tag">atf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/copyPixel/" rel="tag">copyPixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/" rel="tag">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dex2jar/" rel="tag">dex2jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/drag/" rel="tag">drag</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash/" rel="tag">flash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-builder/" rel="tag">flash builder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-builder-4/" rel="tag">flash builder 4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-player-10/" rel="tag">flash player 10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-runtimes/" rel="tag">flash runtimes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flv/" rel="tag">flv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ipa/" rel="tag">ipa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/itms-services/" rel="tag">itms-services</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyboard/" rel="tag">keyboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/" rel="tag">pip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/player-11/" rel="tag">player 11</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/" rel="tag">react-native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setIndex/" rel="tag">setIndex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setPixel/" rel="tag">setPixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/" rel="tag">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">socket服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/starling/" rel="tag">starling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/" rel="tag">svn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/" rel="tag">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/useLegacyAOT/" rel="tag">useLegacyAOT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwsgi/" rel="tag">uwsgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vbox/" rel="tag">vbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E7%9B%98/" rel="tag">七牛云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E4%BB%B6/" rel="tag">事件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/" rel="tag">交互设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81%E7%A0%94%E5%8F%91/" rel="tag">产品研发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%91%E9%80%81/" rel="tag">发送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" rel="tag">多语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A9%E6%B0%94API/" rel="tag">天气API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" rel="tag">定义变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E7%BD%AE%E9%A1%B6/" rel="tag">对象置顶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%BF%E5%91%8A/" rel="tag">广告</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" rel="tag">应用内支付</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%B9%E9%87%8F%E5%AE%9A%E4%B9%89/" rel="tag">批量定义</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E5%85%A5/" rel="tag">拖入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E5%87%BA/" rel="tag">拖出</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E6%8B%BD/" rel="tag">拖拽</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%88%B6/" rel="tag">机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%BC%E5%BC%8F/" rel="tag">格式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AE%8B%E5%BD%B1/" rel="tag">残影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%88%90Html/" rel="tag">生成Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" rel="tag">目录树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8/" rel="tag">移动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" rel="tag">粒子系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" rel="tag">系统托盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E6%B8%B8/" rel="tag">网游</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" rel="tag">视频播放器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" rel="tag">转义字符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/" rel="tag">需求管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nube de Tags</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AS3%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">AS3定义变量</a> <a href="/tags/AS3%E6%8E%A2%E7%A9%B6/" style="font-size: 17.5px;">AS3探究</a> <a href="/tags/Air/" style="font-size: 17.5px;">Air</a> <a href="/tags/Air-for-Android/" style="font-size: 10px;">Air for Android</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Bitmap/" style="font-size: 10px;">Bitmap</a> <a href="/tags/ContextMenu/" style="font-size: 10px;">ContextMenu</a> <a href="/tags/File/" style="font-size: 10px;">File</a> <a href="/tags/File%E7%9B%AE%E5%BD%95/" style="font-size: 10px;">File目录</a> <a href="/tags/Find-References/" style="font-size: 10px;">Find References</a> <a href="/tags/Flash%E8%BF%90%E8%A1%8C%E6%97%B6%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">Flash运行时路线图</a> <a href="/tags/IAP/" style="font-size: 10px;">IAP</a> <a href="/tags/LitJson/" style="font-size: 10px;">LitJson</a> <a href="/tags/MonoDevelop/" style="font-size: 10px;">MonoDevelop</a> <a href="/tags/Particle/" style="font-size: 10px;">Particle</a> <a href="/tags/RPG%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">RPG游戏</a> <a href="/tags/Scale9Grid/" style="font-size: 10px;">Scale9Grid</a> <a href="/tags/Service/" style="font-size: 10px;">Service</a> <a href="/tags/Text/" style="font-size: 10px;">Text</a> <a href="/tags/TexturePacker/" style="font-size: 10px;">TexturePacker</a> <a href="/tags/UDID/" style="font-size: 10px;">UDID</a> <a href="/tags/Unity/" style="font-size: 15px;">Unity</a> <a href="/tags/XCode/" style="font-size: 10px;">XCode</a> <a href="/tags/adb/" style="font-size: 10px;">adb</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/adobe/" style="font-size: 10px;">adobe</a> <a href="/tags/adt%E6%89%93%E5%8C%85/" style="font-size: 10px;">adt打包</a> <a href="/tags/ane/" style="font-size: 15px;">ane</a> <a href="/tags/ant/" style="font-size: 10px;">ant</a> <a href="/tags/assets/" style="font-size: 10px;">assets</a> <a href="/tags/atf/" style="font-size: 10px;">atf</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/copyPixel/" style="font-size: 10px;">copyPixel</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/dex2jar/" style="font-size: 10px;">dex2jar</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/drag/" style="font-size: 10px;">drag</a> <a href="/tags/flash/" style="font-size: 15px;">flash</a> <a href="/tags/flash-builder/" style="font-size: 10px;">flash builder</a> <a href="/tags/flash-builder-4/" style="font-size: 10px;">flash builder 4</a> <a href="/tags/flash-player-10/" style="font-size: 10px;">flash player 10</a> <a href="/tags/flash-runtimes/" style="font-size: 10px;">flash runtimes</a> <a href="/tags/flv/" style="font-size: 10px;">flv</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/ios/" style="font-size: 20px;">ios</a> <a href="/tags/ipa/" style="font-size: 17.5px;">ipa</a> <a href="/tags/itms-services/" style="font-size: 10px;">itms-services</a> <a href="/tags/keyboard/" style="font-size: 10px;">keyboard</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mac/" style="font-size: 12.5px;">mac</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/player-11/" style="font-size: 10px;">player 11</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/react-native/" style="font-size: 10px;">react-native</a> <a href="/tags/setIndex/" style="font-size: 10px;">setIndex</a> <a href="/tags/setPixel/" style="font-size: 10px;">setPixel</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/socket%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">socket服务器</a> <a href="/tags/starling/" style="font-size: 15px;">starling</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/useLegacyAOT/" style="font-size: 10px;">useLegacyAOT</a> <a href="/tags/uwsgi/" style="font-size: 10px;">uwsgi</a> <a href="/tags/vbox/" style="font-size: 10px;">vbox</a> <a href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E7%9B%98/" style="font-size: 10px;">七牛云盘</a> <a href="/tags/%E4%BA%8B%E4%BB%B6/" style="font-size: 12.5px;">事件</a> <a href="/tags/%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">交互设计</a> <a href="/tags/%E4%BA%A7%E5%93%81%E7%A0%94%E5%8F%91/" style="font-size: 10px;">产品研发</a> <a href="/tags/%E5%8F%91%E9%80%81/" style="font-size: 10px;">发送</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%A4%A9%E6%B0%94API/" style="font-size: 10px;">天气API</a> <a href="/tags/%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">定义变量</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">对象置顶</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 10px;">常用函数</a> <a href="/tags/%E5%B9%BF%E5%91%8A/" style="font-size: 10px;">广告</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" style="font-size: 10px;">应用内支付</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 10px;">快捷键</a> <a href="/tags/%E6%89%B9%E9%87%8F%E5%AE%9A%E4%B9%89/" style="font-size: 10px;">批量定义</a> <a href="/tags/%E6%8B%96%E5%85%A5/" style="font-size: 10px;">拖入</a> <a href="/tags/%E6%8B%96%E5%87%BA/" style="font-size: 10px;">拖出</a> <a href="/tags/%E6%8B%96%E6%8B%BD/" style="font-size: 12.5px;">拖拽</a> <a href="/tags/%E6%9C%BA%E5%88%B6/" style="font-size: 10px;">机制</a> <a href="/tags/%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">格式</a> <a href="/tags/%E6%AE%8B%E5%BD%B1/" style="font-size: 10px;">残影</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%88%90Html/" style="font-size: 10px;">生成Html</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 10px;">用户体验</a> <a href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" style="font-size: 10px;">目录树</a> <a href="/tags/%E7%A7%BB%E5%8A%A8/" style="font-size: 10px;">移动</a> <a href="/tags/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">粒子系统</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" style="font-size: 10px;">系统托盘</a> <a href="/tags/%E7%BD%91%E6%B8%B8/" style="font-size: 10px;">网游</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">视频播放器</a> <a href="/tags/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" style="font-size: 10px;">转义字符</a> <a href="/tags/%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">配置</a> <a href="/tags/%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/" style="font-size: 10px;">需求管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/02/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/20/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/">Java高级特性——反射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/30/git%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4tag/">Git批量删除tag</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/01/%E6%9F%A5%E7%9C%8Bipa%E4%B8%AD%E5%8C%85%E5%90%AB%E7%9A%84%E8%AE%BE%E5%A4%87udid/">查看ipa中包含的设备UDID</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/18/ios-u2006-%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">iOS \u2006 中文输入法错误解决方案</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 斯樵<br>
+      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

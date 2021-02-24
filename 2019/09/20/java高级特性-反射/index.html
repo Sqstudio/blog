@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java高级特性——反射 | 斯樵工坊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="概述定义JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为java语言的反射机制。 用途在日常的第三方应用开发过程中，经常会遇到某个类的某个成员变量、方法或是属性是私有的或是只对系统应用开放，这时候就可以利用Java的反射机制通过反射来获取所需的私有成员或是方法。当然，也不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java高级特性——反射">
+<meta property="og:url" content="http://sqstudio.com/2019/09/20/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/index.html">
+<meta property="og:site_name" content="斯樵工坊">
+<meta property="og:description" content="概述定义JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为java语言的反射机制。 用途在日常的第三方应用开发过程中，经常会遇到某个类的某个成员变量、方法或是属性是私有的或是只对系统应用开放，这时候就可以利用Java的反射机制通过反射来获取所需的私有成员或是方法。当然，也不">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-09-20T05:54:21.000Z">
+<meta property="article:modified_time" content="2021-02-24T14:20:32.664Z">
+<meta property="article:author" content="斯樵">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="斯樵工坊" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">斯樵工坊</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sqstudio.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-java高级特性-反射" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/09/20/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/" class="article-date">
+  <time class="dt-published" datetime="2019-09-20T05:54:21.000Z" itemprop="datePublished">2019-09-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java高级特性——反射
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JAVA%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/6015990">JAVA反射机制</a>是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为java语言的反射机制。</strong></p>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>在日常的第三方应用开发过程中，经常会遇到某个类的某个成员变量、方法或是属性是私有的或是只对系统应用开放，这时候就可以利用Java的反射机制通过反射来获取所需的私有成员或是方法。当然，也不是所有的都适合反射，之前就遇到一个案例，通过反射得到的结果与预期不符。阅读源码发现，经过层层调用后在最终返回结果的地方对应用的权限进行了校验，对于没有权限的应用返回值是没有意义的缺省值，否则返回实际值起到保护用户的隐私目的。</p>
+<h2 id="反射机制的相关类"><a href="#反射机制的相关类" class="headerlink" title="反射机制的相关类"></a>反射机制的相关类</h2><p>与Java反射相关的类如下：</p>
+<p>类名</p>
+<p>用途</p>
+<p>Class类</p>
+<p>代表类的实体，在运行的Java应用程序中表示类和接口</p>
+<p>Field类</p>
+<p>代表类的成员变量（成员变量也称为类的属性）</p>
+<p>Method类</p>
+<p>代表类的方法</p>
+<p>Constructor类</p>
+<p>代表类的构造方法</p>
+<h1 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h1><p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/reference/java/lang/Class">Class</a>代表类的实体，在运行的Java应用程序中表示类和接口。在这个类中提供了很多有用的方法，这里对他们简单的分类介绍。</p>
+<ul>
+<li>  <strong>获得类相关的方法</strong></li>
+</ul>
+<p>方法</p>
+<p>用途</p>
+<p>asSubclass(Class<U> clazz)</p>
+<p>把传递的类的对象转换成代表其子类的对象</p>
+<p>Cast</p>
+<p>把对象转换成代表类或是接口的对象</p>
+<p>getClassLoader()</p>
+<p>获得类的加载器</p>
+<p>getClasses()</p>
+<p>返回一个数组，数组中包含该类中所有公共类和接口类的对象</p>
+<p>getDeclaredClasses()</p>
+<p>返回一个数组，数组中包含该类中所有类和接口类的对象</p>
+<p>forName(String className)</p>
+<p>根据类名返回类的对象</p>
+<p>getName()</p>
+<p>获得类的完整路径名字</p>
+<p>newInstance()</p>
+<p>创建类的实例</p>
+<p>getPackage()</p>
+<p>获得类的包</p>
+<p>getSimpleName()</p>
+<p>获得类的名字</p>
+<p>getSuperclass()</p>
+<p>获得当前类继承的父类的名字</p>
+<p>getInterfaces()</p>
+<p>获得当前类实现的类或是接口</p>
+<ul>
+<li>  <strong>获得类中属性相关的方法</strong></li>
+</ul>
+<p>方法</p>
+<p>用途</p>
+<p>getField(String name)</p>
+<p>获得某个公有的属性对象</p>
+<p>getFields()</p>
+<p>获得所有公有的属性对象</p>
+<p>getDeclaredField(String name)</p>
+<p>获得某个属性对象</p>
+<p>getDeclaredFields()</p>
+<p>获得所有属性对象</p>
+<ul>
+<li>  <strong>获得类中注解相关的方法</strong></li>
+</ul>
+<p>方法</p>
+<p>用途</p>
+<p>getAnnotation(Class<A> annotationClass)</p>
+<p>返回该类中与参数类型匹配的公有注解对象</p>
+<p>getAnnotations()</p>
+<p>返回该类所有的公有注解对象</p>
+<p>getDeclaredAnnotation(Class<A> annotationClass)</p>
+<p>返回该类中与参数类型匹配的所有注解对象</p>
+<p>getDeclaredAnnotations()</p>
+<p>返回该类所有的注解对象</p>
+<ul>
+<li>  <strong>获得类中构造器相关的方法</strong></li>
+</ul>
+<p>方法</p>
+<p>用途</p>
+<p>getConstructor(Class…&lt;?&gt; parameterTypes)</p>
+<p>获得该类中与参数类型匹配的公有构造方法</p>
+<p>getConstructors()</p>
+<p>获得该类的所有公有构造方法</p>
+<p>getDeclaredConstructor(Class…&lt;?&gt; parameterTypes)</p>
+<p>获得该类中与参数类型匹配的构造方法</p>
+<p>getDeclaredConstructors()</p>
+<p>获得该类所有构造方法</p>
+<ul>
+<li>  <strong>获得类中方法相关的方法</strong></li>
+</ul>
+<p>方法</p>
+<p>用途</p>
+<p>getMethod(String name, Class…&lt;?&gt; parameterTypes)</p>
+<p>获得该类某个公有的方法</p>
+<p>getMethods()</p>
+<p>获得该类所有公有的方法</p>
+<p>getDeclaredMethod(String name, Class…&lt;?&gt; parameterTypes)</p>
+<p>获得该类某个方法</p>
+<p>getDeclaredMethods()</p>
+<p>获得该类所有方法</p>
+<ul>
+<li>  <strong>类中其他重要的方法</strong></li>
+</ul>
+<p>方法</p>
+<p>用途</p>
+<p>isAnnotation()</p>
+<p>如果是注解类型则返回true</p>
+<p>isAnnotationPresent(Class&lt;? extends Annotation&gt; annotationClass)</p>
+<p>如果是指定类型注解类型则返回true</p>
+<p>isAnonymousClass()</p>
+<p>如果是匿名类则返回true</p>
+<p>isArray()</p>
+<p>如果是一个数组类则返回true</p>
+<p>isEnum()</p>
+<p>如果是枚举类则返回true</p>
+<p>isInstance(Object obj)</p>
+<p>如果obj是该类的实例则返回true</p>
+<p>isInterface()</p>
+<p>如果是接口类则返回true</p>
+<p>isLocalClass()</p>
+<p>如果是局部类则返回true</p>
+<p>isMemberClass()</p>
+<p>如果是内部类则返回true</p>
+<h1 id="Field类"><a href="#Field类" class="headerlink" title="Field类"></a>Field类</h1><p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/reference/java/lang/reflect/Field">Field</a>代表类的成员变量（成员变量也称为类的属性）。</p>
+<p>方法</p>
+<p>用途</p>
+<p>equals(Object obj)</p>
+<p>属性与obj相等则返回true</p>
+<p>get(Object obj)</p>
+<p>获得obj中对应的属性值</p>
+<p>set(Object obj, Object value)</p>
+<p>设置obj中对应属性值</p>
+<h1 id="Method类"><a href="#Method类" class="headerlink" title="Method类"></a>Method类</h1><p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/reference/java/lang/reflect/Method">Method</a>代表类的方法。</p>
+<p>方法</p>
+<p>用途</p>
+<p>invoke(Object obj, Object… args)</p>
+<p>传递object对象及参数调用该对象对应的方法</p>
+<h1 id="Constructor类"><a href="#Constructor类" class="headerlink" title="Constructor类"></a>Constructor类</h1><p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/reference/java/lang/reflect/Constructor">Constructor</a>代表类的构造方法。</p>
+<p>方法</p>
+<p>用途</p>
+<p>newInstance(Object… initargs)</p>
+<p>根据传递的参数创建类的对象</p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>为了演示反射的使用，首先构造一个与书籍相关的model——Book.java，然后通过反射方法示例创建对象、反射私有构造方法、反射私有属性、反射私有方法，最后给出两个比较复杂的反射示例——获得当前ZenMode和关机Shutdown。</p>
+<ul>
+<li>  <strong>被反射类Book.java</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">public class Book&#123;</span><br><span class="line">    private final static String TAG &#x3D; &quot;BookTag&quot;;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private String author;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Book&#123;&quot; +</span><br><span class="line">                &quot;name&#x3D;&#39;&quot; + name + &#39;\&#39;&#39; +</span><br><span class="line">                &quot;, author&#x3D;&#39;&quot; + author + &#39;\&#39;&#39; +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Book() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private Book(String name, String author) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        this.author &#x3D; author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getAuthor() &#123;</span><br><span class="line">        return author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAuthor(String author) &#123;</span><br><span class="line">        this.author &#x3D; author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private String declaredMethod(int index) &#123;</span><br><span class="line">        String string &#x3D; null;</span><br><span class="line">        switch (index) &#123;</span><br><span class="line">            case 0:</span><br><span class="line">                string &#x3D; &quot;I am declaredMethod 1 !&quot;;</span><br><span class="line">                break;</span><br><span class="line">            case 1:</span><br><span class="line">                string &#x3D; &quot;I am declaredMethod 2 !&quot;;</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                string &#x3D; &quot;I am declaredMethod 1 !&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return string;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  <strong>反射逻辑封装在ReflectClass.java</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">public class ReflectClass &#123;</span><br><span class="line">    private final static String TAG &#x3D; &quot;peter.log.ReflectClass&quot;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 创建对象</span><br><span class="line">    public static void reflectNewInstance() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class&lt;?&gt; classBook &#x3D; Class.forName(&quot;com.android.peter.reflectdemo.Book&quot;);</span><br><span class="line">            Object objectBook &#x3D; classBook.newInstance();</span><br><span class="line">            Book book &#x3D; (Book) objectBook;</span><br><span class="line">            book.setName(&quot;Android进阶之光&quot;);</span><br><span class="line">            book.setAuthor(&quot;刘望舒&quot;);</span><br><span class="line">            Log.d(TAG,&quot;reflectNewInstance book &#x3D; &quot; + book.toString());</span><br><span class="line">        &#125; catch (Exception ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 反射私有的构造方法</span><br><span class="line">    public static void reflectPrivateConstructor() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class&lt;?&gt; classBook &#x3D; Class.forName(&quot;com.android.peter.reflectdemo.Book&quot;);</span><br><span class="line">            Constructor&lt;?&gt; declaredConstructorBook &#x3D; classBook.getDeclaredConstructor(String.class,String.class);</span><br><span class="line">            declaredConstructorBook.setAccessible(true);</span><br><span class="line">            Object objectBook &#x3D; declaredConstructorBook.newInstance(&quot;Android开发艺术探索&quot;,&quot;任玉刚&quot;);</span><br><span class="line">            Book book &#x3D; (Book) objectBook;</span><br><span class="line">            Log.d(TAG,&quot;reflectPrivateConstructor book &#x3D; &quot; + book.toString());</span><br><span class="line">        &#125; catch (Exception ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 反射私有属性</span><br><span class="line">    public static void reflectPrivateField() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class&lt;?&gt; classBook &#x3D; Class.forName(&quot;com.android.peter.reflectdemo.Book&quot;);</span><br><span class="line">            Object objectBook &#x3D; classBook.newInstance();</span><br><span class="line">            Field fieldTag &#x3D; classBook.getDeclaredField(&quot;TAG&quot;);</span><br><span class="line">            fieldTag.setAccessible(true);</span><br><span class="line">            String tag &#x3D; (String) fieldTag.get(objectBook);</span><br><span class="line">            Log.d(TAG,&quot;reflectPrivateField tag &#x3D; &quot; + tag);</span><br><span class="line">        &#125; catch (Exception ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 反射私有方法</span><br><span class="line">    public static void reflectPrivateMethod() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class&lt;?&gt; classBook &#x3D; Class.forName(&quot;com.android.peter.reflectdemo.Book&quot;);</span><br><span class="line">            Method methodBook &#x3D; classBook.getDeclaredMethod(&quot;declaredMethod&quot;,int.class);</span><br><span class="line">            methodBook.setAccessible(true);</span><br><span class="line">            Object objectBook &#x3D; classBook.newInstance();</span><br><span class="line">            String string &#x3D; (String) methodBook.invoke(objectBook,0);</span><br><span class="line"></span><br><span class="line">            Log.d(TAG,&quot;reflectPrivateMethod string &#x3D; &quot; + string);</span><br><span class="line">        &#125; catch (Exception ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 获得系统Zenmode值</span><br><span class="line">    public static int getZenMode() &#123;</span><br><span class="line">        int zenMode &#x3D; -1;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class&lt;?&gt; cServiceManager &#x3D; Class.forName(&quot;android.os.ServiceManager&quot;);</span><br><span class="line">            Method mGetService &#x3D; cServiceManager.getMethod(&quot;getService&quot;, String.class);</span><br><span class="line">            Object oNotificationManagerService &#x3D; mGetService.invoke(null, Context.NOTIFICATION_SERVICE);</span><br><span class="line">            Class&lt;?&gt; cINotificationManagerStub &#x3D; Class.forName(&quot;android.app.INotificationManager$Stub&quot;);</span><br><span class="line">            Method mAsInterface &#x3D; cINotificationManagerStub.getMethod(&quot;asInterface&quot;,IBinder.class);</span><br><span class="line">            Object oINotificationManager &#x3D; mAsInterface.invoke(null,oNotificationManagerService);</span><br><span class="line">            Method mGetZenMode &#x3D; cINotificationManagerStub.getMethod(&quot;getZenMode&quot;);</span><br><span class="line">            zenMode &#x3D; (int) mGetZenMode.invoke(oINotificationManager);</span><br><span class="line">        &#125; catch (Exception ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return zenMode;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 关闭手机</span><br><span class="line">    public static void shutDown() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class&lt;?&gt; cServiceManager &#x3D; Class.forName(&quot;android.os.ServiceManager&quot;);</span><br><span class="line">            Method mGetService &#x3D; cServiceManager.getMethod(&quot;getService&quot;,String.class);</span><br><span class="line">            Object oPowerManagerService &#x3D; mGetService.invoke(null,Context.POWER_SERVICE);</span><br><span class="line">            Class&lt;?&gt; cIPowerManagerStub &#x3D; Class.forName(&quot;android.os.IPowerManager$Stub&quot;);</span><br><span class="line">            Method mShutdown &#x3D; cIPowerManagerStub.getMethod(&quot;shutdown&quot;,boolean.class,String.class,boolean.class);</span><br><span class="line">            Method mAsInterface &#x3D; cIPowerManagerStub.getMethod(&quot;asInterface&quot;,IBinder.class);</span><br><span class="line">            Object oIPowerManager &#x3D; mAsInterface.invoke(null,oPowerManagerService);</span><br><span class="line">            mShutdown.invoke(oIPowerManager,true,null,true);</span><br><span class="line"></span><br><span class="line">        &#125; catch (Exception ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void shutdownOrReboot(final boolean shutdown, final boolean confirm) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class&lt;?&gt; ServiceManager &#x3D; Class.forName(&quot;android.os.ServiceManager&quot;);</span><br><span class="line">            &#x2F;&#x2F; 获得ServiceManager的getService方法</span><br><span class="line">            Method getService &#x3D; ServiceManager.getMethod(&quot;getService&quot;, java.lang.String.class);</span><br><span class="line">            &#x2F;&#x2F; 调用getService获取RemoteService</span><br><span class="line">            Object oRemoteService &#x3D; getService.invoke(null, Context.POWER_SERVICE);</span><br><span class="line">            &#x2F;&#x2F; 获得IPowerManager.Stub类</span><br><span class="line">            Class&lt;?&gt; cStub &#x3D; Class.forName(&quot;android.os.IPowerManager$Stub&quot;);</span><br><span class="line">            &#x2F;&#x2F; 获得asInterface方法</span><br><span class="line">            Method asInterface &#x3D; cStub.getMethod(&quot;asInterface&quot;, android.os.IBinder.class);</span><br><span class="line">            &#x2F;&#x2F; 调用asInterface方法获取IPowerManager对象</span><br><span class="line">            Object oIPowerManager &#x3D; asInterface.invoke(null, oRemoteService);</span><br><span class="line">            if (shutdown) &#123;</span><br><span class="line">                &#x2F;&#x2F; 获得shutdown()方法</span><br><span class="line">                Method shutdownMethod &#x3D; oIPowerManager.getClass().getMethod(</span><br><span class="line">                        &quot;shutdown&quot;, boolean.class, String.class, boolean.class);</span><br><span class="line">                &#x2F;&#x2F; 调用shutdown()方法</span><br><span class="line">                shutdownMethod.invoke(oIPowerManager, confirm, null, false);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                &#x2F;&#x2F; 获得reboot()方法</span><br><span class="line">                Method rebootMethod &#x3D; oIPowerManager.getClass().getMethod(&quot;reboot&quot;,</span><br><span class="line">                        boolean.class, String.class, boolean.class);</span><br><span class="line">                &#x2F;&#x2F; 调用reboot()方法</span><br><span class="line">                rebootMethod.invoke(oIPowerManager, confirm, null, false);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  <strong>调用相应反射逻辑方法</strong></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 创建对象</span></span><br><span class="line">    ReflectClass.reflectNewInstance();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 反射私有的构造方法</span></span><br><span class="line">    ReflectClass.reflectPrivateConstructor();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 反射私有属性</span></span><br><span class="line">    ReflectClass.reflectPrivateField();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 反射私有方法</span></span><br><span class="line">    ReflectClass.reflectPrivateMethod();</span><br><span class="line">&#125; <span class="keyword">catch</span> (<span class="built_in">Exception</span> ex) &#123;</span><br><span class="line">    ex.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Log.d(TAG,<span class="string">&quot; zenmode = &quot;</span> + ReflectClass.getZenMode());</span><br></pre></td></tr></table></figure>
+
+<p>Log输出结果如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">08</span><span class="number">-27</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">37.999</span> <span class="number">11987</span><span class="number">-11987</span>/com.android.peter.reflectdemo D/peter.log.ReflectClass: reflectNewInstance book = Book&#123;name=<span class="string">&#x27;Android进阶之光&#x27;</span>, author=<span class="string">&#x27;刘望舒&#x27;</span>&#125;</span><br><span class="line"><span class="number">08</span><span class="number">-27</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">38.000</span> <span class="number">11987</span><span class="number">-11987</span>/com.android.peter.reflectdemo D/peter.log.ReflectClass: reflectPrivateConstructor book = Book&#123;name=<span class="string">&#x27;Android开发艺术探索&#x27;</span>, author=<span class="string">&#x27;任玉刚&#x27;</span>&#125;</span><br><span class="line"><span class="number">08</span><span class="number">-27</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">38.000</span> <span class="number">11987</span><span class="number">-11987</span>/com.android.peter.reflectdemo D/peter.log.ReflectClass: reflectPrivateField tag = BookTag</span><br><span class="line"><span class="number">08</span><span class="number">-27</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">38.000</span> <span class="number">11987</span><span class="number">-11987</span>/com.android.peter.reflectdemo D/peter.log.ReflectClass: reflectPrivateMethod <span class="built_in">string</span> = I am declaredMethod <span class="number">1</span> !</span><br><span class="line"><span class="number">08</span><span class="number">-27</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">38.004</span> <span class="number">11987</span><span class="number">-11987</span>/com.android.peter.reflectdemo D/peter.log.ReflectDemo:  zenmode = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文列举了反射机制使用过程中常用的、重要的一些类及其方法，更多信息和用法需要近一步的阅读Google提供的相关文档和示例。 在阅读Class类文档时发现一个特点，以通过反射获得Method对象为例，一般会提供四种方法，getMethod(parameterTypes)、getMethods()、getDeclaredMethod(parameterTypes)和getDeclaredMethods()。getMethod(parameterTypes)用来获取某个公有的方法的对象，getMethods()获得该类所有公有的方法，getDeclaredMethod(parameterTypes)获得该类某个方法，getDeclaredMethods()获得该类所有方法。<strong>带有Declared修饰的方法可以反射到私有的方法，没有Declared修饰的只能用来反射公有的方法。</strong>其他的Annotation、Field、Constructor也是如此。 在ReflectClass类中还提供了两种反射PowerManager.shutdown()的方法，在调用的时候会输出如下log，提示没有相关权限。之前在项目中尝试反射其他方法的时候还遇到过有权限和没权限返回的值不一样的情况。<strong>如果源码中明确进行了权限验证，而你的应用又无法获得这个权限的话，建议就不要浪费时间反射了。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">W/System.err: java.lang.reflect.InvocationTargetException</span><br><span class="line">W/System.err:     at java.lang.reflect.Method.invoke(Native Method)</span><br><span class="line">W/System.err:     at .ReflectClass.shutDown(ReflectClass.java:104)</span><br><span class="line">W/System.err:     at .MainActivity<span class="variable">$1</span>.onClick(MainActivity.java:25)</span><br><span class="line">W/System.err:     at android.view.View.performClick(View.java:6259)</span><br><span class="line">W/System.err:     at android.view.View<span class="variable">$PerformClick</span>.run(View.java:24732)</span><br><span class="line">W/System.err:     at android.os.Handler.handleCallback(Handler.java:789)</span><br><span class="line">W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:98)</span><br><span class="line">W/System.err:     at android.os.Looper.loop(Looper.java:164)</span><br><span class="line">W/System.err:     at android.app.ActivityThread.main(ActivityThread.java:6592)</span><br><span class="line">W/System.err:     at java.lang.reflect.Method.invoke(Native Method)</span><br><span class="line">W/System.err:     at com.android.internal.os.Zygote<span class="variable">$MethodAndArgsCaller</span>.run(Zygote.java:240)</span><br><span class="line">W/System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:769)</span><br><span class="line">W/System.err: Caused by: java.lang.SecurityException: Neither user 10224 nor current process has android.permission.REBOOT.</span><br><span class="line">W/System.err:     at android.os.Parcel.readException(Parcel.java:1942)</span><br><span class="line">W/System.err:     at android.os.Parcel.readException(Parcel.java:1888)</span><br><span class="line">W/System.err:     at android.os.IPowerManager$Stub<span class="variable">$Proxy</span>.shutdown(IPowerManager.java:787)</span><br><span class="line">W/System.err:  ... 12 more</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://gitee.com/peter_RD_nj/DemoAllInOne/tree/master/ReflectDemo">ReflectDemo</a></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://blog.qiji.tech/archives/4374">认识反射机制（Reflection）</a> <a target="_blank" rel="noopener" href="http://www.cnblogs.com/mengdd/archive/2013/01/26/2877972.html">Java 反射机制</a> <a target="_blank" rel="noopener" href="http://blog.csdn.net/ljphhj/article/details/12858767">一个例子让你了解Java反射机制</a> <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://www.cnblogs.com/crazypebble/archive/2011/04/13/2014582.html">Java反射机制的原理及在Android下的简单应用</a> <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://zlb1986.iteye.com/blog/937781">java中的反射机制</a> <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://efany.github.io/2016/04/02/Android%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/">Android注解与反射机制</a> <a target="_blank" rel="noopener" href="https://developer.android.google.cn/reference/java/lang/reflect/Method?hl=zh-cn">java.lang.reflect.Method</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2019/09/20/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/" data-id="ckljj0pb300eirpey4ti6159k" data-title="Java高级特性——反射" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/24/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nuevo</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/30/git%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4tag/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Viejo</strong>
+      <div class="article-nav-title">Git批量删除tag</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorías</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS3%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" rel="tag">AS3定义变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS3%E6%8E%A2%E7%A9%B6/" rel="tag">AS3探究</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Air/" rel="tag">Air</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Air-for-Android/" rel="tag">Air for Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bitmap/" rel="tag">Bitmap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ContextMenu/" rel="tag">ContextMenu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/File/" rel="tag">File</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/File%E7%9B%AE%E5%BD%95/" rel="tag">File目录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Find-References/" rel="tag">Find References</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flash%E8%BF%90%E8%A1%8C%E6%97%B6%E8%B7%AF%E7%BA%BF%E5%9B%BE/" rel="tag">Flash运行时路线图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IAP/" rel="tag">IAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LitJson/" rel="tag">LitJson</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MonoDevelop/" rel="tag">MonoDevelop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Particle/" rel="tag">Particle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPG%E6%B8%B8%E6%88%8F/" rel="tag">RPG游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scale9Grid/" rel="tag">Scale9Grid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service/" rel="tag">Service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Text/" rel="tag">Text</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TexturePacker/" rel="tag">TexturePacker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDID/" rel="tag">UDID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XCode/" rel="tag">XCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adb/" rel="tag">adb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adobe/" rel="tag">adobe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adt%E6%89%93%E5%8C%85/" rel="tag">adt打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ane/" rel="tag">ane</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ant/" rel="tag">ant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/assets/" rel="tag">assets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atf/" rel="tag">atf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/copyPixel/" rel="tag">copyPixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/" rel="tag">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dex2jar/" rel="tag">dex2jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/drag/" rel="tag">drag</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash/" rel="tag">flash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-builder/" rel="tag">flash builder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-builder-4/" rel="tag">flash builder 4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-player-10/" rel="tag">flash player 10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-runtimes/" rel="tag">flash runtimes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flv/" rel="tag">flv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ipa/" rel="tag">ipa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/itms-services/" rel="tag">itms-services</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyboard/" rel="tag">keyboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/" rel="tag">pip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/player-11/" rel="tag">player 11</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/" rel="tag">react-native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setIndex/" rel="tag">setIndex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setPixel/" rel="tag">setPixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/" rel="tag">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">socket服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/starling/" rel="tag">starling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/" rel="tag">svn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/" rel="tag">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/useLegacyAOT/" rel="tag">useLegacyAOT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwsgi/" rel="tag">uwsgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vbox/" rel="tag">vbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E7%9B%98/" rel="tag">七牛云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E4%BB%B6/" rel="tag">事件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/" rel="tag">交互设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81%E7%A0%94%E5%8F%91/" rel="tag">产品研发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%91%E9%80%81/" rel="tag">发送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" rel="tag">多语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A9%E6%B0%94API/" rel="tag">天气API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" rel="tag">定义变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E7%BD%AE%E9%A1%B6/" rel="tag">对象置顶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%BF%E5%91%8A/" rel="tag">广告</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" rel="tag">应用内支付</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%B9%E9%87%8F%E5%AE%9A%E4%B9%89/" rel="tag">批量定义</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E5%85%A5/" rel="tag">拖入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E5%87%BA/" rel="tag">拖出</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E6%8B%BD/" rel="tag">拖拽</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%88%B6/" rel="tag">机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%BC%E5%BC%8F/" rel="tag">格式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AE%8B%E5%BD%B1/" rel="tag">残影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%88%90Html/" rel="tag">生成Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" rel="tag">目录树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8/" rel="tag">移动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" rel="tag">粒子系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" rel="tag">系统托盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E6%B8%B8/" rel="tag">网游</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" rel="tag">视频播放器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" rel="tag">转义字符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/" rel="tag">需求管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nube de Tags</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AS3%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">AS3定义变量</a> <a href="/tags/AS3%E6%8E%A2%E7%A9%B6/" style="font-size: 17.5px;">AS3探究</a> <a href="/tags/Air/" style="font-size: 17.5px;">Air</a> <a href="/tags/Air-for-Android/" style="font-size: 10px;">Air for Android</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Bitmap/" style="font-size: 10px;">Bitmap</a> <a href="/tags/ContextMenu/" style="font-size: 10px;">ContextMenu</a> <a href="/tags/File/" style="font-size: 10px;">File</a> <a href="/tags/File%E7%9B%AE%E5%BD%95/" style="font-size: 10px;">File目录</a> <a href="/tags/Find-References/" style="font-size: 10px;">Find References</a> <a href="/tags/Flash%E8%BF%90%E8%A1%8C%E6%97%B6%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">Flash运行时路线图</a> <a href="/tags/IAP/" style="font-size: 10px;">IAP</a> <a href="/tags/LitJson/" style="font-size: 10px;">LitJson</a> <a href="/tags/MonoDevelop/" style="font-size: 10px;">MonoDevelop</a> <a href="/tags/Particle/" style="font-size: 10px;">Particle</a> <a href="/tags/RPG%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">RPG游戏</a> <a href="/tags/Scale9Grid/" style="font-size: 10px;">Scale9Grid</a> <a href="/tags/Service/" style="font-size: 10px;">Service</a> <a href="/tags/Text/" style="font-size: 10px;">Text</a> <a href="/tags/TexturePacker/" style="font-size: 10px;">TexturePacker</a> <a href="/tags/UDID/" style="font-size: 10px;">UDID</a> <a href="/tags/Unity/" style="font-size: 15px;">Unity</a> <a href="/tags/XCode/" style="font-size: 10px;">XCode</a> <a href="/tags/adb/" style="font-size: 10px;">adb</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/adobe/" style="font-size: 10px;">adobe</a> <a href="/tags/adt%E6%89%93%E5%8C%85/" style="font-size: 10px;">adt打包</a> <a href="/tags/ane/" style="font-size: 15px;">ane</a> <a href="/tags/ant/" style="font-size: 10px;">ant</a> <a href="/tags/assets/" style="font-size: 10px;">assets</a> <a href="/tags/atf/" style="font-size: 10px;">atf</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/copyPixel/" style="font-size: 10px;">copyPixel</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/dex2jar/" style="font-size: 10px;">dex2jar</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/drag/" style="font-size: 10px;">drag</a> <a href="/tags/flash/" style="font-size: 15px;">flash</a> <a href="/tags/flash-builder/" style="font-size: 10px;">flash builder</a> <a href="/tags/flash-builder-4/" style="font-size: 10px;">flash builder 4</a> <a href="/tags/flash-player-10/" style="font-size: 10px;">flash player 10</a> <a href="/tags/flash-runtimes/" style="font-size: 10px;">flash runtimes</a> <a href="/tags/flv/" style="font-size: 10px;">flv</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/ios/" style="font-size: 20px;">ios</a> <a href="/tags/ipa/" style="font-size: 17.5px;">ipa</a> <a href="/tags/itms-services/" style="font-size: 10px;">itms-services</a> <a href="/tags/keyboard/" style="font-size: 10px;">keyboard</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mac/" style="font-size: 12.5px;">mac</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/player-11/" style="font-size: 10px;">player 11</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/react-native/" style="font-size: 10px;">react-native</a> <a href="/tags/setIndex/" style="font-size: 10px;">setIndex</a> <a href="/tags/setPixel/" style="font-size: 10px;">setPixel</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/socket%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">socket服务器</a> <a href="/tags/starling/" style="font-size: 15px;">starling</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/useLegacyAOT/" style="font-size: 10px;">useLegacyAOT</a> <a href="/tags/uwsgi/" style="font-size: 10px;">uwsgi</a> <a href="/tags/vbox/" style="font-size: 10px;">vbox</a> <a href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E7%9B%98/" style="font-size: 10px;">七牛云盘</a> <a href="/tags/%E4%BA%8B%E4%BB%B6/" style="font-size: 12.5px;">事件</a> <a href="/tags/%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">交互设计</a> <a href="/tags/%E4%BA%A7%E5%93%81%E7%A0%94%E5%8F%91/" style="font-size: 10px;">产品研发</a> <a href="/tags/%E5%8F%91%E9%80%81/" style="font-size: 10px;">发送</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%A4%A9%E6%B0%94API/" style="font-size: 10px;">天气API</a> <a href="/tags/%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">定义变量</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">对象置顶</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 10px;">常用函数</a> <a href="/tags/%E5%B9%BF%E5%91%8A/" style="font-size: 10px;">广告</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" style="font-size: 10px;">应用内支付</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 10px;">快捷键</a> <a href="/tags/%E6%89%B9%E9%87%8F%E5%AE%9A%E4%B9%89/" style="font-size: 10px;">批量定义</a> <a href="/tags/%E6%8B%96%E5%85%A5/" style="font-size: 10px;">拖入</a> <a href="/tags/%E6%8B%96%E5%87%BA/" style="font-size: 10px;">拖出</a> <a href="/tags/%E6%8B%96%E6%8B%BD/" style="font-size: 12.5px;">拖拽</a> <a href="/tags/%E6%9C%BA%E5%88%B6/" style="font-size: 10px;">机制</a> <a href="/tags/%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">格式</a> <a href="/tags/%E6%AE%8B%E5%BD%B1/" style="font-size: 10px;">残影</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%88%90Html/" style="font-size: 10px;">生成Html</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 10px;">用户体验</a> <a href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" style="font-size: 10px;">目录树</a> <a href="/tags/%E7%A7%BB%E5%8A%A8/" style="font-size: 10px;">移动</a> <a href="/tags/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">粒子系统</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" style="font-size: 10px;">系统托盘</a> <a href="/tags/%E7%BD%91%E6%B8%B8/" style="font-size: 10px;">网游</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">视频播放器</a> <a href="/tags/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" style="font-size: 10px;">转义字符</a> <a href="/tags/%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">配置</a> <a href="/tags/%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/" style="font-size: 10px;">需求管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/02/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/20/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/">Java高级特性——反射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/30/git%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4tag/">Git批量删除tag</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/01/%E6%9F%A5%E7%9C%8Bipa%E4%B8%AD%E5%8C%85%E5%90%AB%E7%9A%84%E8%AE%BE%E5%A4%87udid/">查看ipa中包含的设备UDID</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/18/ios-u2006-%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">iOS \u2006 中文输入法错误解决方案</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 斯樵<br>
+      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

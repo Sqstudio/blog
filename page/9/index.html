@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>斯樵工坊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="斯樵工坊">
+<meta property="og:url" content="http://sqstudio.com/page/9/index.html">
+<meta property="og:site_name" content="斯樵工坊">
+<meta property="og:locale">
+<meta property="article:author" content="斯樵">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="斯樵工坊" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">斯樵工坊</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sqstudio.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-php生成html文件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/09/21/php%E7%94%9F%E6%88%90html%E6%96%87%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2012-09-21T01:31:53.000Z" itemprop="datePublished">2012-09-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/09/21/php%E7%94%9F%E6%88%90html%E6%96%87%E4%BB%B6/">php生成Html文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[codesyntax lang=”php”]</p>
+<?php
+$row = array (
+array (
+"新闻标题1",
+"新闻内容1"
+),
+array (
+"新闻标题2",
+"新闻内容2"
+)
+);
+for ($index = 0; $index < sizeof($row); $index++) {
+$title = $row\[$index\]\[0\];
+$content = $row\[$index\]\[1\];
+$path = "page" . $index . ".html";
+
+$fp = fopen("tmp.html", "r"); //只读
+$str = fread($fp, filesize("tmp.html")); //读取内容
+
+$str = str\_replace("{title}", $title, $str);
+$str = str\_replace("{content}", $content, $str);
+
+fclose($fp);
+
+$handle = fopen($path, "w");
+fwrite($handle, $str);
+fclose($handle);
+
+echo "成功！";
+}
+
+//unlink("page2.html"); //删除文件
+//mkdir("tmpdir"); //创建文件夹
+?>
+
+<p>[/codesyntax]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2012/09/21/php%E7%94%9F%E6%88%90html%E6%96%87%E4%BB%B6/" data-id="ckljj0p89005grpeyhhcn1zi5" data-title="php生成Html文件" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%88%90Html/" rel="tag">生成Html</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-phpmysql分页练习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/08/28/phpmysql%E5%88%86%E9%A1%B5%E7%BB%83%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2012-08-28T01:36:32.000Z" itemprop="datePublished">2012-08-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/08/28/phpmysql%E5%88%86%E9%A1%B5%E7%BB%83%E4%B9%A0/">php+mysql分页练习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>php+mySql 分页练习 1.$url = $_SERVER[‘REQUEST_URI’]; 2.$page = $_GET[page]; 3.SELECT * FROM `message` limit $pageindex $pageSize   [codesyntax lang=”php”]</p>
+<?
+include ("conn.php");
+
+$pageSize = 4;
+$pageindex = "0,";
+
+$total = mysql\_query("SELECT count(1) FROM \`message\`");
+echo $total;
+if ($\_GET\[page\]) {
+$page = $\_GET\[page\];
+$page = $page < 0 ? 0 : $page;
+$page = $page >= $total ? $total -1 : $page;
+
+$pageindex = $page \* $pageSize;
+$pageindex .= ",";
+}
+
+$url = $\_SERVER\['REQUEST\_URI'\];
+$url = parse\_url($url);
+$url = $url\[path\];
+
+echo "<a href=$url?page=" . ($page -1) . ">上一页</a>" . "&nbsp&nbsp<a href=$url?page=" . ($page +1) . ">下一页</a>";
+
+$sql = "SELECT \* FROM \`message\` limit $pageindex $pageSize";
+$r = mysql\_query($sql);
+
+echo " 总页数" . $total . "<br><hr>";
+while ($ss = mysql\_fetch\_array($r)) {
+echo $ss\[user\] . "<br><hr>";
+}
+
+?>
+
+<p>[/codesyntax]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2012/08/28/phpmysql%E5%88%86%E9%A1%B5%E7%BB%83%E4%B9%A0/" data-id="ckljj0p88005drpey69v847fc" data-title="php+mysql分页练习" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-as3-0-用代码设置调整颜色滤镜-即：亮度、对比" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/07/11/as3-0-%E7%94%A8%E4%BB%A3%E7%A0%81%E8%AE%BE%E7%BD%AE%E8%B0%83%E6%95%B4%E9%A2%9C%E8%89%B2%E6%BB%A4%E9%95%9C-%E5%8D%B3%EF%BC%9A%E4%BA%AE%E5%BA%A6%E3%80%81%E5%AF%B9%E6%AF%94/" class="article-date">
+  <time class="dt-published" datetime="2012-07-11T02:38:51.000Z" itemprop="datePublished">2012-07-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/07/11/as3-0-%E7%94%A8%E4%BB%A3%E7%A0%81%E8%AE%BE%E7%BD%AE%E8%B0%83%E6%95%B4%E9%A2%9C%E8%89%B2%E6%BB%A4%E9%95%9C-%E5%8D%B3%EF%BC%9A%E4%BA%AE%E5%BA%A6%E3%80%81%E5%AF%B9%E6%AF%94/">as3.0 用代码设置“调整颜色”滤镜--------即：亮度、对比度、饱和度、色相的调整</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>相信大家对滤镜这东西，在flash IDE内应用很熟吧？但是在as内怎么用代码实现呢？这个问题还别说，起初真有点犯难，后经高手指点，逐一化解。经验不敢独享，故与大家分享(高手可掠过)。如有疑问，请多多提出咯……   import fl.motion.ColorMatrix; import flash.filters.ColorMatrixFilter;   <strong>//**调整亮度**//</strong> var ld_Matrix:ColorMatrix=new ColorMatrix(); var ld_Filter:ColorMatrixFilter=new ColorMatrixFilter(); ld_Matrix.SetBrightnessMatrix(100);  //设置亮度值，值的大小是 -255–255   0为中间值，向右为亮向左为暗。 ld_Filter.matrix = ld_Matrix.GetFlatArray(); ld_MC.filters = [ld_Filter]; //ld_MC.filters = [];//去除滤镜   <strong>//**调整对比度**//</strong> var db_Matrix:ColorMatrix=new ColorMatrix(); var db_Filter:ColorMatrixFilter=new ColorMatrixFilter(); db_Matrix.SetContrastMatrix(255);  //设置对比度值，值的大小是 -255–255  127.5为中间值，向右对比鲜明向左对比偏暗。 db_Filter.matrix = db_Matrix.GetFlatArray(); db_MC.filters = [db_Filter]; //db_MC.filters = [];//去除滤镜   <strong>//**调整饱和度**//</strong> var bh_Matrix:ColorMatrix=new ColorMatrix(); var bh_Filter:ColorMatrixFilter=new ColorMatrixFilter(); bh_Matrix.SetSaturationMatrix(0);  //设置饱和度值，值的大小是 -255–255   1为中间值，0为灰度值（<strong>即黑白相片</strong>）。 bh_Filter.matrix = bh_Matrix.GetFlatArray(); bh_MC.filters = [bh_Filter]; //bh_MC.filters = [];//去除滤镜   <strong>//**调整色相**//</strong> var sx_Matrix:ColorMatrix=new ColorMatrix(); var sx_Filter:ColorMatrixFilter=new ColorMatrixFilter(); sx_Matrix.SetHueMatrix(1);  //设置色相值，值的大小是 -255–255  0为中间值，向右向左一试便知。 sx_Filter.matrix = sx_Matrix.GetFlatArray(); sx_MC.filters = [sx_Filter]; //sx_MC.filters = [];//去除滤镜   原文链接：<a target="_blank" rel="noopener" href="http://bbs.9ria.com/space.php?uid=112507&amp;do=blog&amp;id=12944">http://bbs.9ria.com/space.php?uid=112507&amp;do=blog&amp;id=12944</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2012/07/11/as3-0-%E7%94%A8%E4%BB%A3%E7%A0%81%E8%AE%BE%E7%BD%AE%E8%B0%83%E6%95%B4%E9%A2%9C%E8%89%B2%E6%BB%A4%E9%95%9C-%E5%8D%B3%EF%BC%9A%E4%BA%AE%E5%BA%A6%E3%80%81%E5%AF%B9%E6%AF%94/" data-id="ckljj0p6n0020rpey1dkobrnz" data-title="as3.0 用代码设置“调整颜色”滤镜--------即：亮度、对比度、饱和度、色相的调整" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-stage3d硬件检测和要求" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/05/26/stage3d%E7%A1%AC%E4%BB%B6%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A6%81%E6%B1%82/" class="article-date">
+  <time class="dt-published" datetime="2012-05-26T01:30:52.000Z" itemprop="datePublished">2012-05-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/05/26/stage3d%E7%A1%AC%E4%BB%B6%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A6%81%E6%B1%82/">Stage3D硬件检测和要求</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>一、官方要求：<a target="_blank" rel="noopener" href="http://helpx.adobe.com/x-productkb/multi/stage3d-unsupported-chipsets-drivers-flash.html">http://helpx.adobe.com/x-productkb/multi/stage3d-unsupported-chipsets-drivers-flash.html</a></p>
+<blockquote>
+<p>所有平台 任何不支持Pixel Shader 2.x及以上的GPU Intel GMAs that DON’T support Pixel Shader 2.x: 740, i752, IEG, IEG2, GMA 900, GMA 950, GMA 3000, GMA 3100, GMA 3150 Chrome VIA Chipset Windows</p>
+<p>任何早于2009年一月一日的驱动<br> NVIDIA driver 8.17.11.9621<br> NVIDIA driver 8.17.11.8267<br> Any Intel GMA driver before X.X.10.2021</p>
+<p>Macintosh</p>
+<p>All Intel GMAs<br>ATI Radeon X1600<br> ATI Radeon 2400<br> Firefox 3.6 and earlier<br> Mac OS X 10.5</p>
+<p>  *Linux系统仅支持软渲染 *Mac和Windows上Intel HD GPU完全支持 推荐 因为2009一月1号之前的驱动全部不支持，强烈推荐你升级显卡驱动。如果升级后仍只能使用软渲染，你的显卡很可能不被支持。</p>
+</blockquote>
+<p>二、硬件检测 （1）快速检测：<a target="_blank" rel="noopener" href="http://wonderfl.net/c/jJzk">http://wonderfl.net/c/jJzk</a> （2）另一种检测方式</p>
+<p>运行这个工具 <a target="_blank" rel="noopener" href="http://zp.amsnet.pl/cdragan/d3dcaps.html">http://zp.amsnet.pl/cdragan/d3dcaps.html</a> 得到一个叫 ‘devcaps.txt’ 的文件。 查看两个着色器的值。</p>
+<p>VERTEX_SHADER_VERSION FFFE0200</p>
+<p>PIXEL_SHADER_VERSION FFFF0200</p>
+<p>忽略FFFE/FFFF, 只看红色部分的值，这个值必须都大于0200 才能支持molehill, 否则就软解。 注意，这两个值会在devcaps.txt文件中出现两次，用后面出现的那一组 （第一组的值是0104，忽略即可），如果上述值正常，但让没有效果，那就参考上文 硬件要求，也许你的显卡不支持。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2012/05/26/stage3d%E7%A1%AC%E4%BB%B6%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A6%81%E6%B1%82/" data-id="ckljj0p8h0061rpey5ubibdvf" data-title="Stage3D硬件检测和要求" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-robotlegs-进阶开发笔记【转】" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/04/25/robotlegs-%E8%BF%9B%E9%98%B6%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E3%80%90%E8%BD%AC%E3%80%91/" class="article-date">
+  <time class="dt-published" datetime="2012-04-25T08:19:18.000Z" itemprop="datePublished">2012-04-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rebotlegs/">Rebotlegs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/04/25/robotlegs-%E8%BF%9B%E9%98%B6%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E3%80%90%E8%BD%AC%E3%80%91/">Robotlegs 进阶开发笔记【转】</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>【本文属于转载，阅读原文：<a target="_blank" rel="noopener" href="http://www.wersling.com/?p=675">http://www.wersling.com/?p=675</a>】 <a target="_blank" rel="noopener" href="http://robotlegs.org/">Robotlegs</a>是一个很独特的MVCS框架，2年前我开始使用它，并用于一些项目中，那个时候Robotlegs还是bate版本，现在已经更新到1.4，更多的人已经开始学习它并用到项目中。在学习和使用过程中，我整理和体会到一些有用的知识点，希望和正在学习和使用Robotlegs的同学分享。 因为是进阶内容，因此，建议对Robotlegs还在入门阶段或没有使用它到项目中的同学先看看这些内容，会对你更好的理解后面的内容有帮助。当然，如果你对Robotlegs已经熟悉，可以跳过。</p>
+<ul>
+<li>  入门的同学建议通读<a target="_blank" rel="noopener" href="https://github.com/eidiot">eidiot</a>翻译的<a target="_blank" rel="noopener" href="https://github.com/robotlegs/robotlegs-documentation/blob/master/best-practices-zh-cn.textile">Robotlegs最佳实践</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://github.com/tschneidereit/SwiftSuspenders">了解IOC</a>（控制反转）在Robotlegs中是如何使用的，可以学习william的<a target="_blank" rel="noopener" href="http://sswilliam.blog.163.com/blog/static/189696383201175114948372/">SwiftSuspenders 1.6 浅出深入</a></li>
+<li>  看一些<a target="_blank" rel="noopener" href="https://github.com/robotlegs/robotlegs-demos-Bundle">Robotlegs Demo</a>，看看它是如何工作的</li>
+</ul>
+<p>恩，如果你有所了解了，我们开始后面的内容。 <strong>Robotlegs代码包结构组织：</strong></p>
+<blockquote>
+<ol>
+<li> [domain.lib]</li>
+<li>     various utilities</li>
+<li> [domain.project]</li>
+<li>     [projectmodule]</li>
+<li>         [model]</li>
+<li>             [events]</li>
+<li>             [vo]</li>
+<li>             ProjectModuleStateModel</li>
+<li>         [view]</li>
+<li>             [events]</li>
+<li>             [renderers]</li>
+<li>             [skins]</li>
+<li>             MyProjectModuleView</li>
+<li>             MyProjectModuleViewMediator</li>
+<li>         [controller]</li>
+<li>             [startup]</li>
+<li>             MyProjectModuleActionCommand</li>
+<li>         [service]</li>
+<li>             [helpers]</li>
+<li>             MyProjectModuleService</li>
+<li>             IProjectModuleService</li>
+<li>         [signals]</li>
+<li>     [projectmodule]</li>
+<li>         [model]</li>
+<li>             [events]</li>
+<li>             [vo]</li>
+<li>             ProjectModuleStateModel</li>
+<li>         [view]</li>
+<li>             [events]</li>
+<li>             [renderers]</li>
+<li>             [skins]</li>
+<li>             MyProjectModuleView</li>
+<li>             MyProjectModuleViewMediator</li>
+<li>         [controller]</li>
+<li>             [startup]</li>
+<li>             MyProjectModuleActionCommand</li>
+<li>         [service]</li>
+<li>             [helpers]</li>
+<li>             MyProjectModuleService</li>
+<li>             IProjectModuleService</li>
+<li>         [signals]</li>
+<li>     …</li>
+</ol>
+</blockquote>
+<p>  这是<a target="_blank" rel="noopener" href="http://knowledge.robotlegs.org/users/117676">Joel Hooks</a>建议的包结构，我作一些修改和说明：</p>
+<ul>
+<li>  这是一个多模块情况的包结构，如果是单模块，可以少去projectmodule这一层。</li>
+<li>  [signals]包不是必须的，除非你用到了<a target="_blank" rel="noopener" href="https://github.com/robertpenner/as3-signals">Signals</a>。</li>
+<li>  把每个模块要都用到的公共代码放到[domain.lib]下。模块和模块内代码保证独立，不会相互使用（引用，实例化）。</li>
+<li>  StartupCommand 内代码建议以MVC结构分离。如果一个模块中StartupCommnad内有过多代码，建议把它拆分成 ModelStartupCommand，ControllerStartupCommand和ViewStartupCommand，这样职责更清晰。</li>
+<li>  [controller]和[view]中，如果有很多类，建议按照功能建立子目录</li>
+<li>  这些目录看上去如此之多，我可不想一个一个创建，因此，我写了一个<a target="_blank" rel="noopener" href="https://github.com/wersling/manaca/tree/master/tools/script">Ruby小脚本</a>，用于创建这些目录和基础代码，有兴趣的可以看看。</li>
+</ul>
+<p><strong>边界与约定：</strong></p>
+<ul>
+<li>  避免在Proxy中注入其他Proxy和Service，尤其不要侦听他们的事件。</li>
+<li>  避免Proxy采用单例模式，而是采用Robotlegs的injector.mapSingleton方法，单例意味着任何类成员都可以访问和修改，这会增加代码的复杂度和维护成本。</li>
+<li>  非必要，避免将View或Mediator存入Proxy。</li>
+<li>  建议在Mediator中只获取Proxy的数据，而不设置或管理数据。</li>
+<li>  PopupWindow（如果它被添加到stage）建议在Mediator中实例化，这有利于手动构造Mediator和侦听事件。</li>
+<li>  非必要，避免使用viewMap。它会使View绕过Mediator而直接与数据层交互。</li>
+<li>  避免在Command中注入一个View或Mediator。</li>
+<li>  Service的方法建议在Command中调用，而不是在Mediator中，这样可以更好的复用。当然，一个简单的方法是可以接受的。</li>
+<li>  最后一条：Service只是负责将加载的数据通知（dispatch event）出去，自己并不存储数据。</li>
+</ul>
+<p><strong>多模块：</strong> Robotlegs提供一个多模块工具：<a target="_blank" rel="noopener" href="https://github.com/wersling/robotlegs-utilities-Modular">robotlegs-utilities-Modular</a>。可以方便的进行模块和模块之间的通信。它看上去十分优雅，用起来也十分方便。下面是几点要注意的地方：</p>
+<ul>
+<li>  尽量将模块内事件和模块间的事件分开，不要混杂着用，我定义了一个<a target="_blank" rel="noopener" href="https://github.com/wersling/robotlegs-utilities-Modular/blob/master/src/org/robotlegs/utilities/modular/base/IModuleEvent.as">IModuleEvent</a>接口，用于区分它们。</li>
+<li>  所有需要公用的对象或类（VO，Proxy，Service）都在主模块的Startup时注入，这样子模块都可以很方便的用到。</li>
+</ul>
+<p><strong>开发效率：</strong> Robotlegs的底耦合和清晰的职责被人称赞，实现一个功能需要的类文件之多也使其他MVC框架望其项背。^_^’ 因此在开发过程中，也许你会烦躁那些重复的操作——创建众多的类文件。</p>
+<ul>
+<li>  采用<a target="_blank" rel="noopener" href="https://github.com/robertpenner/as3-signals">Signals</a>可以有效减少View-Mediator的事件对象，其效率高于事件机制。<a target="_blank" rel="noopener" href="https://github.com/robotlegs/signals-extensions-CommandSignal">CommandSignals</a>也可以用Signals驱动，但是不会节省你的类文件数量。</li>
+<li>  采用代码模板功能快速生成代码。如果你连这个模板都不想写，有热心人已经帮你创建了不少：<a target="_blank" rel="noopener" href="http://knowledge.robotlegs.org/discussions/solutions/8-flashbuilder-burrito-code-templates-inject">Flash Builder</a>，<a target="_blank" rel="noopener" href="http://doesflash.com/2010/11/robotlegs-fdt-templates/">FTD</a>，<a target="_blank" rel="noopener" href="http://www.zedia.net/2010/robotlegs-templates-for-flashdevelop/">FlashDevelop</a>。</li>
+<li>  Robotlegs的<a target="_blank" rel="noopener" href="https://github.com/robotlegs/robotlegs-utilities-StateMachine">状态机（StateMachine）</a>，和PureMVC的状态机类似。在处理带有状态或流程的操作中很有用，比如与服务器连接状态、多步骤的表单提交、带条件判断的问卷调查等等。</li>
+<li>  不一定在项目过程中完全贯彻使用MVC框架，尤其是在WebGame项目中，可以把功能单一的部分做成一个组件，对外提供接口就可以。比如场景渲染引擎、寻路算法、播放器等。看上去就像在使用一个第三分工具库一样。</li>
+<li>由于Robotlegs职责分明，因此可以根据MVCS的来分工：<ul>
+<li>  由团队中一部分人来维护服务层（Service）代码，专门处理数据加载和与服务器通信代码编写。</li>
+<li>  一部分人处理公共数据层代码（Proxy）</li>
+<li>  一部分人处理界面层代码（View）</li>
+<li>  一部分人处理业务逻辑，连接数据与界面（Mediator，Command）。这样带来的好处在于一个人只要专注一个部分，因此有更多尽力关注稳定性和性能；坏处是有时会觉得比较无聊，因此时不时要切换着来做不同的部分。小项目中，也许就一个人，是没有办法这样实施的，但是项目大了，完全有必要尝试这样的方式。最后还啰嗦下，很多新人刚刚进入项目，如果对Robotlegs不了解，让他从View层开始开发，有利于学习和确保他更快融入团队。</li>
+</ul>
+</li>
+</ul>
+<p><strong>内存管理（GC）：</strong> Robotlegs的低耦合性带来的就是优雅的GC，只要是遵循以下原则，内存泄露可以很好的解决，哪怕在复杂的项目也可以：</p>
+<ul>
+<li>  严格遵守前面提到的【边界与约定】。</li>
+<li>  为每一个View实现一个dispose方法（确保这个方法真的可以GC所有View内实例和引用），并在Mediator的onRemove方法中调用。</li>
+<li>  每个模块实现ShutdownCommand，进行与StartupCommand相反的操作。</li>
+<li>  为每个Actor（Proxy和Service）实现dispose方法，并在ShutdownCommand时调用。</li>
+</ul>
+<p><strong>性能：</strong> 很多框架用到后面，都会带来或多或少的性能问题，Robotlegs也不例外。建议试试我提出的几个方法：</p>
+<ul>
+<li>只要执行一次的Command设置oneshot = true。示例：<ol>
+<li><p>commandMap.mapEvent(“eventType”, MyCommand, EventClass, true);</p>
+<p><em>复制代码</em></p>
+</li>
+</ol>
+</li>
+<li>  在添加大量Sprite到舞台前，可以设置：mediatorMap.enabled=false；。完成后再设置为true，这样可以避免MediatorMap侦听到ADDED_TO_STAGE事件后频繁进行不必要的操作。也可以使用<a target="_blank" rel="noopener" href="https://github.com/eidiot/robotlegs-utilities-LazyMediator">robotlegs-utilities-LazyMediator</a>来解决这个部分的性能问题。</li>
+<li>  将一些对性能要求极高的部分写成独立的组件。</li>
+</ul>
+<p>必须承认，Robotlegs的学习成本要比PureMVC等框架要高，也复杂一些。还有很多人不喜欢Inject方式，但是我要说，Robotlegs 绝对值得你去尝试。在项目开发中不断的学习和探索，将是一个十分有趣的过程。衷心希望有更多人学习和使用Robotlegs，也分享更多的经验。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2012/04/25/robotlegs-%E8%BF%9B%E9%98%B6%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E3%80%90%E8%BD%AC%E3%80%91/" data-id="ckljj0p8g005zrpey8m5w0l9s" data-title="Robotlegs 进阶开发笔记【转】" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-adobe-flash-runtimes路线图转" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/03/08/adobe-flash-runtimes%E8%B7%AF%E7%BA%BF%E5%9B%BE%E8%BD%AC/" class="article-date">
+  <time class="dt-published" datetime="2012-03-08T04:08:47.000Z" itemprop="datePublished">2012-03-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/03/08/adobe-flash-runtimes%E8%B7%AF%E7%BA%BF%E5%9B%BE%E8%BD%AC/">Adobe Flash runtimes路线图[转]</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Adobe官方在今天发表了一篇非常非常重要的声明文档，是Adobe Flash runtimes路线图。这篇路线图提供了对于Adobe Flash runtimes的开发路线概览，这篇概览的目的是提供一个清楚的指引，告知外界与社区开发者们Adobe现在是如何思考未来1到2年内核心Flash功 能的发展计划。 <strong>下面的中文内容要点全部出自该文档</strong>（<em>由7yue翻译并提炼_） 在过去的10多 年里，Flash Player和Adobe AIR在互联网领域扮演了及其重要的角色，为多个平台系统，浏览器，桌面和设备提供了一致的用户体验内容。从最初的动画实现，Flash runtimes涉及了几乎所有的互联网媒体平台领域。Adobe坚信Flash在未来是契合于游戏和增值视频市场需求的，因此决定将Flash runtimes的开发专注在这些领域。与此同时，Adobe将针对runtimes进行架构和语言上的大幅改进，确保Flash runtimes将在其专注的领域可以提供未来十年的最优秀的用户体验内容制作的支持。 Flash runtimes主要指Flash Player与Adobe AIR两个运行时， Flash content主要指使用ActionScript3语言开发打包而成的SWF文件，通过Flash runtimes来展现。 Flash runtimes core，指Flash runtimes运行时核心功能，包括基础APIs和功能集合。主要的运行时核心在这份官方声明中是指通过Flash Player和Adobe AIR共同分享和具备的功能集合。 上个世纪90年代引入的Flash Player，发展至今，已经通过浏览器插件的形式实现了以下的功能： Animation,矢量图形，音频（包括mp3），视频，麦克风与摄像头外设访问，底层位图操作，2进制数据sockets，强类型基于类的编程模型，基于硬件加速的2D和3D内容。 <strong>Flash runtimes的战略核心</strong> 伴 随浏览器市场的加速竞争，浏览器厂商大幅增加了直接透过浏览器部署丰富图形动画交互的创新能力，这部分曾经正是Flash Player支持的功能。渐渐地，这部分内容已经可以透过HTML5,CSS3和JavaScript直接在浏览器上实现，而Flash Player在Web领域的需求也开始改变。 Adobe Flash runtimes的战略专注核心将面向2个领域，游戏和增值视频。首要的目标是，提供一流的，引人入胜的，游戏主机级别的图形交互内容和部署一系列的增值 视频服务。这一战略计划不代表Flash runtimes不能支持以前的旧有内容，而是在未来，其研发的核心功能将高度优先支持游戏和增值视频领域。 <strong>游戏领域</strong> Flash runtimes将允许Adobe满足市场的全新功能需求，用户通过Flash制作的游戏将快于其他同类型技术，同时还能使游戏触及最广泛的用户群体。Flash runtimes旨在游戏领域提供以下独一无二的优势： 通过Flash Player浏览器插件，触及几乎全球的互联网用户，游戏内容通过Adobe AIR也能交付在移动设备之上 完全基于硬件加速的2D和3D渲染支持，提供游戏主机级别的图形渲染质量 丰富的游戏开发者生态系统 强壮的，面向对象的编程语言 世界级的设计师与开发者工作流 Adobe将围绕游戏市场专注打造一套强壮的业务体系，未来包括（但不限于）： 成熟的游戏开发者生态体系 游戏服务体系 允许游戏开发者在Flash游戏中使用C/C++语言的产品化支持 <strong>增值视频领域</strong> Adobe Flash满足在线视频市场的爆炸性增长，通过提供高质量的视频，安全保护机制，跨浏览器和操作系统的一致性来达到这一要求。Adobe Flash runtimes在在线视频增值内容上会提供以下方面的支持： 在多个平台上将Adobe视频流媒体服务和内容保护机制引入系统视频文件格式的支持。 支持增值视频内容拥有者的业务需求 同硬件厂商密切合作，提供高质量的整合级别的视频体验服务 通过Flash runtimes打造的一致性播放器，实现多种视频格式编码的跨系统播放支持 支持DRM方案 成熟的全功能视频广告植入及后台分析方案 _7yue:接下来的将是全文档最重要的摘要部分…</em> <strong>Flash runtimes技术路线图</strong> 下面的技术路线图包含了未来2年的Flash runtimes的发布功能。（这些部分会随着日期不断被Adobe更新） Adobe AIR 未 来Adobe AIR的开发将专注于全力协作核心Flash Player运行时。当桌面和移动设备特有APIs将被研发时，他们将不会特别针对Adobe AIR而实现（含义就是不会有runtime级别的功能只在AIR上有，而player上没有，SDK特别功能除外） Flash Player 11.2 将在2012年第一季度发布内发布，将针对游戏和视频市场添加关键runtime核心功能： 某些计划加入的核心功能有： Mouse-lock支持 鼠标右键与中键事件支持 context menu关联菜单禁用 针对Apple iOS和Google Android平台的Stage3D（通过AIR) Stage3D硬件显卡驱动兼容支持提前至2008年1月  （这个对Starling框架来说是个好消息） 全新的throttling event API （将在Flash页面最小化，暂停，恢复时派发） 多线程视频解码管道 Flash Player “Cyril” Adobe将在2012年第2季度发布的一个版本，code name “Cyril”。此发布将继续为游戏添加核心新功能，关键包括以下部分： 全屏模式键盘输入支持 低延迟音频 Stage3D 纹理素材流式下载 ByteArray的LZMA高压缩支持 Frame label事件体系 Flash Player “Dolores” Adobe将在2012年下半年发布的一个版本，code name “Dolores”。此发布将继续为游戏添加核心新功能，关键包括以下部分： ActionScript workers （允许ActionScript脚本的多个独立线程的并发执行） 高级profiling工具服务 支持更多的独立显卡，驱动兼容检测将提前至2005或2006年 面向iOS发布的ActionScript性能优化 鼠标游离事件体系 Flash Player “Next” 除去上述一系列的Flash Player发布之外，为了领先未来5到10年的市场，Adobe将持续改进Flash Player底层代码，这部分我们称之为Flash Player “Next”计划。下面是一些关键计划（但不限于此）： 重构和持续进化Flash runtime核心代码 革新ActionScript VM 更新ActionScript language 这些工作主要目的是为了让Flash runtimes和AS虚拟机显著提升代码执行性能，确保Flash runtimes在下个十年的领先地位。初步实现的计划是2013年。 ActionScript “Next” 从2006年引入ActionScript3后，一定范围内借助AS3实现的应用和内容在这几年发生了显著的变化。Adobe认为是时候认真修订 和掌握其未来的变化了。从语言设计的角度，Adobe将使用下列的假设（设想）来指引下一代的ActionScript开发。 针对长期生产力的增长需求（包括强壮性，模块化和维护程度）和短期生产力的收益特征（快速敏捷开发）来考虑改进语言设计 高性能的要求 硬件实现的要求 首 先，Adobe计划在短期内实现性能的显著提升，并以持续的性能提升为长期目标。所以，性能，性能，性能！将作为我们改进ActionScript的最高 优先级目标。其次，Adobe将通过简化语言，提升工具支持，加速bug预防下手为开发者提高生产效率。最后，降低语言不必要的复杂程度。 以下几点是关于下一代ActionScript语言和虚拟机的有限披露： Stringent static typing as default, with optional dynamic typing，默认非常严格的静态类型和可供选择的动态类型。大多数程序的大多数扩展都受益于语言的静态类型。然而，AS3倾向于在所有场景使用动态类 型，其实绝对严格的静态类型则是首选。这一点将被修正。动态类型仍然存在，但是不再是ActionScript的默认设定，它将在需要使用的时候被明确指 出。 Type inference，类型推断。类型声明将只在特定环境下变的需要。编译器将自动推测合适的类型声明，并且针对整个程序进行静态类型化，即使开发者没有声明任何类型。 Hardware-oriented numeric types，面向硬件的数字类型。例如，int,uint,float,float4,byte,short,long等（具体类型集合在讨论中）。现在 AS3整形数值可以溢出到浮点类型，这一点将会被改动，未来数字的操作将不再数值运算时改变其类型，这能够大幅度降低运算的复杂度，提升runtime性 能。 以上几点仅是我们正在考虑的部分，未来我们将会公布更多如何改动语言和VM的细节。 <strong>兼容性</strong> 下一个版本的ActionScript将是AS3的一个变革，但是一些场景下将无法完全兼容AS3.Adobe期望从AS3的移植成本可以降到最低，少于当年从AS2迁移到AS3的成本。 <strong>平台支持</strong> Flash runtimes将在未来的平台支持上包含如下部分： PC领域 Apple OS X，Adobe承诺将使Flash runtimes支持Apple的最新OS X （Mac OS X的升级），AIR应用也能够分发到桌面或Mac App store。 Microsoft Windows Adobe承诺继续提供Flash runtimes对于微软Windows操作系统的支持。 Window8 微 软目前正在开发Windows8，下一代微软Windows操作系统，这个系统包括一系列不同的配置，包括desktop和metro，以及芯片架构的不 同支持（x86/64和ARM）。Adobe目前正在与微软紧密协作完成最终的Flash runtimes的Windows8配置支持。具体细节将会在最终确定配置类型后公布。 Linux Adobe目前与Google正在紧密 合作开发一款独立的，现代化的API，用来host浏览器的插件。这称为PPAPI，code-name是”Pepper”，目的在于提供一个介于插件和 浏览器之间的抽象层，用来区分浏览器和系统级别的功能实现。更多信息，你可以参考Pepper API在<a target="_blank" rel="noopener" href="http://code.google.com/ppapi/%E3%80%82Google%E6%9C%AA%E6%9D%A5%E5%B0%86%E9%80%9A%E8%BF%87Pepper%E6%9D%A5%E5%AE%9E%E7%8E%B0Chrome%E5%85%A8%E5%B9%B3%E5%8F%B0%E7%89%88%E6%9C%AC%E5%AF%B9%E4%BA%8EFlash">http://code.google.com/ppapi/。Google未来将通过Pepper来实现Chrome全平台版本对于Flash</a> Player的支持，包括Linux系统。 Mobile Flash Player 11.1将是移动设备上基于浏览器的最后一个版本的Flash Player 插件。Adobe将持续投资开发者将Flash内容通过AIR打包分发到移动设备的方案。 TV …… 全英文版本的白皮书在此下载： <a target="_blank" rel="noopener" href="http://www.7yue.com/upload/flash-runtimes-roadmap.pdf">flash-runtimes-roadmap.pdf</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2012/03/08/adobe-flash-runtimes%E8%B7%AF%E7%BA%BF%E5%9B%BE%E8%BD%AC/" data-id="ckljj0p67000wrpey8b56ebio" data-title="Adobe Flash runtimes路线图[转]" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-开源类库assql初接触，as直接连mysql数据库" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/02/25/%E5%BC%80%E6%BA%90%E7%B1%BB%E5%BA%93assql%E5%88%9D%E6%8E%A5%E8%A7%A6%EF%BC%8Cas%E7%9B%B4%E6%8E%A5%E8%BF%9Emysql%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
+  <time class="dt-published" datetime="2012-02-25T11:42:53.000Z" itemprop="datePublished">2012-02-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/02/25/%E5%BC%80%E6%BA%90%E7%B1%BB%E5%BA%93assql%E5%88%9D%E6%8E%A5%E8%A7%A6%EF%BC%8Cas%E7%9B%B4%E6%8E%A5%E8%BF%9Emysql%E6%95%B0%E6%8D%AE%E5%BA%93/">开源类库ASSQL初接触，AS直接连mysql数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>刚发现这个强大的开源类库，assql，可以让as直接连mysql数据库，猛一下，我觉得豁然开朗，终于，与数据库打交道不需要通过后台了！ 之前看网上有人说中文乱码什么，这个问题我没有遇到，我用的是2.8版本，把数据库和表设置为utf-8，中文显示正常！ 先给出google项目地址：<a target="_blank" rel="noopener" href="http://code.google.com/p/assql/">http://code.google.com/p/assql/</a> google项目上有几个例子，不过都是Flex的，下面我给个简单纯as的小例子： [codesyntax lang=”actionscript3”]</p>
+<p>package<br>{<br>import com.maclema.mysql.Connection;<br>import com.maclema.mysql.MySqlToken;<br>import com.maclema.mysql.ResultSet;<br>import com.maclema.mysql.Statement;<br>import com.maclema.mysql.events.MySqlEvent;</p>
+<p>import flash.display.Sprite;<br>import flash.events.Event;</p>
+<p>public class MySqlTest extends Sprite<br>{</p>
+<p>private var con:Connection;<br>public function MySqlTest()<br>{<br>con = new Connection(“localhost”, 3306, “root”, “123456”, “test”);<br>con.addEventListener(Event.CONNECT, handleConnected);<br>con.connect();<br>}</p>
+<p>private function handleConnected(e:Event):void {<br>var st:Statement = con.createStatement();<br>var token:MySqlToken = st.executeQuery(“SELECT * FROM user_info”);<br>token.addEventListener(MySqlEvent.RESULT,reslutHandler);<br>}</p>
+<p>private function reslutHandler(e:MySqlEvent):void<br>{<br>var rs:ResultSet = e.resultSet;<br>rs.first();<br>for (var i:int = 0; i &lt; rs.size(); i++) {<br>trace(rs.getString(“userId”),rs.getString(“userName”));<br>rs.next();<br>}<br>}</p>
+<p>}<br>}</p>
+<p>[/codesyntax]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2012/02/25/%E5%BC%80%E6%BA%90%E7%B1%BB%E5%BA%93assql%E5%88%9D%E6%8E%A5%E8%A7%A6%EF%BC%8Cas%E7%9B%B4%E6%8E%A5%E8%BF%9Emysql%E6%95%B0%E6%8D%AE%E5%BA%93/" data-id="ckljj0p9k008nrpeycii1888w" data-title="开源类库ASSQL初接触，AS直接连mysql数据库" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-google-svn-无法获得上传密码的解决办法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/02/19/google-svn-%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E4%B8%8A%E4%BC%A0%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2012-02-19T02:20:49.000Z" itemprop="datePublished">2012-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/02/19/google-svn-%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E4%B8%8A%E4%BC%A0%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">google SVN 无法获得上传密码的解决办法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>问题描述：在使用google SVN时，点击查看项目密码，总是访问不到，链接被重置了 解决方法：修改本地dns设置，添加“74.125.71.94 code.google.com”记录。 1. cmd打开命令行窗口，执行”ping google.com.hk”（注，自google退出中国大陆后，现在的google中文默认的跳转到香港网站即com.hk），得到当前可用的Google ip：74.125.71.94。 2. 找到本地的dns配置文件路径，windows 7 下为“C:\Windows\System32\drivers\etc\hosts”将“  74.125.71.94 code.google.com ”添加到最后一行即可（不带引号）。 4. 在命令行窗口执行“ipconfig /flushdns”刷新本地缓存。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2012/02/19/google-svn-%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E4%B8%8A%E4%BC%A0%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" data-id="ckljj0p7o0041rpey7a3h46xb" data-title="google SVN 无法获得上传密码的解决办法" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-关于中国天气（weather-com-cn）天气查询，谷歌雅虎天气弱" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/01/04/%E5%85%B3%E4%BA%8E%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%EF%BC%88weather-com-cn%EF%BC%89%E5%A4%A9%E6%B0%94%E6%9F%A5%E8%AF%A2%EF%BC%8C%E8%B0%B7%E6%AD%8C%E9%9B%85%E8%99%8E%E5%A4%A9%E6%B0%94%E5%BC%B1/" class="article-date">
+  <time class="dt-published" datetime="2012-01-04T01:35:21.000Z" itemprop="datePublished">2012-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/01/04/%E5%85%B3%E4%BA%8E%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%EF%BC%88weather-com-cn%EF%BC%89%E5%A4%A9%E6%B0%94%E6%9F%A5%E8%AF%A2%EF%BC%8C%E8%B0%B7%E6%AD%8C%E9%9B%85%E8%99%8E%E5%A4%A9%E6%B0%94%E5%BC%B1/">关于中国天气（Weather.com.cn）天气查询，谷歌雅虎天气弱爆了</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>最近关注了下天气API方面的东西，最初也是从谷歌和雅虎天气入手，说下这两个天气出现的问题，雅虎天气的问题是你获得的数据都是英文，谷歌天气的问题是你查询的时候必须告诉他城市的拼音名或者城市id什么的，不能通过汉字直接查，有一个小发现共享下，搜狐的查ip时返回的城市id，可以直接用于谷歌天气查询，另外貌似公认的谷歌天气不够全面。 好吧，最后我选择了用中国天气（Weather.com.cn），中国天气 这个网站的数据还是非常全面的，还都是中文的。下面是他的数据获取方式：</p>
+<blockquote>
+<p>城市id获取方式： 1. 访问<a target="_blank" rel="noopener" href="http://m.weather.com.cn/data5/city.xml?level=0%EF%BC%8C%EF%BC%88%E5%90%8E%E9%9D%A2level%E5%8F%82%E6%95%B0%E5%8F%AF%E7%9C%81%E7%95%A5%EF%BC%89%E5%BE%97%E5%88%B0%E4%B8%80%E7%BA%A7%E5%88%97%E8%A1%A8%EF%BC%88%E7%9C%81%E3%80%81">http://m.weather.com.cn/data5/city.xml?level=0，（后面level参数可省略）得到一级列表（省、</a> 直辖市、自治区），结果用逗号隔开，id和城市名称使用竖线“”隔开；结果示例如下： 01北京,02上海,03天津,04重庆,05黑龙江,06吉林,07辽宁,08内蒙古,09河北,10山西,11陕西,12山 东,13新疆,14西藏,15青海,16甘肃,17宁夏…(以下省略） 2. 访问<a target="_blank" rel="noopener" href="http://m.weather.com.cn/data5/city01.xml?level=1%EF%BC%8C%EF%BC%88%E5%90%8E%E9%9D%A2level%E5%8F%82%E6%95%B0%E5%8F%AF%E7%9C%81%E7%95%A5%EF%BC%89%E5%BE%97%E5%88%B0%E4%BA%8C%E7%BA%A7%E5%88%97%E8%A1%A8%E3%80%82">http://m.weather.com.cn/data5/city01.xml?level=1，（后面level参数可省略）得到二级列表。</a> 其中01是一级省市的id，结果格式和上一层相同； 3. 访问<a target="_blank" rel="noopener" href="http://m.weather.com.cn/data5/city0101.xml?level=2%EF%BC%8C%EF%BC%88%E5%90%8E%E9%9D%A2level%E5%8F%82%E6%95%B0%E5%8F%AF%E7%9C%81%E7%95%A5%EF%BC%89%E5%BE%97%E5%88%B0%E4%B8%89%E7%BA%A7%E5%88%97">http://m.weather.com.cn/data5/city0101.xml?level=2，（后面level参数可省略）得到三级列</a> 表。0101是地级市的id，示例如下（北京）： 010101北京,010102海淀,010103朝阳,010104顺义,010105怀柔,010106通州,010107昌平…(以下省略） 4. 访问<a target="_blank" rel="noopener" href="http://m.weather.com.cn/data5/city010101.xml?level=3%EF%BC%8C%EF%BC%88%E5%90%8E%E9%9D%A2level%E5%8F%82%E6%95%B0%E5%8F%AF%E7%9C%81%E7%95%A5%EF%BC%89%E5%BE%97%E5%88%B0%E6%9C%80">http://m.weather.com.cn/data5/city010101.xml?level=3，（后面level参数可省略）得到最</a> 后一级的id，010101是区域的id，示例如下（北京市区）： 010101101010100 ，后面的数字就是获得天气数据需要的城市id，以<a target="_blank" rel="noopener" href="http://m.weather.com.cn/data/%7Bid%7D.html%E6%A0%BC%E5%BC%8F%E8%AE%BF%E9%97%AE%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%87%BA%E5%A4%A9%E6%B0%94%E7%BB%93%E6%9E%9C%E3%80%82">http://m.weather.com.cn/data/{id}.html格式访问即可得出天气结果。</a></p>
+</blockquote>
+<p>但是，这个网站也有一个蛋疼的问题，就是 这个网站只在主域名下有crossdomain.xml文件，即<a target="_blank" rel="noopener" href="http://weather.com.cn/crossdomain.xml">http://weather.com.cn/crossdomain.xml</a> ，在m.weather.com.cn却没有，但是这却不影响其他语言访问，使用js或者php之类的都可以访问，既然AS3不能直接访问，就只好用其他语言中转下咯，比如，可以先从AS3访问php，php将访问weather.com.cn获得的数据返回给AS3。   延伸阅读：<a target="_blank" rel="noopener" href="http://7timer.y234.cn/doc.php?lang=zh-CN#api">http://7timer.y234.cn/doc.php?lang=zh-CN#api</a> （另一个天气API）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2012/01/04/%E5%85%B3%E4%BA%8E%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%EF%BC%88weather-com-cn%EF%BC%89%E5%A4%A9%E6%B0%94%E6%9F%A5%E8%AF%A2%EF%BC%8C%E8%B0%B7%E6%AD%8C%E9%9B%85%E8%99%8E%E5%A4%A9%E6%B0%94%E5%BC%B1/" data-id="ckljj0p97007wrpeycecb1tgy" data-title="关于中国天气（Weather.com.cn）天气查询，谷歌雅虎天气弱爆了" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A9%E6%B0%94API/" rel="tag">天气API</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-猥琐的绕开as3的crossdomain-xml权限" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2011/12/27/%E7%8C%A5%E7%90%90%E7%9A%84%E7%BB%95%E5%BC%80as3%E7%9A%84crossdomain-xml%E6%9D%83%E9%99%90/" class="article-date">
+  <time class="dt-published" datetime="2011-12-27T02:06:57.000Z" itemprop="datePublished">2011-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2011/12/27/%E7%8C%A5%E7%90%90%E7%9A%84%E7%BB%95%E5%BC%80as3%E7%9A%84crossdomain-xml%E6%9D%83%E9%99%90/">猥琐的绕开AS3的crossdomain.xml权限</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本文目前只针对这种情况：对方API可供JS等其他语言访问，但是由于缺少crossdomain.xml文件而造成As3无法访问 原理说明：AS3通过请求php传入link（网址）参数，由php请求link，并将数据返回给AS3 举例：如搜狐的ip接口<a target="_blank" rel="noopener" href="http://pv.sohu.com/cityjson%EF%BC%8C%E7%94%B1%E4%BA%8E%E7%A1%AE%E5%AE%9Ecrossdomain.xml%E6%96%87%E4%BB%B6%E8%80%8C%E4%B8%8D%E8%83%BD%E8%AE%BF%E9%97%AE%EF%BC%88%E5%BD%93%E7%84%B6%EF%BC%8C%E4%BD%A0%E5%9C%A8%E6%9C%AC%E5%9C%B0%E6%98%AF%E5%8F%AF%E4%BB%A5%E8%AE%BF%E9%97%AE%E7%9A%84%EF%BC%89%EF%BC%8C%E8%BF%99%E6%97%B6%E5%80%99%E7%94%A8%E8%BF%87%E8%AE%BF%E9%97%AEphp%EF%BC%8C%E7%94%B1php%E8%BF%94%E5%9B%9E%E5%93%8D%E5%BA%94%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%99AS3">http://pv.sohu.com/cityjson，由于确实crossdomain.xml文件而不能访问（当然，你在本地是可以访问的），这时候用过访问php，由php返回响应的数据给AS3</a> php文件如下： [codesyntax lang=”php” lines=”no” capitalize=”no”]</p>
+<?php
+ $link = $\_POST\['link'\];
+ echo file\_get\_contents($link);
+?>
+
+<p>[/codesyntax]   好吧，给个地址出来 <a target="_blank" rel="noopener" href="http://wannianrili.duapp.com/getHttpContent.php">http://wannianrili.duapp.com/getHttpContent.php</a>   ，如果你发现这个地址，那就之后自己建个咯</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2011/12/27/%E7%8C%A5%E7%90%90%E7%9A%84%E7%BB%95%E5%BC%80as3%E7%9A%84crossdomain-xml%E6%9D%83%E9%99%90/" data-id="ckljj0p9o008urpey026469nq" data-title="猥琐的绕开AS3的crossdomain.xml权限" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/8/">&laquo; Previo</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/">Siguiente &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorías</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS3%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" rel="tag">AS3定义变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS3%E6%8E%A2%E7%A9%B6/" rel="tag">AS3探究</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Air/" rel="tag">Air</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Air-for-Android/" rel="tag">Air for Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bitmap/" rel="tag">Bitmap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ContextMenu/" rel="tag">ContextMenu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/File/" rel="tag">File</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/File%E7%9B%AE%E5%BD%95/" rel="tag">File目录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Find-References/" rel="tag">Find References</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flash%E8%BF%90%E8%A1%8C%E6%97%B6%E8%B7%AF%E7%BA%BF%E5%9B%BE/" rel="tag">Flash运行时路线图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IAP/" rel="tag">IAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LitJson/" rel="tag">LitJson</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MonoDevelop/" rel="tag">MonoDevelop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Particle/" rel="tag">Particle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPG%E6%B8%B8%E6%88%8F/" rel="tag">RPG游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scale9Grid/" rel="tag">Scale9Grid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service/" rel="tag">Service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Text/" rel="tag">Text</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TexturePacker/" rel="tag">TexturePacker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDID/" rel="tag">UDID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XCode/" rel="tag">XCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adb/" rel="tag">adb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adobe/" rel="tag">adobe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adt%E6%89%93%E5%8C%85/" rel="tag">adt打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ane/" rel="tag">ane</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ant/" rel="tag">ant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/assets/" rel="tag">assets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atf/" rel="tag">atf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/copyPixel/" rel="tag">copyPixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/" rel="tag">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dex2jar/" rel="tag">dex2jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/drag/" rel="tag">drag</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash/" rel="tag">flash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-builder/" rel="tag">flash builder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-builder-4/" rel="tag">flash builder 4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-player-10/" rel="tag">flash player 10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-runtimes/" rel="tag">flash runtimes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flv/" rel="tag">flv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ipa/" rel="tag">ipa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/itms-services/" rel="tag">itms-services</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyboard/" rel="tag">keyboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/" rel="tag">pip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/player-11/" rel="tag">player 11</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/" rel="tag">react-native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setIndex/" rel="tag">setIndex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setPixel/" rel="tag">setPixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/" rel="tag">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">socket服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/starling/" rel="tag">starling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/" rel="tag">svn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/" rel="tag">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/useLegacyAOT/" rel="tag">useLegacyAOT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwsgi/" rel="tag">uwsgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vbox/" rel="tag">vbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E7%9B%98/" rel="tag">七牛云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E4%BB%B6/" rel="tag">事件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/" rel="tag">交互设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81%E7%A0%94%E5%8F%91/" rel="tag">产品研发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%91%E9%80%81/" rel="tag">发送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" rel="tag">多语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A9%E6%B0%94API/" rel="tag">天气API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" rel="tag">定义变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E7%BD%AE%E9%A1%B6/" rel="tag">对象置顶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%BF%E5%91%8A/" rel="tag">广告</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" rel="tag">应用内支付</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%B9%E9%87%8F%E5%AE%9A%E4%B9%89/" rel="tag">批量定义</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E5%85%A5/" rel="tag">拖入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E5%87%BA/" rel="tag">拖出</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E6%8B%BD/" rel="tag">拖拽</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%88%B6/" rel="tag">机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%BC%E5%BC%8F/" rel="tag">格式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AE%8B%E5%BD%B1/" rel="tag">残影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%88%90Html/" rel="tag">生成Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" rel="tag">目录树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8/" rel="tag">移动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" rel="tag">粒子系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" rel="tag">系统托盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E6%B8%B8/" rel="tag">网游</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" rel="tag">视频播放器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" rel="tag">转义字符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/" rel="tag">需求管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nube de Tags</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AS3%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">AS3定义变量</a> <a href="/tags/AS3%E6%8E%A2%E7%A9%B6/" style="font-size: 17.5px;">AS3探究</a> <a href="/tags/Air/" style="font-size: 17.5px;">Air</a> <a href="/tags/Air-for-Android/" style="font-size: 10px;">Air for Android</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Bitmap/" style="font-size: 10px;">Bitmap</a> <a href="/tags/ContextMenu/" style="font-size: 10px;">ContextMenu</a> <a href="/tags/File/" style="font-size: 10px;">File</a> <a href="/tags/File%E7%9B%AE%E5%BD%95/" style="font-size: 10px;">File目录</a> <a href="/tags/Find-References/" style="font-size: 10px;">Find References</a> <a href="/tags/Flash%E8%BF%90%E8%A1%8C%E6%97%B6%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">Flash运行时路线图</a> <a href="/tags/IAP/" style="font-size: 10px;">IAP</a> <a href="/tags/LitJson/" style="font-size: 10px;">LitJson</a> <a href="/tags/MonoDevelop/" style="font-size: 10px;">MonoDevelop</a> <a href="/tags/Particle/" style="font-size: 10px;">Particle</a> <a href="/tags/RPG%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">RPG游戏</a> <a href="/tags/Scale9Grid/" style="font-size: 10px;">Scale9Grid</a> <a href="/tags/Service/" style="font-size: 10px;">Service</a> <a href="/tags/Text/" style="font-size: 10px;">Text</a> <a href="/tags/TexturePacker/" style="font-size: 10px;">TexturePacker</a> <a href="/tags/UDID/" style="font-size: 10px;">UDID</a> <a href="/tags/Unity/" style="font-size: 15px;">Unity</a> <a href="/tags/XCode/" style="font-size: 10px;">XCode</a> <a href="/tags/adb/" style="font-size: 10px;">adb</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/adobe/" style="font-size: 10px;">adobe</a> <a href="/tags/adt%E6%89%93%E5%8C%85/" style="font-size: 10px;">adt打包</a> <a href="/tags/ane/" style="font-size: 15px;">ane</a> <a href="/tags/ant/" style="font-size: 10px;">ant</a> <a href="/tags/assets/" style="font-size: 10px;">assets</a> <a href="/tags/atf/" style="font-size: 10px;">atf</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/copyPixel/" style="font-size: 10px;">copyPixel</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/dex2jar/" style="font-size: 10px;">dex2jar</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/drag/" style="font-size: 10px;">drag</a> <a href="/tags/flash/" style="font-size: 15px;">flash</a> <a href="/tags/flash-builder/" style="font-size: 10px;">flash builder</a> <a href="/tags/flash-builder-4/" style="font-size: 10px;">flash builder 4</a> <a href="/tags/flash-player-10/" style="font-size: 10px;">flash player 10</a> <a href="/tags/flash-runtimes/" style="font-size: 10px;">flash runtimes</a> <a href="/tags/flv/" style="font-size: 10px;">flv</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/ios/" style="font-size: 20px;">ios</a> <a href="/tags/ipa/" style="font-size: 17.5px;">ipa</a> <a href="/tags/itms-services/" style="font-size: 10px;">itms-services</a> <a href="/tags/keyboard/" style="font-size: 10px;">keyboard</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mac/" style="font-size: 12.5px;">mac</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/player-11/" style="font-size: 10px;">player 11</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/react-native/" style="font-size: 10px;">react-native</a> <a href="/tags/setIndex/" style="font-size: 10px;">setIndex</a> <a href="/tags/setPixel/" style="font-size: 10px;">setPixel</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/socket%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">socket服务器</a> <a href="/tags/starling/" style="font-size: 15px;">starling</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/useLegacyAOT/" style="font-size: 10px;">useLegacyAOT</a> <a href="/tags/uwsgi/" style="font-size: 10px;">uwsgi</a> <a href="/tags/vbox/" style="font-size: 10px;">vbox</a> <a href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E7%9B%98/" style="font-size: 10px;">七牛云盘</a> <a href="/tags/%E4%BA%8B%E4%BB%B6/" style="font-size: 12.5px;">事件</a> <a href="/tags/%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">交互设计</a> <a href="/tags/%E4%BA%A7%E5%93%81%E7%A0%94%E5%8F%91/" style="font-size: 10px;">产品研发</a> <a href="/tags/%E5%8F%91%E9%80%81/" style="font-size: 10px;">发送</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%A4%A9%E6%B0%94API/" style="font-size: 10px;">天气API</a> <a href="/tags/%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">定义变量</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">对象置顶</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 10px;">常用函数</a> <a href="/tags/%E5%B9%BF%E5%91%8A/" style="font-size: 10px;">广告</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" style="font-size: 10px;">应用内支付</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 10px;">快捷键</a> <a href="/tags/%E6%89%B9%E9%87%8F%E5%AE%9A%E4%B9%89/" style="font-size: 10px;">批量定义</a> <a href="/tags/%E6%8B%96%E5%85%A5/" style="font-size: 10px;">拖入</a> <a href="/tags/%E6%8B%96%E5%87%BA/" style="font-size: 10px;">拖出</a> <a href="/tags/%E6%8B%96%E6%8B%BD/" style="font-size: 12.5px;">拖拽</a> <a href="/tags/%E6%9C%BA%E5%88%B6/" style="font-size: 10px;">机制</a> <a href="/tags/%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">格式</a> <a href="/tags/%E6%AE%8B%E5%BD%B1/" style="font-size: 10px;">残影</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%88%90Html/" style="font-size: 10px;">生成Html</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 10px;">用户体验</a> <a href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" style="font-size: 10px;">目录树</a> <a href="/tags/%E7%A7%BB%E5%8A%A8/" style="font-size: 10px;">移动</a> <a href="/tags/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">粒子系统</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" style="font-size: 10px;">系统托盘</a> <a href="/tags/%E7%BD%91%E6%B8%B8/" style="font-size: 10px;">网游</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">视频播放器</a> <a href="/tags/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" style="font-size: 10px;">转义字符</a> <a href="/tags/%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">配置</a> <a href="/tags/%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/" style="font-size: 10px;">需求管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/02/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/20/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/">Java高级特性——反射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/30/git%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4tag/">Git批量删除tag</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/01/%E6%9F%A5%E7%9C%8Bipa%E4%B8%AD%E5%8C%85%E5%90%AB%E7%9A%84%E8%AE%BE%E5%A4%87udid/">查看ipa中包含的设备UDID</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/18/ios-u2006-%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">iOS \u2006 中文输入法错误解决方案</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 斯樵<br>
+      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

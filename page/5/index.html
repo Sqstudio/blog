@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>斯樵工坊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="斯樵工坊">
+<meta property="og:url" content="http://sqstudio.com/page/5/index.html">
+<meta property="og:site_name" content="斯樵工坊">
+<meta property="og:locale">
+<meta property="article:author" content="斯樵">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="斯樵工坊" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">斯樵工坊</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sqstudio.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-在设置了androidparentactivityname后，点击子activity返回键，父activity总会调" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/12/13/%E5%9C%A8%E8%AE%BE%E7%BD%AE%E4%BA%86androidparentactivityname%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AD%90activity%E8%BF%94%E5%9B%9E%E9%94%AE%EF%BC%8C%E7%88%B6activity%E6%80%BB%E4%BC%9A%E8%B0%83/" class="article-date">
+  <time class="dt-published" datetime="2015-12-13T15:58:13.000Z" itemprop="datePublished">2015-12-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/12/13/%E5%9C%A8%E8%AE%BE%E7%BD%AE%E4%BA%86androidparentactivityname%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AD%90activity%E8%BF%94%E5%9B%9E%E9%94%AE%EF%BC%8C%E7%88%B6activity%E6%80%BB%E4%BC%9A%E8%B0%83/">在设置了android:parentActivityName后，点击子Activity返回键，父Activity总会调用OnDestroy()的解决方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>一个Activity在manifet里声明了android:parentActivityName；这时候通过Activity左上角的返回按钮点击返回， 启动声明的父Activity，总会先调用父Activity的OnDestroy方法，具体如下面所说：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">    android:name&#x3D;&quot;com.example.helloworld.DisplayMessageActivity&quot;</span><br><span class="line">    android:label&#x3D;&quot;@string&#x2F;title_activity_display_message&quot;</span><br><span class="line">    android:parentActivityName&#x3D;&quot;com.example.helloworld.MainActivity&quot; &gt;</span><br><span class="line">    &lt;meta-data</span><br><span class="line">        android:name&#x3D;&quot;android.support.PARENT_ACTIVITY&quot;</span><br><span class="line">        android:value&#x3D;&quot;com.example.helloworld.MainActivity&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;activity&gt;</span><br></pre></td></tr></table></figure>
+
+<p>DisplayMessageActivity为子Activity，而MainActivity为父Activity，点击</p>
+<p>DisplayMessageActivity的左上角返回按钮的时候，调用逻辑如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MainActivity.onDestroy()</span><br><span class="line">MainActivity.onCreate(null)</span><br><span class="line">MainActivity.onStart()</span><br></pre></td></tr></table></figure>
+
+<p>解决方案是：</p>
+<p><strong>为设置MainActivity属性android:launchMode=singleTop</strong> </p>
+<p>顺便脑补android:parentActivityName的作用，就是为了左上角给子Activity加一个返回按钮，具体信息如下：</p>
+<blockquote>
+<p><strong>Android 4.1提高性能、增强用户体验</strong></p>
+<p>　　App 栈导航：通过设置android:parentActivityName改变回退栈的内容，如果栈中没有parentActivity，则合成栈，通过onPrepareNavigateUpTaskStack()改变parentActivity中的内容。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2015/12/13/%E5%9C%A8%E8%AE%BE%E7%BD%AE%E4%BA%86androidparentactivityname%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AD%90activity%E8%BF%94%E5%9B%9E%E9%94%AE%EF%BC%8C%E7%88%B6activity%E6%80%BB%E4%BC%9A%E8%B0%83/" data-id="ckljj0p9g008hrpey7pj1aag1" data-title="在设置了android:parentActivityName后，点击子Activity返回键，父Activity总会调用OnDestroy()的解决方案" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-使用多个ios-ane的duplicate-symbol问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/12/12/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAios-ane%E7%9A%84duplicate-symbol%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2015-12-12T09:31:47.000Z" itemprop="datePublished">2015-12-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/12/12/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAios-ane%E7%9A%84duplicate-symbol%E9%97%AE%E9%A2%98/">使用多个iOS ANE的duplicate symbol问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>当使用AIR进行iOS应用开发时，如果用到了多个iOS ANE，有时在打包时会遇到duplicate symbol问题，比如：</p>
+<p>ld: duplicate symbol _ContextInitializer …..</p>
+<p>这个问题的原因是由于多个ANE的iOS原生代码中有同名的类或全局变量。解决方法便是统一给它们加上一个前缀，比如公司和产品的名字组合。 如果使用ANE模板项目创建的ANE，会有 ContextInitializer等同名方法，注意修改   其他关于开发ANE需要注意的问题可以参见这篇文章： 原文：<a target="_blank" rel="noopener" href="http://www.richardlord.net/blog/20-tips-for-creating-air-native-extensions-for-ios">20 tips for creating Air Native Extensions for iOS</a> 中文翻译：<a target="_blank" rel="noopener" href="http://jamesli.cn/blog/?p=1438">20条开发AIR Native Extension的建议</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2015/12/12/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAios-ane%E7%9A%84duplicate-symbol%E9%97%AE%E9%A2%98/" data-id="ckljj0p93007jrpeybwdd6vjb" data-title="使用多个iOS ANE的duplicate symbol问题" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-androidstudio-svn使用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/11/08/androidstudio-svn%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2015-11-08T07:22:40.000Z" itemprop="datePublished">2015-11-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/11/08/androidstudio-svn%E4%BD%BF%E7%94%A8/">AndroidStudio SVN使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>断开svn： 将.idea构建目录下的vcs.xml中的<mapping directory="" vcs="svn" /> ，还原回<mapping directory="" vcs="" />即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2015/11/08/androidstudio-svn%E4%BD%BF%E7%94%A8/" data-id="ckljj0p6e001crpeygk549mbu" data-title="AndroidStudio SVN使用" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-android文件读写操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2015-09-25T02:11:38.000Z" itemprop="datePublished">2015-09-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/">Android文件读写操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Assets：该目录只可读，不可写。使用getResource().getAssets().open(“file_name”)获得FileInputStream，进行读取操作 Raw：该目录和Assets一样，可读不可写。使用getResource().openRawResource(R.raw.file_name)获得FileInputSteam，进行读取操作。 外部SD：可读可写，外部可见。先用Environment.getExtenalStorageDirectory获得sd卡的目录File，先检测是否可用。如果可用，再file = new File(sd_dir,filename),进行读写操作。 内部文件：</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/" data-id="ckljj0p6k001urpey60ilcfk5" data-title="Android文件读写操作" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/File/" rel="tag">File</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-androidstudio添加assets目录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/09/24/androidstudio%E6%B7%BB%E5%8A%A0assets%E7%9B%AE%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2015-09-24T11:32:33.000Z" itemprop="datePublished">2015-09-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/09/24/androidstudio%E6%B7%BB%E5%8A%A0assets%E7%9B%AE%E5%BD%95/">AndroidStudio添加assets目录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1: 打开 项目名称.iml 文件. 查找这行 : option name=”ASSETS_FOLDER_RELATIVE_PATH” value=”/src/main/assets” 2: 在“main”下建立一个子目录 “assets”  （即对应src/main/assets） 3: 把webview中要加载的文件放到这个目录中. 4: 在webview中载入，完成. 参考： <a target="_blank" rel="noopener" href="http://goodidea100.com/Android/744.html">http://goodidea100.com/Android/744.html</a> <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/18302603/where-to-place-assets-folder-in-android-studio">http://stackoverflow.com/questions/18302603/where-to-place-assets-folder-in-android-studio</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2015/09/24/androidstudio%E6%B7%BB%E5%8A%A0assets%E7%9B%AE%E5%BD%95/" data-id="ckljj0p6h001irpey5uaz5ouj" data-title="AndroidStudio添加assets目录" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/assets/" rel="tag">assets</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-android的startservice与bindservice" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/09/23/android%E7%9A%84startservice%E4%B8%8Ebindservice/" class="article-date">
+  <time class="dt-published" datetime="2015-09-23T14:33:18.000Z" itemprop="datePublished">2015-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/09/23/android%E7%9A%84startservice%E4%B8%8Ebindservice/">Android的startService与bindService</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Service的生命周期 Service的生命周期方法比Activity少一些，只有onCreate, onStart, onDestroy 我们有两种方式启动一个Service,他们对Service生命周期的影响是不一样的。</p>
+<blockquote>
+<p><strong>1 通过startService</strong> Service会经历 onCreate -&gt; onStart stopService的时候直接onDestroy 如果是调用者(TestServiceHolder)自己直接退出而没有调用stopService的 话，Service会一直在后台运行。 下次TestServiceHolder再起来可以stopService。 <strong>2 通过bindService</strong> Service只会运行onCreate， 这个时候 TestServiceHolder 和TestService绑定在一起 TestServiceHolder 退出了，Srevice就会调用onUnbind-&gt;onDestroyed  所谓绑定在一起就共存亡了。  </p>
+</blockquote>
+<p>  那有同学问了，要是这几个方法交织在一起的话，会出现什么情况呢？ 一个原则是Service的onCreate的方法只会被调用一次，就是你无论多少次的startService又 bindService，Service只被创建一次。如果先是bind了，那么start的时候就直接运行Service的onStart方法，如果先 是start，那么bind的时候就直接运行onBind方法。如果你先bind上了，就stop不掉了，对啊，就是stopService不好使了，只 能先UnbindService, 再StopService,所以是先start还是先bind行为是有区别的。 看起来情况很多，不过我会把这次的代码包括上回Activity生命周期的研究代码都贴上了，希望你喜欢！大家有兴趣可以回去点点按钮看看log，多看几遍就知道了。 Android中的服务和windows中的服务是类似的东西，服务一般没有用户操作界面，它运行于系统中不容易被用户发觉，可以使用它开发如监控之类的程序。服务的开发比较简单，如下： 第一步：继承Service类 public class SMSService extends Service { } 第二步：在AndroidManifest.xml文件中的<application>节点里对服务进行配置: <service android:name=".SMSService" /> 服务不能自己运行，需要通过调用Context.startService()或Context.bindService()方法启动服务。这两个方法都可以启动Service，但是它们的使用场合有所不同。使用startService()方法启用服务，调用者与服务之间没有关连，即使调用者退出了，服务仍然运行。使用bindService()方法启用服务，调用者与服务绑定在了一起，调用者一旦退出，服务也就终止，大有“不求同时生，必须同时死”的特点。 如果打算采用Context.startService()方法启动服务，在服务未被创建时，系统会先调用服务的onCreate()方法，接着调用onStart()方法。如果调用startService()方法前服务已经被创建，多次调用startService()方法并不会导致多次创建服务，但会导致多次调用onStart()方法。采用startService()方法启动的服务，只能调用Context.stopService()方法结束服务，服务结束时会调用onDestroy()方法。 如果打算采用Context.bindService()方法启动服务，在服务未被创建时，系统会先调用服务的onCreate()方法，接着调用onBind()方法。这个时候调用者和服务绑定在一起，调用者退出了，系统就会先调用服务的onUnbind()方法，接着调用onDestroy()方法。如果调用bindService()方法前服务已经被绑定，多次调用bindService()方法并不会导致多次创建服务及绑定(也就是说onCreate()和onBind()方法并不会被多次调用)。如果调用者希望与正在绑定的服务解除绑定，可以调用unbindService()方法，调用该方法也会导致系统调用服务的onUnbind()–&gt;onDestroy()方法.   原文链接：<a target="_blank" rel="noopener" href="http://blog.csdn.net/huanyufeng/article/details/5873407">http://blog.csdn.net/huanyufeng/article/details/5873407</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2015/09/23/android%E7%9A%84startservice%E4%B8%8Ebindservice/" data-id="ckljj0p6l001wrpey6mz24mjt" data-title="Android的startService与bindService" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Service/" rel="tag">Service</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-svn版本库迁移（保存log）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/07/23/svn%E7%89%88%E6%9C%AC%E5%BA%93%E8%BF%81%E7%A7%BB%EF%BC%88%E4%BF%9D%E5%AD%98log%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2015-07-23T04:15:43.000Z" itemprop="datePublished">2015-07-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/07/23/svn%E7%89%88%E6%9C%AC%E5%BA%93%E8%BF%81%E7%A7%BB%EF%BC%88%E4%BF%9D%E5%AD%98log%EF%BC%89/">SVN版本库迁移（保存Log）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>svn版本库完整迁移，保存完整信息：</p>
+<blockquote>
+<p>关闭所有运行的进程，并确认没有程序在访问存储库（如 httpd、svnserve 或本地用户在直接访问）。 备份svn存储库 #压缩备份 svnadmin dump /home/workhome/svn/repository gzip &gt; ~/repository-backup.gz #不压缩备份 svnadmin dump /home/workhome/svn/repository &gt; ~/repository-backup.svn 恢复svn存储库 #建立新的svn存储库 svnadmin create /home/workhome/svn/newrepository #确认成功与否 ls -l /home/workhome/svn/newrepository #导入存储库数据 svnadmin load /home/workhome/svn/newrepository &lt; ~/repository-backup.svn</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2015/07/23/svn%E7%89%88%E6%9C%AC%E5%BA%93%E8%BF%81%E7%A7%BB%EF%BC%88%E4%BF%9D%E5%AD%98log%EF%BC%89/" data-id="ckljj0p8k006drpey547w9l5r" data-title="SVN版本库迁移（保存Log）" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svn/" rel="tag">svn</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mac环境下svn的使用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/06/23/mac%E7%8E%AF%E5%A2%83%E4%B8%8Bsvn%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2015-06-23T04:18:15.000Z" itemprop="datePublished">2015-06-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/06/23/mac%E7%8E%AF%E5%A2%83%E4%B8%8Bsvn%E7%9A%84%E4%BD%BF%E7%94%A8/">Mac环境下svn的使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在Windows环境中，我们一般使用TortoiseSVN来搭建svn环境。在Mac环境下，由于Mac自带了svn的服务器端和客户端功能，所以我们可以在不装任何第三方软件的前提下使用svn功能，不过还需做一下简单的配置。 我们首先来看下，如何在Mac环境下搭建svn服务器端环境。</p>
+<h2 id="创建代码仓库，用来存储客户端所上传的代码"><a href="#创建代码仓库，用来存储客户端所上传的代码" class="headerlink" title="创建代码仓库，用来存储客户端所上传的代码"></a>创建代码仓库，用来存储客户端所上传的代码</h2><p>我先在/User/apple目录下新建一个svn目录，以后可以在svn目录下创建多个仓库目录 打开终端，创建一个mycode仓库，输入指令：<strong>svnadmin create /Users/apple/svn/mycode</strong> 指令执行成功后，会发现硬盘上多了个/Users/apple/svn/mycode目录，目录结构如下： <img src="http://images.cnitblog.com/blog/497279/201303/10002140-c4cf85b829bd477ea3a3779a4cd0d7fd.png">  </p>
+<h2 id="配置svn的用户权限"><a href="#配置svn的用户权限" class="headerlink" title="配置svn的用户权限"></a>配置svn的用户权限</h2><p>主要是修改/svn/mycode/conf目录下的三个文件 1.打开svnserve.conf，将下列配置项前面的#和空格都去掉</p>
+<ol>
+<li><h1 id="anon-access-read"><a href="#anon-access-read" class="headerlink" title="anon-access = read"></a>anon-access = read</h1></li>
+<li><h1 id="auth-access-write"><a href="#auth-access-write" class="headerlink" title="auth-access = write"></a>auth-access = write</h1></li>
+<li><h1 id="password-db-passwd"><a href="#password-db-passwd" class="headerlink" title="password-db = passwd"></a>password-db = passwd</h1></li>
+<li><h1 id="authz-db-authz"><a href="#authz-db-authz" class="headerlink" title="authz-db = authz"></a>authz-db = authz</h1></li>
+</ol>
+<p>anon-access = read代表匿名访问的时候是只读的，若改为anon-access = none代表禁止匿名访问，需要帐号密码才能访问   2.打开passwd，在[users]下面添加帐号和密码，比如：</p>
+<ol>
+<li> [users]</li>
+<li> mj = 123</li>
+<li> jj = 456</li>
+</ol>
+<p>帐号是mj，密码是123   3.打开authz，配置用户组和权限 我们可以将在passwd里添加的用户分配到不同的用户组里，以后的话，就可以对不同用户组设置不同的权限，没有必要对每个用户进行单独设置权限。 在[groups]下面添加组名和用户名，多个用户之间用逗号(,)隔开</p>
+<ol>
+<li> [groups]</li>
+<li> topgroup=mj,jj</li>
+</ol>
+<p>说明mj和jj都是属于topgroup这个组的，接下来再进行权限配置。 使用[/]代表svn服务器中的所有资源库</p>
+<ol>
+<li> [/]</li>
+<li> @topgroup = rw</li>
+</ol>
+<p>上面的配置说明topgroup这个组中的所有用户对所有资源库都有读写(rw)权限，组名前面要用@ 如果是用户名，不用加@，比如mj这个用户有读写权限</p>
+<ol>
+<li> [/]</li>
+<li> mj = rw</li>
+</ol>
+<p>至于其他精细的权限控制，可以参考authz文件中的其他内容   4.启动svn服务器 前面配置了这么多，最关键还是看能否正常启动服务器，若启动不来，前面做再多工作也是徒劳。 在终端输入下列指令：<strong>svnserve -d -r /Users/apple/svn</strong> 或者输入：<strong>svnserve -d -r /Users/apple/svn**</strong>/mycode** 没有任何提示就说明启动成功了   5.关闭svn服务器 如果你想要关闭svn服务器，最有效的办法是打开实用工具里面的“活动监视器”<img src="http://images.cnitblog.com/blog/497279/201303/10002641-8b49f872b6cd438c80f76f098d99db93.png"> <img src="http://images.cnitblog.com/blog/497279/201303/10002744-ce32c627b0b34f02a4067568bdc5e786.png"> 综合上述，我们就可以轻松搭建svn服务器环境了  </p>
+<h2 id="使用svn客户端功能"><a href="#使用svn客户端功能" class="headerlink" title="使用svn客户端功能"></a>使用svn客户端功能</h2><p>1.从本地导入代码到服务器(第一次初始化导入) 在终端中输入 <strong>svn import /Users/apple/Documents/eclipse_workspace/weibo svn://localhost/mycode/weibo –username=mj –password=123 -m “初始化导入”</strong> 我解释下指令的意思：将/Users/apple/Documents/eclipse_workspace/weibo中的所有内容，上传到服务器mycode仓库的weibo目录下，后面双引号中的”初始化导入”是注释   2.从服务器端下载代码到客户端本地 在终端中输入<strong>svn checkout svn://localhost/mycode –username=mj –password=123 /Users/apple/Documents/code</strong> 我解释下指令的意思：将服务器中mycode仓库的内容下载到/Users/apple/Documents/code目录中   3.提交更改过的代码到服务器 在步骤2中已经将服务器端的代码都下载到/Users/apple/Documents/code目录中，现在修改下里面的一些代码，然后提交这些修改到服务器 1&gt; 打开终端，先定位到/Users/apple/Documents/code目录，输入：<strong>cd/Users/apple/Documents/code</strong> 2&gt; 输入提交指令：<strong>svn commit -m “修改了main.m文件”</strong> 这个指令会将/Users/apple/Documents/code下的所有修改都同步到服务器端，假如这次我只修改了main.文件 可以看到终端的打印信息：</p>
+<ol>
+<li> Sending        weibo/weibo/main.m</li>
+<li> Transmitting file data .</li>
+<li> Committed revision 2.</li>
+</ol>
+<p>  4.更新服务器端的代码到客户端 这个应该是最简单的指令了，在终端中定位到客户端代码目录后，比如上面的/Users/apple/Documents/code目录，然后再输入指令：<strong>svn update</strong>   5.至于svn的其他用法，可以在终端输入：<strong>svn help</strong> <strong><img src="http://images.cnitblog.com/blog/497279/201303/10010442-37644dc2b0d54f7b8b421ede25d2f749.png"></strong> 这里列出一大堆svn指令，后面括号中的内容的一般代表着指令的简称，比如我们可以用svn ci代替svn commit，用svn co代替svn checkout 原文链接：<a target="_blank" rel="noopener" href="http://blog.csdn.net/q199109106q/article/details/8655204">http://blog.csdn.net/q199109106q/article/details/8655204</a>   后续追加： Flash Builder4.7安装了svn1.8插件后，或提示 Subversion native library not available，修改FB设置的svn里svn借口 <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2015/03/QQ20150323-1@2x.png"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2015/03/QQ20150323-1@2x.png" alt="QQ20150323-1@2x"></a> ———- 添加svn服务开机启动 在etc/rc.local(要创建)文件里，加上svnserver -d -r user/apple/svn/rep(svn目录) 如果权限不足，需要 sudo ….</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2015/06/23/mac%E7%8E%AF%E5%A2%83%E4%B8%8Bsvn%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="ckljj0p860058rpeybgxt9cbq" data-title="Mac环境下svn的使用" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svn/" rel="tag">svn</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-xcode快速开发ane步骤和一些常见错误的解决" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/05/22/xcode%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91ane%E6%AD%A5%E9%AA%A4%E5%92%8C%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3/" class="article-date">
+  <time class="dt-published" datetime="2015-05-22T10:47:07.000Z" itemprop="datePublished">2015-05-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/05/22/xcode%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91ane%E6%AD%A5%E9%AA%A4%E5%92%8C%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3/">XCODE快速开发ANE步骤和一些常见错误的解决</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>使用adobe air制作的移动应用，在对接第三方平台的时候，需要使用ANE来包装本机代码，在对接过程中，我积累了一些打包ANE的经验，记录下来，希望对看到的人有些帮助。 吐槽一下，ANE太难对付了，各种坑，调试也比较麻烦。 1、安装mac版本的AIR SDK 下载地址：<a target="_blank" rel="noopener" href="http://www.adobe.com/devnet/air/air-sdk-download-mac.html">http://www.adobe.com/devnet/air/air-sdk-download-mac.html</a> 2、安装xcode的ANE项目模板(好东西～) 下载地址：<a target="_blank" rel="noopener" href="https://github.com/divijkumar/xcode-template-ane">https://github.com/divijkumar/xcode-template-ane</a> 3、从模板新建项目： <img src="http://yoyo.play175.com/usr/uploads/2014/09/373566609.jpg" alt="snap (2).jpg"> <img src="http://yoyo.play175.com/usr/uploads/2014/09/3161724819.jpg" alt="snap (3).jpg"> 项目建好了的样子： <img src="http://yoyo.play175.com/usr/uploads/2014/09/2702202715.jpg" alt="snap (4).jpg"> 直接点左上角的小三角形编译，报错如下： <img src="http://yoyo.play175.com/usr/uploads/2014/09/3094537793.jpg" alt="snap (5).jpg"> 提示不支持的编译器 解决：我们点击项目属性，选择 LLVM5.13 <img src="http://yoyo.play175.com/usr/uploads/2014/09/953231852.jpg" alt="snap (6).jpg"> 继续点编译： <img src="http://yoyo.play175.com/usr/uploads/2014/09/3196164692.jpg" alt="snap (7).jpg"> 成功了，生成的库文件是libhello.a 接下来我们开始生成ane，点击编译目标： <img src="http://yoyo.play175.com/usr/uploads/2014/09/5840093.jpg" alt="snap (8).jpg"> 选择hello.ane <img src="http://yoyo.play175.com/usr/uploads/2014/09/1897263116.jpg" alt="snap (9).jpg"> 再点小三角编译，成功(在*.ane上右键选Show in Finder可以定位到这个ane文件)： <img src="http://yoyo.play175.com/usr/uploads/2014/09/1352824676.jpg" alt="snap (10).jpg"> 如果在项目创建页面没有填写这个个： <img src="http://yoyo.play175.com/usr/uploads/2014/09/2644621939.jpg" alt="snap (11).jpg"> 则会提示错误： <img src="http://yoyo.play175.com/usr/uploads/2014/09/3215069781.jpg" alt="snap (12).jpg"> 解决方法是，在项目属性里设置这个宏参数，填上swc文件所在的全路径： <img src="http://yoyo.play175.com/usr/uploads/2014/09/262000265.jpg" alt="snap (13).jpg"> 剩下的事情就是增加你自己需要的接口来，在hello.m文件里，可以看到模板示例方法：isSupported，自己写代码可以参照它。 另外如果需要使用C++和objec混编，则需要项目中至少有一个后缀为mm的源文件，你可以创建一个空mm文件即可。</p>
+<hr>
+<p>在ios本机库，AIR SDK包含了以下系统库： <img src="http://yoyo.play175.com/usr/uploads/2014/09/1619475565.jpg" alt="snap (14).jpg"> 如果项目依赖了除了上面列表之外的库，需要打开项目下的那个：platformoptions.xml 填上依赖的动态库（*.dylib）或者静态库framework(*.framework) 动态库用-l前缀，framework用-framework前缀 <img src="http://yoyo.play175.com/usr/uploads/2014/09/4161221035.jpg" alt="snap (15).jpg"> 如果不在上面xml中指定，打包ANE是不会报错的，但是在打包ipa的时候，会报类似下面的错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Undefined symbols for architecture armv7:</span><br><span class="line">  &quot;_crc32&quot;, referenced from:</span><br><span class="line">      _PyZlib_crc32 in libpython2.7.a(zlibmodule.o)</span><br><span class="line">  &quot;_inflateEnd&quot;, referenced from:</span><br><span class="line">      _Decomp_dealloc in libpython2.7.a(zlibmodule.o)</span><br><span class="line">      _PyZlib_decompress in libpython2.7.a(zlibmodule.o)</span><br><span class="line">      _PyZlib_unflush in libpython2.7.a(zlibmodule.o)</span><br><span class="line">  &quot;_deflateInit_&quot;, referenced from:</span><br><span class="line">      _PyZlib_compress in libpython2.7.a(zlibmodule.o)</span><br><span class="line">  &quot;_inflate&quot;, referenced from:</span><br><span class="line">      _PyZlib_decompress in libpython2.7.a(zlibmodule.o)</span><br><span class="line">      _PyZlib_objdecompress in libpython2.7.a(zlibmodule.o)</span><br><span class="line">      _PyZlib_unflush in libpython2.7.a(zlibmodule.o)</span><br><span class="line">  &quot;_deflateEnd&quot;, referenced from:</span><br></pre></td></tr></table></figure>
+
+<p>在使用该ANE打包ipa的过程中，如果使用了多个ANE，且里面引用了同一个公用类，会提示重复的符号： <img src="http://yoyo.play175.com/usr/uploads/2014/09/3124623426.jpg" alt="snap (1).jpg"> 解决方法是在调用adt打包ipa的时候，增加参数：-hideAneLibSymbols yes</p>
+<hr>
+<p><strong>如果打包ipa的出现错误（找不到___divmodsi4符号）：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Packaging: ..&#x2F;hello.ipa</span><br><span class="line">using certificate: hello.p12...</span><br><span class="line"></span><br><span class="line">Warning: Resource zh-Hans.lproj has been skipped because of mismatch with suppor</span><br><span class="line">ted languages information in application descriptor.</span><br><span class="line">Undefined symbols for architecture armv7:</span><br><span class="line">  &quot;___divmodsi4&quot;, referenced from:</span><br><span class="line">      _absc_solve in D:\\mobile\\wow_mobile\\..\\wow_app\\AOTBuildOutput62399389</span><br><span class="line">92767853027.tmp\\com.q1.haima.o</span><br><span class="line">ld: symbol(s) not found for architecture armv7</span><br><span class="line">Compilation failed while executing : ld64</span><br><span class="line"></span><br><span class="line">APK setup creation FAILED.</span><br><span class="line"></span><br><span class="line">Troubleshooting:</span><br><span class="line">- did you build your project in FlashDevelop?</span><br><span class="line">- verify AIR SDK target version in bat\app-haima.xml</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方案：</strong> 1、目标系统版本需要高一些，比如5.1或者6.0以上，在platformoptions.xml 文件的linkerOptions指定参数：-ios_version_min，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;platform xmlns&#x3D;&quot;http:&#x2F;&#x2F;ns.adobe.com&#x2F;air&#x2F;extension&#x2F;3.1&quot;&gt;</span><br><span class="line">    &lt;sdkVersion&gt;5.0&lt;&#x2F;sdkVersion&gt;</span><br><span class="line">    &lt;description &gt; An optional description&lt;&#x2F;description&gt;</span><br><span class="line">    &lt;copyright&gt;2012 (optional)&lt;&#x2F;copyright&gt;</span><br><span class="line">    &lt;linkerOptions&gt;</span><br><span class="line">        &lt;option&gt;-ios_version_min 5.1&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option&gt;-framework AdSupport&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option&gt;-framework AudioToolbox&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option&gt;-lstdc++.6&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;&#x2F;linkerOptions&gt;</span><br><span class="line">&lt;&#x2F;platform&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、如果改sdk版本还不行，则使用下面方案，在.h头文件里增加下面的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">unsigned long ___udivmodsi4(unsigned long num, unsigned long den, int modwanted)</span><br><span class="line">&#123;</span><br><span class="line">    if (modwanted)</span><br><span class="line">        return num % den;</span><br><span class="line">    else</span><br><span class="line">        return num &#x2F; den;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>另外，引起APP闪退的可能原因：</strong> 1、调用API函数的参数类型不正确，objc的参数为NSString类型，但是传int类型，在编译时也不会报错，但是在手机运行时会崩溃！！！需要仔细检查是否有该问题 作者：YoYo，原文地址：<a target="_blank" rel="noopener" href="http://yoyo.play175.com/p/xcode-ane.html">http://yoyo.play175.com/p/xcode-ane.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2015/05/22/xcode%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91ane%E6%AD%A5%E9%AA%A4%E5%92%8C%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3/" data-id="ckljj0p8v006xrpey40wl4tgj" data-title="XCODE快速开发ANE步骤和一些常见错误的解决" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XCode/" rel="tag">XCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ane/" rel="tag">ane</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/" rel="tag">ios</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-64-bit-requirements-for-ios-apps" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/04/14/64-bit-requirements-for-ios-apps/" class="article-date">
+  <time class="dt-published" datetime="2015-04-14T03:07:52.000Z" itemprop="datePublished">2015-04-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/04/14/64-bit-requirements-for-ios-apps/">64-bit requirements for iOS apps</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本文系转载：<a target="_blank" rel="noopener" href="http://easynativeextensions.com/making-your-ios-apps-universal/">http://easynativeextensions.com/making-your-ios-apps-universal/</a>   At the end of last year Apple announced their new requirements for submitting apps to the app store:</p>
+<ul>
+<li>  from <strong>February 1st 2015</strong> all <a target="_blank" rel="noopener" href="https://developer.apple.com/news/?id=10202014a">new apps must include 64-bit support</a>;</li>
+<li>  from <strong>June 1st 2015</strong> all <a target="_blank" rel="noopener" href="https://developer.apple.com/news/?id=12172014b">app updates will also have to support 64 bits</a>.</li>
+</ul>
+<p>This doesn’t pose much of a problem for native apps, but we AIR developers were stranded… Until last week, when <a target="_blank" rel="noopener" href="http://labs.adobe.com/downloads/air.html">Adobe released AIR 16 beta in Adobe Labs</a>. Let us go through the steps necessary for rebuilding your apps and ANEs to support 64 bits.</p>
+<h2 id="Step-1-Update-your-AIR-SDK"><a href="#Step-1-Update-your-AIR-SDK" class="headerlink" title="Step 1: Update your AIR SDK"></a>Step 1: Update your AIR SDK</h2><p><strong>1.1.</strong> Download AIR SDK 16 beta from Adobe Labs: <a target="_blank" rel="noopener" href="http://labs.adobe.com/downloads/air.html">http://labs.adobe.com/downloads/air.html</a></p>
+<p><strong>Note:</strong> if you use Flash Builder and/or the Flex SDK, you need the last download link, <strong>AIR 16 SDK for Flex Developers</strong>.</p>
+<p><strong>1.2.</strong> Make a backup copy of your AIR SDK folder. <strong>1.3.</strong> Overlay the new SDK over the old one: <strong>1.3.1</strong> If you are a <strong>Windows</strong> user, unzip the download and copy the contents over your AIR SDK. <strong>1.3.2.</strong> On <strong>Mac</strong> you can do the same and ask Finder to merge folders or, you can copy the archive in the root of your AIR SDK and run the following command in the Terminal:</p>
+<p>1</p>
+<p>sudo tar jxvf air16_sdk_sa_mac.tbz2</p>
+<h2 id="Step-2-Update-your-app-descriptor"><a href="#Step-2-Update-your-app-descriptor" class="headerlink" title="Step 2: Update your app descriptor"></a>Step 2: Update your app descriptor</h2><p>If you are a veteran AIR developer, you are used to this, but here it is just in case. Open your app descriptor file – usually named <strong>your-app-name-app.xml</strong> and found in your project’s <strong>src/</strong> folder and make sure the namespace at the top of the file points to <strong>16.0</strong>:</p>
+<p>1</p>
+<p>&lt;application xmlns=“<a target="_blank" rel="noopener" href="http://ns.adobe.com/air/application/16.0&quot;/&gt;">http://ns.adobe.com/air/application/16.0&quot;\&gt;</a></p>
+<h2 id="Step-3-Rebuild-your-iOS-ANEs"><a href="#Step-3-Rebuild-your-iOS-ANEs" class="headerlink" title="Step 3: Rebuild your iOS ANEs"></a>Step 3: Rebuild your iOS ANEs</h2><p>Any native extensions for iOS that your app uses will also need to be built with 64-bit support. If you have the source code for these ANEs, this is what you do: <strong>3.1.</strong> Make sure you are using Xcode 6 and iOS SDK 8. <strong>3.2.</strong> In your <strong>Xcode</strong> project, go to <strong>Build Settings</strong> &gt; <strong>Architectures</strong> and first make sure that <strong>Architectures</strong>is set to <strong>Standard architectures (armv7, arm64),</strong> then set <strong>Build Active Architecture Only</strong> to<strong>No</strong>. Without the last change the compiler will default to building a binary that supports only one architecture, which matches the device that you have connected at the moment or the simulator version you have made active – good idea for a debug build, but not for release. <a target="_blank" rel="noopener" href="http://easynativeextensions.com/wp-content/uploads/2015/01/Xcode-64bit-architecture-setting.png"><img src="http://easynativeextensions.com/wp-content/uploads/2015/01/Xcode-64bit-architecture-setting.png" alt="Xcode 64bit architecture setting"></a>   Now make a clean build of your ANE.</p>
+<p>Here are a couple of resources that will help you automate your ANE building and packaging:</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="http://easynativeextensions.com/automatic-ane-packaging/">Automatic ANE packaging</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://easynativeextensions.com/package-your-ane-in-flash-builder/">Packaging your ANE in Flash Buidler</a></li>
+</ul>
+<h2 id="Step-4-How-do-you-know-if-your-app-is-now-universal-64-bit"><a href="#Step-4-How-do-you-know-if-your-app-is-now-universal-64-bit" class="headerlink" title="Step 4: How do you know if your app is now universal/64-bit?"></a>Step 4: How do you know if your app is now universal/64-bit?</h2><p>… before submitting it to the Apple App Store, that is. There are a couple of things you can check. First, if you build your app with AIR 16, you should <strong>NOT</strong> get an error message like this:</p>
+<p>Error: Apple App Store allows only universal applications. “libMultiplatformANETemplateLib.a” is not a universal binary. Please change build settings in Xcode project to “Standard Architecture” to create universal library/framework.</p>
+<p>Or like this:</p>
+<p>[exec] Error: libCameraLibiOS.a are required to have universal iOS libraries. Please contact the ANE developer(s) to get the same.[exec] Result: 12</p>
+<p>Then,  to double-check, do the following: <strong>4.1.</strong> Rename your <strong>.ipa</strong> file to <strong>.zip</strong> and unzip it. <strong>4.2.</strong> Use <strong>lipo</strong> in the <strong>Mac Terminal</strong>:</p>
+<p>1</p>
+<p>lipo path_to_your_unzipped_ipa/Payload/your_app_name.app/your_app_name -info</p>
+<p>You want to see a message like this:</p>
+<p>1</p>
+<p>Architectures in the fat file: your_app_name are: armv7 arm64</p>
+<p> <strong>4.3.</strong> You can also use the <strong>file</strong> command on <strong>Mac</strong>:</p>
+<p>1</p>
+<p>file path_to_your_unzipped_ipa/Payload/your_app_name.app/your_app_name</p>
+<p>This should result in a message like this one:</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>Mach-O universal binary with 2 architectures</p>
+<p>your_app_name (for architecture armv7): Mach-O executable arm</p>
+<p>your_app_name (for architecture arm64): Mach-O 64-bit executable</p>
+<p>Ta-da! Your app is now up to date with the 64-bit requirements.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sqstudio.com/2015/04/14/64-bit-requirements-for-ios-apps/" data-id="ckljj0p65000srpeydt8h2alt" data-title="64-bit requirements for iOS apps" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Previo</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/">Siguiente &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorías</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS3%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" rel="tag">AS3定义变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS3%E6%8E%A2%E7%A9%B6/" rel="tag">AS3探究</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Air/" rel="tag">Air</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Air-for-Android/" rel="tag">Air for Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bitmap/" rel="tag">Bitmap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ContextMenu/" rel="tag">ContextMenu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/File/" rel="tag">File</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/File%E7%9B%AE%E5%BD%95/" rel="tag">File目录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Find-References/" rel="tag">Find References</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flash%E8%BF%90%E8%A1%8C%E6%97%B6%E8%B7%AF%E7%BA%BF%E5%9B%BE/" rel="tag">Flash运行时路线图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IAP/" rel="tag">IAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LitJson/" rel="tag">LitJson</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MonoDevelop/" rel="tag">MonoDevelop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Particle/" rel="tag">Particle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPG%E6%B8%B8%E6%88%8F/" rel="tag">RPG游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scale9Grid/" rel="tag">Scale9Grid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service/" rel="tag">Service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Text/" rel="tag">Text</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TexturePacker/" rel="tag">TexturePacker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDID/" rel="tag">UDID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XCode/" rel="tag">XCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adb/" rel="tag">adb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adobe/" rel="tag">adobe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adt%E6%89%93%E5%8C%85/" rel="tag">adt打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ane/" rel="tag">ane</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ant/" rel="tag">ant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/assets/" rel="tag">assets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atf/" rel="tag">atf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/copyPixel/" rel="tag">copyPixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/" rel="tag">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dex2jar/" rel="tag">dex2jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/drag/" rel="tag">drag</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash/" rel="tag">flash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-builder/" rel="tag">flash builder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-builder-4/" rel="tag">flash builder 4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-player-10/" rel="tag">flash player 10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash-runtimes/" rel="tag">flash runtimes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flv/" rel="tag">flv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ipa/" rel="tag">ipa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/itms-services/" rel="tag">itms-services</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyboard/" rel="tag">keyboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/" rel="tag">pip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/player-11/" rel="tag">player 11</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/" rel="tag">react-native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setIndex/" rel="tag">setIndex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setPixel/" rel="tag">setPixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/" rel="tag">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">socket服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/starling/" rel="tag">starling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/" rel="tag">svn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/" rel="tag">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/useLegacyAOT/" rel="tag">useLegacyAOT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwsgi/" rel="tag">uwsgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vbox/" rel="tag">vbox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E7%9B%98/" rel="tag">七牛云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E4%BB%B6/" rel="tag">事件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/" rel="tag">交互设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81%E7%A0%94%E5%8F%91/" rel="tag">产品研发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%91%E9%80%81/" rel="tag">发送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" rel="tag">多语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A9%E6%B0%94API/" rel="tag">天气API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" rel="tag">定义变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E7%BD%AE%E9%A1%B6/" rel="tag">对象置顶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%BF%E5%91%8A/" rel="tag">广告</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" rel="tag">应用内支付</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%B9%E9%87%8F%E5%AE%9A%E4%B9%89/" rel="tag">批量定义</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E5%85%A5/" rel="tag">拖入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E5%87%BA/" rel="tag">拖出</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E6%8B%BD/" rel="tag">拖拽</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%88%B6/" rel="tag">机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%BC%E5%BC%8F/" rel="tag">格式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AE%8B%E5%BD%B1/" rel="tag">残影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%88%90Html/" rel="tag">生成Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" rel="tag">目录树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8/" rel="tag">移动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" rel="tag">粒子系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" rel="tag">系统托盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E6%B8%B8/" rel="tag">网游</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" rel="tag">视频播放器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" rel="tag">转义字符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/" rel="tag">需求管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nube de Tags</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AS3%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">AS3定义变量</a> <a href="/tags/AS3%E6%8E%A2%E7%A9%B6/" style="font-size: 17.5px;">AS3探究</a> <a href="/tags/Air/" style="font-size: 17.5px;">Air</a> <a href="/tags/Air-for-Android/" style="font-size: 10px;">Air for Android</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Bitmap/" style="font-size: 10px;">Bitmap</a> <a href="/tags/ContextMenu/" style="font-size: 10px;">ContextMenu</a> <a href="/tags/File/" style="font-size: 10px;">File</a> <a href="/tags/File%E7%9B%AE%E5%BD%95/" style="font-size: 10px;">File目录</a> <a href="/tags/Find-References/" style="font-size: 10px;">Find References</a> <a href="/tags/Flash%E8%BF%90%E8%A1%8C%E6%97%B6%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">Flash运行时路线图</a> <a href="/tags/IAP/" style="font-size: 10px;">IAP</a> <a href="/tags/LitJson/" style="font-size: 10px;">LitJson</a> <a href="/tags/MonoDevelop/" style="font-size: 10px;">MonoDevelop</a> <a href="/tags/Particle/" style="font-size: 10px;">Particle</a> <a href="/tags/RPG%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">RPG游戏</a> <a href="/tags/Scale9Grid/" style="font-size: 10px;">Scale9Grid</a> <a href="/tags/Service/" style="font-size: 10px;">Service</a> <a href="/tags/Text/" style="font-size: 10px;">Text</a> <a href="/tags/TexturePacker/" style="font-size: 10px;">TexturePacker</a> <a href="/tags/UDID/" style="font-size: 10px;">UDID</a> <a href="/tags/Unity/" style="font-size: 15px;">Unity</a> <a href="/tags/XCode/" style="font-size: 10px;">XCode</a> <a href="/tags/adb/" style="font-size: 10px;">adb</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/adobe/" style="font-size: 10px;">adobe</a> <a href="/tags/adt%E6%89%93%E5%8C%85/" style="font-size: 10px;">adt打包</a> <a href="/tags/ane/" style="font-size: 15px;">ane</a> <a href="/tags/ant/" style="font-size: 10px;">ant</a> <a href="/tags/assets/" style="font-size: 10px;">assets</a> <a href="/tags/atf/" style="font-size: 10px;">atf</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/copyPixel/" style="font-size: 10px;">copyPixel</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/dex2jar/" style="font-size: 10px;">dex2jar</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/drag/" style="font-size: 10px;">drag</a> <a href="/tags/flash/" style="font-size: 15px;">flash</a> <a href="/tags/flash-builder/" style="font-size: 10px;">flash builder</a> <a href="/tags/flash-builder-4/" style="font-size: 10px;">flash builder 4</a> <a href="/tags/flash-player-10/" style="font-size: 10px;">flash player 10</a> <a href="/tags/flash-runtimes/" style="font-size: 10px;">flash runtimes</a> <a href="/tags/flv/" style="font-size: 10px;">flv</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/ios/" style="font-size: 20px;">ios</a> <a href="/tags/ipa/" style="font-size: 17.5px;">ipa</a> <a href="/tags/itms-services/" style="font-size: 10px;">itms-services</a> <a href="/tags/keyboard/" style="font-size: 10px;">keyboard</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mac/" style="font-size: 12.5px;">mac</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/player-11/" style="font-size: 10px;">player 11</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/react-native/" style="font-size: 10px;">react-native</a> <a href="/tags/setIndex/" style="font-size: 10px;">setIndex</a> <a href="/tags/setPixel/" style="font-size: 10px;">setPixel</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/socket%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">socket服务器</a> <a href="/tags/starling/" style="font-size: 15px;">starling</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/useLegacyAOT/" style="font-size: 10px;">useLegacyAOT</a> <a href="/tags/uwsgi/" style="font-size: 10px;">uwsgi</a> <a href="/tags/vbox/" style="font-size: 10px;">vbox</a> <a href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E7%9B%98/" style="font-size: 10px;">七牛云盘</a> <a href="/tags/%E4%BA%8B%E4%BB%B6/" style="font-size: 12.5px;">事件</a> <a href="/tags/%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">交互设计</a> <a href="/tags/%E4%BA%A7%E5%93%81%E7%A0%94%E5%8F%91/" style="font-size: 10px;">产品研发</a> <a href="/tags/%E5%8F%91%E9%80%81/" style="font-size: 10px;">发送</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%A4%A9%E6%B0%94API/" style="font-size: 10px;">天气API</a> <a href="/tags/%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">定义变量</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">对象置顶</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 10px;">常用函数</a> <a href="/tags/%E5%B9%BF%E5%91%8A/" style="font-size: 10px;">广告</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" style="font-size: 10px;">应用内支付</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 10px;">快捷键</a> <a href="/tags/%E6%89%B9%E9%87%8F%E5%AE%9A%E4%B9%89/" style="font-size: 10px;">批量定义</a> <a href="/tags/%E6%8B%96%E5%85%A5/" style="font-size: 10px;">拖入</a> <a href="/tags/%E6%8B%96%E5%87%BA/" style="font-size: 10px;">拖出</a> <a href="/tags/%E6%8B%96%E6%8B%BD/" style="font-size: 12.5px;">拖拽</a> <a href="/tags/%E6%9C%BA%E5%88%B6/" style="font-size: 10px;">机制</a> <a href="/tags/%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">格式</a> <a href="/tags/%E6%AE%8B%E5%BD%B1/" style="font-size: 10px;">残影</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%88%90Html/" style="font-size: 10px;">生成Html</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 10px;">用户体验</a> <a href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" style="font-size: 10px;">目录树</a> <a href="/tags/%E7%A7%BB%E5%8A%A8/" style="font-size: 10px;">移动</a> <a href="/tags/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">粒子系统</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" style="font-size: 10px;">系统托盘</a> <a href="/tags/%E7%BD%91%E6%B8%B8/" style="font-size: 10px;">网游</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">视频播放器</a> <a href="/tags/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" style="font-size: 10px;">转义字符</a> <a href="/tags/%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">配置</a> <a href="/tags/%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/" style="font-size: 10px;">需求管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/02/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/20/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/">Java高级特性——反射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/30/git%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4tag/">Git批量删除tag</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/01/%E6%9F%A5%E7%9C%8Bipa%E4%B8%AD%E5%8C%85%E5%90%AB%E7%9A%84%E8%AE%BE%E5%A4%87udid/">查看ipa中包含的设备UDID</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/18/ios-u2006-%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">iOS \u2006 中文输入法错误解决方案</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 斯樵<br>
+      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
