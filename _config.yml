@@ -104,4 +104,4 @@ theme: landscape
 deploy:
   type: git
   repository: git@github.com:Sqstudio/sqstudio.github.io.git
-  branch: main
+  branch: master
