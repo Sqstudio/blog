@@ -78,6 +78,96 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linuxcentos-升级-python-至-3-x" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/12/20/linuxcentos-%E5%8D%87%E7%BA%A7-python-%E8%87%B3-3-x/" class="article-date">
+  <time class="dt-published" datetime="2016-12-20T14:56:58.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/12/20/linuxcentos-%E5%8D%87%E7%BA%A7-python-%E8%87%B3-3-x/">Linux(CentOS) 升级 Python 至 3.x</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>CentOS 6.5 中默认安装了 Python，版本比较低（2.6.6），为了使用新版 3.x，需要对旧版本进行升级。 由于很多基本的命令、软件包都依赖旧版本，比如：yum。所以，在更新 Python 时，建议不要删除旧版本（新旧版本可以共存）。  </p>
+<blockquote>
+<p>1.查看 Python 版本号</p>
+</blockquote>
+<p>当 Linux 上安装 Python 后（默认安装），只需要输入简单的命令，就可以查看 Python 的版本号： [codesyntax lang=”php”]</p>
+<p>python -V<br>Python 2.6.6</p>
+<p>[/codesyntax]</p>
+<blockquote>
+<p>2.下载新版本</p>
+</blockquote>
+<p>进入 <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/" title="Python下载页面">Python下载页面</a>，选择需要的版本。 这里，我选择的版本是 3.5.2 。 [codesyntax lang=”bash”]</p>
+<p>wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz">https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz</a></p>
+<p>[/codesyntax] 国外链接网速较慢，可以找下国内的资源。</p>
+<blockquote>
+<p>3.解压安装</p>
+</blockquote>
+<p>[codesyntax lang=”bash”]</p>
+<p>#解压<br>tar -zxvf Python-3.5.2.tgz</p>
+<p>#进入目录<br>cd Python-3.5.2</p>
+<p>#配置<br>./configure</p>
+<p>make</p>
+<p>make install</p>
+<p>[/codesyntax]</p>
+<blockquote>
+<p>4.验证</p>
+</blockquote>
+<p>安装成功以后，就可以查看 Python 的版本了 [codesyntax lang=”bash”]</p>
+<p># python -V<br>Python 2.6.6</p>
+<h1 id="python3-V"><a href="#python3-V" class="headerlink" title="python3 -V"></a>python3 -V</h1><p>Python 3.5.2</p>
+<p>[/codesyntax] 一个是旧版本 2.x，另外一个是新版本 3.x。 <strong>注意：</strong>在 /usr/local/bin/ 下有一个 python3 的链接，指向 bin 目录下的 python 3.5。</p>
+<blockquote>
+<p>5.设置 3.x 为默认版本</p>
+</blockquote>
+<p>查看 Python 的路径，在 /usr/bin 下面。可以看到 python 链接的是 python 2.6，所以，执行 python 就相当于执行 python 2.6。 [codesyntax lang=”bash”]</p>
+<p># ls -al /usr/bin  grep python<br>-rwxr-xr-x.   1 root root       6832 Nov 23  2013 abrt-action-analyze-python<br>-rwxr-xr-x.   2 root root       4864 Jan 22  2014 python<br>lrwxrwxrwx.   1 root root          6 Aug 14  2014 python2 -&gt; python<br>-rwxr-xr-x.   2 root root       4864 Jan 22  2014 python2.6</p>
+<p>[/codesyntax] 修改链接： [codesyntax lang=”bash”]</p>
+<p>#将原来 python 的软链接重命名：<br>mv /usr/bin/python /usr/bin/python.bak</p>
+<p>#将 python 链接至 python3：<br>ln -s /usr/local/bin/python3 /usr/bin/python</p>
+<p>#再查看 Python 的版本<br>python -V<br>Python 3.5.2</p>
+<p>[/codesyntax] 输出的是 3.x，说明已经使用的是 python3了  </p>
+<blockquote>
+<p>6.配置yum</p>
+</blockquote>
+<p>升级 Python 之后，由于将默认的 python 指向了 python3，yum 不能正常使用，需要编辑 yum 的配置文件： [codesyntax lang=”bash”]</p>
+<p>vim /usr/bin/yum</p>
+<p>[/codesyntax] 将 #!/usr/bin/python 改为 #!/usr/bin/python2.7，保存退出即可   至此，终于大功告成了！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2016/12/20/linuxcentos-%E5%8D%87%E7%BA%A7-python-%E8%87%B3-3-x/" data-id="ckll1fv98003pywey6mv70bp1" data-title="Linux(CentOS) 升级 Python 至 3.x" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-轻松学英语" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2016/09/20/%E8%BD%BB%E6%9D%BE%E5%AD%A6%E8%8B%B1%E8%AF%AD/" class="article-date">
@@ -109,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2016/09/20/%E8%BD%BB%E6%9D%BE%E5%AD%A6%E8%8B%B1%E8%AF%AD/" data-id="ckll0v10g00drpvey5hg4100i" data-title="轻松学英语" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2016/09/20/%E8%BD%BB%E6%9D%BE%E5%AD%A6%E8%8B%B1%E8%AF%AD/" data-id="ckll1fvcs00dtyweychhd81zs" data-title="轻松学英语" class="article-share-link">Share</a>
       
       
       
@@ -156,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2016/09/09/c-%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/" data-id="ckll0v0wf0025pveyb9mqg5zh" data-title="C# 九九乘法表" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2016/09/09/c-%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/" data-id="ckll1fv8k0023ywey1y1tgu83" data-title="C# 九九乘法表" class="article-share-link">Share</a>
       
       
       
@@ -196,7 +286,7 @@
       
         <p><a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/git.jpeg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/git.jpeg" alt="git"></a>git clone http://..git #复制远程库下来<br>git remote rm orgin #断开远程库</p>
 <p>git init #初始化init<br>git remote add http://..git #添加远程库连接<br>git push -u origin master #推送到远程库，第一次加 -u<br>git pull #拉去远程库更新</p>
-<p>ssh-keygen -t rsa -C “<a href="mailto:&#101;&#x6d;&#97;&#x69;&#108;&#64;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#109;">&#101;&#x6d;&#97;&#x69;&#108;&#64;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#109;</a>“ #生成ssh key</p>
+<p>ssh-keygen -t rsa -C “<a href="mailto:&#101;&#x6d;&#97;&#105;&#108;&#64;&#49;&#54;&#x33;&#46;&#x63;&#111;&#x6d;">&#101;&#x6d;&#97;&#105;&#108;&#64;&#49;&#54;&#x33;&#46;&#x63;&#111;&#x6d;</a>“ #生成ssh key</p>
 <p>git log # 日志<br>git log –graph –pretty=oneline –abbrev-commit #日志，图形化，只显示一行, commit_id缩写<br>git status #当前状态</p>
 <p>git add #添加到暂存去，空文件夹不行<br>git commit -m “message”</p>
 <p>git reset –hard HEAD^ #回退到上个版本， –hard 是强制同步修改工作区的文件<br>git reflog #版本操作的编号<br>git reset –hard &lt;comond_id&gt; #版本回退后还能恢复</p>
@@ -211,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2016/08/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/" data-id="ckll0v0wt002zpvey3tby9u64" data-title="Git常用命令速查" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2016/08/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/" data-id="ckll1fv8y002zyweydsgagz9k" data-title="Git常用命令速查" class="article-share-link">Share</a>
       
       
       
@@ -273,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2016/08/25/mac-%E4%B8%8B%E4%BD%BF%E7%94%A8tree%E5%91%BD%E4%BB%A4/" data-id="ckll0v0x5003ypveyd3mh3moo" data-title="Mac 下使用tree命令" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2016/08/25/mac-%E4%B8%8B%E4%BD%BF%E7%94%A8tree%E5%91%BD%E4%BB%A4/" data-id="ckll1fv9c003zywey9ps66rja" data-title="Mac 下使用tree命令" class="article-share-link">Share</a>
       
       
       
@@ -287,67 +377,11 @@
 
 
   
-    <article id="post-mac下monodevelop的快捷键记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2016/05/13/mac%E4%B8%8Bmonodevelop%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95/" class="article-date">
-  <time class="dt-published" datetime="2016-05-13T03:46:36.000Z" itemprop="datePublished">2016-05-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Unity3D/">Unity3D</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/05/13/mac%E4%B8%8Bmonodevelop%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95/">Mac下MonoDevelop的快捷键记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id=""><a href="#" class="headerlink" title=""></a><img src="http://www.monodevelop.com/images/389-ss-welcome-5-4.png" alt="MonoDevelop"></h3><h3 id="记录下Mac下MonoDeveloper快捷键"><a href="#记录下Mac下MonoDeveloper快捷键" class="headerlink" title="记录下Mac下MonoDeveloper快捷键"></a>记录下Mac下MonoDeveloper快捷键</h3><p>Window下开发Unity3D，除了Vs无它。</p>
-<h4 id="苹果下按键说明如下"><a href="#苹果下按键说明如下" class="headerlink" title="苹果下按键说明如下"></a>苹果下按键说明如下</h4><ul>
-<li>  ⌘——Command ()</li>
-<li>  ⌃ ——Control</li>
-<li>  ⌥——Option (alt)</li>
-<li>  ⇧——Shift</li>
-<li>  ⇪——Caps Lock</li>
-</ul>
-<h3 id="跳转："><a href="#跳转：" class="headerlink" title="跳转："></a>跳转：</h3><p>Command+Y：跳转到声明 Command+L：跳转到具体行 Shift+Command+D：跳转/打开工程文件（VS里面大番茄快速打开文件）Command+上：跳转到文件顶部 Command+下：跳转到文件底部 Command+左：跳转行首 Command+右：跳转行尾 Option+Command+左右方向键：向前/向后转到光标所在位置（这个应该说特别有用）</p>
-<h3 id="查找："><a href="#查找：" class="headerlink" title="查找："></a>查找：</h3><p>Shift+Command+Y：查找所有引用 Command+Y：在文件中查找字符 Shift+Command+F：在所有文件中查找字符</p>
-<h3 id="注释："><a href="#注释：" class="headerlink" title="注释："></a>注释：</h3><p>Command+/：注释/取消注释当前行</p>
-<h3 id="编辑："><a href="#编辑：" class="headerlink" title="编辑："></a>编辑：</h3><p>Command+C：复制 Command+V：粘贴 Command+Z：撤销 Command+X：剪切 Control+K：删除光标后所有当前行内容 Option+上下按键：将当前行向上/向下移动（VS里面Alt+上下按键效果）Option+左右按键：按整个单词切换（VS中Control+左右一样的效果）Option+Delete：删除单词内容 列出了常用的快捷键，自己做个记录，也希望帮助到需要的朋友，如果有更好的MonoDeveloper使用技巧   快捷键可以自己修改 Command+，  但是貌似monoDevelop上的设置选项有点少，比如复制当前行  没找到在，可能是unity自带的，版本有点老，你也可以去官方下载最新的</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2016/05/13/mac%E4%B8%8Bmonodevelop%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95/" data-id="ckll0v0x90048pveycoj46g8x" data-title="Mac下MonoDevelop的快捷键记录" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MonoDevelop/" rel="tag">MonoDevelop</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -358,7 +392,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 

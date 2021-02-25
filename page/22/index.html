@@ -78,6 +78,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-也说as3自定义事件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2011/01/12/%E4%B9%9F%E8%AF%B4as3%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2011-01-12T15:35:21.000Z" itemprop="datePublished">2011-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2011/01/12/%E4%B9%9F%E8%AF%B4as3%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/">也说AS3自定义事件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>看到网上有很多关于AS3自定义事件的文章，写的或简洁到不知所云，或复杂到云山雾罩，大多属于懂的人不用看，不懂的人看不懂。不禁想起前端时间刚接触自定义事件时的纠结，看了几篇相关的文章后，也明白作者的意思，结合自己工作中的一些想法，于是就也写篇文章说说自己的理解，凑凑热闹！ 自我感觉自定义事件并不太难，主要还是得理解自定义事件的意义，明白自定义事件有什么用处，懂得自定义事件用在什么地方。 下面就结合我最近做一个小游戏时用到自定义事件的情况介绍下用法。 思路：通过抛出自定义事件，改变当前游戏状态！ 由MainView来管理GameStartView、GamingView和GameEndView三个游戏状态，每个状态有一个按钮，点击后，抛出自定义事件，MainView侦听到事件后，根据参数改变游戏状态；自定义事件类MyGameEvent继承于Event，含有一个nextStatus的属性。 UML图：</p>
+<p><a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/01/GameEventUML.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/01/GameEventUML.jpg" title="GameEventUML"></a></p>
+<p>代码方面列出最关键的类：MyGameEvent类。 [codesyntax lang=”actionscript3” container=”pre”]</p>
+<p>package com.nestor.event<br>{<br>import flash.events.Event;</p>
+<p>public class MyGameEvent extends Event<br>{<br>// 默认事件类型<br>public static const Status_Change:String = “MyGameEvent.Status_Change”;<br>// 下一游戏状态；<br>public var nextStatus:String;<br>public function MyGameEvent(type:String=Status_Change, bubbles:Boolean=false, cancelable:Boolean=false)<br>{<br>super(type, bubbles, cancelable);<br>}<br>public function clone():MyGameEvent {<br>return new MyGameEvent (type, bubbles, cancelable);<br>}<br>}<br>}</p>
+<p>[/codesyntax]     源码下载： [download id=”3”]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2011/01/12/%E4%B9%9F%E8%AF%B4as3%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/" data-id="ckll1fvak006jyweyaltsemkn" data-title="也说AS3自定义事件" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8B%E4%BB%B6/" rel="tag">事件</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-像素级移动（setpixel）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2011/01/03/%E5%83%8F%E7%B4%A0%E7%BA%A7%E7%A7%BB%E5%8A%A8%EF%BC%88setpixel%EF%BC%89/" class="article-date">
@@ -113,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2011/01/03/%E5%83%8F%E7%B4%A0%E7%BA%A7%E7%A7%BB%E5%8A%A8%EF%BC%88setpixel%EF%BC%89/" data-id="ckll0v0yf006upveyema6dalx" data-title="像素级移动（SetPixel）" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2011/01/03/%E5%83%8F%E7%B4%A0%E7%BA%A7%E7%A7%BB%E5%8A%A8%EF%BC%88setpixel%EF%BC%89/" data-id="ckll1fvaq006zyweyaaend59k" data-title="像素级移动（SetPixel）" class="article-share-link">Share</a>
       
       
       
@@ -163,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2010/11/29/as3%E4%BA%8B%E4%BB%B6%E5%8F%91%E9%80%81%E5%88%9D%E8%AF%86/" data-id="ckll0v0vy0019pveyal1egqe7" data-title="AS3事件机制初识" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2010/11/29/as3%E4%BA%8B%E4%BB%B6%E5%8F%91%E9%80%81%E5%88%9D%E8%AF%86/" data-id="ckll1fv83001cyweyaxej4xr6" data-title="AS3事件机制初识" class="article-share-link">Share</a>
       
       
       
@@ -211,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2010/11/26/flash%E5%8F%98%E5%BD%A2%E7%9B%B8%E5%86%8C/" data-id="ckll0v0wq002rpvey78bbgd0f" data-title="Flash变形相册" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2010/11/26/flash%E5%8F%98%E5%BD%A2%E7%9B%B8%E5%86%8C/" data-id="ckll1fv8v002uyweyg79m1w6r" data-title="Flash变形相册" class="article-share-link">Share</a>
       
       
       
@@ -260,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2010/11/25/hello-world-2/" data-id="ckll0v0ww003apvey16qd4c5j" data-title="开通博客啦！" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2010/11/25/hello-world-2/" data-id="ckll1fv93003byweydchobgg7" data-title="开通博客啦！" class="article-share-link">Share</a>
       
       
       
@@ -278,7 +328,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/21/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span>
+    <a class="extend prev" rel="prev" href="/page/21/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/23/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -289,7 +339,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 

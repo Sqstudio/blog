@@ -78,6 +78,88 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ios应用内付费iap开发步骤列表【转】" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/" class="article-date">
+  <time class="dt-published" datetime="2013-05-24T07:55:22.000Z" itemprop="datePublished">2013-05-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/">iOS应用内付费(IAP)开发步骤列表【转】</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>前两天和服务端同事一起，完成了应用内付费（以下简称IAP, In app purchase）的开发工作。步骤繁多，在此把开发步骤列表整理如下。因为只是步骤列表，所以并不含详细的说明教程，需要看教程的新手，可以看我附在最后的一些参考链接。</p>
+<h3 id="配置Developer-apple-com"><a href="#配置Developer-apple-com" class="headerlink" title="配置Developer.apple.com"></a>配置Developer.apple.com</h3><p>登录到<a target="_blank" rel="noopener" href="https://developer.apple.com/">Developer.apple.com</a>，然后进行以下步骤：</p>
+<ol>
+<li> 为应用建立建立一个不带通配符的App ID</li>
+<li> 用该App ID生成和安装相应的Provisioning Profile文件。</li>
+</ol>
+<h3 id="配置iTunes-Connect"><a href="#配置iTunes-Connect" class="headerlink" title="配置iTunes Connect"></a>配置iTunes Connect</h3><p>登录到<a target="_blank" rel="noopener" href="https://itunesconnect.apple.com/">iTunes Connet</a>，然后进行以下步骤：</p>
+<ol>
+<li> 用该App ID创建一个新的应用。</li>
+<li> 在该应用中，创建应用内付费项目，选择付费类型，通常可选的是可重复消费(Consumable)的或是永久有效(Non-Consumable)的2种，然后设置好价格和Product ID以及购买介绍和截图即可，这里的Product ID是需要记住的，后面开发的时候需要。如下图所示： <img src="http://blog.devtang.com/images/iap-add-product-id.png"></li>
+<li> 添加一个用于在sandbox付费的测试用户，如下图所示。注意苹果对该测试用户的密码要求 和正式账号一样，必须是至少8位，并且同时包含数字和大小写字母： <img src="http://blog.devtang.com/images/iap-adduser-1.png"><img src="http://blog.devtang.com/images/iap-adduser-2.png"></li>
+<li> 填写相关的税务，银行，联系人信息。如下图所示： <img src="http://blog.devtang.com/images/iap-tax-info.png"></li>
+</ol>
+<h3 id="开发工作-ios端"><a href="#开发工作-ios端" class="headerlink" title="开发工作(ios端)"></a>开发工作(ios端)</h3><p>1、 在工程中引入 storekit.framework 和 #import &lt;StoreKit/StoreKit.h&gt; 2、 获得所有的付费Product ID列表。这个可以用常量存储在本地，也可以由自己的服务器返回。 3、 制作一个界面，展示所有的应用内付费项目。这些应用内付费项目的价格和介绍信息可以是自己的服务器返回。但如果是不带服务器的单机游戏应用或工具类应用，则可以通过向App Store查询获得。我在测试时发现，向App Store查询速度非常慢，通常需要2-3秒钟，所以不建议这么做，最好还是搞个自己的服务器吧。 4、当用户点击了一个IAP项目，我们先查询用户是否允许应用内付费，如果不允许则不用进行以下步骤了。代码如下：</p>
+<p>1<br>2<br>3<br>4<br>5<br>6</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if ([SKPaymentQueue canMakePayments]) &#123;</span><br><span class="line">    &#x2F;&#x2F; 执行下面提到的第5步：</span><br><span class="line">    [self getProductInfo];</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    NSLog(@&quot;失败，用户禁止应用内付费购买.&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5、 我们先通过该IAP的ProductID向AppStore查询，获得SKPayment实例，然后通过SKPaymentQueue的 addPayment方法发起一个购买的操作。</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 下面的ProductId应该是事先在itunesConnect中添加好的，已存在的付费项目。否则查询会失败。</span><br><span class="line">- (void)getProductInfo &#123;</span><br><span class="line">  NSSet * set &#x3D; [NSSet setWithArray:@[@&quot;ProductId&quot;]];</span><br><span class="line">  SKProductsRequest * request &#x3D; [[SKProductsRequest alloc] initWithProductIdentifiers:set];</span><br><span class="line">  request.delegate &#x3D; self;</span><br><span class="line">  [request start];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 以上查询的回调函数</span><br><span class="line">- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response &#123;</span><br><span class="line">    NSArray *myProduct &#x3D; response.products;</span><br><span class="line">    if (myProduct.count &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        NSLog(@&quot;无法获取产品信息，购买失败。&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    SKPayment * payment &#x3D; [SKPayment paymentWithProduct:myProduct[0]];</span><br><span class="line">    [[SKPaymentQueue defaultQueue] addPayment:payment];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6、 在viewDidLoad方法中，将购买页面设置成购买的Observer。</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    &#x2F;&#x2F; 监听购买结果</span><br><span class="line">    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidUnload &#123;</span><br><span class="line">    [super viewDidUnload];</span><br><span class="line">    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>7、 当用户购买的操作有结果时，就会触发下面的回调函数，相应进行处理即可。</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions &#123;</span><br><span class="line">    for (SKPaymentTransaction *transaction in transactions)</span><br><span class="line">    &#123;</span><br><span class="line">        switch (transaction.transactionState)</span><br><span class="line">        &#123;</span><br><span class="line">            case SKPaymentTransactionStatePurchased:&#x2F;&#x2F;交易完成</span><br><span class="line">                NSLog(@&quot;transactionIdentifier &#x3D; %@&quot;, transaction.transactionIdentifier);</span><br><span class="line">                [self completeTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStateFailed:&#x2F;&#x2F;交易失败</span><br><span class="line">                [self failedTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStateRestored:&#x2F;&#x2F;已经购买过该商品</span><br><span class="line">                [self restoreTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStatePurchasing:      &#x2F;&#x2F;商品添加进列表</span><br><span class="line">                NSLog(@&quot;商品添加进列表&quot;);</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)completeTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">    &#x2F;&#x2F; Your application should implement these two methods.</span><br><span class="line">    NSString * productIdentifier &#x3D; transaction.payment.productIdentifier;</span><br><span class="line">    NSString * receipt &#x3D; [transaction.transactionReceipt base64EncodedString];</span><br><span class="line">    if ([productIdentifier length] &gt; 0) &#123;</span><br><span class="line">        &#x2F;&#x2F; 向自己的服务器验证购买凭证</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Remove the transaction from the payment queue.</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)failedTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">    if(transaction.error.code !&#x3D; SKErrorPaymentCancelled) &#123;</span><br><span class="line">        NSLog(@&quot;购买失败&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        NSLog(@&quot;用户取消交易&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)restoreTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">  &#x2F;&#x2F; 对于已购商品，处理恢复购买的逻辑</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>8、服务器验证凭证(Optional)。如果购买成功，我们需要将凭证发送到服务器上进行验证。考虑到网络异常情况，iOS端的发送凭证操作应该进行持久化，如果程序退出，崩溃或网络异常，可以恢复重试。</p>
+<h3 id="开发工作-服务端"><a href="#开发工作-服务端" class="headerlink" title="开发工作(服务端)"></a>开发工作(服务端)</h3><p>服务端的工作比较简单，分4步：</p>
+<ol>
+<li> 接收ios端发过来的购买凭证。</li>
+<li> 判断凭证是否已经存在或验证过，然后存储该凭证。</li>
+<li> 将该凭证发送到苹果的服务器验证，并将验证结果返回给客户端。</li>
+<li> 如果需要，修改用户相应的会员权限。</li>
+</ol>
+<p>考虑到网络异常情况，服务器的验证应该是一个可恢复的队列，如果网络失败了，应该进行重试。 与苹果的验证接口文档在<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/StoreKitGuide/VerifyingStoreReceipts/VerifyingStoreReceipts.html#//apple_ref/doc/uid/TP40008267-CH104-SW3">这里</a>。简单来说就是将该购买凭证用Base64编码，然后POST给苹果的验证服务器，苹果将验证结果以JSON形式返回。 苹果AppStore线上的购买凭证验证地址是<a target="_blank" rel="noopener" href="https://buy.itunes.apple.com/verifyReceipt">https://buy.itunes.apple.com/verifyReceipt</a> ，测试的验证地址是：<a target="_blank" rel="noopener" href="https://sandbox.itunes.apple.com/verifyReceipt">https://sandbox.itunes.apple.com/verifyReceipt</a> 原文：<a target="_blank" rel="noopener" href="http://blog.devtang.com/blog/2012/12/09/in-app-purchase-check-list/">http://blog.devtang.com/blog/2012/12/09/in-app-purchase-check-list/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/" data-id="ckll1fv98003nywey3l0ie07w" data-title="iOS应用内付费(IAP)开发步骤列表【转】" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IAP/" rel="tag">IAP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/" rel="tag">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" rel="tag">应用内支付</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-页游那些事儿" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2013/05/09/%E9%A1%B5%E6%B8%B8%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" class="article-date">
@@ -112,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2013/05/09/%E9%A1%B5%E6%B8%B8%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" data-id="ckll0v0z3008mpveyc7039r6d" data-title="页游那些事儿" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2013/05/09/%E9%A1%B5%E6%B8%B8%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" data-id="ckll1fvbe008uywey06wtcius" data-title="页游那些事儿" class="article-share-link">Share</a>
       
       
       
@@ -155,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2013/04/10/as3%E8%80%81%E9%B8%9F%E4%B9%8B%E8%B7%AF/" data-id="ckll0v0w2001kpvey3c8tco76" data-title="AS3老鸟之路" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2013/04/10/as3%E8%80%81%E9%B8%9F%E4%B9%8B%E8%B7%AF/" data-id="ckll1fv8d001qyweyej0lep8p" data-title="AS3老鸟之路" class="article-share-link">Share</a>
       
       
       
@@ -209,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2013/02/24/%E5%88%A4%E6%96%AD%E7%BA%BF%E6%AE%B5%E5%92%8C%E7%9F%A9%E5%BD%A2%E6%98%AF%E5%90%A6%E7%9B%B8%E4%BA%A4/" data-id="ckll0v0yl007dpvey4nlngp0e" data-title="判断线段和矩形是否相交" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2013/02/24/%E5%88%A4%E6%96%AD%E7%BA%BF%E6%AE%B5%E5%92%8C%E7%9F%A9%E5%BD%A2%E6%98%AF%E5%90%A6%E7%9B%B8%E4%BA%A4/" data-id="ckll1fvaw007gyweyf31udbgy" data-title="判断线段和矩形是否相交" class="article-share-link">Share</a>
       
       
       
@@ -252,7 +334,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2013/01/21/starling%E4%B8%AD%E6%96%87%E7%AB%99%E7%BF%BB%E8%AF%91%E7%AC%AC%E4%B8%89%E5%AD%A3/" data-id="ckll0v0xu005hpvey6h9p9vbg" data-title="Starling中文站翻译第三季" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2013/01/21/starling%E4%B8%AD%E6%96%87%E7%AB%99%E7%BF%BB%E8%AF%91%E7%AC%AC%E4%B8%89%E5%AD%A3/" data-id="ckll1fva4005iywey3soqaktt" data-title="Starling中文站翻译第三季" class="article-share-link">Share</a>
       
       
       
@@ -266,62 +348,11 @@
 
 
   
-    <article id="post-关于单例模式的写法和理解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/01/21/%E5%85%B3%E4%BA%8E%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%86%99%E6%B3%95%E5%92%8C%E7%90%86%E8%A7%A3/" class="article-date">
-  <time class="dt-published" datetime="2013-01-21T04:00:42.000Z" itemprop="datePublished">2013-01-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/01/21/%E5%85%B3%E4%BA%8E%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%86%99%E6%B3%95%E5%92%8C%E7%90%86%E8%A7%A3/">关于单例模式的写法和理解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>网上或者在群里看到的单例写法蛮多，我也随便写点，也好给别人点参考。 目前作者常用的单例写法： [codesyntax lang=”actionscript3”]</p>
-<p>package<br>{<br>public class Test<br>{<br>private static var instance:Test=null;<br>public function Test(p:Param)<br>{<br>}<br>public static function getInstance():Test{<br>return instance=new Test(new Param());<br>}<br>}<br>}<br>class Param{}</p>
-<p>[/codesyntax] “=”如果你觉得不好用，或者有问题的话，也可以换成常规的if判断。 作者使用单例写法历经了三个阶段： 第一阶段：仅加个getInstance。如下： [codesyntax lang=”php”]</p>
-<p>package<br>{<br>public class Test<br>{<br>private static var instance:Test=null;<br>public function Test()<br>{<br>}<br>public static function getInstance():Test{<br>if(instance==null){<br>instance=new Test();<br>}<br>return instance;<br>}<br>}<br>}</p>
-<p>[/codesyntax] 这种单例写法算是入门级的吧，无法防止别人通过new创建，只能靠人为的记住这个类是单例。   第二阶段：在构造函数抛错误 [codesyntax lang=”actionscript3”]</p>
-<p>package<br>{<br>public class Test<br>{<br>private static var instance:Test=null;<br>public function Test()<br>{<br>if(instance!=null){<br>throw new Error(“this is a singleton class”);<br>}<br>}<br>public static function getInstance():Test{<br>if(instance==null){<br>instance=new Test();<br>}<br>return instance;<br>}<br>}<br>}</p>
-<p>[/codesyntax] 这种写法，虽然可以防止别人通过new创建，但这要到运行的时候才会抛出错误。 第三阶段：加包外类参数 [codesyntax lang=”actionscript3”]</p>
-<p>package<br>{<br>public class Test<br>{<br>private static var instance:Test=null;<br>public function Test(p:Param)<br>{<br>}<br>public static function getInstance():Test{<br>if(instance==null){<br>instance=new Test(new Param());<br>}<br>return instance;<br>}<br>}<br>}<br>class Param{}</p>
-<p>[/codesyntax] 这种写法可以在编写代码的时候就避免别人通过new来创建实例，比起运行时才报错要更好一些。   单例，感觉在系统里比较适合同于一些管理器之类的功能，比如资源加载管理器，声音管理器等等。当然整个系统架构里面也会经常用到。单例模式应该算是最常用的设计模式之一。当然，单例也不能滥用！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2013/01/21/%E5%85%B3%E4%BA%8E%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%86%99%E6%B3%95%E5%92%8C%E7%90%86%E8%A7%A3/" data-id="ckll0v0yj0075pveyaczr5mwi" data-title="关于单例模式的写法和理解" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/14/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/14/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -332,7 +363,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 

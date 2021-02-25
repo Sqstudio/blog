@@ -78,6 +78,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-as3谷歌地图（google-mps）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2011/10/10/as3%E8%B0%B7%E6%AD%8C%E5%9C%B0%E5%9B%BE%EF%BC%88google-mps%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2011-10-10T09:38:29.000Z" itemprop="datePublished">2011-10-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2011/10/10/as3%E8%B0%B7%E6%AD%8C%E5%9C%B0%E5%9B%BE%EF%BC%88google-mps%EF%BC%89/">AS3谷歌地图（Google Mps）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>最近做的一个谷歌地图的练习，效果如下：  </p>
+<p>  主类的代码：   [codesyntax lang=”actionscript3” lines_start=”1” tab_width=”10”]</p>
+<p>package com.sqstudio.control<br>{<br>import com.google.maps.Color;<br>import com.google.maps.InfoWindowOptions;<br>import com.google.maps.Map;<br>import com.google.maps.MapEvent;<br>import com.google.maps.controls.MapTypeControl;<br>import com.google.maps.controls.NavigationControl;<br>import com.google.maps.controls.OverviewMapControl;<br>import com.google.maps.controls.ScaleControl;<br>import com.google.maps.services.ClientGeocoder;<br>import com.google.maps.services.GeocodingEvent;<br>import com.google.maps.services.GeocodingResponse;<br>import com.google.maps.services.Placemark;<br>import com.sqstudio.common.IPProxy;<br>import com.sqstudio.common.SysConfig;<br>import com.sqstudio.vo.IpVo;</p>
+<p>import flash.events.Event;<br>import flash.geom.Point;<br>import flash.text.TextFormat;</p>
+<p>import flashx.textLayout.formats.TextAlign;</p>
+<p>public class MapController<br>{<br>private var googleMap:Map;<br>private var geocoder:ClientGeocoder;<br>private var ipVo:IpVo;<br>public function MapController()<br>{<br>init();<br>}<br>private function init():void{<br>googleMap = new Map();<br>googleMap.sensor = “false”;<br>googleMap.key = SysConfig.MAP_API_KEY;<br>googleMap.addEventListener(MapEvent.MAP_READY, mapReadyHandler);<br>googleMap.setSize(new Point(SysConfig.STAGE.stageWidth, SysConfig.STAGE.stageHeight));</p>
+<p>//NavigationControl - ScaleControl  为一组UI<br>//ZoomControl - PositionControl 为一组UI</p>
+<p>googleMap.addControl(new ScaleControl());<br>googleMap.addControl(new NavigationControl());<br>//googleMap.addControl(new ZoomControl());<br>//googleMap.addControl(new PositionControl());<br>//<br>googleMap.addControl(new MapTypeControl());//地图类型<br>googleMap.addControl(new OverviewMapControl());//小型地图-缩略图<br>SysConfig.STAGE.addChild(googleMap);<br>googleMap.visible = false;<br>}<br>/**<br> *地图准备就绪<br> * @param event<br> *<br> */<br>private function mapReadyHandler(event:Event):void<br>{<br>geocoder = new ClientGeocoder();<br>geocoder.addEventListener(GeocodingEvent.GEOCODING_SUCCESS, geocodingSuccessHandler);<br>geocoder.addEventListener(GeocodingEvent.GEOCODING_FAILURE, geocodingFailHandler);<br>var ipProxy:IPProxy = new IPProxy();<br>ipProxy.getIp(getIpResult);<br>}<br>/**<br> *获得IP地址，进行解析<br> * @param ipVo<br> *<br> */<br>private function getIpResult(ipVo:IpVo):void{<br>this.ipVo = ipVo;<br>geocoder.geocode(this.ipVo.cip);<br>}<br>/**<br> *解析地址成功<br> * @param event<br> *<br> */<br>private function geocodingSuccessHandler(event:GeocodingEvent):void<br>{<br>googleMap.visible = true;<br>var place:Placemark = GeocodingResponse(event.response).placemarks[0];<br>googleMap.setCenter(place.point,9);//10-缩放级别</p>
+<p>var infoWindowOptions:InfoWindowOptions = new InfoWindowOptions();<br>infoWindowOptions.title = “欢迎访问斯樵工坊(SQStudio.com)”;<br>var titleFmt:TextFormat = new TextFormat(null,12,Color.BLUE);<br>titleFmt.align = TextAlign.CENTER;<br>infoWindowOptions.titleFormat = titleFmt;<br>infoWindowOptions.content = “你的位置：”+place.address;<br>infoWindowOptions.content += “\n经纬度：”+place.point;<br>infoWindowOptions.width = 260;<br>infoWindowOptions.hasShadow = true;</p>
+<p>googleMap.openInfoWindow(place.point,infoWindowOptions);<br>}<br>/**<br> *解析地址失败<br> * @param event<br> *<br> */<br>protected function geocodingFailHandler(event:GeocodingEvent):void<br>{<br>if(!this.ipVo.isIpError){<br>trace(“解析IP失败：”+event.name);<br>this.ipVo.isIpError = true;<br>geocoder.geocode(String(this.ipVo.cname));<br>}else if(!this.ipVo.isNameError){<br>trace(“解析城市名称失败：”+event.name);<br>this.ipVo.isNameError = true;<br>geocoder.geocode(“北京市”);//解析失败默认北京<br>}<br>}<br>}<br>}</p>
+<p>[/codesyntax] 谷歌Map 中文AS3 API地址： <a target="_blank" rel="noopener" href="http://code.google.com/intl/zh-CN/apis/maps/documentation/flash/reference.html">http://code.google.com/intl/zh-CN/apis/maps/documentation/flash/reference.html</a> 获得本地IP方式：</p>
+<blockquote>
+<p>2.几个IP查询接口（JS）： （注意： 这三个接口中，只有新浪接口下有crossdomain.xml文件，所以如果用AS3直接访问的话，建议选择新浪接口，不然会遇到安全沙箱哦！）</p>
+<p> 腾讯的IP地址API接口地址：<a target="_blank" rel="noopener" href="http://fw.qq.com/ipaddress">http://fw.qq.com/ipaddress</a><br> 新浪的IP地址查询接口：<a target="_blank" rel="noopener" href="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js%EF%BC%88%E8%BF%98%E6%9C%89json%E5%92%8Cxml%E6%A0%BC%E5%BC%8F%EF%BC%89">http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js（还有json和xml格式）</a><br> 新浪多地域测试方法：<a target="_blank" rel="noopener" href="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&amp;ip=12.130.132.30">http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&amp;ip=12.130.132.30</a><br> 搜狐IP地址查询接口（默认GBK）：<a target="_blank" rel="noopener" href="http://pv.sohu.com/cityjson">http://pv.sohu.com/cityjson</a><br> 搜狐IP地址查询接口（可设置编码）：<a target="_blank" rel="noopener" href="http://pv.sohu.com/cityjson?ie=utf-8">http://pv.sohu.com/cityjson?ie=utf-8</a><br> 搜狐另外的IP地址查询接口：<a target="_blank" rel="noopener" href="http://txt.go.sohu.com/ip/soip">http://txt.go.sohu.com/ip/soip</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2011/10/10/as3%E8%B0%B7%E6%AD%8C%E5%9C%B0%E5%9B%BE%EF%BC%88google-mps%EF%BC%89/" data-id="ckll1fv8b001nywey5mmd3npv" data-title="AS3谷歌地图（Google Mps）" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-什么是交互设计为什么需要交互设计？" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2011/10/09/%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1%EF%BC%9F/" class="article-date">
@@ -167,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2011/10/09/%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1%EF%BC%9F/" data-id="ckll0v10f00dqpvey48i63zd1" data-title="什么是交互设计?为什么需要交互设计？" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2011/10/09/%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1%EF%BC%9F/" data-id="ckll1fvcr00dsyweyciu6dda5" data-title="什么是交互设计?为什么需要交互设计？" class="article-share-link">Share</a>
       
       
       
@@ -231,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2011/08/08/as3%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" data-id="ckll0v0w8001qpvey9q1zh2m7" data-title="AS3转义字符" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2011/08/08/as3%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" data-id="ckll1fv8e001sywey2o4v505b" data-title="AS3转义字符" class="article-share-link">Share</a>
       
       
       
@@ -299,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2011/08/05/%E4%BD%8D%E5%9B%BE%E4%B9%9D%E5%AE%AB%E6%A0%BC%E8%AE%BE%E7%BD%AEscale9grid/" data-id="ckll0v0yb006ipvey8xgw78bw" data-title="位图九宫格设置Scale9Grid" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2011/08/05/%E4%BD%8D%E5%9B%BE%E4%B9%9D%E5%AE%AB%E6%A0%BC%E8%AE%BE%E7%BD%AEscale9grid/" data-id="ckll1fvam006myweybe1d2474" data-title="位图九宫格设置Scale9Grid" class="article-share-link">Share</a>
       
       
       
@@ -358,7 +415,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2011/07/29/%E9%9F%B3%E4%B9%90%E4%BD%A0%E7%9A%84%E7%94%9F%E6%B4%BB-android-qqmusic-%E8%AE%BE%E8%AE%A1%E5%AE%9E%E5%BD%95/" data-id="ckll0v0z3008ppvey31x54bq3" data-title="音乐你的生活—Android QQMusic 设计实录" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2011/07/29/%E9%9F%B3%E4%B9%90%E4%BD%A0%E7%9A%84%E7%94%9F%E6%B4%BB-android-qqmusic-%E8%AE%BE%E8%AE%A1%E5%AE%9E%E5%BD%95/" data-id="ckll1fvbd008qywey9rs700zu" data-title="音乐你的生活—Android QQMusic 设计实录" class="article-share-link">Share</a>
       
       
       
@@ -372,56 +429,11 @@
 
 
   
-    <article id="post-android开发入门之从环境搭建到helloworld" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2011/07/08/android%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8%E4%B9%8B%E4%BB%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%88%B0helloworld/" class="article-date">
-  <time class="dt-published" datetime="2011-07-08T09:09:25.000Z" itemprop="datePublished">2011-07-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2011/07/08/android%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8%E4%B9%8B%E4%BB%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%88%B0helloworld/">Android开发入门之从环境搭建到HelloWorld</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>这两天开始学Android开发，今天折腾了一天总算完成了Android的HelloWorld，并且在Android模拟器顺利启动。只可恨网速实在不给力，一直徘徊在几K到几十K之间。 一、环境搭建 通过AIR For Android来开发Android应用，现在比较成熟完整的开发环境有两种： 1.Flash builder4.5。FB4.5在新建项目的时候增加了两个类型Flex手机项目和ActionScript手机项目，手机项目同时支持Android和iPhone。 2.Flash CS5.5。在FlashCS5.5中已经支持新建Android项目。 当然之前还有Flashbuilder4.0或者FlashCS5配上插件开发之类的，相信FB4.5和FlashCS5.5出来以后，那些过渡期的插件都要被逐渐淘汰了。   除了开发环境还需要用下载AndroidSDK，安装Android模拟器，我选择的是Android2.2版的，也是从这个版本之后，Android才支持AIR2.5的。当然如果你自己有Android手机就再好不过了，模拟器有些功能是没法模拟的，而且速度比较慢，尤其是开机的时候。 Android 2.2 SDK 正式版下载地址（居然被和谐，官方网站需要翻墙）：  <a target="_blank" rel="noopener" href="http://developer.android.com/sdk/android-2.2.html">http://developer.android.com/sdk/android-2.2.html</a> 还有个 google的地址：<a target="_blank" rel="noopener" href="http://dl.google.com/android/android-sdk/_r10-windows.zip">http://dl.google.com/android/android-sdk\_r10-windows.zip</a> 安装过程，网上很多图文教程，我就不多说了，只要网速够给力，神马都是浮云。 <a href="../wp-content/uploads/2011/05/Android.png"></a><a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/05/Android1.png"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/05/Android1.png" title="Android"></a> 二、实例制作 实例我是用FlashCS5.5制作的，直接新建Android项目即可，在发布的时候可以直接生成Android的安装包apk格式。 说下我遇见的几个问题： 1.发布的时候要注意两个选项，在Android的部署类型上一个是设备发行，一个模拟器发行，要根据自己的测试环境发布相应的格式。 2.如果是用Flash Builder开发的话，也可以用命令行来打包生成apk文件，打包命令如： adt -package -target apk-emulator -storetype pkcs12 -keystore android.p12 Test.apk Test-app.xml Test.swf 3.可以给你的Android模拟器建立个快捷方式，但是直接启动AndroidSDK/tools下的emulator.exe是不行的，在桌面快捷方式的属性/目标那一栏后面加上 @2.2，其中2.2是新建模拟器时的名字，如此就可以启动Android模拟器，当然通过命令行也可以。 暂时就写这么多，这次的没有实例代码，有兴趣的朋友自己找找下载地址安装下软件配置下环境，欢迎留言讨论！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2011/07/08/android%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8%E4%B9%8B%E4%BB%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%88%B0helloworld/" data-id="ckll0v0vr000wpveyaw7i34s9" data-title="Android开发入门之从环境搭建到HelloWorld" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Air-for-Android/" rel="tag">Air for Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/17/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/19/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/17/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/19/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -432,7 +444,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 

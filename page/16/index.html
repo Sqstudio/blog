@@ -78,6 +78,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-stage3d硬件检测和要求" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/05/26/stage3d%E7%A1%AC%E4%BB%B6%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A6%81%E6%B1%82/" class="article-date">
+  <time class="dt-published" datetime="2012-05-26T01:30:52.000Z" itemprop="datePublished">2012-05-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/05/26/stage3d%E7%A1%AC%E4%BB%B6%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A6%81%E6%B1%82/">Stage3D硬件检测和要求</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>一、官方要求：<a target="_blank" rel="noopener" href="http://helpx.adobe.com/x-productkb/multi/stage3d-unsupported-chipsets-drivers-flash.html">http://helpx.adobe.com/x-productkb/multi/stage3d-unsupported-chipsets-drivers-flash.html</a></p>
+<blockquote>
+<p>所有平台 任何不支持Pixel Shader 2.x及以上的GPU Intel GMAs that DON’T support Pixel Shader 2.x: 740, i752, IEG, IEG2, GMA 900, GMA 950, GMA 3000, GMA 3100, GMA 3150 Chrome VIA Chipset Windows</p>
+<p>任何早于2009年一月一日的驱动<br> NVIDIA driver 8.17.11.9621<br> NVIDIA driver 8.17.11.8267<br> Any Intel GMA driver before X.X.10.2021</p>
+<p>Macintosh</p>
+<p>All Intel GMAs<br>ATI Radeon X1600<br> ATI Radeon 2400<br> Firefox 3.6 and earlier<br> Mac OS X 10.5</p>
+<p>  *Linux系统仅支持软渲染 *Mac和Windows上Intel HD GPU完全支持 推荐 因为2009一月1号之前的驱动全部不支持，强烈推荐你升级显卡驱动。如果升级后仍只能使用软渲染，你的显卡很可能不被支持。</p>
+</blockquote>
+<p>二、硬件检测 （1）快速检测：<a target="_blank" rel="noopener" href="http://wonderfl.net/c/jJzk">http://wonderfl.net/c/jJzk</a> （2）另一种检测方式</p>
+<p>运行这个工具 <a target="_blank" rel="noopener" href="http://zp.amsnet.pl/cdragan/d3dcaps.html">http://zp.amsnet.pl/cdragan/d3dcaps.html</a> 得到一个叫 ‘devcaps.txt’ 的文件。 查看两个着色器的值。</p>
+<p>VERTEX_SHADER_VERSION FFFE0200</p>
+<p>PIXEL_SHADER_VERSION FFFF0200</p>
+<p>忽略FFFE/FFFF, 只看红色部分的值，这个值必须都大于0200 才能支持molehill, 否则就软解。 注意，这两个值会在devcaps.txt文件中出现两次，用后面出现的那一组 （第一组的值是0104，忽略即可），如果上述值正常，但让没有效果，那就参考上文 硬件要求，也许你的显卡不支持。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2012/05/26/stage3d%E7%A1%AC%E4%BB%B6%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A6%81%E6%B1%82/" data-id="ckll1fva1005ayweyf5if4twb" data-title="Stage3D硬件检测和要求" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-robotlegs-进阶开发笔记【转】" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2012/04/25/robotlegs-%E8%BF%9B%E9%98%B6%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E3%80%90%E8%BD%AC%E3%80%91/" class="article-date">
@@ -220,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2012/04/25/robotlegs-%E8%BF%9B%E9%98%B6%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E3%80%90%E8%BD%AC%E3%80%91/" data-id="ckll0v0xq0056pveyei2bbdoy" data-title="Robotlegs 进阶开发笔记【转】" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2012/04/25/robotlegs-%E8%BF%9B%E9%98%B6%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%E3%80%90%E8%BD%AC%E3%80%91/" data-id="ckll1fv9z0057yweybd1pgjbl" data-title="Robotlegs 进阶开发笔记【转】" class="article-share-link">Share</a>
       
       
       
@@ -263,7 +318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2012/03/08/adobe-flash-runtimes%E8%B7%AF%E7%BA%BF%E5%9B%BE%E8%BD%AC/" data-id="ckll0v0v90004pveycl0a2uqg" data-title="Adobe Flash runtimes路线图[转]" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2012/03/08/adobe-flash-runtimes%E8%B7%AF%E7%BA%BF%E5%9B%BE%E8%BD%AC/" data-id="ckll1fv7a0005ywey0hamfkr4" data-title="Adobe Flash runtimes路线图[转]" class="article-share-link">Share</a>
       
       
       
@@ -314,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2012/02/25/%E5%BC%80%E6%BA%90%E7%B1%BB%E5%BA%93assql%E5%88%9D%E6%8E%A5%E8%A7%A6%EF%BC%8Cas%E7%9B%B4%E6%8E%A5%E8%BF%9Emysql%E6%95%B0%E6%8D%AE%E5%BA%93/" data-id="ckll0v0yr007vpvey6rh80hzs" data-title="开源类库ASSQL初接触，AS直接连mysql数据库" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2012/02/25/%E5%BC%80%E6%BA%90%E7%B1%BB%E5%BA%93assql%E5%88%9D%E6%8E%A5%E8%A7%A6%EF%BC%8Cas%E7%9B%B4%E6%8E%A5%E8%BF%9Emysql%E6%95%B0%E6%8D%AE%E5%BA%93/" data-id="ckll1fvb2007yywey6pd31j1g" data-title="开源类库ASSQL初接触，AS直接连mysql数据库" class="article-share-link">Share</a>
       
       
       
@@ -357,59 +412,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2012/02/19/google-svn-%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E4%B8%8A%E4%BC%A0%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" data-id="ckll0v0wv0036pvey6qq00h72" data-title="google SVN 无法获得上传密码的解决办法" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2012/02/19/google-svn-%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E4%B8%8A%E4%BC%A0%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" data-id="ckll1fv920038yweybzafh41w" data-title="google SVN 无法获得上传密码的解决办法" class="article-share-link">Share</a>
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-关于中国天气（weather-com-cn）天气查询，谷歌雅虎天气弱" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2012/01/04/%E5%85%B3%E4%BA%8E%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%EF%BC%88weather-com-cn%EF%BC%89%E5%A4%A9%E6%B0%94%E6%9F%A5%E8%AF%A2%EF%BC%8C%E8%B0%B7%E6%AD%8C%E9%9B%85%E8%99%8E%E5%A4%A9%E6%B0%94%E5%BC%B1/" class="article-date">
-  <time class="dt-published" datetime="2012-01-04T01:35:21.000Z" itemprop="datePublished">2012-01-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2012/01/04/%E5%85%B3%E4%BA%8E%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%EF%BC%88weather-com-cn%EF%BC%89%E5%A4%A9%E6%B0%94%E6%9F%A5%E8%AF%A2%EF%BC%8C%E8%B0%B7%E6%AD%8C%E9%9B%85%E8%99%8E%E5%A4%A9%E6%B0%94%E5%BC%B1/">关于中国天气（Weather.com.cn）天气查询，谷歌雅虎天气弱爆了</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>最近关注了下天气API方面的东西，最初也是从谷歌和雅虎天气入手，说下这两个天气出现的问题，雅虎天气的问题是你获得的数据都是英文，谷歌天气的问题是你查询的时候必须告诉他城市的拼音名或者城市id什么的，不能通过汉字直接查，有一个小发现共享下，搜狐的查ip时返回的城市id，可以直接用于谷歌天气查询，另外貌似公认的谷歌天气不够全面。 好吧，最后我选择了用中国天气（Weather.com.cn），中国天气 这个网站的数据还是非常全面的，还都是中文的。下面是他的数据获取方式：</p>
-<blockquote>
-<p>城市id获取方式： 1. 访问<a target="_blank" rel="noopener" href="http://m.weather.com.cn/data5/city.xml?level=0%EF%BC%8C%EF%BC%88%E5%90%8E%E9%9D%A2level%E5%8F%82%E6%95%B0%E5%8F%AF%E7%9C%81%E7%95%A5%EF%BC%89%E5%BE%97%E5%88%B0%E4%B8%80%E7%BA%A7%E5%88%97%E8%A1%A8%EF%BC%88%E7%9C%81%E3%80%81">http://m.weather.com.cn/data5/city.xml?level=0，（后面level参数可省略）得到一级列表（省、</a> 直辖市、自治区），结果用逗号隔开，id和城市名称使用竖线“”隔开；结果示例如下： 01北京,02上海,03天津,04重庆,05黑龙江,06吉林,07辽宁,08内蒙古,09河北,10山西,11陕西,12山 东,13新疆,14西藏,15青海,16甘肃,17宁夏…(以下省略） 2. 访问<a target="_blank" rel="noopener" href="http://m.weather.com.cn/data5/city01.xml?level=1%EF%BC%8C%EF%BC%88%E5%90%8E%E9%9D%A2level%E5%8F%82%E6%95%B0%E5%8F%AF%E7%9C%81%E7%95%A5%EF%BC%89%E5%BE%97%E5%88%B0%E4%BA%8C%E7%BA%A7%E5%88%97%E8%A1%A8%E3%80%82">http://m.weather.com.cn/data5/city01.xml?level=1，（后面level参数可省略）得到二级列表。</a> 其中01是一级省市的id，结果格式和上一层相同； 3. 访问<a target="_blank" rel="noopener" href="http://m.weather.com.cn/data5/city0101.xml?level=2%EF%BC%8C%EF%BC%88%E5%90%8E%E9%9D%A2level%E5%8F%82%E6%95%B0%E5%8F%AF%E7%9C%81%E7%95%A5%EF%BC%89%E5%BE%97%E5%88%B0%E4%B8%89%E7%BA%A7%E5%88%97">http://m.weather.com.cn/data5/city0101.xml?level=2，（后面level参数可省略）得到三级列</a> 表。0101是地级市的id，示例如下（北京）： 010101北京,010102海淀,010103朝阳,010104顺义,010105怀柔,010106通州,010107昌平…(以下省略） 4. 访问<a target="_blank" rel="noopener" href="http://m.weather.com.cn/data5/city010101.xml?level=3%EF%BC%8C%EF%BC%88%E5%90%8E%E9%9D%A2level%E5%8F%82%E6%95%B0%E5%8F%AF%E7%9C%81%E7%95%A5%EF%BC%89%E5%BE%97%E5%88%B0%E6%9C%80">http://m.weather.com.cn/data5/city010101.xml?level=3，（后面level参数可省略）得到最</a> 后一级的id，010101是区域的id，示例如下（北京市区）： 010101101010100 ，后面的数字就是获得天气数据需要的城市id，以<a target="_blank" rel="noopener" href="http://m.weather.com.cn/data/%7Bid%7D.html%E6%A0%BC%E5%BC%8F%E8%AE%BF%E9%97%AE%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%87%BA%E5%A4%A9%E6%B0%94%E7%BB%93%E6%9E%9C%E3%80%82">http://m.weather.com.cn/data/{id}.html格式访问即可得出天气结果。</a></p>
-</blockquote>
-<p>但是，这个网站也有一个蛋疼的问题，就是 这个网站只在主域名下有crossdomain.xml文件，即<a target="_blank" rel="noopener" href="http://weather.com.cn/crossdomain.xml">http://weather.com.cn/crossdomain.xml</a> ，在m.weather.com.cn却没有，但是这却不影响其他语言访问，使用js或者php之类的都可以访问，既然AS3不能直接访问，就只好用其他语言中转下咯，比如，可以先从AS3访问php，php将访问weather.com.cn获得的数据返回给AS3。   延伸阅读：<a target="_blank" rel="noopener" href="http://7timer.y234.cn/doc.php?lang=zh-CN#api">http://7timer.y234.cn/doc.php?lang=zh-CN#api</a> （另一个天气API）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2012/01/04/%E5%85%B3%E4%BA%8E%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%EF%BC%88weather-com-cn%EF%BC%89%E5%A4%A9%E6%B0%94%E6%9F%A5%E8%AF%A2%EF%BC%8C%E8%B0%B7%E6%AD%8C%E9%9B%85%E8%99%8E%E5%A4%A9%E6%B0%94%E5%BC%B1/" data-id="ckll0v0yk0078pvey7bto8jhm" data-title="关于中国天气（Weather.com.cn）天气查询，谷歌雅虎天气弱爆了" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A9%E6%B0%94API/" rel="tag">天气API</a></li></ul>
-
     </footer>
   </div>
   
@@ -422,7 +428,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/15/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/17/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/15/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/17/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -433,7 +439,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 

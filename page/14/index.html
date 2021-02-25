@@ -78,6 +78,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-关于单例模式的写法和理解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2013/01/21/%E5%85%B3%E4%BA%8E%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%86%99%E6%B3%95%E5%92%8C%E7%90%86%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2013-01-21T04:00:42.000Z" itemprop="datePublished">2013-01-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2013/01/21/%E5%85%B3%E4%BA%8E%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%86%99%E6%B3%95%E5%92%8C%E7%90%86%E8%A7%A3/">关于单例模式的写法和理解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>网上或者在群里看到的单例写法蛮多，我也随便写点，也好给别人点参考。 目前作者常用的单例写法： [codesyntax lang=”actionscript3”]</p>
+<p>package<br>{<br>public class Test<br>{<br>private static var instance:Test=null;<br>public function Test(p:Param)<br>{<br>}<br>public static function getInstance():Test{<br>return instance=new Test(new Param());<br>}<br>}<br>}<br>class Param{}</p>
+<p>[/codesyntax] “=”如果你觉得不好用，或者有问题的话，也可以换成常规的if判断。 作者使用单例写法历经了三个阶段： 第一阶段：仅加个getInstance。如下： [codesyntax lang=”php”]</p>
+<p>package<br>{<br>public class Test<br>{<br>private static var instance:Test=null;<br>public function Test()<br>{<br>}<br>public static function getInstance():Test{<br>if(instance==null){<br>instance=new Test();<br>}<br>return instance;<br>}<br>}<br>}</p>
+<p>[/codesyntax] 这种单例写法算是入门级的吧，无法防止别人通过new创建，只能靠人为的记住这个类是单例。   第二阶段：在构造函数抛错误 [codesyntax lang=”actionscript3”]</p>
+<p>package<br>{<br>public class Test<br>{<br>private static var instance:Test=null;<br>public function Test()<br>{<br>if(instance!=null){<br>throw new Error(“this is a singleton class”);<br>}<br>}<br>public static function getInstance():Test{<br>if(instance==null){<br>instance=new Test();<br>}<br>return instance;<br>}<br>}<br>}</p>
+<p>[/codesyntax] 这种写法，虽然可以防止别人通过new创建，但这要到运行的时候才会抛出错误。 第三阶段：加包外类参数 [codesyntax lang=”actionscript3”]</p>
+<p>package<br>{<br>public class Test<br>{<br>private static var instance:Test=null;<br>public function Test(p:Param)<br>{<br>}<br>public static function getInstance():Test{<br>if(instance==null){<br>instance=new Test(new Param());<br>}<br>return instance;<br>}<br>}<br>}<br>class Param{}</p>
+<p>[/codesyntax] 这种写法可以在编写代码的时候就避免别人通过new来创建实例，比起运行时才报错要更好一些。   单例，感觉在系统里比较适合同于一些管理器之类的功能，比如资源加载管理器，声音管理器等等。当然整个系统架构里面也会经常用到。单例模式应该算是最常用的设计模式之一。当然，单例也不能滥用！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2013/01/21/%E5%85%B3%E4%BA%8E%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%86%99%E6%B3%95%E5%92%8C%E7%90%86%E8%A7%A3/" data-id="ckll1fvav007bywey9flxe087" data-title="关于单例模式的写法和理解" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-air使用admob广告小结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2013/01/10/air%E4%BD%BF%E7%94%A8admob%E5%B9%BF%E5%91%8A%E5%B0%8F%E7%BB%93/" class="article-date">
@@ -121,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2013/01/10/air%E4%BD%BF%E7%94%A8admob%E5%B9%BF%E5%91%8A%E5%B0%8F%E7%BB%93/" data-id="ckll0v0ve0009pvey3obm5b3e" data-title="AIR使用Admob广告小结" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2013/01/10/air%E4%BD%BF%E7%94%A8admob%E5%B9%BF%E5%91%8A%E5%B0%8F%E7%BB%93/" data-id="ckll1fv7h000eyweyenz379x8" data-title="AIR使用Admob广告小结" class="article-share-link">Share</a>
       
       
       
@@ -166,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2012/12/19/texturepacker%E4%B8%A4%E4%B8%89%E4%BA%8B/" data-id="ckll0v0xx005npvey2c63a4qi" data-title="TexturePacker两三事" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2012/12/19/texturepacker%E4%B8%A4%E4%B8%89%E4%BA%8B/" data-id="ckll1fva7005oywey584i2b2e" data-title="TexturePacker两三事" class="article-share-link">Share</a>
       
       
       
@@ -228,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2012/12/19/starling-%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0particle-system/" data-id="ckll0v0xt005dpvey1zijawg8" data-title="starling 粒子系统学习(Particle-System)" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2012/12/19/starling-%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0particle-system/" data-id="ckll1fva3005eywey9s3wfv80" data-title="starling 粒子系统学习(Particle-System)" class="article-share-link">Share</a>
       
       
       
@@ -307,53 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2012/11/02/%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF%E5%AD%A6%E4%B9%A0-qq%E9%83%A8%E8%90%BD%E7%AE%AD%E5%A1%94%E5%BC%93%E7%AE%AD%E9%A3%9E%E8%A1%8C%E6%A8%A1%E6%8B%9F/" data-id="ckll0v0z1008fpveyewu5f6sj" data-title="贝塞尔曲线学习---QQ部落箭塔弓箭飞行模拟" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-获取obj变量地图" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2012/10/15/%E8%8E%B7%E5%8F%96obj%E5%8F%98%E9%87%8F%E5%9C%B0%E5%9B%BE/" class="article-date">
-  <time class="dt-published" datetime="2012-10-15T12:53:08.000Z" itemprop="datePublished">2012-10-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2012/10/15/%E8%8E%B7%E5%8F%96obj%E5%8F%98%E9%87%8F%E5%9C%B0%E5%9B%BE/">获取Obj变量地图</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>获取Obj上的所有public属性，可以用于两个对象的属性的快速匹配，详情请见 flash.utils.describeType 方法的API [codesyntax lang=”actionscript3”]</p>
-<p>public function initParams(obj:Object):void{<br>this.paramVo = new ParamsVo();<br>var obj:Object = getVariablesMapObj(paramVo);<br>for(var i:String in obj){<br>trace(i);<br>if(obj.hasOwnProperty(i)){<br>paramVo[i] = obj[i];<br>}<br>}<br>}</p>
-<p>/**<br> * 获得变量地图<br> * @param target<br> * @return<br> *<br> */<br>private function getVariablesMapObj(target:Object):Object<br>{<br>var obj:Object = new Object();<br>var dt:XML=describeType(target);<br>for each(var node:XML in dt.variable)<br>{<br>obj[node.@name] = node.@type;<br>}<br>return obj;<br>}</p>
-<p>[/codesyntax]</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2012/10/15/%E8%8E%B7%E5%8F%96obj%E5%8F%98%E9%87%8F%E5%9C%B0%E5%9B%BE/" data-id="ckll0v0yz0089pvey8xix0rs0" data-title="获取Obj变量地图" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2012/11/02/%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF%E5%AD%A6%E4%B9%A0-qq%E9%83%A8%E8%90%BD%E7%AE%AD%E5%A1%94%E5%BC%93%E7%AE%AD%E9%A3%9E%E8%A1%8C%E6%A8%A1%E6%8B%9F/" data-id="ckll1fvbb008kyweyfg4hhwuf" data-title="贝塞尔曲线学习---QQ部落箭塔弓箭飞行模拟" class="article-share-link">Share</a>
       
       
       
@@ -369,7 +374,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/13/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/15/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/13/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/15/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -380,7 +385,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 

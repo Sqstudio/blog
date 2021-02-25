@@ -78,6 +78,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-qq群加群助手webiosandroid二维码" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/01/09/qq%E7%BE%A4%E5%8A%A0%E7%BE%A4%E5%8A%A9%E6%89%8Bwebiosandroid%E4%BA%8C%E7%BB%B4%E7%A0%81/" class="article-date">
+  <time class="dt-published" datetime="2016-01-09T02:31:54.000Z" itemprop="datePublished">2016-01-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>►<a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/01/09/qq%E7%BE%A4%E5%8A%A0%E7%BE%A4%E5%8A%A9%E6%89%8Bwebiosandroid%E4%BA%8C%E7%BB%B4%E7%A0%81/">QQ群加群助手web/iOS/Android/二维码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>官网地址：<a target="_blank" rel="noopener" href="http://qun.qq.com/join.html">http://qun.qq.com/join.html</a> 网页版：</p>
+<blockquote>
+<p><a target="\_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=【官网给的你的QQ群的Key】"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Flash新手营内部学习" title="Flash新手营内部学习"></a></p>
+</blockquote>
+<p>iOS：</p>
+<blockquote>
+<p>- (BOOL)joinGroup:(NSString *)groupUin key:(NSString *)key{ NSString *urlStr = [NSString stringWithFormat:@”mqqapi://card/show_pslcard?src_type=internal&amp;version=1&amp;uin=%@&amp;key=%@&amp;card_type=group&amp;source=external”, @”244675613”,@”【官网给的你的QQ群的Key】”]; NSURL *url = [NSURL URLWithString:urlStr]; if([[UIApplication sharedApplication] canOpenURL:url]){ [[UIApplication sharedApplication] openURL:url]; return YES; } else return NO; }</p>
+</blockquote>
+<p>  Android：</p>
+<blockquote>
+<p>/**************** * * 发起添加群流程。群号：xxx key 为：【官网给的你的QQ群的Key】 * 调用 joinQQGroup(【官网给的你的QQ群的Key】) 即可发起手Q客户端申请加群 * * @param key 由官网生成的key * @return 返回true表示呼起手Q成功，返回fals表示呼起失败 ******************/ public boolean joinQQGroup(String key) { Intent intent = new Intent(); intent.setData(Uri.parse(“mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D” + key)); // 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面 //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) try { startActivity(intent); return true; } catch (Exception e) { // 未安装手Q或安装的版本不支持 return false; } }</p>
+</blockquote>
+<p>    不过Android版貌似有个坑爹的地方，跳转到加群页面后，如果用户进行了操作，返回只会返回到QQ主界面，无法返回到自己应用，关键是再点击自己的应用图标  依然打开的是QQ，必须杀掉自己的应用才可以，坑！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2016/01/09/qq%E7%BE%A4%E5%8A%A0%E7%BE%A4%E5%8A%A9%E6%89%8Bwebiosandroid%E4%BA%8C%E7%BB%B4%E7%A0%81/" data-id="ckll1fv9u004zywey7f6u58i4" data-title="QQ群加群助手web/iOS/Android/二维码" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-在mac上配置adb命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2016/01/07/%E5%9C%A8mac%E4%B8%8A%E9%85%8D%E7%BD%AEadb%E5%91%BD%E4%BB%A4/" class="article-date">
@@ -118,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2016/01/07/%E5%9C%A8mac%E4%B8%8A%E9%85%8D%E7%BD%AEadb%E5%91%BD%E4%BB%A4/" data-id="ckll0v0ym007fpveycecn9kth" data-title="在Mac上配置adb命令" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2016/01/07/%E5%9C%A8mac%E4%B8%8A%E9%85%8D%E7%BD%AEadb%E5%91%BD%E4%BB%A4/" data-id="ckll1fvax007jywey1xs32c3v" data-title="在Mac上配置adb命令" class="article-share-link">Share</a>
       
       
       
@@ -176,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2015/12/13/%E5%9C%A8%E8%AE%BE%E7%BD%AE%E4%BA%86androidparentactivityname%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AD%90activity%E8%BF%94%E5%9B%9E%E9%94%AE%EF%BC%8C%E7%88%B6activity%E6%80%BB%E4%BC%9A%E8%B0%83/" data-id="ckll0v0yp007qpvey71wxf4lm" data-title="在设置了android:parentActivityName后，点击子Activity返回键，父Activity总会调用OnDestroy()的解决方案" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2015/12/13/%E5%9C%A8%E8%AE%BE%E7%BD%AE%E4%BA%86androidparentactivityname%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AD%90activity%E8%BF%94%E5%9B%9E%E9%94%AE%EF%BC%8C%E7%88%B6activity%E6%80%BB%E4%BC%9A%E8%B0%83/" data-id="ckll1fvb0007tywey44zhbcu9" data-title="在设置了android:parentActivityName后，点击子Activity返回键，父Activity总会调用OnDestroy()的解决方案" class="article-share-link">Share</a>
       
       
       
@@ -221,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2015/12/12/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAios-ane%E7%9A%84duplicate-symbol%E9%97%AE%E9%A2%98/" data-id="ckll0v0ye006rpvey0j4i6c9h" data-title="使用多个iOS ANE的duplicate symbol问题" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2015/12/12/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAios-ane%E7%9A%84duplicate-symbol%E9%97%AE%E9%A2%98/" data-id="ckll1fvap006vywey2hwlb33y" data-title="使用多个iOS ANE的duplicate symbol问题" class="article-share-link">Share</a>
       
       
       
@@ -264,55 +319,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2015/11/08/androidstudio-svn%E4%BD%BF%E7%94%A8/" data-id="ckll0v0vk000ipveyeyuf8zvh" data-title="AndroidStudio SVN使用" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2015/11/08/androidstudio-svn%E4%BD%BF%E7%94%A8/" data-id="ckll1fv7o000mywey44qbddzl" data-title="AndroidStudio SVN使用" class="article-share-link">Share</a>
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-android文件读写操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/" class="article-date">
-  <time class="dt-published" datetime="2015-09-25T02:11:38.000Z" itemprop="datePublished">2015-09-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/">Android文件读写操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Assets：该目录只可读，不可写。使用getResource().getAssets().open(“file_name”)获得FileInputStream，进行读取操作 Raw：该目录和Assets一样，可读不可写。使用getResource().openRawResource(R.raw.file_name)获得FileInputSteam，进行读取操作。 外部SD：可读可写，外部可见。先用Environment.getExtenalStorageDirectory获得sd卡的目录File，先检测是否可用。如果可用，再file = new File(sd_dir,filename),进行读写操作。 内部文件：</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/" data-id="ckll0v0vs000zpveyd2q00rbg" data-title="Android文件读写操作" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/File/" rel="tag">File</a></li></ul>
-
     </footer>
   </div>
   
@@ -325,7 +335,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -336,7 +346,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 

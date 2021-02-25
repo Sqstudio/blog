@@ -78,6 +78,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-air-p12证书签名apk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/01/03/air-p12%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8Dapk/" class="article-date">
+  <time class="dt-published" datetime="2014-01-03T11:26:18.000Z" itemprop="datePublished">2014-01-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/01/03/air-p12%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8Dapk/">AIR p12转keystore证书签名apk</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>需求背景：向平台提交apk时提示该id已经存在，需要应用认领，可以认领的方式是使用java的keystore对平台提供的空白为签名apk进行签名上传验证，我们知道使用AIR开发的apk，所用的证书是p12的，如果进行签名认证呢？ 猜想一：试图将p12证书直接转成keystore，各种找资料，耗时半天，没成功！（会遇到找不到证书链的问题） 猜想二：反编译了平台提供的未签名apk，获取id，版本等，通过Flash Builder创建一个类似的apk，企图骗过平台，结果被识破。 继续查找，终于在某篇文章的评论处找到解决办法了。 正确方法：将p12证书直接导入到一个keystore文件中，就可以正常签名了！（真TM的） [codesyntax lang=”actionscript3”]</p>
+<p>//讲p12导入至keystore<br>keytool -v -importkeystore -srckeystore temp.p12 -srcstoretype PKCS12 -destkeystore temp.keystore -deststoretype JKS<br>//查看keystore<br>keytool -v -list -keystore temp.keystore<br>签名（1-证书链别名）<br>jarsigner -verbose -keystore d:\key.keystore -signedjar d:\signed.apk d:\tap_unsign.apk 1<br>删除keystore中别名为help.com的证书链<br>keytool -delete -alias help.com -keystore key.keystore</p>
+<p>[/codesyntax] 签名后上传平台果然OK了！ 参考文章地址：<a target="_blank" rel="noopener" href="http://www.shadowkong.com/archives/1359">http://www.shadowkong.com/archives/1359</a> 这篇Rect的文章是介绍在adt命令里用keystore签名AIR生成的apk的方法，也很有用，建议还是通过keystore来进行签名，使AIR生成的apk更加接近java原生生成的！ 以下是Rect大神关于AIR生成的apk以及ANE等的研究：<a target="_blank" rel="noopener" href="https://github.com/recter/Anti-ADT/tree/master/RDT">https://github.com/recter/Anti-ADT/tree/master/RDT</a>（都很实用！）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2014/01/03/air-p12%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8Dapk/" data-id="ckll1fv7c0008yweyfn6qfv7a" data-title="AIR p12转keystore证书签名apk" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-在未越狱iphone上安装测试版ipa" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2013/08/16/%E5%9C%A8%E6%9C%AA%E8%B6%8A%E7%8B%B1iphone%E4%B8%8A%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95%E7%89%88ipa/" class="article-date">
@@ -175,7 +220,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2013/08/16/%E5%9C%A8%E6%9C%AA%E8%B6%8A%E7%8B%B1iphone%E4%B8%8A%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95%E7%89%88ipa/" data-id="ckll0v0yo007mpveygbec6csw" data-title="在未越狱iPhone上安装测试版ipa" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2013/08/16/%E5%9C%A8%E6%9C%AA%E8%B6%8A%E7%8B%B1iphone%E4%B8%8A%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95%E7%89%88ipa/" data-id="ckll1fvaz007rywey32gjd9a3" data-title="在未越狱iPhone上安装测试版ipa" class="article-share-link">Share</a>
       
       
       
@@ -237,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2013/07/06/%E7%AC%AC%E4%B8%80%E4%B8%AAios%E7%9A%84ane%E8%8B%A6%E9%80%BC%E4%B9%8B%E8%B7%AF/" data-id="ckll0v0yw0084pveyfckwb2ls" data-title="第一个IOS的ANE苦逼之路" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2013/07/06/%E7%AC%AC%E4%B8%80%E4%B8%AAios%E7%9A%84ane%E8%8B%A6%E9%80%BC%E4%B9%8B%E8%B7%AF/" data-id="ckll1fvb70088yweyfb081gy7" data-title="第一个IOS的ANE苦逼之路" class="article-share-link">Share</a>
       
       
       
@@ -284,7 +329,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2013/07/06/vbox%E6%89%A9%E5%AE%B9vdi%E7%A1%AC%E7%9B%98%E5%A4%A7%E5%B0%8F/" data-id="ckll0v0y3005zpvey0w8vgnrb" data-title="Vbox扩容VDI硬盘大小" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2013/07/06/vbox%E6%89%A9%E5%AE%B9vdi%E7%A1%AC%E7%9B%98%E5%A4%A7%E5%B0%8F/" data-id="ckll1fvad0063ywey95pvb3dk" data-title="Vbox扩容VDI硬盘大小" class="article-share-link">Share</a>
       
       
       
@@ -483,7 +528,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2013/05/30/flash-as3-0-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%94%B6%E9%9B%86%E6%80%BB%E6%9C%89%E5%87%A0%E6%9D%A1%E4%BD%A0%E6%B2%A1%E6%B3%A8%E6%84%8F%E7%9A%84/" data-id="ckll0v0wk002hpveyakyq7dig" data-title="Flash AS3.0 常用函数收集,总有几条你没注意的" class="article-share-link">Share</a>
+      <a data-url="https://sqstudio.com/2013/05/30/flash-as3-0-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%94%B6%E9%9B%86%E6%80%BB%E6%9C%89%E5%87%A0%E6%9D%A1%E4%BD%A0%E6%B2%A1%E6%B3%A8%E6%84%8F%E7%9A%84/" data-id="ckll1fv8q002hyweycc2y23xo" data-title="Flash AS3.0 常用函数收集,总有几条你没注意的" class="article-share-link">Share</a>
       
       
       
@@ -497,93 +542,11 @@
 
 
   
-    <article id="post-ios应用内付费iap开发步骤列表【转】" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/" class="article-date">
-  <time class="dt-published" datetime="2013-05-24T07:55:22.000Z" itemprop="datePublished">2013-05-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/">iOS应用内付费(IAP)开发步骤列表【转】</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>前两天和服务端同事一起，完成了应用内付费（以下简称IAP, In app purchase）的开发工作。步骤繁多，在此把开发步骤列表整理如下。因为只是步骤列表，所以并不含详细的说明教程，需要看教程的新手，可以看我附在最后的一些参考链接。</p>
-<h3 id="配置Developer-apple-com"><a href="#配置Developer-apple-com" class="headerlink" title="配置Developer.apple.com"></a>配置Developer.apple.com</h3><p>登录到<a target="_blank" rel="noopener" href="https://developer.apple.com/">Developer.apple.com</a>，然后进行以下步骤：</p>
-<ol>
-<li> 为应用建立建立一个不带通配符的App ID</li>
-<li> 用该App ID生成和安装相应的Provisioning Profile文件。</li>
-</ol>
-<h3 id="配置iTunes-Connect"><a href="#配置iTunes-Connect" class="headerlink" title="配置iTunes Connect"></a>配置iTunes Connect</h3><p>登录到<a target="_blank" rel="noopener" href="https://itunesconnect.apple.com/">iTunes Connet</a>，然后进行以下步骤：</p>
-<ol>
-<li> 用该App ID创建一个新的应用。</li>
-<li> 在该应用中，创建应用内付费项目，选择付费类型，通常可选的是可重复消费(Consumable)的或是永久有效(Non-Consumable)的2种，然后设置好价格和Product ID以及购买介绍和截图即可，这里的Product ID是需要记住的，后面开发的时候需要。如下图所示： <img src="http://blog.devtang.com/images/iap-add-product-id.png"></li>
-<li> 添加一个用于在sandbox付费的测试用户，如下图所示。注意苹果对该测试用户的密码要求 和正式账号一样，必须是至少8位，并且同时包含数字和大小写字母： <img src="http://blog.devtang.com/images/iap-adduser-1.png"><img src="http://blog.devtang.com/images/iap-adduser-2.png"></li>
-<li> 填写相关的税务，银行，联系人信息。如下图所示： <img src="http://blog.devtang.com/images/iap-tax-info.png"></li>
-</ol>
-<h3 id="开发工作-ios端"><a href="#开发工作-ios端" class="headerlink" title="开发工作(ios端)"></a>开发工作(ios端)</h3><p>1、 在工程中引入 storekit.framework 和 #import &lt;StoreKit/StoreKit.h&gt; 2、 获得所有的付费Product ID列表。这个可以用常量存储在本地，也可以由自己的服务器返回。 3、 制作一个界面，展示所有的应用内付费项目。这些应用内付费项目的价格和介绍信息可以是自己的服务器返回。但如果是不带服务器的单机游戏应用或工具类应用，则可以通过向App Store查询获得。我在测试时发现，向App Store查询速度非常慢，通常需要2-3秒钟，所以不建议这么做，最好还是搞个自己的服务器吧。 4、当用户点击了一个IAP项目，我们先查询用户是否允许应用内付费，如果不允许则不用进行以下步骤了。代码如下：</p>
-<p>1<br>2<br>3<br>4<br>5<br>6</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if ([SKPaymentQueue canMakePayments]) &#123;</span><br><span class="line">    &#x2F;&#x2F; 执行下面提到的第5步：</span><br><span class="line">    [self getProductInfo];</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    NSLog(@&quot;失败，用户禁止应用内付费购买.&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5、 我们先通过该IAP的ProductID向AppStore查询，获得SKPayment实例，然后通过SKPaymentQueue的 addPayment方法发起一个购买的操作。</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 下面的ProductId应该是事先在itunesConnect中添加好的，已存在的付费项目。否则查询会失败。</span><br><span class="line">- (void)getProductInfo &#123;</span><br><span class="line">  NSSet * set &#x3D; [NSSet setWithArray:@[@&quot;ProductId&quot;]];</span><br><span class="line">  SKProductsRequest * request &#x3D; [[SKProductsRequest alloc] initWithProductIdentifiers:set];</span><br><span class="line">  request.delegate &#x3D; self;</span><br><span class="line">  [request start];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 以上查询的回调函数</span><br><span class="line">- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response &#123;</span><br><span class="line">    NSArray *myProduct &#x3D; response.products;</span><br><span class="line">    if (myProduct.count &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        NSLog(@&quot;无法获取产品信息，购买失败。&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    SKPayment * payment &#x3D; [SKPayment paymentWithProduct:myProduct[0]];</span><br><span class="line">    [[SKPaymentQueue defaultQueue] addPayment:payment];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>6、 在viewDidLoad方法中，将购买页面设置成购买的Observer。</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    &#x2F;&#x2F; 监听购买结果</span><br><span class="line">    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidUnload &#123;</span><br><span class="line">    [super viewDidUnload];</span><br><span class="line">    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>7、 当用户购买的操作有结果时，就会触发下面的回调函数，相应进行处理即可。</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions &#123;</span><br><span class="line">    for (SKPaymentTransaction *transaction in transactions)</span><br><span class="line">    &#123;</span><br><span class="line">        switch (transaction.transactionState)</span><br><span class="line">        &#123;</span><br><span class="line">            case SKPaymentTransactionStatePurchased:&#x2F;&#x2F;交易完成</span><br><span class="line">                NSLog(@&quot;transactionIdentifier &#x3D; %@&quot;, transaction.transactionIdentifier);</span><br><span class="line">                [self completeTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStateFailed:&#x2F;&#x2F;交易失败</span><br><span class="line">                [self failedTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStateRestored:&#x2F;&#x2F;已经购买过该商品</span><br><span class="line">                [self restoreTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStatePurchasing:      &#x2F;&#x2F;商品添加进列表</span><br><span class="line">                NSLog(@&quot;商品添加进列表&quot;);</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)completeTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">    &#x2F;&#x2F; Your application should implement these two methods.</span><br><span class="line">    NSString * productIdentifier &#x3D; transaction.payment.productIdentifier;</span><br><span class="line">    NSString * receipt &#x3D; [transaction.transactionReceipt base64EncodedString];</span><br><span class="line">    if ([productIdentifier length] &gt; 0) &#123;</span><br><span class="line">        &#x2F;&#x2F; 向自己的服务器验证购买凭证</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Remove the transaction from the payment queue.</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)failedTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">    if(transaction.error.code !&#x3D; SKErrorPaymentCancelled) &#123;</span><br><span class="line">        NSLog(@&quot;购买失败&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        NSLog(@&quot;用户取消交易&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)restoreTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">  &#x2F;&#x2F; 对于已购商品，处理恢复购买的逻辑</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>8、服务器验证凭证(Optional)。如果购买成功，我们需要将凭证发送到服务器上进行验证。考虑到网络异常情况，iOS端的发送凭证操作应该进行持久化，如果程序退出，崩溃或网络异常，可以恢复重试。</p>
-<h3 id="开发工作-服务端"><a href="#开发工作-服务端" class="headerlink" title="开发工作(服务端)"></a>开发工作(服务端)</h3><p>服务端的工作比较简单，分4步：</p>
-<ol>
-<li> 接收ios端发过来的购买凭证。</li>
-<li> 判断凭证是否已经存在或验证过，然后存储该凭证。</li>
-<li> 将该凭证发送到苹果的服务器验证，并将验证结果返回给客户端。</li>
-<li> 如果需要，修改用户相应的会员权限。</li>
-</ol>
-<p>考虑到网络异常情况，服务器的验证应该是一个可恢复的队列，如果网络失败了，应该进行重试。 与苹果的验证接口文档在<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/StoreKitGuide/VerifyingStoreReceipts/VerifyingStoreReceipts.html#//apple_ref/doc/uid/TP40008267-CH104-SW3">这里</a>。简单来说就是将该购买凭证用Base64编码，然后POST给苹果的验证服务器，苹果将验证结果以JSON形式返回。 苹果AppStore线上的购买凭证验证地址是<a target="_blank" rel="noopener" href="https://buy.itunes.apple.com/verifyReceipt">https://buy.itunes.apple.com/verifyReceipt</a> ，测试的验证地址是：<a target="_blank" rel="noopener" href="https://sandbox.itunes.apple.com/verifyReceipt">https://sandbox.itunes.apple.com/verifyReceipt</a> 原文：<a target="_blank" rel="noopener" href="http://blog.devtang.com/blog/2012/12/09/in-app-purchase-check-list/">http://blog.devtang.com/blog/2012/12/09/in-app-purchase-check-list/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sqstudio.com/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/" data-id="ckll0v0x1003mpveyh9xyckdx" data-title="iOS应用内付费(IAP)开发步骤列表【转】" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IAP/" rel="tag">IAP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/" rel="tag">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" rel="tag">应用内支付</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -594,7 +557,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 
