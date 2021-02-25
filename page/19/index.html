@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>斯樵工坊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="斯樵工坊">
+<meta property="og:type" content="website">
+<meta property="og:title" content="斯樵工坊">
+<meta property="og:url" content="https://sqstudio.com/page/19/index.html">
+<meta property="og:site_name" content="斯樵工坊">
+<meta property="og:description" content="斯樵工坊">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="斯樵">
+<meta property="article:tag" content="斯樵工坊">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="斯樵工坊" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">斯樵工坊</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sqstudio.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-air最小化系统托盘" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2011/06/25/air%E6%9C%80%E5%B0%8F%E5%8C%96%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" class="article-date">
+  <time class="dt-published" datetime="2011-06-25T14:48:35.000Z" itemprop="datePublished">2011-06-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2011/06/25/air%E6%9C%80%E5%B0%8F%E5%8C%96%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/">AIR最小化系统托盘</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这是一个简单AIR应用HelloWorld，功能描述如下： 1.窗体上可以通过最小化，正常化和最大化，并退出系统。 2.在窗体上按下鼠标可以拖动。 3.能够生成系统的托盘图标，托盘图标目前设置了两个菜单项目，一个是指向本站，还有一个是退出系统。 运行效果如下： <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/05/AIR%E6%9C%80%E5%B0%8F%E5%8C%96%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/05/AIR%E6%9C%80%E5%B0%8F%E5%8C%96%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98.jpg" title="AIR最小化系统托盘"></a>     安装包如下：[download id=”12”]，可以下载该exe安装包，安装好显示运行效果。   部分重点源码如下： [codesyntax lang=”actionscript3”]</p>
+<p>public function createIcon():void<br>{<br>NativeApplication.nativeApplication.autoExit = false;</p>
+<p>var iconMenu:NativeMenu = new NativeMenu();<br>var urlCommand:NativeMenuItem = iconMenu.addItem(new NativeMenuItem(“sqstudio.com”));<br>urlCommand.addEventListener(Event.SELECT, function(event:Event):void<br>{<br>navigateToURL(new URLRequest(“<a target="_blank" rel="noopener" href="http://www.sqstudio.com&quot;/">http://www.sqstudio.com&quot;</a>));<br>}<br>);<br>var exitCommand:NativeMenuItem = iconMenu.addItem(new NativeMenuItem(“退出系统”));<br>exitCommand.addEventListener(Event.SELECT, function(event:Event):void<br>{<br>NativeApplication.nativeApplication.icon.bitmaps = [];<br>NativeApplication.nativeApplication.exit();<br>}<br>);</p>
+<p>if (NativeApplication.supportsSystemTrayIcon)<br>{<br>NativeApplication.nativeApplication.autoExit = false;<br>var icon:Loader = new Loader();<br>icon.contentLoaderInfo.addEventListener(Event.COMPLETE, function(e:Event):void{<br>NativeApplication.nativeApplication.icon.bitmaps=[e.target.content.bitmapData];</p>
+<p>});<br>icon.load(new URLRequest(“/ico/tubiao1.png”));<br>var systray:SystemTrayIcon = NativeApplication.nativeApplication.icon as SystemTrayIcon;<br>systray.tooltip = “AIR-by SQStudio.com”;<br>systray.menu = iconMenu;<br>systray.addEventListener(MouseEvent.CLICK,geneCKHandler);<br>}<br>}</p>
+<p>[/codesyntax]   源码下载：[download id=”13”]  （用Flash CS5 打开）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2011/06/25/air%E6%9C%80%E5%B0%8F%E5%8C%96%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" data-id="cklkonpce000ncjey5ae7f87e" data-title="AIR最小化系统托盘" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Air/" rel="tag">Air</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" rel="tag">系统托盘</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-air拖拽操作之拖入拖出" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2011/05/05/air%E6%8B%96%E6%8B%BD%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%8B%96%E5%85%A5%E6%8B%96%E5%87%BA/" class="article-date">
+  <time class="dt-published" datetime="2011-05-04T16:38:02.000Z" itemprop="datePublished">2011-05-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2011/05/05/air%E6%8B%96%E6%8B%BD%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%8B%96%E5%85%A5%E6%8B%96%E5%87%BA/">Air拖拽操作之拖入拖出</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>最近在做一款AIR的播放器，在做到播放列表部分，就想到用AIR的拖拽操作，特意关注了一下Air拖拽操作的一些文章。 <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/05/AirDragIco.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/05/AirDragIco.jpg" title="AirDragIco"></a> //———————文字描述不擅长，以下借用RIAMeeting的一篇文章的部分描述———————— 我们可以把整个拖拽的过程分为三个阶段：启动，拖动和放下。</p>
+<ol>
+<li> 启动：用户通过按住鼠标按键从组件或组件中的项目进行拖动，启动拖放操作。涉及的事件包括nativeDragStart 和nativeDragComplete。启动方式是调取NativeDragManager.doDrag()，这个方法调取后，会启动拖拽的过程。</li>
+<li> 拖动：用户在按住鼠标按键的同时，将鼠标光标移至其他组件、应用程序，或移至桌面。涉及的事件包括nativeDragUpdate，nativeDragEnter，nativeDragOver，nativeDragExit。其中nativeDragEnter事件会被我们用于检测数据格式，以决定是否允许接受该数据格式。如果格式合法，我们可以调用NativeDragManager.acceptDragDrop()方法，允许该数据在组件上放下。这个时候屏幕上光标的形状会有所变化。</li>
+<li> 放下：用户在符合条件的放置目标上释放鼠标。如果是在AIR应用内部放下，涉及的事件包括nativeDragDrop，我们可以捕获这个事件，来获取剪切板中的数据，如果放下的区域在AIR外部，那么将会由操作系统来确定如何处理该操作。</li>
+</ol>
+<p>下图描述了NativeDragEvent的各种类型，不同颜色代表这是由不同的对象调度的。 <img src="http://www.riameeting.com/files/casedesign/image/adc_articles/clip_image004(1).jpg"> AIR还提供了一个ClipboardFormats类，定义了各种不同的剪切板描述格式，参见下图(这是AIR1.5的版本，在AIR2中增加了一个新的格式，稍后叙述)： <img src="http://www.riameeting.com/files/casedesign/image/adc_articles/clip_image006(1).jpg"> 按照数据的来源和去处，我们可以将拖拽分为两种类别：拖出和拖入。 //———————  End    ———————— 借用部分AIRMeeting的图片，AIR的拖拽还是侦听好几个事件就可以了如nativeDragEnter，nativeDragOver等，感觉事件还是有点少，不太够用。 下面是我做的一个小实例，不多少，直接上图，上代码！ 实例的效果是 ，拖拽一张jpg或png位图到AIR上，Air会自动显示该图片，同时将桌面上的图片删除至垃圾桶，然后再从AIR上拖出该图片，该图片就会重新生成在桌面上。 局部DragIn类的代码： [codesyntax lang=”actionscript3”]</p>
+<p>private function onDragIn(event:NativeDragEvent):void{<br>var transferable:Clipboard = event.clipboard;<br>if(transferable.hasFormat(ClipboardFormats.FILE_LIST_FORMAT)){<br>var files:Array = transferable.getData(ClipboardFormats.FILE_LIST_FORMAT) as Array;<br>for each(var file:File in files){<br>if(file.extension ==”jpg”  file.extension ==”png” ){<br>NativeDragManager.acceptDragDrop(sp);<br>break;<br>}<br>}<br>} else {<br>trace(“格式不对，仅接受jpg”);<br>}<br>}<br>public var file:File;<br>private function onDrop(event:NativeDragEvent):void{<br>var dropfiles:Array= event.clipboard.getData(ClipboardFormats.FILE_LIST_FORMAT) as Array;<br>file = dropfiles[0];<br>trace(file.url);<br>var loader:Loader = new Loader();<br>loader.contentLoaderInfo.addEventListener(Event.COMPLETE,picComHandler);<br>loader.load(new URLRequest(file.url));<br>}<br>private function picComHandler(e:Event):void{<br>var img:Bitmap = (e.currentTarget as LoaderInfo).content as Bitmap;<br>sp.addChild(img);<br>file.moveToTrash();<br>removeListener();<br>DragOut.getInstance().addListener();<br>}</p>
+<p>[/codesyntax] 局部DragOut代码： [codesyntax lang=”actionscript3”]</p>
+<p>private function downHandler(e:MouseEvent):void{<br>var bmp:Bitmap = sp.getChildAt(0) as Bitmap;<br>var jpg:JPEGEncoder = new JPEGEncoder();<br>ba = jpg.encode(bmp.bitmapData);<br>file = DragIn.getInstance().file;<br>var transferObject:Clipboard = createClipboard(bmp);<br>NativeDragManager.doDrag(sp, transferObject, bmp.bitmapData, new Point(-mouseX,-mouseY));<br>sp.addEventListener(NativeDragEvent.NATIVE_DRAG_START,startHandler);<br>sp.addEventListener(NativeDragEvent.NATIVE_DRAG_COMPLETE,comHandler);<br>}<br>private function startHandler(e:NativeDragEvent):void{<br>trace(“开始拖拽”);<br>}<br>private var file:File;<br>/**<br> *拖拽完成<br> * @param e<br> *<br> */<br>private function comHandler(e:NativeDragEvent):void{</p>
+<p>var fileStream:FileStream = new FileStream();<br>fileStream.open(file, FileMode.WRITE);<br>fileStream.writeBytes(ba,0,ba.length);<br>fileStream.close();</p>
+<p>sp.removeChildAt(0);<br>sp.removeEventListener(MouseEvent.MOUSE_DOWN,downHandler);<br>DragIn.getInstance().init();<br>}<br>public function createClipboard(image:Bitmap):Clipboard {<br>var transfer:Clipboard = new Clipboard();<br>transfer.setData(“bitmap”, image, true);<br>transfer.setData(ClipboardFormats.BITMAP_FORMAT, image.bitmapData, false);<br>transfer.setData(ClipboardFormats.FILE_LIST_FORMAT,new Array(file),false);<br>return transfer;<br>}</p>
+<p>[/codesyntax] 源码下载：[download id=”11” format=”1”] 本次实例的代码写的有点混乱，看不懂的留言哈，重点代码已经列出！这个拖拽的功能应用很广，比如做列表的动态管理，做文件上传等等凡是涉及到文件列表方面的貌似都可以用，期待你的作品哈！ 扩展阅读：<a target="_blank" rel="noopener" href="http://www.riameeting.com/node/486/">http://www.riameeting.com/node/486/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2011/05/05/air%E6%8B%96%E6%8B%BD%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%8B%96%E5%85%A5%E6%8B%96%E5%87%BA/" data-id="cklkonpcd000kcjey3tmgfbca" data-title="Air拖拽操作之拖入拖出" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Air/" rel="tag">Air</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/drag/" rel="tag">drag</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8B%96%E5%85%A5/" rel="tag">拖入</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8B%96%E5%87%BA/" rel="tag">拖出</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8B%96%E6%8B%BD/" rel="tag">拖拽</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-as3右键菜单简析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2011/04/24/as3%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E7%AE%80%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2011-04-23T16:00:32.000Z" itemprop="datePublished">2011-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2011/04/24/as3%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E7%AE%80%E6%9E%90/">AS3右键菜单简析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Flash里的按钮(Button)、影片剪辑(MoiveClip)和文本(TextFiled)都有右键菜单的属性ContentMenu，我们可以新建一个ContextMenu变量来改变右键菜单，然后每个对每个菜单项ContextMenuItem侦听其选中事件（MENU_ITEM_SELECT），来进行响应的操作。 <a target="_blank" rel="noopener" href="http://blog.sqstudio.com/wp-content/uploads/2011/04/rightBtn.jpg"></a><a target="_blank" rel="noopener" href="http://blog.sqstudio.com/wp-content/uploads/2011/04/rightBtn.jpg"></a><a target="_blank" rel="noopener" href="http://blog.sqstudio.com/wp-content/uploads/2011/04/rightBtn.jpg"></a><a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/04/RightBtn.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/04/RightBtn.jpg" title="RightBtn"></a> 这篇文章只是右键菜单的基本应用知识，比较简单，更加详尽完善的右键菜单可以参照这几个类ContextMenu、ContextMenuBuiltInItems、ContextMenuClipboardItems、ContextMenuEvent和ContextMenuItem。灵活运用这些类的方法属性就可以做出自己需要的右键菜单了。</p>
+<p>在上面的swf上点击右键 即可看到效果</p>
+<p>局部重点代码： [codesyntax lang=”actionscript3”]</p>
+<p>private var myContextMenu:ContextMenu;<br>private var menuLabel:String = “斯樵工坊(SQStudio.com)”;<br>private var label:TextField;</p>
+<p>public function RightClick() {<br>myContextMenu = new ContextMenu();<br>myContextMenu.hideBuiltInItems();<br>addCustomMenuItems();<br>this.contextMenu = myContextMenu;<br>}<br>/**<br> *增加菜单项<br> *<br> */<br>private function addCustomMenuItems():void {<br>//ContextMenuItem 的参数说明这个看下api文档，第一个参数是名字，第二个是这个菜单项上面要不要显示一个分隔线，<br>//   第三个参数 就是是否可用，不可用则为灰色  ，第四个参数是否可见</p>
+<p>var item1:ContextMenuItem = new ContextMenuItem(menuLabel);<br>myContextMenu.customItems.push(item1);<br>item1.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, menuItem1SelectHandler);</p>
+<p>var item2:ContextMenuItem = new ContextMenuItem(“QQ聊天”);<br>myContextMenu.customItems.push(item2);<br>item2.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, menuItem2SelectHandler);</p>
+<p>var item3:ContextMenuItem = new ContextMenuItem(“by 斯樵/Nestor”,true,false);<br>myContextMenu.customItems.push(item3);</p>
+<p>}<br>/**<br> *菜单项1的响应事件，即跳转到我博客斯樵工坊<br> * @param e<br> *<br> */<br>private function menuItem1SelectHandler(e:ContextMenuEvent):void{<br>var rqs:URLRequest = new URLRequest(“<a target="_blank" rel="noopener" href="http://www.sqstudio.com&quot;/">http://www.sqstudio.com&quot;</a>);<br>navigateToURL(rqs,”_blank”);<br>}<br>/**<br> *菜单项1的响应事件，即和我用QQ即时聊天，如果我在线的话<br> * @param e<br> *<br> */<br>private function menuItem2SelectHandler(e:ContextMenuEvent):void{<br>//***   url我做了修改 ，即123456789，你可以改成自己的QQ号<br>var rqs:URLRequest = new URLRequest(“<a target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes&quot;">http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes&quot;</a>);<br>navigateToURL(rqs,”_blank”);<br>}</p>
+<p>[/codesyntax] 源码下载： [download id=”10” format=”3”]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2011/04/24/as3%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E7%AE%80%E6%9E%90/" data-id="cklkonpcw001lcjeyb0ucb9jm" data-title="AS3右键菜单简析" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ContextMenu/" rel="tag">ContextMenu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-flv-player视频播放器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2011/04/19/flv-player%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2011-04-19T07:56:11.000Z" itemprop="datePublished">2011-04-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2011/04/19/flv-player%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/">FLV—Player视频播放器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>功能说明：</p>
+<p>1.实现了视频播放、暂停，全屏，显示网站logo，调用广告等常用功能，广告会在暂停时显示，可以手动关闭。</p>
+<p>2.单击视频 实现播放和暂停的切换，双击视频实现全屏模式和正常模式的切换，全屏模式下，工具条会在自动隐藏。</p>
+<p>3.音量控制，默认0.5，通过拖动滑块和点击音量条两种方式改变音量，直接点击声音按钮实现正常声音和静音的切换。</p>
+<p>4.进度条控制，缓冲完成的部分，有时间提示，通过拖动滑块和点击进度条两中方式改变播放的进度。</p>
+<p>5.加载预留5秒钟播放长度，即缓冲区数据不足时，自动暂停播放，并开始加载视频流，加载完成足够播放5秒的数据流，自动开始继续播放。</p>
+<p>欢迎留言，技术交流，右边栏有我的QQ和微博！</p>
+<p>源码暂时还不能提供，但是可以交流下开发的思路，以及遇见的问题！</p>
+<p>斯樵-Nestor</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2011/04/19/flv-player%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" data-id="cklkonpdl0034cjey5rwu98rs" data-title="FLV—Player视频播放器" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flv/" rel="tag">flv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" rel="tag">视频播放器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-山寨照耀中国网游" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2011/04/08/%E5%B1%B1%E5%AF%A8%E7%85%A7%E8%80%80%E4%B8%AD%E5%9B%BD%E7%BD%91%E6%B8%B8/" class="article-date">
+  <time class="dt-published" datetime="2011-04-08T02:52:39.000Z" itemprop="datePublished">2011-04-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2011/04/08/%E5%B1%B1%E5%AF%A8%E7%85%A7%E8%80%80%E4%B8%AD%E5%9B%BD%E7%BD%91%E6%B8%B8/">山寨照耀中国网游</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>  先说个笑话，小明口渴，去一小卖部买瓶冰红茶。喝了一半发现是山寨的，已经喝了，也没说什么。一看瓶盖，再来一瓶。马上给老板说中奖了，再给一瓶。老板很淡定地说，你再仔细看看。小明仔细一看，嘿，瓶盖上印的不是“再来一瓶”，而是“再买一瓶”！ 这个笑话有点老，也谈不上怎么好笑，可能更多的是让人感觉有点冷，山寨饮料的老板很有幽默感，但这确实是真实的事。 提起山寨，大家第一反应就该是手机了。最早的“山寨”这个词汇也是从手机领域被发明出来的，在几年前南方沿海城市的皮包作坊大量仿造、模仿、抄袭而 生的手机产品，因其低廉的价格和拙劣的做工，使得人们纷纷认为这种产品是来自穷乡僻壤的“山寨”中里制作出来的。随着时代变迁，山寨这个词汇也从手机应用 到各个层面，山寨手机、山寨数码相机、山寨MP3、山寨饮料、山寨食品——前几天在网上还见了一篇文章，用图片展示国人的山寨水准，类似“脉动”的“脉 劫”，类似“奥利奥”的“粤利粤”，类似“伊利”的“伊列”，类似“PUMA”的“PANDA”，类似“SONY”的“SQNY”，这些产品的包装样式和 那些品牌几乎一模一样，LOGO上甚至只有少许差别，一不注意你就会买到山寨货。山寨体现在哪里？仿造性、快速化、平民化。它一般都是小作坊起步，快速模 仿成名品牌，无视知识产权。为何会有山寨呢？因为有人有需求，就有市场，而无人监管，则导致大规模的泛滥。 那让我们回头再看看中国的网络行业，可笑的就是，这个创造了十几个上市公司，无数的千万、百万富翁，以及一年高达327亿元人民币的产业，简直就是 一个山寨的集合之大成。2005年之前，免费游戏还没盛行，国产的游戏基本上都抄向韩国——这也不是说韩国游戏就怎么了不起，他们的游戏则抄自欧美。因为 暴雪的《暗黑破坏神2》的流行，初期的韩国游戏几乎一水儿地仿冒DIABLO，尤其是《传奇》在中国的大热，更是把这股风潮推向极致。你只要打开一个韩国 游戏，定然是左边一个红罐子右边一个蓝罐子，中间一排技能栏。而那段时间中国游戏则全力抄韩国，反正《传奇》里有什么，我们做的游戏里就得有什么，甚至还 得在加点它没有的出来。2005年是个分水岭，一方面是因为当时的时长收费游戏达到瓶颈，众多玩家不买账了，只在公测时玩，收费就转身跑路，另一方面是暴 雪的《魔兽世界》上市了。《魔兽世界》上市之前，韩国人的3D游戏已经开始做得有模有样了，以《天堂2》为代表的3DMMORPG基本继承了2D韩式网游 的特点和操作，但是《魔兽世界》则彻底修正了行业标准。这也就形成了目前市面上你能看到的不管是中国网游还是韩国网游，只要它是一款3D的MMORPG游 戏，必然是左上角头像，右上角小地图，左下角对话框，下方一横排都是技能栏。必然是你按AWSD键就可以控制人物角色跑动，必然是你按L键就是任务列表， 你按C键就是人物属性。 比2005年稍晚一点时，2006年出现了一款能影响行业的游戏，它叫《征途》。《征途》不仅借史玉柱的旗号吸引了大量媒体关注从而获得了特殊的营 销效果，其免费游戏的招牌也真正意义上的修改了中国游戏行业的发展方向。其实免费游戏在《征途》之前就有，第一款免费游戏是游戏橘子的《巨 商》，17GAME的《热血江湖》则算得上是第一款成功的免费游戏，甚至在《征途》上市前几个月，其主要竞争对手盛大的《传奇》系列也宣布走免费路线。但 这些都没有《征途》带给行业的影响大，因为《征途》把免费游戏的收费机制做出了一个典范，甚至以当时看来不惜破坏游戏性的方式来进行。其发工资、开箱子、 答题升级、自动寻路做任务、自动挂机升级……这些内容，你现在在国内主流的前10款RPG游戏中，全都能，而且是必须能，看到。如果是一款韩国或欧美游戏 被国内公司代理，其负责运营的人员一定会整理出这样的一份功能列表，然后发数封邮件，要求开发公司必须把这些加入到游戏中——用一句话来形容就是，我才不 管你破不破坏游戏性，你在中国市场上跑这些游戏，就必须要有这些。 然后呢？然后用句俗话来说，时光如白驹过隙，我们静观流转。几年的时光流走后，现在我们能看到的，能玩到的网游，除了名字不一样，其他没什么不一样 的。你觉得悲哀么？我觉得悲哀。你能在地上跑，我也有白龙马坐骑（你看我还有熊猫、神兽和麒麟）；你能在空中飞，我就必定有凤凰坐骑；你有替身宝宝怪，我 就能自动打怪挂机；你有自动寻路做任务，我就能点击就传送；你有天赋技能树，我就有五行炼丹炉；你有百人副本，我就能开千人副本（说到这里打个岔，你一台 服务器也就上限千把人，你还弄了个千人副本，这和全服开放的地下城有啥区别呢？）。一切都是抄、抄、抄，《诛仙》火了，《鬼吹灯》、《兽血沸腾》等各种小 说改编游戏应运而生；《天龙八部》火了，各种金庸古龙的作品被再次反复抬出来重炒；；《穿越火线》火了，无数人时不我待地去做FPS游戏，《地下城与勇 士》火了，刚才那批人转身就去做ACT游戏，还没等反应过来，《龙之谷》又深受好评，于是3D的ACT又成了当前热点；至于那因为《梦幻西游》而生的各种 《梦幻XX》或者《XX西游》的回合制网游，放眼望去少说也有有10来款了……换皮、抄袭、山寨，这就是这个这么庞大的游戏产业的现状。 让我们随手拿前2天的具体事做个例子：作为一款被行业内非常看好的某武侠小说改编游戏作品，在“技术性”测试了一年多后，近期突然宣布其构架了一个 魔幻的平行世界。这个平行世界完全和其被改编的武侠小说背景完全无关，甚至都不是一个武侠主题的内容。这种在同一个游戏中采用多个主题的设定，目前国内只 有《无限世界》采用，正是因为这种新颖设定，这款游戏被行业广为关注。这边《无限世界》还没上市，那边该游戏就宣布同样模式的内容，而且有趣的是那游戏称 它的这个体系就叫做“无限世界”体系。不能不说，这真的是巧合么，这真的不是抄袭么？还是说，“这算什么抄袭呢，这不过就是个行业潜规则嘛，我看得起你我 才抄你，我看不起你我连抄你都不抄！”显然，等该游戏一面市，“无限世界”的跨服体系和平行世界将成为它的创意，然后再次被全国各家游戏公司所继续抄袭借 鉴。再过2年，没人记得曾有个希望用创新和创意来赢取玩家心意的游戏，它的名字就叫《无限世界》。 所以你看，我们得到一个什么结果？结果就是，没有创意，没有创新，唯一有的就是吃进一切创意和玩法的一个怪兽，它用庞大的资源和资金吞噬掉一切游戏 开发人员的想法和点子，然后用无所不用其极的低俗营销来吸引你的注意——别告诉我你没在浏览器上看到一个半裸的美女向你招手，然后说“不玩我你就不是男 人！”这样的广告。这个行业80%的市场份额被10来家大型公司占据，然后这些大型公司毫不在意地挤压市场，中小公司之间为了活命互相抄袭，大型公司也亦 然，大家甚至都则视这些行为是“行业标准”——你不抄他，他抄你可毫不客气。甚至许多有一些想法和创新的公司都不得不在开发期间对自己的游戏设计百般遮 掩，就是为了让自己的这些内容不被人所知，从而能够在市场上占据那么一点点的领先，尽管这些设计可能马上就被其他产品“学习借鉴”了去。 哀哉！在这样的一个时代里，只有山寨才能生存，只有山寨才能打动玩家，只有山寨才能拯救游戏行业。山寨，它让抄袭成为时尚，让厚颜成为招牌，让努力者的一切划为灰烬，飘散在空中，久久难平。 而这，就是我们现在的游戏产业正在经历的，“山寨年代”。   本文转自：Gamelook <a target="_blank" rel="noopener" href="http://www.gamelook.com.cn/?p=33059">http://www.gamelook.com.cn/?p=33059</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2011/04/08/%E5%B1%B1%E5%AF%A8%E7%85%A7%E8%80%80%E4%B8%AD%E5%9B%BD%E7%BD%91%E6%B8%B8/" data-id="cklkonpfn0081cjeydy6m3lmy" data-title="山寨照耀中国网游" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E6%B8%B8/" rel="tag">网游</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/18/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/20/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AS3%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">AS3定义变量</a> <a href="/tags/AS3%E6%8E%A2%E7%A9%B6/" style="font-size: 17.5px;">AS3探究</a> <a href="/tags/Air/" style="font-size: 17.5px;">Air</a> <a href="/tags/Air-for-Android/" style="font-size: 10px;">Air for Android</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Bitmap/" style="font-size: 10px;">Bitmap</a> <a href="/tags/ContextMenu/" style="font-size: 10px;">ContextMenu</a> <a href="/tags/File/" style="font-size: 10px;">File</a> <a href="/tags/File%E7%9B%AE%E5%BD%95/" style="font-size: 10px;">File目录</a> <a href="/tags/Find-References/" style="font-size: 10px;">Find References</a> <a href="/tags/Flash%E8%BF%90%E8%A1%8C%E6%97%B6%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">Flash运行时路线图</a> <a href="/tags/IAP/" style="font-size: 10px;">IAP</a> <a href="/tags/LitJson/" style="font-size: 10px;">LitJson</a> <a href="/tags/MonoDevelop/" style="font-size: 10px;">MonoDevelop</a> <a href="/tags/Particle/" style="font-size: 10px;">Particle</a> <a href="/tags/RPG%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">RPG游戏</a> <a href="/tags/Scale9Grid/" style="font-size: 10px;">Scale9Grid</a> <a href="/tags/Service/" style="font-size: 10px;">Service</a> <a href="/tags/Text/" style="font-size: 10px;">Text</a> <a href="/tags/TexturePacker/" style="font-size: 10px;">TexturePacker</a> <a href="/tags/UDID/" style="font-size: 10px;">UDID</a> <a href="/tags/Unity/" style="font-size: 15px;">Unity</a> <a href="/tags/XCode/" style="font-size: 10px;">XCode</a> <a href="/tags/adb/" style="font-size: 10px;">adb</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/adobe/" style="font-size: 10px;">adobe</a> <a href="/tags/adt%E6%89%93%E5%8C%85/" style="font-size: 10px;">adt打包</a> <a href="/tags/ane/" style="font-size: 15px;">ane</a> <a href="/tags/ant/" style="font-size: 10px;">ant</a> <a href="/tags/assets/" style="font-size: 10px;">assets</a> <a href="/tags/atf/" style="font-size: 10px;">atf</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/copyPixel/" style="font-size: 10px;">copyPixel</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/dex2jar/" style="font-size: 10px;">dex2jar</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/drag/" style="font-size: 10px;">drag</a> <a href="/tags/flash/" style="font-size: 15px;">flash</a> <a href="/tags/flash-builder/" style="font-size: 10px;">flash builder</a> <a href="/tags/flash-builder-4/" style="font-size: 10px;">flash builder 4</a> <a href="/tags/flash-player-10/" style="font-size: 10px;">flash player 10</a> <a href="/tags/flash-runtimes/" style="font-size: 10px;">flash runtimes</a> <a href="/tags/flv/" style="font-size: 10px;">flv</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/ios/" style="font-size: 20px;">ios</a> <a href="/tags/ipa/" style="font-size: 17.5px;">ipa</a> <a href="/tags/itms-services/" style="font-size: 10px;">itms-services</a> <a href="/tags/keyboard/" style="font-size: 10px;">keyboard</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mac/" style="font-size: 12.5px;">mac</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/player-11/" style="font-size: 10px;">player 11</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/react-native/" style="font-size: 10px;">react-native</a> <a href="/tags/setIndex/" style="font-size: 10px;">setIndex</a> <a href="/tags/setPixel/" style="font-size: 10px;">setPixel</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/socket%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">socket服务器</a> <a href="/tags/starling/" style="font-size: 15px;">starling</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/useLegacyAOT/" style="font-size: 10px;">useLegacyAOT</a> <a href="/tags/uwsgi/" style="font-size: 10px;">uwsgi</a> <a href="/tags/vbox/" style="font-size: 10px;">vbox</a> <a href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E7%9B%98/" style="font-size: 10px;">七牛云盘</a> <a href="/tags/%E4%BA%8B%E4%BB%B6/" style="font-size: 12.5px;">事件</a> <a href="/tags/%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">交互设计</a> <a href="/tags/%E4%BA%A7%E5%93%81%E7%A0%94%E5%8F%91/" style="font-size: 10px;">产品研发</a> <a href="/tags/%E5%8F%91%E9%80%81/" style="font-size: 10px;">发送</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%A4%A9%E6%B0%94API/" style="font-size: 10px;">天气API</a> <a href="/tags/%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">定义变量</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">对象置顶</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 10px;">常用函数</a> <a href="/tags/%E5%B9%BF%E5%91%8A/" style="font-size: 10px;">广告</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" style="font-size: 10px;">应用内支付</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 10px;">快捷键</a> <a href="/tags/%E6%89%B9%E9%87%8F%E5%AE%9A%E4%B9%89/" style="font-size: 10px;">批量定义</a> <a href="/tags/%E6%8B%96%E5%85%A5/" style="font-size: 10px;">拖入</a> <a href="/tags/%E6%8B%96%E5%87%BA/" style="font-size: 10px;">拖出</a> <a href="/tags/%E6%8B%96%E6%8B%BD/" style="font-size: 12.5px;">拖拽</a> <a href="/tags/%E6%9C%BA%E5%88%B6/" style="font-size: 10px;">机制</a> <a href="/tags/%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">格式</a> <a href="/tags/%E6%AE%8B%E5%BD%B1/" style="font-size: 10px;">残影</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%88%90Html/" style="font-size: 10px;">生成Html</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 10px;">用户体验</a> <a href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" style="font-size: 10px;">目录树</a> <a href="/tags/%E7%A7%BB%E5%8A%A8/" style="font-size: 10px;">移动</a> <a href="/tags/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">粒子系统</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" style="font-size: 10px;">系统托盘</a> <a href="/tags/%E7%BD%91%E6%B8%B8/" style="font-size: 10px;">网游</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">视频播放器</a> <a href="/tags/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" style="font-size: 10px;">转义字符</a> <a href="/tags/%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">配置</a> <a href="/tags/%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/" style="font-size: 10px;">需求管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/02/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/20/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/">Java高级特性——反射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/30/git%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4tag/">Git批量删除tag</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/01/%E6%9F%A5%E7%9C%8Bipa%E4%B8%AD%E5%8C%85%E5%90%AB%E7%9A%84%E8%AE%BE%E5%A4%87udid/">查看ipa中包含的设备UDID</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/18/ios-u2006-%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">iOS \u2006 中文输入法错误解决方案</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <a rel="license" href="http://beian.miit.gov.cn/" target="_blank">豫ICP备17001339号-1</a>
+      
+      &copy; 2021 斯樵<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

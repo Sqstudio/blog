@@ -6,12 +6,15 @@
   
   <title>斯樵工坊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+  <meta name="description" content="斯樵工坊">
+<meta property="og:type" content="website">
 <meta property="og:title" content="斯樵工坊">
-<meta property="og:url" content="http://sqstudio.com/page/5/index.html">
+<meta property="og:url" content="https://sqstudio.com/page/5/index.html">
 <meta property="og:site_name" content="斯樵工坊">
-<meta property="og:locale">
+<meta property="og:description" content="斯樵工坊">
+<meta property="og:locale" content="en_US">
 <meta property="article:author" content="斯樵">
+<meta property="article:tag" content="斯樵工坊">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="斯樵工坊" type="application/atom+xml">
@@ -59,10 +62,10 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sqstudio.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sqstudio.com"></form>
       </div>
     </div>
   </div>
@@ -71,14 +74,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-在设置了androidparentactivityname后，点击子activity返回键，父activity总会调" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-轻松学英语" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2015/12/13/%E5%9C%A8%E8%AE%BE%E7%BD%AE%E4%BA%86androidparentactivityname%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AD%90activity%E8%BF%94%E5%9B%9E%E9%94%AE%EF%BC%8C%E7%88%B6activity%E6%80%BB%E4%BC%9A%E8%B0%83/" class="article-date">
-  <time class="dt-published" datetime="2015-12-13T15:58:13.000Z" itemprop="datePublished">2015-12-13</time>
+    <a href="/2016/09/20/%E8%BD%BB%E6%9D%BE%E5%AD%A6%E8%8B%B1%E8%AF%AD/" class="article-date">
+  <time class="dt-published" datetime="2016-09-20T09:59:07.000Z" itemprop="datePublished">2016-09-20</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
   </div>
 
   </div>
@@ -89,7 +92,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/12/13/%E5%9C%A8%E8%AE%BE%E7%BD%AE%E4%BA%86androidparentactivityname%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AD%90activity%E8%BF%94%E5%9B%9E%E9%94%AE%EF%BC%8C%E7%88%B6activity%E6%80%BB%E4%BC%9A%E8%B0%83/">在设置了android:parentActivityName后，点击子Activity返回键，父Activity总会调用OnDestroy()的解决方案</a>
+      <a class="p-name article-title" href="/2016/09/20/%E8%BD%BB%E6%9D%BE%E5%AD%A6%E8%8B%B1%E8%AF%AD/">轻松学英语</a>
     </h1>
   
 
@@ -97,25 +100,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>一个Activity在manifet里声明了android:parentActivityName；这时候通过Activity左上角的返回按钮点击返回， 启动声明的父Activity，总会先调用父Activity的OnDestroy方法，具体如下面所说：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">    android:name&#x3D;&quot;com.example.helloworld.DisplayMessageActivity&quot;</span><br><span class="line">    android:label&#x3D;&quot;@string&#x2F;title_activity_display_message&quot;</span><br><span class="line">    android:parentActivityName&#x3D;&quot;com.example.helloworld.MainActivity&quot; &gt;</span><br><span class="line">    &lt;meta-data</span><br><span class="line">        android:name&#x3D;&quot;android.support.PARENT_ACTIVITY&quot;</span><br><span class="line">        android:value&#x3D;&quot;com.example.helloworld.MainActivity&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;activity&gt;</span><br></pre></td></tr></table></figure>
-
-<p>DisplayMessageActivity为子Activity，而MainActivity为父Activity，点击</p>
-<p>DisplayMessageActivity的左上角返回按钮的时候，调用逻辑如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MainActivity.onDestroy()</span><br><span class="line">MainActivity.onCreate(null)</span><br><span class="line">MainActivity.onStart()</span><br></pre></td></tr></table></figure>
-
-<p>解决方案是：</p>
-<p><strong>为设置MainActivity属性android:launchMode=singleTop</strong> </p>
-<p>顺便脑补android:parentActivityName的作用，就是为了左上角给子Activity加一个返回按钮，具体信息如下：</p>
-<blockquote>
-<p><strong>Android 4.1提高性能、增强用户体验</strong></p>
-<p>　　App 栈导航：通过设置android:parentActivityName改变回退栈的内容，如果栈中没有parentActivity，则合成栈，通过onPrepareNavigateUpTaskStack()改变parentActivity中的内容。</p>
-</blockquote>
+        <p>  ————轻松学英语第一步：建立英语思维 为什么大家学英语学得这么累，最后依然对英语糊糊涂涂？原因只有一个——就是我们的学习能力太差了！！我们的老师太笨了！！！ 这篇文章主要是给大家讲英语的基本结构， 看了这篇文章，你们会突然就明白，英语怎么会如此简单！！ 首先我们来看下面这两张地图（左边是中国地图，右边是英国地图）： 例如，我们中国人一见面第一句话是——“你吃了吗。” 英国人一见面的第一句话是——“今天天气怎么样？ what’s the weather like? 为什么中国人一见面就问：你吃了吗？ 英国人一见面就问：天气怎么样？ 咱们来看看语言是怎么来的…… 首先，咱们中国人在中国的土地上生活了五千多年。我们中国人靠什么生活了五千年之久？靠种地！！！也就是说五千多年来，我们都是靠种地为生，咱们中国人是地地道道的农民。农民种地需要土地肥沃，需要气候条件好，这样粮食才会多。中国土地肥沃吗？不肥沃。气候条件好吗？也不好。因此收的粮食自然也就不多。粮食一不多，就导致中国人最关心的事就是“吃饱”，所以一见面就问“你吃了吗？”。从这我们可以看出中国的地理环境决定了中国人在这块土地上干嘛？——种地。种地就决定了粮食不够吃。粮食不够吃，就决定了中国人的语言特点，第一句话就是——“你吃了吗？”，因此，中国的地理环境就决定了中国人的语言。 咱们再来看英国人的语言。英国人一见面就说“今天天气怎么样？”。咱们把英国人为什么问“今天天气怎么样”这个问题弄明白，学英语的问题就全解决了。从上面的英国地图，我们可以看到英国人是住在一个岛上，四周都是大海。既然是一个住在岛上的民族，他们用得着像我们中国人一样种地吗？咱们中国人种地春天播种，秋天收获，忙一年才收获那么两三次，多累呀！！所以他们犯不着跟我们中国人一样种地，打渔就好啦，吃现成的。三百六十五天，想什么时候吃就什么时候打，自然也就不缺吃的。既然英国人不缺吃的，那他们在什么情况下才会挨饿? 要是天气刮风下雨他们还能出海打渔吗？不能吧？所以只要一刮风下雨，他们就没法出海了，不出海就打不到鱼，自然也就挨饿。所以英国人最关心的是天气，见面必问“今天天气怎么样？”。英国的地理环境决定了英国的语言，这个岛国就决定了英国人的思维方式，也决定了它的语言特点。世界上任何一个民族，你只要听这个民族的第一句话，就知道这个民族的特点。 咱们再来举一个例子：日本。日本的第一句话是：“昂吧里嘛斯（音译）”也就是“努力吧”的意思。咱们先来看看日本的地理环境：首先，日本也是一个岛，它不像英国这个岛，鱼多的是，只要天气好就不会挨饿，所以英国人先关心天气。从地图上看，可以知道，日本比较靠近咱们东北，是一个纬度很高的地方。纬度高，说明这个地方冷。天气一冷，种粮食就不容易长。由于这个地方水冷，鱼自然也不爱去。那么就造成日本收获粮食少，打渔又打不到的局面，收成很困难。那么日本靠什么存活到今天？“昂吧里嘛斯.”努力吧！ 你看我们中国人的特色，刚出来就问：你吃了吗？那日本人呢，你刚一进厕所，他就“昂吧里嘛斯，昂吧里嘛斯。”上厕所他也“努力吧”。 一个民族的思维习惯是改不了的。一个民族的地理环境就决定了这个民族的思维习惯。这个思维习惯，就决定它的语言特点。 咱们学英语为什么学不会？问题出在哪里？——我们一直在拿“农民”的思维去学英语，去学“渔民”的语言。怎么可能学得会呢？以前的老师也是在用农民的思维在教我们，所以写出来的句子还是农民。你怎么样才能改变，把学英语变得简单？你要改变你的思维方式。用渔民的思维方式去学英语。建立一个渔民的思维方式难不难？我告诉你，一点都那不难，非常非常简单。 渔民的思维方式非常简单，它的语言特点也非常简单。它比我们农民简单得多得多。咱们举个例子：过马路 中国人过马路 英国人过马路 咱们来看看中国人过马路是怎么过的？想从哪过就从哪过，对不对？十个中国人过马路，会从十个不同的地方过。如果是十个英国人呢？他们都会老老实实的走人行横道。你看中国马路跟英国马路就知道了。中国的马路中间都有一个栏杆，这个栏杆就是为了防止咱们中国人横穿马路。结果，走不过我们就跨栏，看我们中国人有运动精神吧？跨着，跨着，跨出了个刘翔来……英国人马路中间都没有栏杆，可是他们都不横穿马路，都走人行道。为什么？——渔民！！ 为什么中国人过马路想从哪过就从哪过呢？我们来看看中国人五千年来是怎么生存的。我们是农民。我们是个体经营，知道吗？我在我的地里种土豆，你管得着吗？我种玉米，你管得着吗？我六点钟下地，你管得着吗？我八点钟下地，你管得着吗？我今天不去了，你管得着吗？所以农民是我想干什么，他就干什么。所以到今天，他想从哪过他就从哪过。这是个体。 咱们再看看英国人，英国人是渔民吧？英国人是在海里打渔。一个在海里打渔的民族必须要用大船吧？用一个小船能行吗？到海里就翻了。它必须要用大船。一个大船必须有五个人，十个人。必须有掌舵的，有升帆的，有撒网的，有划桨的。那么英国人这五千年它是怎么作业的？集体，团体。所以咱们来看：比如我是船长，我说六点钟上船起航，所有的人都怎么样？都要六点钟来。我说向东划，所有人都要向东使劲。所以它形成了一种思维方式。就是说非常守规矩，非常讲秩序。你看我们中国人，公共汽车一来的时候“呼~~”都往那挤。而英国不是，英国人：“即使剩下一个人，它也老老实实地排成一队。它的生产生活方式就决定了这个民族的特点。 现在咱们再来说语言，前面我们说了：一个民族的思维方式就决定了这个民族的语言特点。中国人的说话特点是想怎么说就怎么说。也就是一个意思让十个中国人来表达，十个人会说出十句话，十个不同的表达方式。而让英国人表达一个意思，就跟他们都走人行横道一样，十个英国人说出的话一模一样。所以这种语言非常非常简单。简单到让人难以置信。不像我们的语言，我们语言到今天为止，你想把中国的语言统一起来是非常困难的。现在我们来看看中文复杂到什么程度，例如：我们可以把一个东西叫做一支笔、一张纸、一台电脑、一块眼镜、一条毛巾、一张桌子……但是英国人呢？a，一个a，全解决了。他搞不清我们中国人在干什么。你们累不累啊？我们就这么累。英语就像刚才我说的那个a的表现形式，它跟中国完全不同。我们中国人最擅长把简单问题复杂化，而英国人最擅长把复杂问题简单化。 英语简单到什么程度？我来告诉你，英语只有三个句子。对，你没看错，英语就只有三个句子。英国人就会说三个句子，英国人要是说第四个句子，我爬楼上跳下去摔死。一个民族语言表达只有三个句子的时候，你就知道它有多么简单！！有多么容易学！！ 我用最快的速度把这三个句子给你们讲一遍，因为我不讲得那么细，只是给你们介绍一下。主要是让你们明白它有多么简单！！ 比如，我们看这个句子：The man is a teacher. 这句话怎么翻译？——这个人是一个老师。 The man 是什么意思？ Is是什么意思？ Teacher是什么意思？ 如果有人说：Is是“是”的意思，那就完啦。这是什么人？农民！！为什么？——他（她）在学英语的第一天就被老师一脚踹粪坑里了，得花一辈子从那粪坑里往外爬。 因为把“is”当“是”了。这样就惨啦！！ Is是“是”，they are teachers的“are”也是“是”。那英语就没办法学了。 这样的话“How are you ? ”就变成“怎么是你”了。 “How old are you? ”就变成“怎么老是你”了。 然后“天天向上”就“good good study,day day up.” “人山人海”就“people many people see. ” “给你点颜色看看”就“give you color to see see.” 结果全是拿英文单词按中国人的思维方式拼出来的句子，翻译出来的句子全是这玩意，根本不是英文。所以我们以前是用什么思维方式在学英文？农民！！ 我们再来看看“渔民”的思维方式。咱们看下面几个句子： 这个人是一个老师。(英文怎么说？)—— The man is a teacher. 刚好和中文对上“人——man 是——is 老师——teacher” 再看这个句子： 他很忙。——中国人说“他很忙。” 中文有“是”吗？——没有！ 英国人怎么说？He is busy. 英文要不要“is”？一定要有。 第三个句子： 她在教室里。 中文里有“是”吗?——没有。 英文怎么说？——She is in the classroom。 你看，中文一会有是，一会没有。而英文怎么样？非有这个“is”不可。那我们首先就要搞清楚，英国人为什么非要跟这个“is”没完没了？ 我们说过了， 英国人只有三个句子，它只会说三句话。那么，一个民族只会说三句话的时候，首先就要区分出来这三句话。靠什么来区分呢？我举个例子，开奥运会，有三个国家参加奥运会。老远，我们就说美国队出来了。怎么知道美国队出来了？美国队举着美国国旗。我们说英国队出来了，英国队举着英国国旗。一看五星红旗，我们就知道谁出来啦？中国队。英国人说每一句话的时候它最在乎谁？在乎那面旗子。英文的第一面旗子就是“is 、am、are”当你发现一个句子有“is、am、are”的时候，你就知道英国人想说什么啦！！英国人想说： 当“is”后面是名词的时候，它表示是什么。—— 什么人、什么东西是什么。 当“is”后面是形容词的时候，它表示怎么啦。——什么人、什么东西怎么啦？ 当“is”后面是一个介词加名词（我们叫它介词短语）的时候，它表示在什么地方。——什么人、什么东西在什么地方。 要是你明白了上面说的，你就明白了英语的三分之一。这种句型就叫：主系表。“is/am/are”就是这个句型的灵魂。这个句子就是三个单词：主、系、表。 主语永远是名词，人或者物。 表语呢？有三种可能性：一种是“名词”，表示“是什么”。 二是“形容词”，表示“怎么了”。 三是“介词短语”，表示“在什么地方”。 掌握了这个句型，就掌握了英语的三分之一。剩下的就是要牢牢记住这个“be(is/am/are)”的变化。 比如:现在时——is/am/are 过去时——was/were 将来时——will be 完成时——have been 过去完成时——had been 将来完成时——will have been 非常简单，一下子就记住了。你们看： 你有钱。——You are rich. 你将来有钱。——You will be rich. 完成时呢？——You have been rich. 过去完成时——You had been rich. 将来完成时——you will have been rich. 过去将来完成时 ——You would have been rich. ·········· 一共就八句话，这个句型就学完了。学这么点就学了英语的三分之一 ———————————————————————————————- 你们之前为什么出问题了？咱们来看看问题出在哪···· 看这个句子：The man is a teacher. Man 是什么词？——名词 Teacher 什么词？——名词 in the classroom。Classroom什么词？——名词 我们来看看英语是怎么变长的。因为英语一变长，咱们就乱了。 比如我说：从英国来的那个人在教室里。（从这里有些人就开始乱啦） “英国来的”我们用什么介词？——From “从英国来”——From England 从英国来的（介词短语）那个人在教室里。——从这句话可以看出，咱们中国人“在用介词短语做定语的时候，修饰哪个名词放在哪个名词的前面。” The man from england（介词短语） is in the classroom。——英国人“在用介词短语做定语的时，放在修饰名词的后面。” 再看:she is in the classroom. 她在教室里。 她在二楼的教室里。用英文怎么说？——she is in the classroom on the second the floor. “on the second the floor”为什么放在“classroom”后面？修饰哪个名词放在哪个名词的后面。 大家按照上面说的，试着把下面句子翻译成英文试试，体会一下： 这个人在二楼的教室里。——The man is in the classroom on the second floor. 这个人在大楼的二层的教室里。——The man is in the classroom on the second floor in the building. 哪个“building”? In the school ； 哪个“school”? In shanghai；哪个“shanghai”？In china.这个句子就这么一下子长下去。你们把它翻译成中文，再体会体会英文，一下子就全明白了。中文怎么说：这个人在中国上海的学校大楼的二楼的教室里。——我们关心的是这个人在哪？而我们的语言中偏偏把这个人放哪啦？放后面。而英文放哪？“the man is in the classroom”。英文把重要的放前面。 比如： 桌子上的钱是我的。——中国人先说桌子上，然后再说钱是我的。而英国人怎么说？“Money on the desk is mine.它把“money “放前面。钱重要还是桌子重要？钱！！ 为什么我们中国人把不重要的放前面？因为我们是农民。农民为什么有这种毛病？农民是春天播种，秋天收获。他收了粮食以后，这个农民是先吃好的还是先吃次的？先吃次的。好粮食可以存，一直存到第二年的秋天。次粮食是不能存的，所以它一直先吃次的，吃吃吃吃，吃到好的，吃到第二年秋天。要不然我们这个民族就饿死了。而渔民是怎么样的？渔民三百六十五天，天天能打到鱼。打到鱼他先吃好的还是先吃次的？先吃好的。为什么？这鱼不能放啊，第二天它臭了，晚上就臭了。所以它先吃好的，把坏的扔了。所以它的思维，你看它总是把好东西放哪？放前面，重要的总是放前面。它的生活习惯决定了它的思维方式。包括我们中国人的饺子。吃过饺子吧？哪里好吃？馅！！馅在里面呢，它把好东西包里面。吃过包子吗？吃过馅饼吗？吃过月饼吗？吃过汤圆吗？吃过馄饨吗？你们看，中国人都把好东西干嘛？包里面了。它的习俗和我们的思维模式一模一样。你们看英国人吃什么？ 吃过批萨吗？馅在哪？表面！！吃过蛋糕吗？奶油在哪？表面！！一个民族的地理环境，就决定了一个民族的思维方式，思维方式就决定了它的语言特点。 到此为止，我们学了英语的三分之一了。这个句子最重要的就是主系表，那个“Be（is/am/are)”。然后这里把我们搞糊涂的是什么？英国人用介词短语做定语放在哪？修饰哪个名词放哪个名词的后面。一个一个往后放。 我们再看第二个句子，我们在每个句子上都出现问题。 “There is a table in the room.”翻译成中文怎么翻？——房间里有一张桌子 In the room 什么意思？ A table 什么意思？ there is 什么意思？ 要是有人说“there is”是“有”的意思，那就麻烦了！！又是农民的思维方式。 我告诉你，“There is” 在英文中什么意思也没有，它是英文中的第二面旗子。当你发现一个句子里有“there is”你就知道英国举起第二面旗子。英国人举第二面旗子的时候，你就知道英国人想说：什么地方有什么。 例如： 桌子上有一本书。——There is a book on the table. 桌子上有一只猪。——There is a pig on the table.你如果不想让猪在桌子上怎么办？把它扔厕所里去。There is a pig in the WC. 就这样，英语的三分之二学完了！！ 剩下的就是旗子“there be”的变化了。 单数用“there is” 复数用“there are” 过去式用“there was” 将来时“there will be” 过去将来“There would be” ………… 因为我们以前不认识这面旗子，所以我们糊涂了。 咱们看： 桌子上有一本书。There is a book on the desk. 教室的桌子上有一本书。There is a book on the desk in the classroom. 二楼的教室里有一本书。There is a book in the classroom on the second floor. 大楼的二层的教室里有一本书。There is a book in theclassroom on the second floor in the building. 看上面的句子看出来了吗？英文都是把重要的放前面，越不重要的越往后甩！ 咱们用中文来对比一下： 如果我说：上海市（你们知道我后面要说什么吗？）浦东区（我后面要说什么？）一所学校（后面还说什么？）大楼的，二层的（知道我说什么了吗？）图书馆···的桌子上···有一个钱包。——上海市浦东区一所学校的大楼的二层的图书馆的桌子上有一个钱包。 你们听我说完才知道，噢！有一个钱包。 我还没说完呢，还有个“吗？”字 知道我加个“吗”是什么意思吧？我在问你们呢！！ 刚才那句话连起来就是：上海市浦东区一所学校的大楼的二层的图书馆的桌子上有一个钱包吗？ 所以说中文你没有听到最后一个单词，你就不知道它要表达什么。 咱们来看这句话用英文怎么说：Is there（你看，英国人一说“is there”知道英国人干嘛吗？在问你。在问你“什么地方有什么”）a wallet(钱包）on the desk in the library on the second floor in the buiding in the school in PuDong in ShangHai. 看这个句子，英国人把“旗子”举在哪？最前面。从“is there”这面旗子中可以看出： 句子在问“什么地方有什么”。“is there”表示有一个。 有两个就是“are there” 什么时候有？现在有（现在时）。 过去有就是“were there” 将来有就是“will there be” 所以说英国人把旗子举在前面，一看旗子就知道英国人想说什么 为什么我们的听力很差? 什么原因？农民！！听听力的时候，我们老等那“吗”呢。英国人那“吗”在哪？中国人“吗”在后面，英国人“妈”在前头。学英语最关键就是英国那个魂，它每个句子都举着一面旗子。 所以英国人只要一开口，一说“is there” ——说句不好听的，他们一撅屁股就知道他们想干嘛。英国人写的文章，我都不用看，眼一扫，看三个单词我都知道它要干什么。中国人不一样啊！中国人不到最后不知道他要干什么。英语是一门非常非常简单的语言，所以···· 三个句子我讲了两个啦，讲了英语的三分之二。什么是魂——旗子，三面旗子我们讲了两面。 我们要弄明白中国人说话为什么不举“旗子”。中国人说话你分不了，为什么？农民！！农民是不会举“旗子”的。不知道大家下过乡看农民种地吗？我们有没有见过这种情况：老刘早上起来下地时，举着个“老刘”的旗子？老张起来举个“老张”的旗子？——没有，一个村子里谁都认识谁，一共才五米十米地。英国人为什么要举旗子？因为它在海里，海里的船都挂有旗子吧？老远看到旗子，噢 ~~知道这是张家的，知道这是李家的。你看，海里每条船都挂有国旗吧？ 中国的船挂着五星红旗。连英国的强盗都举着旗，海盗旗，一个骷髅，两把刀一架。连英国强盗都举着旗子。你见过中国海盗举着旗子去抢东西吗？找死呢！！所以英国人很在乎那面“旗子”。因为它是在海里生存的民族，而我们是在陆地上生存的。这个不一样，它语言也不一样，所以这面旗子非常重要！！ 你们试着翻译一下下面这个句子 1.有个从英国来的学生在教室里。 2.每个成功的男人背后都有一个女人。是不是什么地方有什么？ 背后（behind）——介词 是不是什么地方有什么？一看什么地方有什么，第一想到的是什么？举什么旗子。介词短语放在哪个名词后面就修饰哪个名词。 1.There is a student from England in the classroom. 2.There is a woman behind every successful man. 什么地方有什么先举“there is” 。 我们到现在学了两面旗子 什么时候举“be(is/am/are)?————什么是什么 什么怎么了 什么在什么地方 第二面“there be”———— 什么地方有什么 最后记住： 介词短语做定语，修饰哪个名词放在哪个名词的后面。 我们再学第三个句子，英语就学完啦。你要是找出第四个，我爬到楼顶上跳下去。 学了六七年都学不明白的英语，一个小时弄得明明白白&lt;四&gt;剩下最后的一个句子，也就是第三个句子，它的“旗子”是“动词（do)”。 这个句子更简单，我们来看： The students study english.学生们学英语。——这个句子叫主谓宾。 主语是什么？学生(student） 什么是这个句子的灵魂？study 第三个句子就这样学完了！！ 你们看这个句子，可以知道，它和中文的说法一模一样： 中文：学生们学英语 英文：Students study english. 中文：我爱你 英文：I love you. 这个句子跟中文一样：主谓宾。 第三个句子咱们为什么犯错误呢？我们来看： 中国人说：学生们学英语。如果要加点修饰成分，就变成：学生们努力学英语。“努力”我们在语法上叫什么？状语——状语是用来修饰动词的。 中文的句子形式是：主状谓宾 英文的句子形式是：主谓宾状 学生们 努力 学 英语 翻译成英文就是： Students study english hard. ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ 主语 状语 谓语 宾语 主语 谓语 宾语 状语 咱们把下面这个句子翻译成中文看： The students study english hard for the test on Sunday in the classroom in the school in Shanghai. 学生们为了考试在上海的一所学校的教室里努力地学英语。 翻译成中文什么特点？它又把重要的放后面去了。咱们关心的是“学生们干什么”，结果中文扯了半天。 而英文怎么样？——Students study english. 以前我见过有人把“学生们学了五年英语”翻译成“ Study five years english student.”——这是“中国人的思维”。注意：英文一定是主谓宾状！！ 看上面句子我们知道：英国人先告诉你——学生们学英语（Students study english）；怎么学？——hard ；什么时候学？——on Sunday ；为什么学？——for the test；在哪学？——in the school。 明白了吗？非常简单！！ 比如： 中国人说：我爱你 英国人说：I love you. 中英文一样，没问题！！ 如果我们要加上修饰成分呢？比如一个中国男生跟一个女生表白： 中国人说：我非常非常非常非常非常……爱你（急死她，然后才出来“爱你”） 英国人说：I love you very very very……（你爱怎么very怎么very ，反正我知道你爱我） 你看，中国人怎么样？ 它把不重要的放前面，而英国人永远把重要的放前面。这是谁的思维方式？渔民。 所有的社会现象都不难理解，为什么？大家知道金融风暴吧？为什么美国会出现金融风暴？——渔民。渔民为什么出金融风暴？因为渔民总是先吃好吃的，先过好日子，哪怕是借钱也要先过好日子，大家都借钱。好日子过完后，钱还不起了，不就出现金融风暴了吗？我们中国有没有可能出现金融风暴？不可能。我们是农民，把“好日子”都存银行里了，所以我们不可能出现金融风暴。所有的现象都是两个民族的差异造成的。 OK!!我们把三个句子学完啦！！ 最后这个句子，是我们用得最多的，我们来看它麻烦在哪？英文最麻烦的就是这面旗子，大家想学好英语就得把旗子弄得滚瓜烂熟…… 例如：you study english.什么时？——现在时； 过去时呢？——you studied english； 将来时？——you will study english； 将来还会学到“you are going to study english.” 不知道你们能不能区分什么时候用“ you will study english ”，什么时候用“you are going to study english”？ 英国人表示“一定”的时候用“will”，比如：I will study english.——我一定要学英语； 比如“人人都得死”——Everyone will died. 而“be going to”表示“可能，打算”，I’m going to study english.——我打算学英语。 如果你妈让你好好学英语，你回答“I’m going to（我打算），就跟没说一样。 有人要死了，交代后事:替我照顾女儿。你答“I will” ，要是你答“I’m going to”就惨了，听到你这么说，他的眼睛还能闭上吗？ 有一个人他爸病了，护士跟他说，你爸不行了:“your father is going to died.” 不能说“your father will died（你爸死定了）.” 我们送人经常说：“I will never forget you.”我永远不会把你忘了。你不能说：“I’m going to forget you.”我还不打算把你忘了。 所以想学好这个句子对“动词”一定要熟。英语学那么久，就是学三面“旗子”。 你要滚瓜烂熟： You study english. You studid english. You will study english. You would study english. You are studing english. You were studing english. You will be study english. You would be study english. You have studing english. You had studing english. You will have…… You would have …… 然后完成进行时： You have been study english. You had been study english. 每一个时态表示什么样的概念你要弄得清清楚楚。 英语只要你学会三个句子，把“时态”搞清楚，英语就不用学了。 有些同学问我英语从句。我告诉你，只要三个句子没问题，从句就没问题。 我给你们看看英语从句，瞬间就把它弄熟： I know the teacher.什么意思？——我知道这个老师。这是个什么句子？——主 谓 宾 什么叫做从句？ 我把宾语变成一个句子叫什么从句？宾语从句。 比如： I know that he studies english. I know that he is rich. I know that there is a wallet on the desk. 看到上面这些句子了吧？都是：主谓宾。 宾语从句是什么？看明白了吗？宾语从句就是大句子里套小句子。小句子是几个？三个，又开始重新排列那三个句子。所谓宾语从句就是把宾语变成句子。只要是句子怎么办？ 又是举三面旗子。那么很多人说，这个“that”是干什么的？这个“that” 什么意义都没有。英文用“that”告诉你：从句开始啦！！多好啊！！它提醒你从句开始啦！！小心，三个句子我又要重新排列啦。你还要给我再举旗子。多简单！！ 掌握宾语从句的关键是什么？记住连词。连词有多少个？就这么几个： 人不知道用什么？用“who” 东西不知道用什么？用“what” 时间不知道用“when” 地点不知道用“where” 原因不知道用什么？用“Why” 连词就只有上面这些！！ 英国人把连词放哪？放在从句的开始。举例： 我不知道你为什么学英语：I don’t know why you studyenglish. 我不知道你什么时候学英语：I don’t know when you studyenglish. 我不知道你在哪学英语：I don’t know where youstudy english. OK！！就这样，宾语从句就学完啦…… 我们已经把所有宾语从句学完啦。 宾语从句学会了，其它从句就全会了。 表语从句呢？把表语变成一个句子就叫表语从句。举例： 问题（question)是谁学英语？——The question is who study english. 问题是你什么时候学英语？——The question is when you study english. 问题是你在哪学英语？——The question is where youstudy english. 你把句子原封不动放在表语的位置，就叫表语从句。还用学吗？ 把一个句子放在主语的位置就叫主语从句。就这么点事……看下面的句子： The car is what he want.——汽车就是他想要的东西。（“主系表”句型。表语是什么？什么东西不知道用什么代替？——what） 看见没有？如果我把主语变成一个句子，叫主语从句。把表语变成一个句子，叫表语从句。 你想要的东西就是我想要的东西。怎么翻译？（东西“what”是不是连词？要把连词放哪？前面） ——You want is what I want. 你的汽车就是我想要的东西——your car is what I want. 这个女孩就是我喜欢的人。（女孩就不能用“what”啦，该用“who”）——The girl is who I like. 他喜欢的那个人就是我喜欢的那个人。Who he loves is who I love. 假如你追一个女孩，她不喜欢你，你说：你去哪我就去哪。——where you will go is where I will go. 你只要遵循三个句子，所有从句全会！！ 定语从句就是把定语变成一个句子。前面说了，我们把定语放在哪里？修饰哪个名词放在哪个名词后面，我们把这个地方变成一个句子就OK了。 咱们来看： 这是教我们的（定语）老师。——This is the teacher who teaches us.（“主谓宾”句型） 首先，这个人是老师 who是什么？——主语 Teaches——教 大句子里套着一个小句子 如果定语是定人就用“who”，定物就用“what/which”，定时间就用“when” ……这样就全会了。 The person who knows “how” will always have a job.——一个知道怎么做的人将来总会找到工作。 The person 后面跟着什么从句？一看有“who”，名词后面有“who”就知道是“定语从句” The person who knows “why” will always be his boss. ——一个知道为什么这样做的人将来就是老板。 所以你们学英语别只光会拼命学，光拼命学没用，你要知道为什么这样子，英语是怎么来的，它是一种什么样的思维方式，这样学起来就非常非常简单…… 后期继续针对英语进行讲解，欢迎大家继续关注·············</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2015/12/13/%E5%9C%A8%E8%AE%BE%E7%BD%AE%E4%BA%86androidparentactivityname%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AD%90activity%E8%BF%94%E5%9B%9E%E9%94%AE%EF%BC%8C%E7%88%B6activity%E6%80%BB%E4%BC%9A%E8%B0%83/" data-id="ckljj0p9g008hrpey7pj1aag1" data-title="在设置了android:parentActivityName后，点击子Activity返回键，父Activity总会调用OnDestroy()的解决方案" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2016/09/20/%E8%BD%BB%E6%9D%BE%E5%AD%A6%E8%8B%B1%E8%AF%AD/" data-id="cklkonph600e0cjeyhxivhojw" data-title="轻松学英语" class="article-share-link">Share</a>
       
       
       
@@ -127,237 +117,10 @@
 
 
   
-    <article id="post-使用多个ios-ane的duplicate-symbol问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-c-九九乘法表" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2015/12/12/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAios-ane%E7%9A%84duplicate-symbol%E9%97%AE%E9%A2%98/" class="article-date">
-  <time class="dt-published" datetime="2015-12-12T09:31:47.000Z" itemprop="datePublished">2015-12-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/12/12/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAios-ane%E7%9A%84duplicate-symbol%E9%97%AE%E9%A2%98/">使用多个iOS ANE的duplicate symbol问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>当使用AIR进行iOS应用开发时，如果用到了多个iOS ANE，有时在打包时会遇到duplicate symbol问题，比如：</p>
-<p>ld: duplicate symbol _ContextInitializer …..</p>
-<p>这个问题的原因是由于多个ANE的iOS原生代码中有同名的类或全局变量。解决方法便是统一给它们加上一个前缀，比如公司和产品的名字组合。 如果使用ANE模板项目创建的ANE，会有 ContextInitializer等同名方法，注意修改   其他关于开发ANE需要注意的问题可以参见这篇文章： 原文：<a target="_blank" rel="noopener" href="http://www.richardlord.net/blog/20-tips-for-creating-air-native-extensions-for-ios">20 tips for creating Air Native Extensions for iOS</a> 中文翻译：<a target="_blank" rel="noopener" href="http://jamesli.cn/blog/?p=1438">20条开发AIR Native Extension的建议</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2015/12/12/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAios-ane%E7%9A%84duplicate-symbol%E9%97%AE%E9%A2%98/" data-id="ckljj0p93007jrpeybwdd6vjb" data-title="使用多个iOS ANE的duplicate symbol问题" class="article-share-link">Teilen</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-androidstudio-svn使用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2015/11/08/androidstudio-svn%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time class="dt-published" datetime="2015-11-08T07:22:40.000Z" itemprop="datePublished">2015-11-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/11/08/androidstudio-svn%E4%BD%BF%E7%94%A8/">AndroidStudio SVN使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>断开svn： 将.idea构建目录下的vcs.xml中的<mapping directory="" vcs="svn" /> ，还原回<mapping directory="" vcs="" />即可。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2015/11/08/androidstudio-svn%E4%BD%BF%E7%94%A8/" data-id="ckljj0p6e001crpeygk549mbu" data-title="AndroidStudio SVN使用" class="article-share-link">Teilen</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-android文件读写操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/" class="article-date">
-  <time class="dt-published" datetime="2015-09-25T02:11:38.000Z" itemprop="datePublished">2015-09-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/">Android文件读写操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Assets：该目录只可读，不可写。使用getResource().getAssets().open(“file_name”)获得FileInputStream，进行读取操作 Raw：该目录和Assets一样，可读不可写。使用getResource().openRawResource(R.raw.file_name)获得FileInputSteam，进行读取操作。 外部SD：可读可写，外部可见。先用Environment.getExtenalStorageDirectory获得sd卡的目录File，先检测是否可用。如果可用，再file = new File(sd_dir,filename),进行读写操作。 内部文件：</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/" data-id="ckljj0p6k001urpey60ilcfk5" data-title="Android文件读写操作" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/File/" rel="tag">File</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-androidstudio添加assets目录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2015/09/24/androidstudio%E6%B7%BB%E5%8A%A0assets%E7%9B%AE%E5%BD%95/" class="article-date">
-  <time class="dt-published" datetime="2015-09-24T11:32:33.000Z" itemprop="datePublished">2015-09-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/09/24/androidstudio%E6%B7%BB%E5%8A%A0assets%E7%9B%AE%E5%BD%95/">AndroidStudio添加assets目录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>1: 打开 项目名称.iml 文件. 查找这行 : option name=”ASSETS_FOLDER_RELATIVE_PATH” value=”/src/main/assets” 2: 在“main”下建立一个子目录 “assets”  （即对应src/main/assets） 3: 把webview中要加载的文件放到这个目录中. 4: 在webview中载入，完成. 参考： <a target="_blank" rel="noopener" href="http://goodidea100.com/Android/744.html">http://goodidea100.com/Android/744.html</a> <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/18302603/where-to-place-assets-folder-in-android-studio">http://stackoverflow.com/questions/18302603/where-to-place-assets-folder-in-android-studio</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2015/09/24/androidstudio%E6%B7%BB%E5%8A%A0assets%E7%9B%AE%E5%BD%95/" data-id="ckljj0p6h001irpey5uaz5ouj" data-title="AndroidStudio添加assets目录" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/assets/" rel="tag">assets</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-android的startservice与bindservice" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2015/09/23/android%E7%9A%84startservice%E4%B8%8Ebindservice/" class="article-date">
-  <time class="dt-published" datetime="2015-09-23T14:33:18.000Z" itemprop="datePublished">2015-09-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/09/23/android%E7%9A%84startservice%E4%B8%8Ebindservice/">Android的startService与bindService</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Service的生命周期 Service的生命周期方法比Activity少一些，只有onCreate, onStart, onDestroy 我们有两种方式启动一个Service,他们对Service生命周期的影响是不一样的。</p>
-<blockquote>
-<p><strong>1 通过startService</strong> Service会经历 onCreate -&gt; onStart stopService的时候直接onDestroy 如果是调用者(TestServiceHolder)自己直接退出而没有调用stopService的 话，Service会一直在后台运行。 下次TestServiceHolder再起来可以stopService。 <strong>2 通过bindService</strong> Service只会运行onCreate， 这个时候 TestServiceHolder 和TestService绑定在一起 TestServiceHolder 退出了，Srevice就会调用onUnbind-&gt;onDestroyed  所谓绑定在一起就共存亡了。  </p>
-</blockquote>
-<p>  那有同学问了，要是这几个方法交织在一起的话，会出现什么情况呢？ 一个原则是Service的onCreate的方法只会被调用一次，就是你无论多少次的startService又 bindService，Service只被创建一次。如果先是bind了，那么start的时候就直接运行Service的onStart方法，如果先 是start，那么bind的时候就直接运行onBind方法。如果你先bind上了，就stop不掉了，对啊，就是stopService不好使了，只 能先UnbindService, 再StopService,所以是先start还是先bind行为是有区别的。 看起来情况很多，不过我会把这次的代码包括上回Activity生命周期的研究代码都贴上了，希望你喜欢！大家有兴趣可以回去点点按钮看看log，多看几遍就知道了。 Android中的服务和windows中的服务是类似的东西，服务一般没有用户操作界面，它运行于系统中不容易被用户发觉，可以使用它开发如监控之类的程序。服务的开发比较简单，如下： 第一步：继承Service类 public class SMSService extends Service { } 第二步：在AndroidManifest.xml文件中的<application>节点里对服务进行配置: <service android:name=".SMSService" /> 服务不能自己运行，需要通过调用Context.startService()或Context.bindService()方法启动服务。这两个方法都可以启动Service，但是它们的使用场合有所不同。使用startService()方法启用服务，调用者与服务之间没有关连，即使调用者退出了，服务仍然运行。使用bindService()方法启用服务，调用者与服务绑定在了一起，调用者一旦退出，服务也就终止，大有“不求同时生，必须同时死”的特点。 如果打算采用Context.startService()方法启动服务，在服务未被创建时，系统会先调用服务的onCreate()方法，接着调用onStart()方法。如果调用startService()方法前服务已经被创建，多次调用startService()方法并不会导致多次创建服务，但会导致多次调用onStart()方法。采用startService()方法启动的服务，只能调用Context.stopService()方法结束服务，服务结束时会调用onDestroy()方法。 如果打算采用Context.bindService()方法启动服务，在服务未被创建时，系统会先调用服务的onCreate()方法，接着调用onBind()方法。这个时候调用者和服务绑定在一起，调用者退出了，系统就会先调用服务的onUnbind()方法，接着调用onDestroy()方法。如果调用bindService()方法前服务已经被绑定，多次调用bindService()方法并不会导致多次创建服务及绑定(也就是说onCreate()和onBind()方法并不会被多次调用)。如果调用者希望与正在绑定的服务解除绑定，可以调用unbindService()方法，调用该方法也会导致系统调用服务的onUnbind()–&gt;onDestroy()方法.   原文链接：<a target="_blank" rel="noopener" href="http://blog.csdn.net/huanyufeng/article/details/5873407">http://blog.csdn.net/huanyufeng/article/details/5873407</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2015/09/23/android%E7%9A%84startservice%E4%B8%8Ebindservice/" data-id="ckljj0p6l001wrpey6mz24mjt" data-title="Android的startService与bindService" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Service/" rel="tag">Service</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-svn版本库迁移（保存log）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2015/07/23/svn%E7%89%88%E6%9C%AC%E5%BA%93%E8%BF%81%E7%A7%BB%EF%BC%88%E4%BF%9D%E5%AD%98log%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2015-07-23T04:15:43.000Z" itemprop="datePublished">2015-07-23</time>
+    <a href="/2016/09/09/c-%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/" class="article-date">
+  <time class="dt-published" datetime="2016-09-09T09:09:57.000Z" itemprop="datePublished">2016-09-09</time>
 </a>
     
   <div class="article-category">
@@ -372,7 +135,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/07/23/svn%E7%89%88%E6%9C%AC%E5%BA%93%E8%BF%81%E7%A7%BB%EF%BC%88%E4%BF%9D%E5%AD%98log%EF%BC%89/">SVN版本库迁移（保存Log）</a>
+      <a class="p-name article-title" href="/2016/09/09/c-%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/">C# 九九乘法表</a>
     </h1>
   
 
@@ -380,20 +143,19 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>svn版本库完整迁移，保存完整信息：</p>
-<blockquote>
-<p>关闭所有运行的进程，并确认没有程序在访问存储库（如 httpd、svnserve 或本地用户在直接访问）。 备份svn存储库 #压缩备份 svnadmin dump /home/workhome/svn/repository gzip &gt; ~/repository-backup.gz #不压缩备份 svnadmin dump /home/workhome/svn/repository &gt; ~/repository-backup.svn 恢复svn存储库 #建立新的svn存储库 svnadmin create /home/workhome/svn/newrepository #确认成功与否 ls -l /home/workhome/svn/newrepository #导入存储库数据 svnadmin load /home/workhome/svn/newrepository &lt; ~/repository-backup.svn</p>
-</blockquote>
+        <p>[codesyntax lang=”php”]</p>
+<pre><code>          for (int i \= 1; i &lt;\= 9; i++) &#123;
+</code></pre>
+<p> for (int j = 1; j &lt;= i; j++) {<br> Console.Write (“{1}*{0}={2}\t”,i,j,i*j);<br> }<br> Console.WriteLine ();<br> }</p>
+<p>[/codesyntax]   <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/09/Snip20160909_2.png"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/09/Snip20160909_2.png" alt="snip20160909_2"></a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2015/07/23/svn%E7%89%88%E6%9C%AC%E5%BA%93%E8%BF%81%E7%A7%BB%EF%BC%88%E4%BF%9D%E5%AD%98log%EF%BC%89/" data-id="ckljj0p8k006drpey547w9l5r" data-title="SVN版本库迁移（保存Log）" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2016/09/09/c-%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/" data-id="cklkonpd9002ecjey3i541uu2" data-title="C# 九九乘法表" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svn/" rel="tag">svn</a></li></ul>
-
     </footer>
   </div>
   
@@ -402,10 +164,10 @@
 
 
   
-    <article id="post-mac环境下svn的使用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-git常用命令速查" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2015/06/23/mac%E7%8E%AF%E5%A2%83%E4%B8%8Bsvn%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time class="dt-published" datetime="2015-06-23T04:18:15.000Z" itemprop="datePublished">2015-06-23</time>
+    <a href="/2016/08/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/" class="article-date">
+  <time class="dt-published" datetime="2016-08-26T07:49:22.000Z" itemprop="datePublished">2016-08-26</time>
 </a>
     
   <div class="article-category">
@@ -420,7 +182,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/06/23/mac%E7%8E%AF%E5%A2%83%E4%B8%8Bsvn%E7%9A%84%E4%BD%BF%E7%94%A8/">Mac环境下svn的使用</a>
+      <a class="p-name article-title" href="/2016/08/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/">Git常用命令速查</a>
     </h1>
   
 
@@ -428,53 +190,28 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>在Windows环境中，我们一般使用TortoiseSVN来搭建svn环境。在Mac环境下，由于Mac自带了svn的服务器端和客户端功能，所以我们可以在不装任何第三方软件的前提下使用svn功能，不过还需做一下简单的配置。 我们首先来看下，如何在Mac环境下搭建svn服务器端环境。</p>
-<h2 id="创建代码仓库，用来存储客户端所上传的代码"><a href="#创建代码仓库，用来存储客户端所上传的代码" class="headerlink" title="创建代码仓库，用来存储客户端所上传的代码"></a>创建代码仓库，用来存储客户端所上传的代码</h2><p>我先在/User/apple目录下新建一个svn目录，以后可以在svn目录下创建多个仓库目录 打开终端，创建一个mycode仓库，输入指令：<strong>svnadmin create /Users/apple/svn/mycode</strong> 指令执行成功后，会发现硬盘上多了个/Users/apple/svn/mycode目录，目录结构如下： <img src="http://images.cnitblog.com/blog/497279/201303/10002140-c4cf85b829bd477ea3a3779a4cd0d7fd.png">  </p>
-<h2 id="配置svn的用户权限"><a href="#配置svn的用户权限" class="headerlink" title="配置svn的用户权限"></a>配置svn的用户权限</h2><p>主要是修改/svn/mycode/conf目录下的三个文件 1.打开svnserve.conf，将下列配置项前面的#和空格都去掉</p>
-<ol>
-<li><h1 id="anon-access-read"><a href="#anon-access-read" class="headerlink" title="anon-access = read"></a>anon-access = read</h1></li>
-<li><h1 id="auth-access-write"><a href="#auth-access-write" class="headerlink" title="auth-access = write"></a>auth-access = write</h1></li>
-<li><h1 id="password-db-passwd"><a href="#password-db-passwd" class="headerlink" title="password-db = passwd"></a>password-db = passwd</h1></li>
-<li><h1 id="authz-db-authz"><a href="#authz-db-authz" class="headerlink" title="authz-db = authz"></a>authz-db = authz</h1></li>
-</ol>
-<p>anon-access = read代表匿名访问的时候是只读的，若改为anon-access = none代表禁止匿名访问，需要帐号密码才能访问   2.打开passwd，在[users]下面添加帐号和密码，比如：</p>
-<ol>
-<li> [users]</li>
-<li> mj = 123</li>
-<li> jj = 456</li>
-</ol>
-<p>帐号是mj，密码是123   3.打开authz，配置用户组和权限 我们可以将在passwd里添加的用户分配到不同的用户组里，以后的话，就可以对不同用户组设置不同的权限，没有必要对每个用户进行单独设置权限。 在[groups]下面添加组名和用户名，多个用户之间用逗号(,)隔开</p>
-<ol>
-<li> [groups]</li>
-<li> topgroup=mj,jj</li>
-</ol>
-<p>说明mj和jj都是属于topgroup这个组的，接下来再进行权限配置。 使用[/]代表svn服务器中的所有资源库</p>
-<ol>
-<li> [/]</li>
-<li> @topgroup = rw</li>
-</ol>
-<p>上面的配置说明topgroup这个组中的所有用户对所有资源库都有读写(rw)权限，组名前面要用@ 如果是用户名，不用加@，比如mj这个用户有读写权限</p>
-<ol>
-<li> [/]</li>
-<li> mj = rw</li>
-</ol>
-<p>至于其他精细的权限控制，可以参考authz文件中的其他内容   4.启动svn服务器 前面配置了这么多，最关键还是看能否正常启动服务器，若启动不来，前面做再多工作也是徒劳。 在终端输入下列指令：<strong>svnserve -d -r /Users/apple/svn</strong> 或者输入：<strong>svnserve -d -r /Users/apple/svn**</strong>/mycode** 没有任何提示就说明启动成功了   5.关闭svn服务器 如果你想要关闭svn服务器，最有效的办法是打开实用工具里面的“活动监视器”<img src="http://images.cnitblog.com/blog/497279/201303/10002641-8b49f872b6cd438c80f76f098d99db93.png"> <img src="http://images.cnitblog.com/blog/497279/201303/10002744-ce32c627b0b34f02a4067568bdc5e786.png"> 综合上述，我们就可以轻松搭建svn服务器环境了  </p>
-<h2 id="使用svn客户端功能"><a href="#使用svn客户端功能" class="headerlink" title="使用svn客户端功能"></a>使用svn客户端功能</h2><p>1.从本地导入代码到服务器(第一次初始化导入) 在终端中输入 <strong>svn import /Users/apple/Documents/eclipse_workspace/weibo svn://localhost/mycode/weibo –username=mj –password=123 -m “初始化导入”</strong> 我解释下指令的意思：将/Users/apple/Documents/eclipse_workspace/weibo中的所有内容，上传到服务器mycode仓库的weibo目录下，后面双引号中的”初始化导入”是注释   2.从服务器端下载代码到客户端本地 在终端中输入<strong>svn checkout svn://localhost/mycode –username=mj –password=123 /Users/apple/Documents/code</strong> 我解释下指令的意思：将服务器中mycode仓库的内容下载到/Users/apple/Documents/code目录中   3.提交更改过的代码到服务器 在步骤2中已经将服务器端的代码都下载到/Users/apple/Documents/code目录中，现在修改下里面的一些代码，然后提交这些修改到服务器 1&gt; 打开终端，先定位到/Users/apple/Documents/code目录，输入：<strong>cd/Users/apple/Documents/code</strong> 2&gt; 输入提交指令：<strong>svn commit -m “修改了main.m文件”</strong> 这个指令会将/Users/apple/Documents/code下的所有修改都同步到服务器端，假如这次我只修改了main.文件 可以看到终端的打印信息：</p>
-<ol>
-<li> Sending        weibo/weibo/main.m</li>
-<li> Transmitting file data .</li>
-<li> Committed revision 2.</li>
-</ol>
-<p>  4.更新服务器端的代码到客户端 这个应该是最简单的指令了，在终端中定位到客户端代码目录后，比如上面的/Users/apple/Documents/code目录，然后再输入指令：<strong>svn update</strong>   5.至于svn的其他用法，可以在终端输入：<strong>svn help</strong> <strong><img src="http://images.cnitblog.com/blog/497279/201303/10010442-37644dc2b0d54f7b8b421ede25d2f749.png"></strong> 这里列出一大堆svn指令，后面括号中的内容的一般代表着指令的简称，比如我们可以用svn ci代替svn commit，用svn co代替svn checkout 原文链接：<a target="_blank" rel="noopener" href="http://blog.csdn.net/q199109106q/article/details/8655204">http://blog.csdn.net/q199109106q/article/details/8655204</a>   后续追加： Flash Builder4.7安装了svn1.8插件后，或提示 Subversion native library not available，修改FB设置的svn里svn借口 <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2015/03/QQ20150323-1@2x.png"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2015/03/QQ20150323-1@2x.png" alt="QQ20150323-1@2x"></a> ———- 添加svn服务开机启动 在etc/rc.local(要创建)文件里，加上svnserver -d -r user/apple/svn/rep(svn目录) 如果权限不足，需要 sudo ….</p>
+        <p><a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/git.jpeg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/git.jpeg" alt="git"></a>git clone http://..git #复制远程库下来<br>git remote rm orgin #断开远程库</p>
+<p>git init #初始化init<br>git remote add http://..git #添加远程库连接<br>git push -u origin master #推送到远程库，第一次加 -u<br>git pull #拉去远程库更新</p>
+<p>ssh-keygen -t rsa -C “<a href="mailto:&#x65;&#109;&#x61;&#105;&#108;&#x40;&#x31;&#x36;&#51;&#x2e;&#99;&#x6f;&#109;">&#x65;&#109;&#x61;&#105;&#108;&#x40;&#x31;&#x36;&#51;&#x2e;&#99;&#x6f;&#109;</a>“ #生成ssh key</p>
+<p>git log # 日志<br>git log –graph –pretty=oneline –abbrev-commit #日志，图形化，只显示一行, commit_id缩写<br>git status #当前状态</p>
+<p>git add #添加到暂存去，空文件夹不行<br>git commit -m “message”</p>
+<p>git reset –hard HEAD^ #回退到上个版本， –hard 是强制同步修改工作区的文件<br>git reflog #版本操作的编号<br>git reset –hard &lt;comond_id&gt; #版本回退后还能恢复</p>
+<p>git reset HEAD <file> #从暂存区移除文件<br>git checkout – <file> #撤销工作区文件的修改</p>
+<p>git branch -b dev #新建并切换到dev分支<br>git branch dev #新建dev分支<br>git checkout dev #切换到dev分支</p>
+<p>git branch -d dev 删除dev分支</p>
+<p>git merge –no-ff -m “message” dev #合并分支dev到当前 带no-ff，删除分支后依然可以看到log历史记录</p>
+<p>git stash #保存现场<br>git stash -u #强制保存现场，包括未add追踪的文件<br>git stash pop #恢复现场，并删除stash的记录<br>git stash list #查看stash</p>
+<p>git tag v0.1 #创建标签，默认HEAD<br>git tag v0.2 354qwe4 #可指定commit_id来创建<br>git push origin v0.1 #推送标签到远程<br>git push origin –tag #推送所有未推送的标签到远程<br>git tag -d v0.1 #删除标签<br>git push origin :refs/tags/v0.1 #将删除的标签同步删除到远程</p>
+<p>git config –global alias.st status #全局别名，git st = git status<br>#超强log，别名lg<br>git config –global alias.lg “log –color –graph –pretty=format:’%Cred%h%Creset<br>-%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit”</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2015/06/23/mac%E7%8E%AF%E5%A2%83%E4%B8%8Bsvn%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="ckljj0p860058rpeybgxt9cbq" data-title="Mac环境下svn的使用" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2016/08/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/" data-id="cklkonpdm0038cjey7t263586" data-title="Git常用命令速查" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svn/" rel="tag">svn</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
 
     </footer>
   </div>
@@ -484,14 +221,14 @@
 
 
   
-    <article id="post-xcode快速开发ane步骤和一些常见错误的解决" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-mac-下使用tree命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2015/05/22/xcode%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91ane%E6%AD%A5%E9%AA%A4%E5%92%8C%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3/" class="article-date">
-  <time class="dt-published" datetime="2015-05-22T10:47:07.000Z" itemprop="datePublished">2015-05-22</time>
+    <a href="/2016/08/25/mac-%E4%B8%8B%E4%BD%BF%E7%94%A8tree%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2016-08-25T09:03:09.000Z" itemprop="datePublished">2016-08-25</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a>
+    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>
   </div>
 
   </div>
@@ -502,7 +239,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/05/22/xcode%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91ane%E6%AD%A5%E9%AA%A4%E5%92%8C%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3/">XCODE快速开发ANE步骤和一些常见错误的解决</a>
+      <a class="p-name article-title" href="/2016/08/25/mac-%E4%B8%8B%E4%BD%BF%E7%94%A8tree%E5%91%BD%E4%BB%A4/">Mac 下使用tree命令</a>
     </h1>
   
 
@@ -510,32 +247,33 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>使用adobe air制作的移动应用，在对接第三方平台的时候，需要使用ANE来包装本机代码，在对接过程中，我积累了一些打包ANE的经验，记录下来，希望对看到的人有些帮助。 吐槽一下，ANE太难对付了，各种坑，调试也比较麻烦。 1、安装mac版本的AIR SDK 下载地址：<a target="_blank" rel="noopener" href="http://www.adobe.com/devnet/air/air-sdk-download-mac.html">http://www.adobe.com/devnet/air/air-sdk-download-mac.html</a> 2、安装xcode的ANE项目模板(好东西～) 下载地址：<a target="_blank" rel="noopener" href="https://github.com/divijkumar/xcode-template-ane">https://github.com/divijkumar/xcode-template-ane</a> 3、从模板新建项目： <img src="http://yoyo.play175.com/usr/uploads/2014/09/373566609.jpg" alt="snap (2).jpg"> <img src="http://yoyo.play175.com/usr/uploads/2014/09/3161724819.jpg" alt="snap (3).jpg"> 项目建好了的样子： <img src="http://yoyo.play175.com/usr/uploads/2014/09/2702202715.jpg" alt="snap (4).jpg"> 直接点左上角的小三角形编译，报错如下： <img src="http://yoyo.play175.com/usr/uploads/2014/09/3094537793.jpg" alt="snap (5).jpg"> 提示不支持的编译器 解决：我们点击项目属性，选择 LLVM5.13 <img src="http://yoyo.play175.com/usr/uploads/2014/09/953231852.jpg" alt="snap (6).jpg"> 继续点编译： <img src="http://yoyo.play175.com/usr/uploads/2014/09/3196164692.jpg" alt="snap (7).jpg"> 成功了，生成的库文件是libhello.a 接下来我们开始生成ane，点击编译目标： <img src="http://yoyo.play175.com/usr/uploads/2014/09/5840093.jpg" alt="snap (8).jpg"> 选择hello.ane <img src="http://yoyo.play175.com/usr/uploads/2014/09/1897263116.jpg" alt="snap (9).jpg"> 再点小三角编译，成功(在*.ane上右键选Show in Finder可以定位到这个ane文件)： <img src="http://yoyo.play175.com/usr/uploads/2014/09/1352824676.jpg" alt="snap (10).jpg"> 如果在项目创建页面没有填写这个个： <img src="http://yoyo.play175.com/usr/uploads/2014/09/2644621939.jpg" alt="snap (11).jpg"> 则会提示错误： <img src="http://yoyo.play175.com/usr/uploads/2014/09/3215069781.jpg" alt="snap (12).jpg"> 解决方法是，在项目属性里设置这个宏参数，填上swc文件所在的全路径： <img src="http://yoyo.play175.com/usr/uploads/2014/09/262000265.jpg" alt="snap (13).jpg"> 剩下的事情就是增加你自己需要的接口来，在hello.m文件里，可以看到模板示例方法：isSupported，自己写代码可以参照它。 另外如果需要使用C++和objec混编，则需要项目中至少有一个后缀为mm的源文件，你可以创建一个空mm文件即可。</p>
-<hr>
-<p>在ios本机库，AIR SDK包含了以下系统库： <img src="http://yoyo.play175.com/usr/uploads/2014/09/1619475565.jpg" alt="snap (14).jpg"> 如果项目依赖了除了上面列表之外的库，需要打开项目下的那个：platformoptions.xml 填上依赖的动态库（*.dylib）或者静态库framework(*.framework) 动态库用-l前缀，framework用-framework前缀 <img src="http://yoyo.play175.com/usr/uploads/2014/09/4161221035.jpg" alt="snap (15).jpg"> 如果不在上面xml中指定，打包ANE是不会报错的，但是在打包ipa的时候，会报类似下面的错：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Undefined symbols for architecture armv7:</span><br><span class="line">  &quot;_crc32&quot;, referenced from:</span><br><span class="line">      _PyZlib_crc32 in libpython2.7.a(zlibmodule.o)</span><br><span class="line">  &quot;_inflateEnd&quot;, referenced from:</span><br><span class="line">      _Decomp_dealloc in libpython2.7.a(zlibmodule.o)</span><br><span class="line">      _PyZlib_decompress in libpython2.7.a(zlibmodule.o)</span><br><span class="line">      _PyZlib_unflush in libpython2.7.a(zlibmodule.o)</span><br><span class="line">  &quot;_deflateInit_&quot;, referenced from:</span><br><span class="line">      _PyZlib_compress in libpython2.7.a(zlibmodule.o)</span><br><span class="line">  &quot;_inflate&quot;, referenced from:</span><br><span class="line">      _PyZlib_decompress in libpython2.7.a(zlibmodule.o)</span><br><span class="line">      _PyZlib_objdecompress in libpython2.7.a(zlibmodule.o)</span><br><span class="line">      _PyZlib_unflush in libpython2.7.a(zlibmodule.o)</span><br><span class="line">  &quot;_deflateEnd&quot;, referenced from:</span><br></pre></td></tr></table></figure>
-
-<p>在使用该ANE打包ipa的过程中，如果使用了多个ANE，且里面引用了同一个公用类，会提示重复的符号： <img src="http://yoyo.play175.com/usr/uploads/2014/09/3124623426.jpg" alt="snap (1).jpg"> 解决方法是在调用adt打包ipa的时候，增加参数：-hideAneLibSymbols yes</p>
-<hr>
-<p><strong>如果打包ipa的出现错误（找不到___divmodsi4符号）：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Packaging: ..&#x2F;hello.ipa</span><br><span class="line">using certificate: hello.p12...</span><br><span class="line"></span><br><span class="line">Warning: Resource zh-Hans.lproj has been skipped because of mismatch with suppor</span><br><span class="line">ted languages information in application descriptor.</span><br><span class="line">Undefined symbols for architecture armv7:</span><br><span class="line">  &quot;___divmodsi4&quot;, referenced from:</span><br><span class="line">      _absc_solve in D:\\mobile\\wow_mobile\\..\\wow_app\\AOTBuildOutput62399389</span><br><span class="line">92767853027.tmp\\com.q1.haima.o</span><br><span class="line">ld: symbol(s) not found for architecture armv7</span><br><span class="line">Compilation failed while executing : ld64</span><br><span class="line"></span><br><span class="line">APK setup creation FAILED.</span><br><span class="line"></span><br><span class="line">Troubleshooting:</span><br><span class="line">- did you build your project in FlashDevelop?</span><br><span class="line">- verify AIR SDK target version in bat\app-haima.xml</span><br></pre></td></tr></table></figure>
-
-<p><strong>解决方案：</strong> 1、目标系统版本需要高一些，比如5.1或者6.0以上，在platformoptions.xml 文件的linkerOptions指定参数：-ios_version_min，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;platform xmlns&#x3D;&quot;http:&#x2F;&#x2F;ns.adobe.com&#x2F;air&#x2F;extension&#x2F;3.1&quot;&gt;</span><br><span class="line">    &lt;sdkVersion&gt;5.0&lt;&#x2F;sdkVersion&gt;</span><br><span class="line">    &lt;description &gt; An optional description&lt;&#x2F;description&gt;</span><br><span class="line">    &lt;copyright&gt;2012 (optional)&lt;&#x2F;copyright&gt;</span><br><span class="line">    &lt;linkerOptions&gt;</span><br><span class="line">        &lt;option&gt;-ios_version_min 5.1&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option&gt;-framework AdSupport&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option&gt;-framework AudioToolbox&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option&gt;-lstdc++.6&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;&#x2F;linkerOptions&gt;</span><br><span class="line">&lt;&#x2F;platform&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、如果改sdk版本还不行，则使用下面方案，在.h头文件里增加下面的函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">unsigned long ___udivmodsi4(unsigned long num, unsigned long den, int modwanted)</span><br><span class="line">&#123;</span><br><span class="line">    if (modwanted)</span><br><span class="line">        return num % den;</span><br><span class="line">    else</span><br><span class="line">        return num &#x2F; den;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>另外，引起APP闪退的可能原因：</strong> 1、调用API函数的参数类型不正确，objc的参数为NSString类型，但是传int类型，在编译时也不会报错，但是在手机运行时会崩溃！！！需要仔细检查是否有该问题 作者：YoYo，原文地址：<a target="_blank" rel="noopener" href="http://yoyo.play175.com/p/xcode-ane.html">http://yoyo.play175.com/p/xcode-ane.html</a></p>
+        <p>  <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/tree.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/tree.jpg" alt="tree"></a> 在Mac上，使用tree命令生成目录树，查看文件目录，非常直观方便。 首先，用brew来安装tree。</p>
+<blockquote>
+<p>brew install tree</p>
+</blockquote>
+<p>安装过程如下：</p>
+<p>[codesyntax lang=”php”]</p>
+<p>==&gt; Downloading <a target="_blank" rel="noopener" href="https://homebrew.bintray.com/bottles/tree-1.7.0.el/_capitan.bottle.1.tar.gz">https://homebrew.bintray.com/bottles/tree-1.7.0.el\_capitan.bottle.1.tar.gz</a></p>
+<p>######################################################################## 100.0%</p>
+<p>==&gt; Pouring tree-1.7.0.el_capitan.bottle.1.tar.gz</p>
+<p>  /usr/local/Cellar/tree/1.7.0: 7 files, 113.1K</p>
+<p>[/codesyntax] 安装完成后，使用tree命令查看下效果，-L 表示层级</p>
+<blockquote>
+<p>tree -L 2</p>
+</blockquote>
+<p>上面命令即显示当前目录2层的目录树。 效果如下： <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/tree2.png"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/tree2.png" alt="tree2"></a>   还可以讲目录树保存一下。</p>
+<blockquote>
+<p>tree -L 2 &gt; README.md</p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2015/05/22/xcode%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91ane%E6%AD%A5%E9%AA%A4%E5%92%8C%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3/" data-id="ckljj0p8v006xrpey40wl4tgj" data-title="XCODE快速开发ANE步骤和一些常见错误的解决" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2016/08/25/mac-%E4%B8%8B%E4%BD%BF%E7%94%A8tree%E5%91%BD%E4%BB%A4/" data-id="cklkonpe20047cjey3ybr6wex" data-title="Mac 下使用tree命令" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XCode/" rel="tag">XCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ane/" rel="tag">ane</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/" rel="tag">ios</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/" rel="tag">tree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" rel="tag">目录树</a></li></ul>
 
     </footer>
   </div>
@@ -545,14 +283,14 @@
 
 
   
-    <article id="post-64-bit-requirements-for-ios-apps" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-mac下monodevelop的快捷键记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2015/04/14/64-bit-requirements-for-ios-apps/" class="article-date">
-  <time class="dt-published" datetime="2015-04-14T03:07:52.000Z" itemprop="datePublished">2015-04-14</time>
+    <a href="/2016/05/13/mac%E4%B8%8Bmonodevelop%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2016-05-13T03:46:36.000Z" itemprop="datePublished">2016-05-13</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a>
+    <a class="article-category-link" href="/categories/Unity3D/">Unity3D</a>
   </div>
 
   </div>
@@ -563,7 +301,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/04/14/64-bit-requirements-for-ios-apps/">64-bit requirements for iOS apps</a>
+      <a class="p-name article-title" href="/2016/05/13/mac%E4%B8%8Bmonodevelop%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95/">Mac下MonoDevelop的快捷键记录</a>
     </h1>
   
 
@@ -571,55 +309,28 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>本文系转载：<a target="_blank" rel="noopener" href="http://easynativeextensions.com/making-your-ios-apps-universal/">http://easynativeextensions.com/making-your-ios-apps-universal/</a>   At the end of last year Apple announced their new requirements for submitting apps to the app store:</p>
-<ul>
-<li>  from <strong>February 1st 2015</strong> all <a target="_blank" rel="noopener" href="https://developer.apple.com/news/?id=10202014a">new apps must include 64-bit support</a>;</li>
-<li>  from <strong>June 1st 2015</strong> all <a target="_blank" rel="noopener" href="https://developer.apple.com/news/?id=12172014b">app updates will also have to support 64 bits</a>.</li>
+        <h3 id=""><a href="#" class="headerlink" title=""></a><img src="http://www.monodevelop.com/images/389-ss-welcome-5-4.png" alt="MonoDevelop"></h3><h3 id="记录下Mac下MonoDeveloper快捷键"><a href="#记录下Mac下MonoDeveloper快捷键" class="headerlink" title="记录下Mac下MonoDeveloper快捷键"></a>记录下Mac下MonoDeveloper快捷键</h3><p>Window下开发Unity3D，除了Vs无它。</p>
+<h4 id="苹果下按键说明如下"><a href="#苹果下按键说明如下" class="headerlink" title="苹果下按键说明如下"></a>苹果下按键说明如下</h4><ul>
+<li>  ⌘——Command ()</li>
+<li>  ⌃ ——Control</li>
+<li>  ⌥——Option (alt)</li>
+<li>  ⇧——Shift</li>
+<li>  ⇪——Caps Lock</li>
 </ul>
-<p>This doesn’t pose much of a problem for native apps, but we AIR developers were stranded… Until last week, when <a target="_blank" rel="noopener" href="http://labs.adobe.com/downloads/air.html">Adobe released AIR 16 beta in Adobe Labs</a>. Let us go through the steps necessary for rebuilding your apps and ANEs to support 64 bits.</p>
-<h2 id="Step-1-Update-your-AIR-SDK"><a href="#Step-1-Update-your-AIR-SDK" class="headerlink" title="Step 1: Update your AIR SDK"></a>Step 1: Update your AIR SDK</h2><p><strong>1.1.</strong> Download AIR SDK 16 beta from Adobe Labs: <a target="_blank" rel="noopener" href="http://labs.adobe.com/downloads/air.html">http://labs.adobe.com/downloads/air.html</a></p>
-<p><strong>Note:</strong> if you use Flash Builder and/or the Flex SDK, you need the last download link, <strong>AIR 16 SDK for Flex Developers</strong>.</p>
-<p><strong>1.2.</strong> Make a backup copy of your AIR SDK folder. <strong>1.3.</strong> Overlay the new SDK over the old one: <strong>1.3.1</strong> If you are a <strong>Windows</strong> user, unzip the download and copy the contents over your AIR SDK. <strong>1.3.2.</strong> On <strong>Mac</strong> you can do the same and ask Finder to merge folders or, you can copy the archive in the root of your AIR SDK and run the following command in the Terminal:</p>
-<p>1</p>
-<p>sudo tar jxvf air16_sdk_sa_mac.tbz2</p>
-<h2 id="Step-2-Update-your-app-descriptor"><a href="#Step-2-Update-your-app-descriptor" class="headerlink" title="Step 2: Update your app descriptor"></a>Step 2: Update your app descriptor</h2><p>If you are a veteran AIR developer, you are used to this, but here it is just in case. Open your app descriptor file – usually named <strong>your-app-name-app.xml</strong> and found in your project’s <strong>src/</strong> folder and make sure the namespace at the top of the file points to <strong>16.0</strong>:</p>
-<p>1</p>
-<p>&lt;application xmlns=“<a target="_blank" rel="noopener" href="http://ns.adobe.com/air/application/16.0&quot;/&gt;">http://ns.adobe.com/air/application/16.0&quot;\&gt;</a></p>
-<h2 id="Step-3-Rebuild-your-iOS-ANEs"><a href="#Step-3-Rebuild-your-iOS-ANEs" class="headerlink" title="Step 3: Rebuild your iOS ANEs"></a>Step 3: Rebuild your iOS ANEs</h2><p>Any native extensions for iOS that your app uses will also need to be built with 64-bit support. If you have the source code for these ANEs, this is what you do: <strong>3.1.</strong> Make sure you are using Xcode 6 and iOS SDK 8. <strong>3.2.</strong> In your <strong>Xcode</strong> project, go to <strong>Build Settings</strong> &gt; <strong>Architectures</strong> and first make sure that <strong>Architectures</strong>is set to <strong>Standard architectures (armv7, arm64),</strong> then set <strong>Build Active Architecture Only</strong> to<strong>No</strong>. Without the last change the compiler will default to building a binary that supports only one architecture, which matches the device that you have connected at the moment or the simulator version you have made active – good idea for a debug build, but not for release. <a target="_blank" rel="noopener" href="http://easynativeextensions.com/wp-content/uploads/2015/01/Xcode-64bit-architecture-setting.png"><img src="http://easynativeextensions.com/wp-content/uploads/2015/01/Xcode-64bit-architecture-setting.png" alt="Xcode 64bit architecture setting"></a>   Now make a clean build of your ANE.</p>
-<p>Here are a couple of resources that will help you automate your ANE building and packaging:</p>
-<ul>
-<li>  <a target="_blank" rel="noopener" href="http://easynativeextensions.com/automatic-ane-packaging/">Automatic ANE packaging</a></li>
-<li>  <a target="_blank" rel="noopener" href="http://easynativeextensions.com/package-your-ane-in-flash-builder/">Packaging your ANE in Flash Buidler</a></li>
-</ul>
-<h2 id="Step-4-How-do-you-know-if-your-app-is-now-universal-64-bit"><a href="#Step-4-How-do-you-know-if-your-app-is-now-universal-64-bit" class="headerlink" title="Step 4: How do you know if your app is now universal/64-bit?"></a>Step 4: How do you know if your app is now universal/64-bit?</h2><p>… before submitting it to the Apple App Store, that is. There are a couple of things you can check. First, if you build your app with AIR 16, you should <strong>NOT</strong> get an error message like this:</p>
-<p>Error: Apple App Store allows only universal applications. “libMultiplatformANETemplateLib.a” is not a universal binary. Please change build settings in Xcode project to “Standard Architecture” to create universal library/framework.</p>
-<p>Or like this:</p>
-<p>[exec] Error: libCameraLibiOS.a are required to have universal iOS libraries. Please contact the ANE developer(s) to get the same.[exec] Result: 12</p>
-<p>Then,  to double-check, do the following: <strong>4.1.</strong> Rename your <strong>.ipa</strong> file to <strong>.zip</strong> and unzip it. <strong>4.2.</strong> Use <strong>lipo</strong> in the <strong>Mac Terminal</strong>:</p>
-<p>1</p>
-<p>lipo path_to_your_unzipped_ipa/Payload/your_app_name.app/your_app_name -info</p>
-<p>You want to see a message like this:</p>
-<p>1</p>
-<p>Architectures in the fat file: your_app_name are: armv7 arm64</p>
-<p> <strong>4.3.</strong> You can also use the <strong>file</strong> command on <strong>Mac</strong>:</p>
-<p>1</p>
-<p>file path_to_your_unzipped_ipa/Payload/your_app_name.app/your_app_name</p>
-<p>This should result in a message like this one:</p>
-<p>1</p>
-<p>2</p>
-<p>3</p>
-<p>Mach-O universal binary with 2 architectures</p>
-<p>your_app_name (for architecture armv7): Mach-O executable arm</p>
-<p>your_app_name (for architecture arm64): Mach-O 64-bit executable</p>
-<p>Ta-da! Your app is now up to date with the 64-bit requirements.</p>
+<h3 id="跳转："><a href="#跳转：" class="headerlink" title="跳转："></a>跳转：</h3><p>Command+Y：跳转到声明 Command+L：跳转到具体行 Shift+Command+D：跳转/打开工程文件（VS里面大番茄快速打开文件）Command+上：跳转到文件顶部 Command+下：跳转到文件底部 Command+左：跳转行首 Command+右：跳转行尾 Option+Command+左右方向键：向前/向后转到光标所在位置（这个应该说特别有用）</p>
+<h3 id="查找："><a href="#查找：" class="headerlink" title="查找："></a>查找：</h3><p>Shift+Command+Y：查找所有引用 Command+Y：在文件中查找字符 Shift+Command+F：在所有文件中查找字符</p>
+<h3 id="注释："><a href="#注释：" class="headerlink" title="注释："></a>注释：</h3><p>Command+/：注释/取消注释当前行</p>
+<h3 id="编辑："><a href="#编辑：" class="headerlink" title="编辑："></a>编辑：</h3><p>Command+C：复制 Command+V：粘贴 Command+Z：撤销 Command+X：剪切 Control+K：删除光标后所有当前行内容 Option+上下按键：将当前行向上/向下移动（VS里面Alt+上下按键效果）Option+左右按键：按整个单词切换（VS中Control+左右一样的效果）Option+Delete：删除单词内容 列出了常用的快捷键，自己做个记录，也希望帮助到需要的朋友，如果有更好的MonoDeveloper使用技巧   快捷键可以自己修改 Command+，  但是貌似monoDevelop上的设置选项有点少，比如复制当前行  没找到在，可能是unity自带的，版本有点老，你也可以去官方下载最新的</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2015/04/14/64-bit-requirements-for-ios-apps/" data-id="ckljj0p65000srpeydt8h2alt" data-title="64-bit requirements for iOS apps" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2016/05/13/mac%E4%B8%8Bmonodevelop%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95/" data-id="cklkonpe8004hcjey2tx88bg1" data-title="Mac下MonoDevelop的快捷键记录" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MonoDevelop/" rel="tag">MonoDevelop</a></li></ul>
+
     </footer>
   </div>
   
@@ -632,7 +343,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -641,9 +352,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 
@@ -660,7 +371,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li></ul>
     </div>
@@ -670,7 +381,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         

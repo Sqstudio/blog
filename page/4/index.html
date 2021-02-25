@@ -6,12 +6,15 @@
   
   <title>斯樵工坊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+  <meta name="description" content="斯樵工坊">
+<meta property="og:type" content="website">
 <meta property="og:title" content="斯樵工坊">
-<meta property="og:url" content="http://sqstudio.com/page/4/index.html">
+<meta property="og:url" content="https://sqstudio.com/page/4/index.html">
 <meta property="og:site_name" content="斯樵工坊">
-<meta property="og:locale">
+<meta property="og:description" content="斯樵工坊">
+<meta property="og:locale" content="en_US">
 <meta property="article:author" content="斯樵">
+<meta property="article:tag" content="斯樵工坊">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="斯樵工坊" type="application/atom+xml">
@@ -59,10 +62,10 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sqstudio.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sqstudio.com"></form>
       </div>
     </div>
   </div>
@@ -71,14 +74,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-c-九九乘法表" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-nginx、php-fpm、mysql用户权限解析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2016/09/09/c-%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/" class="article-date">
-  <time class="dt-published" datetime="2016-09-09T09:09:57.000Z" itemprop="datePublished">2016-09-09</time>
+    <a href="/2017/01/24/nginx%E3%80%81php-fpm%E3%80%81mysql%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E8%A7%A3%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2017-01-24T10:21:57.000Z" itemprop="datePublished">2017-01-24</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>
+    <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
   </div>
 
   </div>
@@ -89,7 +92,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/09/09/c-%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/">C# 九九乘法表</a>
+      <a class="p-name article-title" href="/2017/01/24/nginx%E3%80%81php-fpm%E3%80%81mysql%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E8%A7%A3%E6%9E%90/">nginx、php-fpm、mysql用户权限解析</a>
     </h1>
   
 
@@ -97,193 +100,254 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>[codesyntax lang=”php”]</p>
-<pre><code>          for (int i \= 1; i &lt;\= 9; i++) &#123;
+        <p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/zrp2013/p/4183546.html">http://www.cnblogs.com/zrp2013/p/4183546.html</a></p>
+<h2 id="三者之间的关系"><a href="#三者之间的关系" class="headerlink" title="三者之间的关系"></a>三者之间的关系</h2><p>nginx本身不能处理PHP，它只是个web服务器。当接收到客户端请求后，如果是php请求，则转发给php解释器处理，并把结果返回给客户端。如果是静态页面的话，nginx自身处理，然后把结果返回给客户端。 Nginx下php解释器使用最多的就是fastcgi。一般情况nginx把php请求转发给fastcgi管理进程处理，fastcgi管理进程选择cgi子进程进行处理，然后把处理结果返回给nginx。 在这个过程中就牵涉到两个用户，一个是nginx运行的用户，一个是php-fpm运行的用户。如果访问的是一个静态文件的话，则只需要nginx运行的用户对文件具有读权限或者读写权限。 而如果访问的是一个php文件的话，则首先需要nginx运行的用户对文件有读取权限，读取到文件后发现是一个php文件，则转发给php-fpm，此时则需要php-fpm用户对文件具有有读权限或者读写权限。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2017/01/24/nginx%E3%80%81php-fpm%E3%80%81mysql%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E8%A7%A3%E6%9E%90/" data-id="cklkonpec004rcjeyhhtk4fn5" data-title="nginx、php-fpm、mysql用户权限解析" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mac下自启动svn服务" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/12/22/mac%E4%B8%8B%E8%87%AA%E5%90%AF%E5%8A%A8svn%E6%9C%8D%E5%8A%A1/" class="article-date">
+  <time class="dt-published" datetime="2016-12-22T11:31:43.000Z" itemprop="datePublished">2016-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/12/22/mac%E4%B8%8B%E8%87%AA%E5%90%AF%E5%8A%A8svn%E6%9C%8D%E5%8A%A1/">Mac下自启动SVN服务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Mac本地svn服务，需要我们在终端执行相关的命令才能启动svnserve服务。 为了免去每次启动时都需要手动输入相关的启动服务的命令，那么就需要我们编写一个shell脚本命令。在每次电脑开机启动时就自动执行该脚本里的命令，那么我们的服务就会自动启动，免去了手动输入命令的麻烦。</p>
+<blockquote>
+<p>#!/bin/bash svnserve -d -r ~/Documents/svn</p>
+</blockquote>
+<p>svnserve -d -r /你的SVN服务器路径   (建议使用相对路径,否则运行时会提示会找不该路径) 保存成可执行文件shell 也就是.sh脚本。(可以在一个没有格式的txt文本里编辑，然后再保存，修改后缀名为.sh) 然后更改该脚本权限为可执行。 chmod 711 localsvnserverstart.sh  (文件名可自定义) 是否可执行，可以验证一下。在终端中cd到该.sh所在的目录下，执行命令：./localsvnserverstart.sh 如果终端没有任何错误输出，可以到活动监视器里进行搜索：svnserve 查看是否有该服务已经启动了。 如何需要在开机时就启动该服务那么就需要进行以下操作了 进入系统偏好设置-用户与群组-登陆项 在管理员用户头像哪里有个登陆项，点击后会有一个列表框，点击添加，找到你你写的shell脚本，添加上去，并勾选这个选项(不需要勾选上，因为勾选的话，表示登录是隐藏应用程序)，让其在开机启动是执行。</p>
+<hr>
+<p>如果想在打开终端的时候，执行命令，可以在 ~/.bash_profile 文件里添加命令即可</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2016/12/22/mac%E4%B8%8B%E8%87%AA%E5%90%AF%E5%8A%A8svn%E6%9C%8D%E5%8A%A1/" data-id="cklkonpea004mcjey6lsiamh0" data-title="Mac下自启动SVN服务" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-linux安装mysql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/12/21/linux%E5%AE%89%E8%A3%85mysql/" class="article-date">
+  <time class="dt-published" datetime="2016-12-21T10:24:58.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/12/21/linux%E5%AE%89%E8%A3%85mysql/">Linux安装配置MySql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1、安装客户端和服务器端"><a href="#1、安装客户端和服务器端" class="headerlink" title="1、安装客户端和服务器端"></a>1、安装客户端和服务器端</h1><p>[codesyntax lang=”bash”]</p>
+<p>#确认mysql是否已安装<br>yum list installed mysql*<br>rpm -qa  grep mysql*</p>
+<p>#查看是否有安装包<br>yum list mysql*</p>
+<p>#安装mysql客户端<br>yum install mysql</p>
+<p>#安装mysql 服务器端<br>yum install mysql-server<br>yum install mysql-devel</p>
+<p>[/codesyntax]  </p>
+<h1 id="2、启动、停止设置"><a href="#2、启动、停止设置" class="headerlink" title="2、启动、停止设置"></a>2、启动、停止设置</h1><p>数据库字符集设置 mysql配置文件/etc/my.cnf中加入default-character-set=utf8 [codesyntax lang=”bash”]</p>
+<p>#启动mysql服务：<br>service mysqld start<br>#或者<br>/etc/init.d/mysqld start</p>
+<p>#设置开机启动：<br>chkconfig –add mysqld<br>chkconfig mysqld on</p>
+<p>#查看开机启动设置是否成功<br>chkconfig –list  grep mysql*<br>mysqld 0:关闭 1:关闭 2:启用 3:启用 4:启用 5:启用 6:关闭</p>
+<p>#停止mysql服务：<br>service mysqld stop</p>
+<p>[/codesyntax]    </p>
+<h1 id="3-创建或修改密码："><a href="#3-创建或修改密码：" class="headerlink" title="3.创建或修改密码："></a>3.创建或修改密码：</h1><p>a.例如你的 root用户现在没有密码，你希望的密码修改为123456，那么命令是：</p>
+<blockquote>
+<p>mysqladmin -u root password 123456</p>
+</blockquote>
+<p>b.如果你的root现在有密码了（123456），那么修改密码为abcdef的命令是：</p>
+<blockquote>
+<p>mysqladmin -u root -p password abcdef</p>
+</blockquote>
+<p>注意，命令回车后会问你旧密码，输入旧密码123456之后命令完成，密码修改成功。</p>
+<h1 id="4-开启远程访问权限"><a href="#4-开启远程访问权限" class="headerlink" title="4.开启远程访问权限"></a>4.开启远程访问权限</h1><p>  4.1、登陆mysql</p>
+<blockquote>
+<p>mysql -u root -p</p>
+</blockquote>
+<p>4.2.修改mysql库的user表，将host项，从localhost改为%。%这里表示的是允许任意host访问，如果只允许某一个ip访问，则可改为相应的ip，比如可以将localhost改为192.168.1.123，这表示只允许局域网的192.168.1.123这个ip远程访问mysql。</p>
+<blockquote>
+<p>mysql&gt; use mysql; mysql&gt; update user set host = ‘%’ where user = ‘root’; mysql&gt; select host, user from user; mysql&gt; flush privileges;</p>
+</blockquote>
+<h1 id="5-防火墙开放3306端口"><a href="#5-防火墙开放3306端口" class="headerlink" title="5.防火墙开放3306端口"></a>5.防火墙开放3306端口</h1><p>[codesyntax lang=”bash”]</p>
+<p>#打开防火墙配置文件<br>vi  /etc/sysconfig/iptables</p>
+<p>#增加下面一行<br>-A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT</p>
+<p>#重启防火墙<br>service  iptables restart</p>
+<p>[/codesyntax]  </p>
+<h1 id="6-查看mysql-状态"><a href="#6-查看mysql-状态" class="headerlink" title="6. 查看mysql 状态"></a>6. 查看mysql 状态</h1><blockquote>
+<p># ps -e grep mysqld</p>
+<p>13085 pts/1 00:00:00 mysqld_safe</p>
+<p>13190 pts/1 00:00:00 mysqld</p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>service mysqld status</p>
+</blockquote>
+<h1 id="7-修改mysql端口"><a href="#7-修改mysql端口" class="headerlink" title="7.修改mysql端口"></a>7.修改mysql端口</h1><p>为了安全，不采用默认端口3306，改为3506</p>
+<p>7.1. 登录mysql</p>
+<blockquote>
+<p>[root@test /]# mysql -u root -p</p>
+<p>Enter password:</p>
+</blockquote>
+<p>7.2. 使用命令show global variables like ‘port’;查看端口号</p>
+<blockquote>
+<p>mysql&gt; show global variables like ‘port’; +—————+——-+ Variable_name Value +—————+——-+ port 3306 +—————+——-+</p>
+</blockquote>
+<p>7.3. 修改端口，编辑/etc/my.cnf文件，早期版本有可能是my.conf文件名，增加端口参数，并且设定端口，注意该端口未被使用，保存退出。</p>
+<blockquote>
+<p>[root@test etc]# vi my.cnf [mysqld] port=3506 datadir=/var/lib/mysql socket=/var/lib/mysql/mysql.sock</p>
+</blockquote>
+<p>7.4.重启mysql</p>
+<blockquote>
+<p>service mysqld restart</p>
+</blockquote>
+<p>再次查看，端口已经变为3506</p>
+<blockquote>
+<p>mysql&gt; show global variables like ‘port’; +—————+——-+ Variable_name Value +—————+——-+ port 3506 +—————+——-+</p>
+</blockquote>
+<h1 id="8、mysql的几个重要目录"><a href="#8、mysql的几个重要目录" class="headerlink" title="8、mysql的几个重要目录"></a>8、mysql的几个重要目录</h1><p>8.1数据库目录 /var/lib/mysql/ 8.2配置文件 /usr/share /mysql（mysql.server命令及配置文件） 8.3相关命令 /usr/bin（mysqladmin mysqldump等命令） 8.4启动脚本 /etc/rc.d/init.d/（启动脚本文件mysql的目录）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2016/12/21/linux%E5%AE%89%E8%A3%85mysql/" data-id="cklkonpe10044cjey4albhy7w" data-title="Linux安装配置MySql" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-linux下安装shadowsock" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/12/21/linux%E4%B8%8B%E5%AE%89%E8%A3%85shadowsock/" class="article-date">
+  <time class="dt-published" datetime="2016-12-21T06:34:43.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>►<a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/12/21/linux%E4%B8%8B%E5%AE%89%E8%A3%85shadowsock/">Linux下安装ShadowSocks</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>服务器环境：CentOS6.5 ，Python3.5，服务器pip可用。 1.安装和配置：</p>
+<blockquote>
+<p>pip install shadowsocks</p>
+</blockquote>
+<p>创建配置文件：</p>
+<pre><code>vi /etc/shadowsocks.json
 </code></pre>
-<p> for (int j = 1; j &lt;= i; j++) {<br> Console.Write (“{1}*{0}={2}\t”,i,j,i*j);<br> }<br> Console.WriteLine ();<br> }</p>
-<p>[/codesyntax]   <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/09/Snip20160909_2.png"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/09/Snip20160909_2.png" alt="snip20160909_2"></a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2016/09/09/c-%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/" data-id="ckljj0p750030rpey4lvn797f" data-title="C# 九九乘法表" class="article-share-link">Teilen</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-git常用命令速查" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2016/08/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/" class="article-date">
-  <time class="dt-published" datetime="2016-08-26T07:49:22.000Z" itemprop="datePublished">2016-08-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/08/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/">Git常用命令速查</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/git.jpeg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/git.jpeg" alt="git"></a>git clone http://..git #复制远程库下来<br>git remote rm orgin #断开远程库</p>
-<p>git init #初始化init<br>git remote add http://..git #添加远程库连接<br>git push -u origin master #推送到远程库，第一次加 -u<br>git pull #拉去远程库更新</p>
-<p>ssh-keygen -t rsa -C “<a href="mailto:&#101;&#109;&#97;&#105;&#108;&#64;&#49;&#54;&#x33;&#46;&#99;&#111;&#x6d;">&#101;&#109;&#97;&#105;&#108;&#64;&#49;&#54;&#x33;&#46;&#99;&#111;&#x6d;</a>“ #生成ssh key</p>
-<p>git log # 日志<br>git log –graph –pretty=oneline –abbrev-commit #日志，图形化，只显示一行, commit_id缩写<br>git status #当前状态</p>
-<p>git add #添加到暂存去，空文件夹不行<br>git commit -m “message”</p>
-<p>git reset –hard HEAD^ #回退到上个版本， –hard 是强制同步修改工作区的文件<br>git reflog #版本操作的编号<br>git reset –hard &lt;comond_id&gt; #版本回退后还能恢复</p>
-<p>git reset HEAD <file> #从暂存区移除文件<br>git checkout – <file> #撤销工作区文件的修改</p>
-<p>git branch -b dev #新建并切换到dev分支<br>git branch dev #新建dev分支<br>git checkout dev #切换到dev分支</p>
-<p>git branch -d dev 删除dev分支</p>
-<p>git merge –no-ff -m “message” dev #合并分支dev到当前 带no-ff，删除分支后依然可以看到log历史记录</p>
-<p>git stash #保存现场<br>git stash -u #强制保存现场，包括未add追踪的文件<br>git stash pop #恢复现场，并删除stash的记录<br>git stash list #查看stash</p>
-<p>git tag v0.1 #创建标签，默认HEAD<br>git tag v0.2 354qwe4 #可指定commit_id来创建<br>git push origin v0.1 #推送标签到远程<br>git push origin –tag #推送所有未推送的标签到远程<br>git tag -d v0.1 #删除标签<br>git push origin :refs/tags/v0.1 #将删除的标签同步删除到远程</p>
-<p>git config –global alias.st status #全局别名，git st = git status<br>#超强log，别名lg<br>git config –global alias.lg “log –color –graph –pretty=format:’%Cred%h%Creset<br>-%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit”</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2016/08/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/" data-id="ckljj0p7l003urpeyf3cobtzz" data-title="Git常用命令速查" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-mac-下使用tree命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2016/08/25/mac-%E4%B8%8B%E4%BD%BF%E7%94%A8tree%E5%91%BD%E4%BB%A4/" class="article-date">
-  <time class="dt-published" datetime="2016-08-25T09:03:09.000Z" itemprop="datePublished">2016-08-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/08/25/mac-%E4%B8%8B%E4%BD%BF%E7%94%A8tree%E5%91%BD%E4%BB%A4/">Mac 下使用tree命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>  <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/tree.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/tree.jpg" alt="tree"></a> 在Mac上，使用tree命令生成目录树，查看文件目录，非常直观方便。 首先，用brew来安装tree。</p>
 <blockquote>
-<p>brew install tree</p>
+<p>{<br>    “server”:”0.0.0.0”,<br>    “server_port”:8989,<br>    “local_address”: “127.0.0.1”,<br>    “local_port”:1080,<br>    “password”:”yourpassword”,<br>    “timeout”:600,<br>    “method”:”aes-256-cfb”,<br>    “fast_open”: false,<br>    “workers”: 1<br>}</p>
 </blockquote>
-<p>安装过程如下：</p>
-<p>[codesyntax lang=”php”]</p>
-<p>==&gt; Downloading <a target="_blank" rel="noopener" href="https://homebrew.bintray.com/bottles/tree-1.7.0.el/_capitan.bottle.1.tar.gz">https://homebrew.bintray.com/bottles/tree-1.7.0.el\_capitan.bottle.1.tar.gz</a></p>
-<p>######################################################################## 100.0%</p>
-<p>==&gt; Pouring tree-1.7.0.el_capitan.bottle.1.tar.gz</p>
-<p>  /usr/local/Cellar/tree/1.7.0: 7 files, 113.1K</p>
-<p>[/codesyntax] 安装完成后，使用tree命令查看下效果，-L 表示层级</p>
-<blockquote>
-<p>tree -L 2</p>
-</blockquote>
-<p>上面命令即显示当前目录2层的目录树。 效果如下： <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/tree2.png"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/08/tree2.png" alt="tree2"></a>   还可以讲目录树保存一下。</p>
-<blockquote>
-<p>tree -L 2 &gt; README.md</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2016/08/25/mac-%E4%B8%8B%E4%BD%BF%E7%94%A8tree%E5%91%BD%E4%BB%A4/" data-id="ckljj0p7x004qrpey7p7mf7so" data-title="Mac 下使用tree命令" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/" rel="tag">tree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" rel="tag">目录树</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-mac下monodevelop的快捷键记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2016/05/13/mac%E4%B8%8Bmonodevelop%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95/" class="article-date">
-  <time class="dt-published" datetime="2016-05-13T03:46:36.000Z" itemprop="datePublished">2016-05-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Unity3D/">Unity3D</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/05/13/mac%E4%B8%8Bmonodevelop%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95/">Mac下MonoDevelop的快捷键记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id=""><a href="#" class="headerlink" title=""></a><img src="http://www.monodevelop.com/images/389-ss-welcome-5-4.png" alt="MonoDevelop"></h3><h3 id="记录下Mac下MonoDeveloper快捷键"><a href="#记录下Mac下MonoDeveloper快捷键" class="headerlink" title="记录下Mac下MonoDeveloper快捷键"></a>记录下Mac下MonoDeveloper快捷键</h3><p>Window下开发Unity3D，除了Vs无它。</p>
-<h4 id="苹果下按键说明如下"><a href="#苹果下按键说明如下" class="headerlink" title="苹果下按键说明如下"></a>苹果下按键说明如下</h4><ul>
-<li>  ⌘——Command ()</li>
-<li>  ⌃ ——Control</li>
-<li>  ⌥——Option (alt)</li>
-<li>  ⇧——Shift</li>
-<li>  ⇪——Caps Lock</li>
+<p>各字段的含义：</p>
+<ul>
+<li>  server：服务器 IP (IPv4/IPv6)，注意这也将是服务端监听的 IP 地址</li>
+<li>  server_port：监听的服务器端口</li>
+<li>  local_address：本地监听的 IP 地址</li>
+<li>  local_port：本地端端口</li>
+<li>  password：用来加密的密码</li>
+<li>  timeout：超时时间（秒）</li>
+<li>  method：加密方法，可选择 “bf-cfb”, “aes-256-cfb”, “des-cfb”, “rc4”, 等等。默认是一种不安全的加密，推荐用 “aes-256-cfb”</li>
+<li>  works：works数量，默认为 1</li>
+<li>  fast_open：true 或 false。如果你的服务器 Linux 内核在3.7+，可以开启 fast_open 以降低延迟。开启方法：</li>
 </ul>
-<h3 id="跳转："><a href="#跳转：" class="headerlink" title="跳转："></a>跳转：</h3><p>Command+Y：跳转到声明 Command+L：跳转到具体行 Shift+Command+D：跳转/打开工程文件（VS里面大番茄快速打开文件）Command+上：跳转到文件顶部 Command+下：跳转到文件底部 Command+左：跳转行首 Command+右：跳转行尾 Option+Command+左右方向键：向前/向后转到光标所在位置（这个应该说特别有用）</p>
-<h3 id="查找："><a href="#查找：" class="headerlink" title="查找："></a>查找：</h3><p>Shift+Command+Y：查找所有引用 Command+Y：在文件中查找字符 Shift+Command+F：在所有文件中查找字符</p>
-<h3 id="注释："><a href="#注释：" class="headerlink" title="注释："></a>注释：</h3><p>Command+/：注释/取消注释当前行</p>
-<h3 id="编辑："><a href="#编辑：" class="headerlink" title="编辑："></a>编辑：</h3><p>Command+C：复制 Command+V：粘贴 Command+Z：撤销 Command+X：剪切 Control+K：删除光标后所有当前行内容 Option+上下按键：将当前行向上/向下移动（VS里面Alt+上下按键效果）Option+左右按键：按整个单词切换（VS中Control+左右一样的效果）Option+Delete：删除单词内容 列出了常用的快捷键，自己做个记录，也希望帮助到需要的朋友，如果有更好的MonoDeveloper使用技巧   快捷键可以自己修改 Command+，  但是貌似monoDevelop上的设置选项有点少，比如复制当前行  没找到在，可能是unity自带的，版本有点老，你也可以去官方下载最新的</p>
+<blockquote>
+<p>echo 3 &gt; /proc/sys/net/ipv4/tcp_fastopen</p>
+</blockquote>
+<p>开启之后，将 fast_open 的配置设置为 true 即可。   <strong>2、 命令行参数（服务器端启动命令）</strong> ssserver -c /etc/shadowsocks.json 如果想在后台一直运行Shadowsocks，启动命令如下： nohup ssserver -c /etc/shadowsocks.json &gt; /dev/null 2&gt;&amp;1 &amp; <strong>备注：</strong>关于nohup，是可以让程序在后台运行的命令。 同时可以用命令行参数覆盖 /etc/shadowsocks.json 里的设置： sslocal -s 服务器地址 -p 服务器端口 -l 本地端端口 -k 密码 -m 加密方法 ssserver -p 服务器端口 -k 密码 -m 加密方法 <strong>备注：</strong>sslocal是客户端程序；ssserver是服务端程序。   <strong>5、 防火墙设置（如有）</strong> 编辑防火墙配置文件/etc/sysconfig/iptables，将服务器端口（server_port）放行。 新增一条防火墙规则：</p>
+<blockquote>
+<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 8989 -j ACCEPT</p>
+</blockquote>
+<p>如果找不到 文件/etc/sysconfig/iptables， 可以使用命令行：</p>
+<blockquote>
+<p>iptables -A INPUT -m state –state NEW -m tcp -p tcp –dport 8989 -j ACCEPT service iptables save</p>
+</blockquote>
+<p>重启防火墙iptables： service iptables restart 至此，服务器端的 Shadowsocks 安装和配置完毕。</p>
+<hr>
+<p>等等…， 为什么能访问百度，访问不了facebook，啊？ 服务器是国内的！！！吐血三升！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2016/05/13/mac%E4%B8%8Bmonodevelop%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95/" data-id="ckljj0p810050rpeyh8w645ud" data-title="Mac下MonoDevelop的快捷键记录" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2016/12/21/linux%E4%B8%8B%E5%AE%89%E8%A3%85shadowsock/" data-id="cklkonpe00040cjeyedor9xlk" data-title="Linux下安装ShadowSocks" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MonoDevelop/" rel="tag">MonoDevelop</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks/" rel="tag">shadowsocks</a></li></ul>
 
     </footer>
   </div>
@@ -293,10 +357,10 @@
 
 
   
-    <article id="post-centosnginxuwsgipythondjango-部署应用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-linuxcentos-升级-python-至-3-x" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2016/03/05/centosnginxuwsgipythondjango-%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" class="article-date">
-  <time class="dt-published" datetime="2016-03-05T15:32:21.000Z" itemprop="datePublished">2016-03-05</time>
+    <a href="/2016/12/20/linuxcentos-%E5%8D%87%E7%BA%A7-python-%E8%87%B3-3-x/" class="article-date">
+  <time class="dt-published" datetime="2016-12-20T14:56:58.000Z" itemprop="datePublished">2016-12-20</time>
 </a>
     
   <div class="article-category">
@@ -311,7 +375,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/03/05/centosnginxuwsgipythondjango-%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/">centos+nginx+uwsgi+python+django 部署应用</a>
+      <a class="p-name article-title" href="/2016/12/20/linuxcentos-%E5%8D%87%E7%BA%A7-python-%E8%87%B3-3-x/">Linux(CentOS) 升级 Python 至 3.x</a>
     </h1>
   
 
@@ -319,362 +383,61 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><p>折腾了近两天，终于把python小应用部署到阿里云服务器上了。作为一个运维小白，特记录一下部署过程，以备后续查验。 服务器选的阿里云，这里也有个和本文无关但是心酸的过程。因为以前用过阿里云，后来手机换号了，为了更换手机号简直心塞，整个流程简直死循环。大概是这样的：  </p>
+        <p>CentOS 6.5 中默认安装了 Python，版本比较低（2.6.6），为了使用新版 3.x，需要对旧版本进行升级。 由于很多基本的命令、软件包都依赖旧版本，比如：yum。所以，在更新 Python 时，建议不要删除旧版本（新旧版本可以共存）。  </p>
 <blockquote>
-<p>1.登陆阿里云账号，购买服务器<br>2.因为购买时候选择的是创建后设置服务器密码，所以购买完第一件事是重置服务器root密码<br>3.重置密码需要手机验证，但是老手机已经不用了<br>4.提交工单，申诉说明，客服让提交身份证件，手持身份证照等<br>5.身份证过期了，审核不通过<br>6.新身份证还没办下来，估计下个月才能拿到，但是服务器只买了一个月，到时候审核通过服务器也过期了</p>
+<p>1.查看 Python 版本号</p>
 </blockquote>
-<p>简直是心塞啊，幸好和客服沟通，可以用驾照代替，就这折腾两天，总算是把手机号给换了，泪奔！ 好了，言归正传，开始说部署！</p>
-<h1 id="一、系统选的CentOS"><a href="#一、系统选的CentOS" class="headerlink" title="一、系统选的CentOS"></a>一、系统选的CentOS</h1><p>看阿里云官方推荐的CentOS，就直接选它了，本来选的是CentOS 6.5 ，结果安装后发现，自带的Python版本是2.6.6，貌似有点旧了，后来又重置了一次系统，换成了CentOS 7.0，自带的Python版本是2.7.5。 在刚发现CentOS6.5自带的Python为2.6.6时，也看了几篇文章，尝试把Python从升级到2.7，但是因为不知道哪里配错的原因，2.7虽然装好了，但是pip一直装不上，算了，只是为了部署个小python项目测试用，就不搞那么麻烦了，直接换成CentOS 7.0吧。 另外除了CentOS，Ubuntu应该也是不错的选择，以后有机会尝试一下。</p>
-<h1 id="二、安装nginx和python等相关包"><a href="#二、安装nginx和python等相关包" class="headerlink" title="二、安装nginx和python等相关包"></a>二、安装nginx和python等相关包</h1><h3 id="2-1-安装nginx和python"><a href="#2-1-安装nginx和python" class="headerlink" title="2.1.安装nginx和python"></a>2.1.安装nginx和python</h3><p>方法很简单，yum搞定（感觉nginx已经自带了python，貌似不用安装python-devel <strong>？？？）</strong></p>
-<blockquote>
-<p>sudo yum install epel-release sudo yum install python-devel nginx</p>
-</blockquote>
-<p>先关闭 CentOS的防火墙，防止访问不了，后续再通过开放端口的方式进行细节处理</p>
-<blockquote>
-<p>临时关闭防火墙 sudo systemctl stop firewalld</p>
-</blockquote>
-<blockquote>
-<p>将 SELinux 设置为宽容模式，方便调试： sudo setenforce 0</p>
-</blockquote>
-<p><strong>CentOS 7 iptables如何使用</strong>：<a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/24756240/how-can-i-use-iptables-on-centos-7">http://stackoverflow.com/questions/24756240/</a></p>
-<h3 id="2-2-安装pip"><a href="#2-2-安装pip" class="headerlink" title="2.2.安装pip"></a>2.2.安装pip</h3><blockquote>
-<p>1.通过wget下载py文件 wget <a target="_blank" rel="noopener" href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a> 2.用python安装 python get-pip.py</p>
-</blockquote>
-<p>wget 下载https文件，如果报错，可以加上–no-check-certificate</p>
-<h3 id="2-3-安装django，上传项目文件"><a href="#2-3-安装django，上传项目文件" class="headerlink" title="2.3.安装django，上传项目文件"></a>2.3.安装django，上传项目文件</h3><blockquote>
-<p>目前django的版本是1.9.3 pip install django</p>
-</blockquote>
-<p>pip install Django==1.5 即可安装其他（1.5）版本</p>
-<blockquote>
-<p>上传文件（项目暂时放在root） scp local_folder remote_username@remote_ip:remote_folder</p>
-</blockquote>
-<p> </p>
-<h1 id="三、-使用-uwsgi-来部署（也可以用gunicorn）"><a href="#三、-使用-uwsgi-来部署（也可以用gunicorn）" class="headerlink" title="三、 使用  uwsgi 来部署（也可以用gunicorn）"></a>三、 使用  uwsgi 来部署（也可以用gunicorn）</h1><h3 id="3-1安装uwsgi"><a href="#3-1安装uwsgi" class="headerlink" title="3.1安装uwsgi"></a>3.1安装uwsgi</h3><blockquote>
-<p>pip install uwsgi</p>
-</blockquote>
-<h3 id="3-2启动uwsgi"><a href="#3-2启动uwsgi" class="headerlink" title="3.2启动uwsgi"></a>3.2启动uwsgi</h3><p>执行uwsgi命令，启动</p>
-<blockquote>
-<p>uwsgi –http :8001 –chdir /path/to/project –home=/path/to/env –module project.wsgi</p>
-</blockquote>
-<p>--home 指定virtualenv 路径，如果没有可以去掉。project.wsgi 指 project/wsgi.py 文件 理论上这样就可以跑了，这时候访问你的服务器ip如（123.23.23.233:8001）,应该可以看到页面的 这时候查看端口占用（netstat -lpnt），会看到0.0.0.0:8001,已经有项目在监听。</p>
-<h3 id="3-3简化启动命令"><a href="#3-3简化启动命令" class="headerlink" title="3.3简化启动命令"></a>3.3简化启动命令</h3><p>但是这样的命令太长了，我们换一种，写ini文件来配置（或者xml/json/yaml） 在项目目录（/path/to/project）下，新建uwsgi.ini，内容如下： ss[codesyntax lang=”python”]</p>
-<p>[uwsgi]<br>socket = 127.0.0.1:8001<br>chdir = /root/python_project/djtest/<br>wsgi-file = djtest/wsgi.py<br>touch-reload=/root/python_project/djtest/reload</p>
-<p>processes = 2<br>threads = 4</p>
-<p>chmod-socket = 664<br>chown-socket = root:www-data</p>
-<p>[/codesyntax]   我们执行以下命令，即可把项目部署到8001端口</p>
-<blockquote>
-<p>uwsgi –ini /root/python_project/djtest/uwsgi.ini</p>
-</blockquote>
-<p>#如果uwsgi无效，试试/path/to/uwsgi 即uwsgi的目录 注意，这里写的是“socket = 127.0.0.1:8001”，这里后面会和nginx关联到。 指定了touch-reload，执行如下命令，即可重新编译，重启应用</p>
-<blockquote>
-<p>touch /root/python_project/djtest/reload</p>
-</blockquote>
-<h3 id="3-4端口占用，杀掉进程"><a href="#3-4端口占用，杀掉进程" class="headerlink" title="3.4端口占用，杀掉进程"></a>3.4端口占用，杀掉进程</h3><p>如果端口被占用了，可以杀掉进程：</p>
-<blockquote>
-<p>probably another instance of uWSGI is running on the same address (:8001). bind(): Address already in use [core/socket.c line 764]</p>
-</blockquote>
-<p>根据端口查找</p>
-<blockquote>
-<p>lsof -i :8001</p>
-</blockquote>
-<p>可以查出</p>
-<blockquote>
-<p>COMMAND PID USER FD TYPE DEVICE             SIZE/OFF NODE NAME<br>uwsgi  2208<br>root 4u IPv4 0x53492abadb5c9659 0t0    TCP *:teradataordbms (LISTEN)<br>uwsgi  2209 root 4u IPv4 0x53492abadb5c9659 0t0    TCP *:teradataordbms (LISTEN)</p>
-</blockquote>
-<p>这时根据 PID 可以用下面的命令 kill 掉相关程序：</p>
-<blockquote>
-<p>sudo kill -9 2208 2209</p>
-</blockquote>
-<p> </p>
-<h1 id="4-使用supervisor来管理进程"><a href="#4-使用supervisor来管理进程" class="headerlink" title="4. 使用supervisor来管理进程"></a>4. 使用supervisor来管理进程</h1><p>安装 supervisor 软件包</p>
-<blockquote>
-<p>sudo pip install supervisor</p>
-</blockquote>
-<p>生成 supervisor 默认配置文件，比如放在 /etc/supervisord.conf 路径中：</p>
-<blockquote>
-<p>sudo echo_supervisord_conf &gt; /etc/supervisord.conf</p>
-</blockquote>
-<p>打开sup，在底部添加如下配置</p>
-<blockquote>
-<p>[program:djtest]<br>command=/usr/bin/uwsgi –ini /root/python_project/djtest/uwsgi.ini<br>directory=/root/python_project/djtest<br>user=root<br>startsecs=0<br>stopwaitsecs=0<br>autostart=true<br>autorestart=true</p>
-</blockquote>
-<p>  command 中写上对应的命令，这样，就可以用 supervisor 来管理了。  </p>
-<blockquote>
-<p>启动 supervisor<br>sudo supervisord -c /etc/supervisord.conf</p>
-<p>重启 djtest 程序（项目）：<br>sudo supervisorctl -c /etc/supervisord.conf restart<br>djtest</p>
-<p>启动，停止，或重启 supervisor 管理的某个程序 或 所有程序：<br>sudo supervisorctl -c /etc/supervisord.conf [startstoprestart] [program-nameall]</p>
-</blockquote>
-<p>  通过重启程序，也可以实现项目的重新编译，重启生效。  </p>
-<h1 id="5-配置nginx"><a href="#5-配置nginx" class="headerlink" title="5.配置nginx"></a>5.配置nginx</h1><p>在/etc/nginx/nginx.conf配置里http下家如下server：</p>
-<p>[codesyntax lang=”php”]</p>
-<pre><code>server &#123;
-    listen      80;
-    server\_name 123.23.23.233;
-    charset     utf-8;
-
-    client\_max\_body\_size 75M;
-
-    location / &#123;
-        uwsgi\_pass  127.0.0.1:8001;
-        include     /etc/nginx/uwsgi\_params;
-    &#125;
-&#125;
-</code></pre>
+<p>当 Linux 上安装 Python 后（默认安装），只需要输入简单的命令，就可以查看 Python 的版本号： [codesyntax lang=”php”]</p>
+<p>python -V<br>Python 2.6.6</p>
 <p>[/codesyntax]</p>
-<p>重启nginx即可！ 重点：之前以uwsgi的方式启动，外网可以访问（123.23.23.233:8001）,但是nginx报错502，通过查看端口（netstat -lpnt）发现，以uwsgi –http :8001…的方式启动，监听的是0.0.0.0:8001，nginx无法转发过去，后直接把uwsgi启动至127.0.0.1:8001,然后nginx里的server配置也是uwsgi_pass 127.0.0.1:8001;可以正常访问了，此时通过ip:8001是不能访问的。 另外，uwsgi_pass可以用 unix:///tmp/zqxt.sock; 项目中uwsgi.ini的socket配置对应，也可以正常工作，但未实验成功。 作为一个运维小白，参考教程，一步一步出错排查，排查出错，总算跑起来了，虽然还有很多漏洞，但是足以欣慰。 参考资料：<a target="_blank" rel="noopener" href="http://www.ziqiangxuetang.com/django/django-nginx-deploy.html">http://www.ziqiangxuetang.com/django/django-nginx-deploy.html</a>     <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2016/03/aliyun-e1487147439130.jpg"><img src="http://blog.sqstudio.com/wp-content/uploads/2016/03/aliyun-300x185.jpg" alt="aliyun"></a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2016/03/05/centosnginxuwsgipythondjango-%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" data-id="ckljj0p780033rpey9kmacjds" data-title="centos+nginx+uwsgi+python+django 部署应用" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/" rel="tag">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uwsgi/" rel="tag">uwsgi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-android国际化-多语言" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2016/01/21/android%E5%9B%BD%E9%99%85%E5%8C%96-%E5%A4%9A%E8%AF%AD%E8%A8%80/" class="article-date">
-  <time class="dt-published" datetime="2016-01-21T12:14:37.000Z" itemprop="datePublished">2016-01-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/01/21/android%E5%9B%BD%E9%99%85%E5%8C%96-%E5%A4%9A%E8%AF%AD%E8%A8%80/">Android国际化-多语言</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>1.  很大程度上，为什么我们能如此方便的实现国际化、分辨率匹配等？ 主要就是得益于 Android 中这种独特的资源管理方式。程序员的代码可以不直接和资源发生关系。Android 中，我们通常通过 R 文件提供的索引来间接的引用某一个资源。而如何维护资源索引和真正的资源之间的关系，这个活，却是 Android 系统来做的。 这里面就可以大作文章了不是么？ 我说过，最了解用户手机的，不是用户也不是程序员，而是Android操作系统。它最了解用户当前使用的是什么语言，最了解用户当前手机的分辨率是多少，了解电量，了解内存情况…等等。 既然你对自个的情况这么了解，为什么不自己把所有能完成的事情都做了？不要麻烦程序员好吧？好的，所以 Android 在这方面做得非常优秀。 基于这个角度，我们要转换的观念为：有可能，R 文件中的索引，并非是和资源一对一的。例如我们以前认为它就一定是对应了一张图片，对应了一个字符串，对应了一个布局文件。 而很可能，Android 其实会根据用户当前使用的环境对应几套方案：例如本文所讲的主题，从国际化角度，可能对应中文环境方案，英文环境方案？那么，这时候 R 文件对应的这个资源便不确定起来，当我们通过 R 文件调用一个图片资源显示在窗口上时，Android 操作系统会自动根据用户当前的环境，而选用最合适的图片（这个挑选过程却是透明的）。 程序员可以干预的是：英文环境到底对应哪套方案？中文环境对应到底哪套方案？ OK。这就简单了。 2. Android 中要实现国际化比较简单。 字符串国际化：只要在 res 文件夹下新建对应语言的 values 文件夹就好了， 如，英语环境下的，文件夹命名为：values-en 美国英文环境：values-en-rUS 中文环境为：values-zh 大陆地区中文环境： values-zh-cn 在 eclipse 下新建 Android 项目时，会在 res 目录下自动创建一个默认语言环境的文件夹 : values 当某一个资源没有在语言环境的对应的资源集合中找到时，就会使用 values 下的资源。 若某一个语言环境没有在项目中定义语言环境，那么也会使用 values 下的资源。 3. 图片国际化 同理。 在 res 下新建 drawable-zh 文件夹，存放中文环境下的图片 新建 drawable-en 作为英语环境下的图片 在 eclipse 下新建 Android 项目时，会在 res 目录下自动创建三个默认语言环境的文件夹： drawable-hdpi drawable-ldpi drawable-mdpi 分别用于存放高、中。低分辨率的图片。Android 系统会根据手机的分辨率，而自动从不同的对应的某一个文件夹下去加载图片。 同样，它们也可以国际化，命名规则如： drawable-zh-hdpi drawable-en-ldpi drawable-en-rUS-mdpi 使用。在 XML 中需要使用到图片的地方用表达式： @drawable/icon 代码中使用：R.drawable.icon。因为图片资源同样也会在 R 文件中生成一个索引 ================================================================== android多国语言文件夹文件汇总如下： 中文（中国）：values-zh-rCN 中文（台湾）：values-zh-rTW 中文（香港）：values-zh-rHK 英语（美国）：values-en-rUS 英语（英国）：values-en-rGB 英文（澳大利亚）：values-en-rAU 英文（加拿大）：values-en-rCA 英文（爱尔兰）：values-en-rIE 英文（印度）：values-en-rIN 英文（新西兰）：values-en-rNZ 英文（新加坡）：values-en-rSG 英文（南非）：values-en-rZA 阿拉伯文（埃及）：values-ar-rEG 阿拉伯文（以色列）：values-ar-rIL 保加利亚文:  values-bg-rBG 加泰罗尼亚文：values-ca-rES 捷克文：values-cs-rCZ 丹麦文：values-da-rDK 德文（奥地利）：values-de-rAT 德文（瑞士）：values-de-rCH 德文（德国）：values-de-rDE 德文（列支敦士登）：values-de-rLI 希腊文：values-el-rGR 西班牙文（西班牙）：values-es-rES 西班牙文（美国）：values-es-rUS 芬兰文（芬兰）：values-fi-rFI 法文（比利时）：values-fr-rBE 法文（加拿大）：values-fr-rCA 法文（瑞士）：values-fr-rCH 法文（法国）：values-fr-rFR 希伯来文：values-iw-rIL 印地文：values-hi-rIN 克罗里亚文：values-hr-rHR 匈牙利文：values-hu-rHU 印度尼西亚文：values-in-rID 意大利文（瑞士）：values-it-rCH 意大利文（意大利）：values-it-rIT 日文：values-ja-rJP 韩文：values-ko-rKR 立陶宛文：valueslt-rLT 拉脱维亚文：values-lv-rLV 挪威博克马尔文：values-nb-rNO 荷兰文(比利时)：values-nl-BE 荷兰文（荷兰）：values-nl-rNL 波兰文：values-pl-rPL 葡萄牙文（巴西）：values-pt-rBR 葡萄牙文（葡萄牙）：values-pt-rPT 罗马尼亚文：values-ro-rRO 俄文：values-ru-rRU 斯洛伐克文：values-sk-rSK 斯洛文尼亚文：values-sl-rSI 塞尔维亚文：values-sr-rRS 瑞典文：values-sv-rSE 泰文：values-th-rTH 塔加洛语：values-tl-rPH 土耳其文：values–r-rTR 乌克兰文：values-uk-rUA 越南文：values-vi-rVN</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2016/01/21/android%E5%9B%BD%E9%99%85%E5%8C%96-%E5%A4%9A%E8%AF%AD%E8%A8%80/" data-id="ckljj0p6i001mrpey3wis5378" data-title="Android国际化-多语言" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" rel="tag">多语言</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-androidstudio-升级配置，不只需要翻墙mac" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2016/01/21/androidstudio-%E5%8D%87%E7%BA%A7%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%B8%8D%E5%8F%AA%E9%9C%80%E8%A6%81%E7%BF%BB%E5%A2%99mac/" class="article-date">
-  <time class="dt-published" datetime="2016-01-21T07:23:29.000Z" itemprop="datePublished">2016-01-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/01/21/androidstudio-%E5%8D%87%E7%BA%A7%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%B8%8D%E5%8F%AA%E9%9C%80%E8%A6%81%E7%BF%BB%E5%A2%99mac/">AndroidStudio 升级配置，不只需要翻墙(Mac)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>翻了墙还不能升级AndroidStudio，今天中午下点功夫找找原因 原来还需要在安装包的bin文件夹下studio.vmoptions加上如下配置： <code>配置如下： -Djava.net.preferIPv4Stack=true -Didea.updates.url=http://dl.google.com/android/studio/patches/updates.xml -Didea.patches.url=http://dl.google.com/android/studio/patches/</code> 或者在 info.plist文件的<key>VMOptions</key> <string>里加上这些配置，也是一样的！ 终于升级了，越来越好用了！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2016/01/21/androidstudio-%E5%8D%87%E7%BA%A7%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%B8%8D%E5%8F%AA%E9%9C%80%E8%A6%81%E7%BF%BB%E5%A2%99mac/" data-id="ckljj0p6f001frpey8arq2ewl" data-title="AndroidStudio 升级配置，不只需要翻墙(Mac)" class="article-share-link">Teilen</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-mac下使用dex2jar" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2016/01/18/mac%E4%B8%8B%E4%BD%BF%E7%94%A8dex2jar/" class="article-date">
-  <time class="dt-published" datetime="2016-01-18T03:04:27.000Z" itemprop="datePublished">2016-01-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/01/18/mac%E4%B8%8B%E4%BD%BF%E7%94%A8dex2jar/">Mac下使用dex2jar</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>1.去<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/dex2jar/">http://sourceforge.net/projects/dex2jar/</a> 下载一个新版本dex2jar.  目前是2.0，下载后文件名dex2jar-2.0.zip 2.可以到这里看看用法： <a target="_blank" rel="noopener" href="http://sourceforge.net/p/dex2jar/wiki/Faq/">http://sourceforge.net/p/dex2jar/wiki/Faq/</a> <a target="_blank" rel="noopener" href="http://sourceforge.net/p/dex2jar/wiki/UserGuide/">http://sourceforge.net/p/dex2jar/wiki/UserGuide/</a> 3.解压缩dex2jar-2.0.zip 到文件夹dex2jar-2.0 4.注意修改文件属性为可执行文件:</p>
-<p> chmod +x _/home/…/_d2j-dex2jar.sh  _/home/…/_d2j_invoke.sh</p>
-<p>5.输入命令 _   sudo sh /home/…/dex2jar-version/d2j-dex2jar.sh   /home/…/someApk.apk_ <em>6.在命令文件夹下面即可看到someApk.jar文件包</em></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2016/01/18/mac%E4%B8%8B%E4%BD%BF%E7%94%A8dex2jar/" data-id="ckljj0p840053rpeyc84g58tx" data-title="Mac下使用dex2jar" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dex2jar/" rel="tag">dex2jar</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-qq群加群助手webiosandroid二维码" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2016/01/09/qq%E7%BE%A4%E5%8A%A0%E7%BE%A4%E5%8A%A9%E6%89%8Bwebiosandroid%E4%BA%8C%E7%BB%B4%E7%A0%81/" class="article-date">
-  <time class="dt-published" datetime="2016-01-09T02:31:54.000Z" itemprop="datePublished">2016-01-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>►<a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/01/09/qq%E7%BE%A4%E5%8A%A0%E7%BE%A4%E5%8A%A9%E6%89%8Bwebiosandroid%E4%BA%8C%E7%BB%B4%E7%A0%81/">QQ群加群助手web/iOS/Android/二维码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>官网地址：<a target="_blank" rel="noopener" href="http://qun.qq.com/join.html">http://qun.qq.com/join.html</a> 网页版：</p>
 <blockquote>
-<p><a target="\_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=【官网给的你的QQ群的Key】"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Flash新手营内部学习" title="Flash新手营内部学习"></a></p>
+<p>2.下载新版本</p>
 </blockquote>
-<p>iOS：</p>
+<p>进入 <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/" title="Python下载页面">Python下载页面</a>，选择需要的版本。 这里，我选择的版本是 3.5.2 。 [codesyntax lang=”bash”]</p>
+<p>wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz">https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz</a></p>
+<p>[/codesyntax] 国外链接网速较慢，可以找下国内的资源。</p>
 <blockquote>
-<p>- (BOOL)joinGroup:(NSString *)groupUin key:(NSString *)key{ NSString *urlStr = [NSString stringWithFormat:@”mqqapi://card/show_pslcard?src_type=internal&amp;version=1&amp;uin=%@&amp;key=%@&amp;card_type=group&amp;source=external”, @”244675613”,@”【官网给的你的QQ群的Key】”]; NSURL *url = [NSURL URLWithString:urlStr]; if([[UIApplication sharedApplication] canOpenURL:url]){ [[UIApplication sharedApplication] openURL:url]; return YES; } else return NO; }</p>
+<p>3.解压安装</p>
 </blockquote>
-<p>  Android：</p>
+<p>[codesyntax lang=”bash”]</p>
+<p>#解压<br>tar -zxvf Python-3.5.2.tgz</p>
+<p>#进入目录<br>cd Python-3.5.2</p>
+<p>#配置<br>./configure</p>
+<p>make</p>
+<p>make install</p>
+<p>[/codesyntax]</p>
 <blockquote>
-<p>/**************** * * 发起添加群流程。群号：xxx key 为：【官网给的你的QQ群的Key】 * 调用 joinQQGroup(【官网给的你的QQ群的Key】) 即可发起手Q客户端申请加群 * * @param key 由官网生成的key * @return 返回true表示呼起手Q成功，返回fals表示呼起失败 ******************/ public boolean joinQQGroup(String key) { Intent intent = new Intent(); intent.setData(Uri.parse(“mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D” + key)); // 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面 //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) try { startActivity(intent); return true; } catch (Exception e) { // 未安装手Q或安装的版本不支持 return false; } }</p>
+<p>4.验证</p>
 </blockquote>
-<p>    不过Android版貌似有个坑爹的地方，跳转到加群页面后，如果用户进行了操作，返回只会返回到QQ主界面，无法返回到自己应用，关键是再点击自己的应用图标  依然打开的是QQ，必须杀掉自己的应用才可以，坑！</p>
+<p>安装成功以后，就可以查看 Python 的版本了 [codesyntax lang=”bash”]</p>
+<p># python -V<br>Python 2.6.6</p>
+<h1 id="python3-V"><a href="#python3-V" class="headerlink" title="python3 -V"></a>python3 -V</h1><p>Python 3.5.2</p>
+<p>[/codesyntax] 一个是旧版本 2.x，另外一个是新版本 3.x。 <strong>注意：</strong>在 /usr/local/bin/ 下有一个 python3 的链接，指向 bin 目录下的 python 3.5。</p>
+<blockquote>
+<p>5.设置 3.x 为默认版本</p>
+</blockquote>
+<p>查看 Python 的路径，在 /usr/bin 下面。可以看到 python 链接的是 python 2.6，所以，执行 python 就相当于执行 python 2.6。 [codesyntax lang=”bash”]</p>
+<p># ls -al /usr/bin  grep python<br>-rwxr-xr-x.   1 root root       6832 Nov 23  2013 abrt-action-analyze-python<br>-rwxr-xr-x.   2 root root       4864 Jan 22  2014 python<br>lrwxrwxrwx.   1 root root          6 Aug 14  2014 python2 -&gt; python<br>-rwxr-xr-x.   2 root root       4864 Jan 22  2014 python2.6</p>
+<p>[/codesyntax] 修改链接： [codesyntax lang=”bash”]</p>
+<p>#将原来 python 的软链接重命名：<br>mv /usr/bin/python /usr/bin/python.bak</p>
+<p>#将 python 链接至 python3：<br>ln -s /usr/local/bin/python3 /usr/bin/python</p>
+<p>#再查看 Python 的版本<br>python -V<br>Python 3.5.2</p>
+<p>[/codesyntax] 输出的是 3.x，说明已经使用的是 python3了  </p>
+<blockquote>
+<p>6.配置yum</p>
+</blockquote>
+<p>升级 Python 之后，由于将默认的 python 指向了 python3，yum 不能正常使用，需要编辑 yum 的配置文件： [codesyntax lang=”bash”]</p>
+<p>vim /usr/bin/yum</p>
+<p>[/codesyntax] 将 #!/usr/bin/python 改为 #!/usr/bin/python2.7，保存退出即可   至此，终于大功告成了！！！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2016/01/09/qq%E7%BE%A4%E5%8A%A0%E7%BE%A4%E5%8A%A9%E6%89%8Bwebiosandroid%E4%BA%8C%E7%BB%B4%E7%A0%81/" data-id="ckljj0p8c005prpeyd8f3363h" data-title="QQ群加群助手web/iOS/Android/二维码" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2016/12/20/linuxcentos-%E5%8D%87%E7%BA%A7-python-%E8%87%B3-3-x/" data-id="cklkonpdz003xcjey10z25327" data-title="Linux(CentOS) 升级 Python 至 3.x" class="article-share-link">Share</a>
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-在mac上配置adb命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2016/01/07/%E5%9C%A8mac%E4%B8%8A%E9%85%8D%E7%BD%AEadb%E5%91%BD%E4%BB%A4/" class="article-date">
-  <time class="dt-published" datetime="2016-01-07T12:28:23.000Z" itemprop="datePublished">2016-01-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/01/07/%E5%9C%A8mac%E4%B8%8A%E9%85%8D%E7%BD%AEadb%E5%91%BD%E4%BB%A4/">在Mac上配置adb命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>在Mac上配置adb命令 在Mac OS中使用adb命令时，应进行变量配置，步骤如下：</p>
-<p>一、终端中输入 cd ~</p>
-<p>二、输入touch .bash_profile 回车</p>
-<p>touch:如果没有，则创建文件，如果有，更新一下文件时间</p>
-<p>三、输入open -e .bash_profile</p>
-<p>open:打开文件 回车后会在TextEdit中打开这个文件（如果未配置过环境变量，应该是个空白文件）。在文件中加如以下内容</p>
-<blockquote>
-<p>export PATH=${PATH}:/Users/xxx/Library/Android/sdk/platform-tools</p>
-</blockquote>
-<p>上面是我的电脑上的路径，请自行修改，其实就是你android sdk的路径</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2016/01/07/%E5%9C%A8mac%E4%B8%8A%E9%85%8D%E7%BD%AEadb%E5%91%BD%E4%BB%A4/" data-id="ckljj0p9c0088rpey92l3giqj" data-title="在Mac上配置adb命令" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adb/" rel="tag">adb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
 
     </footer>
   </div>
@@ -688,7 +451,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -697,9 +460,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 
@@ -716,7 +479,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li></ul>
     </div>
@@ -726,7 +489,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         

@@ -6,12 +6,15 @@
   
   <title>斯樵工坊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+  <meta name="description" content="斯樵工坊">
+<meta property="og:type" content="website">
 <meta property="og:title" content="斯樵工坊">
-<meta property="og:url" content="http://sqstudio.com/page/12/index.html">
+<meta property="og:url" content="https://sqstudio.com/page/12/index.html">
 <meta property="og:site_name" content="斯樵工坊">
-<meta property="og:locale">
+<meta property="og:description" content="斯樵工坊">
+<meta property="og:locale" content="en_US">
 <meta property="article:author" content="斯樵">
+<meta property="article:tag" content="斯樵工坊">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="斯樵工坊" type="application/atom+xml">
@@ -59,10 +62,10 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sqstudio.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sqstudio.com"></form>
       </div>
     </div>
   </div>
@@ -71,10 +74,230 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-让对象完全置顶" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-在未越狱iphone上安装测试版ipa" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2011/02/17/%E8%AE%A9%E5%AF%B9%E8%B1%A1%E5%AE%8C%E5%85%A8%E7%BD%AE%E9%A1%B6/" class="article-date">
-  <time class="dt-published" datetime="2011-02-17T06:34:14.000Z" itemprop="datePublished">2011-02-17</time>
+    <a href="/2013/08/16/%E5%9C%A8%E6%9C%AA%E8%B6%8A%E7%8B%B1iphone%E4%B8%8A%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95%E7%89%88ipa/" class="article-date">
+  <time class="dt-published" datetime="2013-08-16T04:27:50.000Z" itemprop="datePublished">2013-08-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2013/08/16/%E5%9C%A8%E6%9C%AA%E8%B6%8A%E7%8B%B1iphone%E4%B8%8A%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95%E7%89%88ipa/">在未越狱iPhone上安装测试版ipa</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="http://cc.cocimg.com/bbs/attachment/thumb/Fid_6/6_112520_10520fdb5c8a186.png"></p>
+<p>对于未越狱的iPhone上安装测试版ipa，可通过itms-services协议来实现。 方法如下： 1.需要一个html文件,引导下载用户在线安装ipa [codesyntax lang=”php”]</p>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>一键安装掌上综调iPhone版</title>
+  </head>
+
+  <body>
+        <a href='itms-services://?action=download-manifest&url=http://222.177.4.242/ios/d.plist（plist地址）'>安装app</a>
+  </body>
+</html>
+
+<p>[/codesyntax] 2.plist文件 [codesyntax lang=”php”]</p>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+   <key>items</key>
+   <array>
+       <dict>
+           <key>assets</key>
+           <array>
+               <dict>
+                   <key>kind</key>
+                   <string>software-package</string>
+                   <key>url</key>
+                   <string>http://127.0.0.1/latest/ipa/tue.ipa（安装包的url）</string>
+               </dict>
+               <dict>
+
+<pre><code>               &lt;key&gt;kind&lt;/key&gt;
+               &lt;string&gt;display-image&lt;/string&gt;
+               &lt;key&gt;needs-shine&lt;/key&gt;
+               &lt;true/&gt;
+               &lt;key&gt;url&lt;/key&gt;
+               &lt;string&gt;图片的地址&lt;/string&gt;
+           &lt;/dict&gt;
+  &lt;dict&gt;
+               &lt;key&gt;kind&lt;/key&gt;
+               &lt;string&gt;full-size-image&lt;/string&gt;
+               &lt;key&gt;needs-shine&lt;/key&gt;
+               &lt;true/&gt;
+               &lt;key&gt;url&lt;/key&gt;
+               &lt;string&gt;图片的地址&lt;/string&gt;
+           &lt;/dict&gt;
+       &lt;/array&gt;
+       &lt;key&gt;metadata&lt;/key&gt;
+       &lt;dict&gt;
+           &lt;key&gt;bundle-identifier&lt;/key&gt;
+           &lt;string&gt;com.xinchun（和ipa中的相同）&lt;/string&gt;
+           &lt;key&gt;bundle-version&lt;/key&gt;
+           &lt;string&gt;1.0.0&lt;/string&gt;
+           &lt;key&gt;kind&lt;/key&gt;
+           &lt;string&gt;software&lt;/string&gt;
+           &lt;key&gt;subtitle&lt;/key&gt;
+           &lt;string&gt;Tue&lt;/string&gt;
+           &lt;key&gt;title&lt;/key&gt;
+           &lt;string&gt;Tue&lt;/string&gt;
+       &lt;/dict&gt;
+   &lt;/dict&gt;
+</code></pre>
+   </array>
+</dict>
+</plist>
+
+<p>[/codesyntax] 3.使用iphone自带的safari浏览器，浏览<a target="_blank" rel="noopener" href="http://222.177.4.242/ios/d.html%E6%96%87%E4%BB%B6%EF%BC%8C%E5%8D%B3%E5%8F%AF%E5%AE%89%E8%A3%85%E4%BA%86%E3%80%82">http://222.177.4.242/ios/d.html文件，即可安装了。</a> 注意：有的iPhone上访问到网页，点击链接没有反映，这时候要查看safari浏览器的设置了，看有没有禁用弹出窗口什么的 相关文章：  <a target="_blank" rel="noopener" href="http://blog.sqstudio.com/other/ios/955.html" title="详细阅读 iOS 7.1下itms-services在线安装失败的解决方法">iOS 7.1下itms-services在线安装失败的解决方法</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2013/08/16/%E5%9C%A8%E6%9C%AA%E8%B6%8A%E7%8B%B1iphone%E4%B8%8A%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95%E7%89%88ipa/" data-id="cklkonpfl007vcjey44vq6gey" data-title="在未越狱iPhone上安装测试版ipa" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/" rel="tag">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ipa/" rel="tag">ipa</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-第一个ios的ane苦逼之路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2013/07/06/%E7%AC%AC%E4%B8%80%E4%B8%AAios%E7%9A%84ane%E8%8B%A6%E9%80%BC%E4%B9%8B%E8%B7%AF/" class="article-date">
+  <time class="dt-published" datetime="2013-07-06T09:14:16.000Z" itemprop="datePublished">2013-07-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2013/07/06/%E7%AC%AC%E4%B8%80%E4%B8%AAios%E7%9A%84ane%E8%8B%A6%E9%80%BC%E4%B9%8B%E8%B7%AF/">第一个IOS的ANE苦逼之路</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>  概要：本文只是记录作者开发ANE的心得，并不会教你一步一步制作一个ANE，不过文中附有其他教程链接，可供参考！   作为一个只会as3的aser，想折腾个ANE实在太苦逼了，所幸，今天终于折腾出一个！ <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2013/07/ane.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2013/07/ane.jpg" alt="ane"></a> 1.先装黑苹果，各种翻论坛，安装包已经不记得下了多少个，总是卡到这里或那里，搞了n天，终于用Vbox装上了mac 10.7（幸好之前买电脑时cpu是i5，内存又加了一根现在有6G了） 2.又在ucai.cn自学了一段时间objective-c，每天晚上看视频，学着敲代码，知道了一些基本的语法。 3.学了一段时间，看看github上别人的ANE，有的可以小改一下。 4.尝试着写ane，这中间真是各种坑，还好找到一些资料，推荐几篇不错的：</p>
+<blockquote>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="http://www.iphil.cc/?p=135">IOS ANE写法指导</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://rolfzhang.com/articles/1108.html">IOS ANE的坑爹之路</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://plter.sinaapp.com/a/p/post/2274/">ANE打包工具2013版</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://jamesli.cn/blog/?cat=19">jamesli的内支付系列</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_6471e1bb01012aql.html">如何打包ANE</a></li>
+</ul>
+</blockquote>
+<p>第一个ane，是做了一个获取设备mac地址的，其实实现什么功能都是浮云了，只要搞通了AS3和OC的相互调用，功能就看实际需求了！ 说起as+oc的对接，就不得不提一下 ANE的Xcode模版<a target="_blank" rel="noopener" href="https://github.com/divijkumar/xcode-template-ane">xcode-template-ane</a>,这个可以省不少代码，不用配置，还可以直接生成ane，不过要生成ane还需要AIR SDK环境等，如果你是直接用MAC PRO开发，Flash Builder和XCode一起用，就很方便了，像我这中苦逼的用虚拟机黑苹果不敢点太快怕机器卡死的aser开发者，只用下xcode生成的.a库文件就可以了！这个模版可以帮菜鸟oc同学设置好模版，我们只需要写逻辑就行了！ 在AS3和OC之间的数据交互是用的FREObejct，对于AS3来说 还是和平常用法一样，Boolean，String等随便传，但是在oc中得到的都是FREObejct类型，需要从FREObejct中提取转换成BOOL、NSString等，同样，oc方法的返回值也需要将BOOL、NSString等类型转换成FREObejct，传给as3，在as3中可以直接得到的就是Boolean、String不需要再转换，想必AIR已经自动转换好了。FREObejct和oc中的类型的转换建议还是再封装一个类比较好，这里是<a target="_blank" rel="noopener" href="https://github.com/zmLiu">Maom</a>的封装的方法<a target="_blank" rel="noopener" href="https://github.com/zmLiu/ANEList/blob/master/AneSDK_IOS/AneSDK_IOS/AneFunction.h">ANEFun</a>，可以参考一下，<a target="_blank" rel="noopener" href="https://github.com/zmLiu">Maom</a>的ANEList也蛮全面，很给力！ 另外一个坑就是打包ANE，前面说过用<a target="_blank" rel="noopener" href="https://github.com/divijkumar/xcode-template-ane">xcode-template-ane</a>模版的话，在创建.ane目标的时候，会自动调用<a target="_blank" rel="noopener" href="https://github.com/zmLiu/ANEList/blob/master/AneSDK_IOS/AneSDK_IOS/generateANE.sh" title="generateANE.sh">generateANE.sh</a>脚本，从而自动生成ANE。在window上呢？只有命令行了，当然那个《<a target="_blank" rel="noopener" href="http://plter.sinaapp.com/a/p/post/2274/">ANE打包工具2013版</a>》打包工具在不会打包的时候也可以用一下，推荐还是命令行，自己写个批处理工具最好！</p>
+<blockquote>
+<p>命令如下： bin/adt -package -storetype pkcs12 -keystore .p12文件名称.p12 -storepass .p12文件的密码 -target ane 需要生成的ane的名称.ane extension.xml -swc swc名称.swc -platform 平台名称 library.swf 本机扩展库 （我习惯把 bin/adt 直接改为FB安装包路径名）</p>
+</blockquote>
+<p>打包的细节可以参考上文提到的 ： <a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_6471e1bb01012aql.html">如何打包ANE</a>（前后几篇相关都看，有坑的，错误提示也很少，要靠自己想）； 这里还有最新发现的 <a target="_blank" rel="noopener" href="http://www.tudou.com/plcover/J2Bblm-XIhU/">打包ANE的视频教程</a> ！  </p>
+<blockquote>
+<p>小记：2014.03.06 项目引用多个ane的话，ios的ane中的类名不能相同，不然编译会冲突，不妨把多个功能些到一个ane里，或者在些单独的ane时候尽量类名长一点</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2013/07/06/%E7%AC%AC%E4%B8%80%E4%B8%AAios%E7%9A%84ane%E8%8B%A6%E9%80%BC%E4%B9%8B%E8%B7%AF/" data-id="cklkonpfs008dcjey3oa09036" data-title="第一个IOS的ANE苦逼之路" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ane/" rel="tag">ane</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/" rel="tag">ios</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-vbox扩容vdi硬盘大小" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2013/07/06/vbox%E6%89%A9%E5%AE%B9vdi%E7%A1%AC%E7%9B%98%E5%A4%A7%E5%B0%8F/" class="article-date">
+  <time class="dt-published" datetime="2013-07-06T02:20:03.000Z" itemprop="datePublished">2013-07-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2013/07/06/vbox%E6%89%A9%E5%AE%B9vdi%E7%A1%AC%E7%9B%98%E5%A4%A7%E5%B0%8F/">Vbox扩容VDI硬盘大小</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2013/07/vbox_logo2_gradient.png"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2013/07/vbox_logo2_gradient.png" alt="vbox_logo2_gradient"></a>用vbox装的黑mac，当时动态分配的20G，现在不太够用了，扩容方法如下： 命令参考：VBoxmanage modifyhd name.vdi/vhd –-resize size 1.打开cmd，进入vbox安装目录如（D:\Program Files (x86)\vbox） 2.在cmd提示符下面输入VBoxmanage modifyhd E:\mac\mac.vdi –resize 40960</p>
+<p>size是以M（兆）为单位的，我这里扩展为40G。执行完之后你会惊喜的发现，这个虚拟盘已经变大了。</p>
+<p>注：在扩展容量之前，需要先把虚拟机关掉</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2013/07/06/vbox%E6%89%A9%E5%AE%B9vdi%E7%A1%AC%E7%9B%98%E5%A4%A7%E5%B0%8F/" data-id="cklkonpez0068cjey4kks1l1w" data-title="Vbox扩容VDI硬盘大小" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vbox/" rel="tag">vbox</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-flash-as3-0-常用函数收集总有几条你没注意的" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2013/05/30/flash-as3-0-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%94%B6%E9%9B%86%E6%80%BB%E6%9C%89%E5%87%A0%E6%9D%A1%E4%BD%A0%E6%B2%A1%E6%B3%A8%E6%84%8F%E7%9A%84/" class="article-date">
+  <time class="dt-published" datetime="2013-05-30T01:52:16.000Z" itemprop="datePublished">2013-05-30</time>
 </a>
     
   <div class="article-category">
@@ -89,7 +312,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2011/02/17/%E8%AE%A9%E5%AF%B9%E8%B1%A1%E5%AE%8C%E5%85%A8%E7%BD%AE%E9%A1%B6/">让对象完全置顶</a>
+      <a class="p-name article-title" href="/2013/05/30/flash-as3-0-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%94%B6%E9%9B%86%E6%80%BB%E6%9C%89%E5%87%A0%E6%9D%A1%E4%BD%A0%E6%B2%A1%E6%B3%A8%E6%84%8F%E7%9A%84/">Flash AS3.0 常用函数收集,总有几条你没注意的</a>
     </h1>
   
 
@@ -97,16 +320,170 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>在做三国时，拖拽物品总是被挡到，很不方便，就花了点时间想了想怎么解决？ 改来改去最后压缩到4行代码，还算比较简洁，不多说直接贴代码： <code>public function setIndex(sp:DisplayObject):void&#123; var tmpSP:DisplayObject = sp; while(tmpSP != null &amp;&amp; tmpSP.parent != null)&#123; tmpSP.parent.setChildIndex(tmpSP,tmpSP.parent.numChildren-1); tmpSP = tmpSP.parent as DisplayObject; &#125; &#125;</code> 其实，关键的也就两句，执行完这个函数以后拖拽的对象会完全的置顶！</p>
+        <p>以下知识点，适合初级和中级Aser，大牛无视！</p>
+<p>获得某个实例对象的类名：getQualifiedClassName (实例名字符串表达式);</p>
+<p>stage.addEventListener(MouseEvent.MOUSE_OVER, mouseOverHandle);</p>
+<p>function mouseOverHandle(e:Event):void {</p>
+<p> trace(“over”);</p>
+<p> //   返回instance**之类的 </p>
+<p> trace(e.target.name);</p>
+<p> //返回元件名 </p>
+<p> trace(getQualifiedClassName(e.target));</p>
+<p>}</p>
+<p>Math.random();</p>
+<p>范围为0~1</p>
+<p>如 果想要0~100的话就是</p>
+<p>Math.random()*100</p>
+<p>随机出 [n,m]范围的随机数</p>
+<p>function randRange(min:Number, max:Number):Number {</p>
+<p>var randomNum:Number = Math.floor(Math.random() * (max - min + 1)) + min;</p>
+<p>return randomNum;</p>
+<p>}</p>
+<p>应用例子:</p>
+<p>模拟投银币,即希望得到随机布尔值(true 或 false): randRange(0, 1);</p>
+<p>模拟投骰子,即希望得到随机六个值: randRange(1, 6);</p>
+<p>输出10个随机数</p>
+<p>for (var i = 0; i &lt; 10; i++) {</p>
+<p>var n:Number = randRange(1, 10)</p>
+<p>trace(n);</p>
+<p>}</p>
+<p>【把数字取至最近的小数点位,即指定精确度】</p>
+<p>1. 决定你要取的数字的小数点位数:例如,如果你想把90.337取成90.34,就表示你要取到两位小数点位,也就是说你想取至最近的0.01;</p>
+<p>2. 让输入值除以步骤1所选的数字(此例为0.01);</p>
+<p>3. 使用Math.round()把步骤2所计得的值取成最近的整数;</p>
+<p>4. 把步骤3所得的结果乘以步骤2用于除法的那个值.</p>
+<p>例如,要把90.337取成两个小数点位数,可以使用:</p>
+<p>trace(Math.round(90.337/0.01)*0.01); //输出:90.34</p>
+<p>【把数字取成一个整数的最接近倍数值】</p>
+<p>例1,这样会把92.5取成5的最近倍数值:</p>
+<p>trace(Math.round(92.5/5)*5); //输出:95</p>
+<p>例2,这样会把92.5取成10的最近倍数值:</p>
+<p>trace(Math.round(92.5/10)*10); //输出:90</p>
+<p>【private,protected,internal,public访问权限】</p>
+<p>private:只能在类本身内部访问,按惯例,命名私有成员时以下划线”_“开头;</p>
+<p>protected:可以由类本身或任何子类访问.但这是以实例为基础的.换言之,类实例可以访问自己的保护成员或者父类的保护成员,但不能访问相同类的其它实例的保护成员,按惯例,命名保护成员时以下划线”_“开头;</p>
+<p>internal:可以由类本身或者相同包内的任何类访问;</p>
+<p>public:可以在类内部访问,也可以由类实例访问,或者声明为static时,可以直接从类访问.</p>
+<p>【检查变量类型并返回布尔值】</p>
+<p>is</p>
+<p>【检查变量类型并返回类型】</p>
+<p>typeof</p>
+<p>【检查对象类型并返回该对象】</p>
+<p>as</p>
+<p>【Timer类注意事项】</p>
+<p>不要认为Timer可以极其准确;使用Timer时间间隔不要低于10毫秒.</p>
+<p>【一个函数具有未知个数的参数,用arguments对象或”…(rest)”符号访问它的参数】</p>
+<p>注意:使用”…(rest)”参数会使 arguments 对象不可用;</p>
+<p>private funciton average():void{</p>
+<p> trace(arguments.length); //输出参数的个数</p>
+<p> // arguments的类型是:object,但可以像访问数组一样去访问它</p>
+<p> trace(arguments[1]); //输出第二个参数</p>
+<p>}</p>
+<p>private function average(…argu):void{</p>
+<p> trace(argu[1]); //输出第二个参数,argu参数名是自定义的.</p>
+<p>}</p>
+<p>【隐式的取出方法(getter)和设定方法(setter)】</p>
+<p>public function get count():uint {</p>
+<p> return _count;</p>
+<p>}</p>
+<p>public function set count(value:uint):uint {</p>
+<p> if(value &lt; 100){</p>
+<p> _count = value;</p>
+<p> }else {</p>
+<p> throw Error();</p>
+<p> }</p>
+<p>}</p>
+<p>【确保类是绝不会有子类,使用final】</p>
+<p>final public class Example{}</p>
+<p>【super关键字的使用】</p>
+<p>super(); //父类的构造函数,只能在类实例构造函数内部使用</p>
+<p>super.propertyName; //调用父类的属性,属性需要声明为public或protected</p>
+<p>super.methodName(); //调用父类的方法,方法需要声明为public或protected</p>
+<p>【在数组中获取最小或最大值】</p>
+<p>var scores:Array = [10, 4, 15, 8];</p>
+<p>scores.sort(Array.NUMERIC);</p>
+<p>trace(“Minimum: “ + scores[0]);</p>
+<p>trace(“Maximum: “ + scores[scores.length - 1]);</p>
+<p>【计算两点之间的距离】</p>
+<p>勾股定理: c2 = a2 + b2</p>
+<p>假设有两个影片剪辑mc1和mc2,则它们两点间的距离c为:</p>
+<p>var c:Number = Math.sqrt(Math.pow(mc1.x - mc2.x, 2) + Math.pow(mc1.y - mc2.y, 2));</p>
+<p>【指出容器的显示清单中有多少显示对象】</p>
+<p>每个容器都有numChildren属性.</p>
+<p>【关于TextField以垂直方式把文字摆在按钮表面中心点的小技巧】</p>
+<p>textField.y = (_height - textField.textHeight) / 2;</p>
+<p>textField.y -= 2; //减2个像素以调整偏移量</p>
+<p>【过滤文字输入】</p>
+<p>TextField.restrict = “此处为可输入的内容”;</p>
+<p>field.restrict = “^此处为禁止输入的内容”;</p>
+<p>restrict属性支持一些类似正则表达式的样式:</p>
+<p>field.restrict = “a-zA-z”; //只允许大小字母</p>
+<p>field.restrict = “a-zA-z “; //只允许字母和空格</p>
+<p>field.restrict = “0-9”; //只允许数字</p>
+<p>field.restrict = “^abcdefg”; //除了小写字母abcdefg不允许外,其它都允许</p>
+<p>field.restrict = “^a-z”; //所有小写字母都不允许,但是,其它内容都允许,包括大写字母</p>
+<p>field.restrict = “0-9^5”; //只允许数字,但5例外</p>
+<p>让restrict字符包含具有特殊意义的字母(例如-和^):</p>
+<p>field.restrict = “0-9\\-“; //允许数字和破折号</p>
+<p>field.restrict = “0-9\\^”; //允许数字和^</p>
+<p>field.restrict = “0-9\\\\“; //允许数字和反斜杠</p>
+<p>你也可以使用Unicode转义序列,指定允许的内容.例如:</p>
+<p>field.restrict = “^\u001A”;</p>
+<p>注意:ActionScript有区分大小写的,如果restrict属性设为abc,允许字母的大写形式(A,B和C)输入时会变成小写对待形式(a,b和c),反之亦然.restrict属性只影响用户可以输入的内容,脚本可将任何文本放入文本字段中.</p>
+<p>【设定输入框的最大长度】</p>
+<p>TextField.maxChars:int</p>
+<p>【检测播放器版本】</p>
+<p>flash.system.Capabilities.version</p>
+<p>对于8.5版以前的任何Flash Player版本,这种方法都不适用.</p>
+<p>【判断客户端系统】</p>
+<p>flash.system.Capabilities.os</p>
+<p>【检测播放器类型】</p>
+<p>flash.system.Capabilities.playerType</p>
+<p>可能的值有:</p>
+<p>“StandAlone”，用于独立的 Flash Player</p>
+<p>“External”，用于外部的 Flash Player 或处于测试模式下</p>
+<p>“PlugIn”，用于 Flash Player 浏览器插件</p>
+<p>“ActiveX”，用于 Microsoft Internet Explorer 使用的 Flash Player ActiveX 控件</p>
+<p>【检测系统语言】</p>
+<p>flash.system.Capabilities.language</p>
+<p>【判断用户是否启用了IME(输入法编辑器)】</p>
+<p>flash.system.IME.enabled</p>
+<p>【检测屏幕的分辨率】</p>
+<p>flash.system.Capabilities.screenResolutionX</p>
+<p>flash.system.Capabilities.screenResolutionY</p>
+<p>【把弹出窗口居中的算法】</p>
+<p>X = (舞台宽/2)-(窗口宽/2)</p>
+<p>Y = (舞台高/2)-(窗口高/2)</p>
+<p>【控制影片配合Player的方式,包括缩放问题】</p>
+<p>stage.scaleMode</p>
+<p>可供选择值:flash.display.StageScaleMode</p>
+<p>【舞台的对齐方式】</p>
+<p>stage.align</p>
+<p>可供选择值:flash.display.StageAlign</p>
+<p>【隐藏Flash Player的右键菜单】</p>
+<p>stage.showDefaultContextMenu = false;</p>
+<p>【检测系统是否具有音频功能】</p>
+<p>flash.system.Capabilities.hasAudio</p>
+<p>【检测播放器是在具有MP3解码器的系统上运行,还是在没有MP3解码器的系统上运行】</p>
+<p>flash.system.Capabilities.hasMP3</p>
+<p>【检测播放器能 (true) 还是不能 (false) 播放流式视频】</p>
+<p>flash.system.Capabilities.hasStreamingVideo</p>
+<p>【检测播放器是在支持 (true) 嵌入视频的系统上运行，还是在不支持 (false) 嵌入视频的系统上运行】</p>
+<p>flash.system.Capabilities.hasEmbeddedVideo</p>
+<p>【检测播放器能 (true) 还是不能 (false) 对视频流（如来自 Web 摄像头的视频流）进行编码】</p>
+<p>flash.system.Capabilities.hasVideoEncoder</p>
+<p>【显示 Flash Player 中的”安全设置”面板】</p>
+<p>flash.system.Security.showSettings();</p>
+<p>可供选择项:flash.system.SecurityPanel</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2011/02/17/%E8%AE%A9%E5%AF%B9%E8%B1%A1%E5%AE%8C%E5%85%A8%E7%BD%AE%E9%A1%B6/" data-id="ckljj0p9t0094rpeydx4ea1ky" data-title="让对象完全置顶" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2013/05/30/flash-as3-0-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%94%B6%E9%9B%86%E6%80%BB%E6%9C%89%E5%87%A0%E6%9D%A1%E4%BD%A0%E6%B2%A1%E6%B3%A8%E6%84%8F%E7%9A%84/" data-id="cklkonpdf002qcjey8hdre1qf" data-title="Flash AS3.0 常用函数收集,总有几条你没注意的" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/setIndex/" rel="tag">setIndex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E7%BD%AE%E9%A1%B6/" rel="tag">对象置顶</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8B%96%E6%8B%BD/" rel="tag">拖拽</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">常用函数</a></li></ul>
 
     </footer>
   </div>
@@ -116,14 +493,14 @@
 
 
   
-    <article id="post-三国·动态" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-ios应用内付费iap开发步骤列表【转】" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2011/02/15/%E4%B8%89%E5%9B%BD%C2%B7%E5%8A%A8%E6%80%81/" class="article-date">
-  <time class="dt-published" datetime="2011-02-15T15:56:14.000Z" itemprop="datePublished">2011-02-15</time>
+    <a href="/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/" class="article-date">
+  <time class="dt-published" datetime="2013-05-24T07:55:22.000Z" itemprop="datePublished">2013-05-24</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
   </div>
 
   </div>
@@ -134,7 +511,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2011/02/15/%E4%B8%89%E5%9B%BD%C2%B7%E5%8A%A8%E6%80%81/">三国·游戏说明</a>
+      <a class="p-name article-title" href="/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/">iOS应用内付费(IAP)开发步骤列表【转】</a>
     </h1>
   
 
@@ -142,314 +519,53 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>游戏地址：<a href="http://sqstudio.com/work/war/index.html">http://sqstudio.com/work/war/index.html</a> 最新在做的一款RPG小游戏，NPC和界面已经做好，下一步准备增加地图和网络通信。以下是游戏的介绍： 游戏分为三个画面： 一. 开始画面：点击按钮进入游戏 二. 选择角色画面： 共有三个角色，刘备，关羽，张飞。每项属性各有偏重，可自由选择一个角色进入游戏。 三 .游戏进行画面： 1&gt; 玩家：可以通过普通攻击（空格键）或技能攻击来伤害敌人。 玩家可以使用道具增加自身的属性。 玩家死亡后，可以选择重新开始或退出游戏。 1&gt; 敌人 ： 1. 共有8种敌人（参军，盗贼，莽夫，木兵，轻步兵，轻骑兵，重步兵，重骑兵） 2. AI逻辑分为两种，一是奔跑不停 全场冲刺，碰到玩家即攻击，另一种是 原地不动，玩家走进攻击范围才主动攻击， 并追击玩家。 3. 每刷新10敌人，敌人死掉后，可以增加玩家的经验值和金币，并有概率的掉落道具，敌人全部被杀完后，刷新下一批。 2&gt; 道具：（鼠标双击） 1.道具类型分为两种，药品和装备，药品可以增加玩家的HP和MP,装备可以增加玩家的攻击力和防御值。 药品有五种：小生命药水（HP），小魔法药水（MP），大生命药水（HP），大魔法药水（MP）和回锅肉（HPMP，只能购买获得）。 装备分八种：裂魂剑，粗布衣，铜戒指，粗布腰带，古神戒，精品布衣，青丝腰带，嗜血剑。后四种只能通过购买获得。 2.道具的状态分为三种： 捡起：道具可以从场景中捡起放入背包。 使用：表明道具可以使用，药品可以消耗（玩家HP/MP不足的话），装备可以穿上（玩家没有佩戴相同的装备的话）， 道具也可以拖出背包扔掉。只有该状态的道具可以拖动。 已经使用： 表明道具（即装备）已经穿上，双击后可以脱下放入背包。 3&gt; 技能：共有三项技能（火星四射，火光冲天和龙风剑柱），每个角色有一项天赋技能。 玩家可以双击 掌握技能 中的 图标，使用该技能。 玩家可以学习技能树中的其他技能，每学一项消耗1点技能点，每升2级可以增加1点技能点。 4&gt; 面板： 1.背包：放置所拥有的道具，可以点击按钮整理背包，共25格，装满后不能捡起东西。背包内的道具状态为 使用。 2.玩家信息：显示当前玩家的信息和所佩戴的装备，装备状态为已经使用。 3.技能：分为 掌握技能和全部技能两部分，掌握技能的图标可以拖动。 4.快捷栏： 显示技能或药品的快捷方式，从左到右对应 （1-!）到（8-*） 八个键，可以将药品或技能拖拽到快捷栏， 按下数字键（非数字键盘）后，可以使用对应的药品或技能。背包中的药品用完时，对应的药品图标消失，也可以通过拖拽扔掉图标。该面板可以隐藏。 5.信息：显示游戏信息，信息分为三种类型，战斗，物品和系统。面板可以隐藏。 6.商店：出售所有种类的道具。分为 药品和装备两部分。 购买道具需要满足三个要求：等级需要，金币数量和背包空间。 5&gt; tooltip: 鼠标滑入道具或技能图标时，会出现tooltip提示框，显示当前道具或技能的详细信息。快捷栏图标没有此功能。</p>
+        <p>前两天和服务端同事一起，完成了应用内付费（以下简称IAP, In app purchase）的开发工作。步骤繁多，在此把开发步骤列表整理如下。因为只是步骤列表，所以并不含详细的说明教程，需要看教程的新手，可以看我附在最后的一些参考链接。</p>
+<h3 id="配置Developer-apple-com"><a href="#配置Developer-apple-com" class="headerlink" title="配置Developer.apple.com"></a>配置Developer.apple.com</h3><p>登录到<a target="_blank" rel="noopener" href="https://developer.apple.com/">Developer.apple.com</a>，然后进行以下步骤：</p>
+<ol>
+<li> 为应用建立建立一个不带通配符的App ID</li>
+<li> 用该App ID生成和安装相应的Provisioning Profile文件。</li>
+</ol>
+<h3 id="配置iTunes-Connect"><a href="#配置iTunes-Connect" class="headerlink" title="配置iTunes Connect"></a>配置iTunes Connect</h3><p>登录到<a target="_blank" rel="noopener" href="https://itunesconnect.apple.com/">iTunes Connet</a>，然后进行以下步骤：</p>
+<ol>
+<li> 用该App ID创建一个新的应用。</li>
+<li> 在该应用中，创建应用内付费项目，选择付费类型，通常可选的是可重复消费(Consumable)的或是永久有效(Non-Consumable)的2种，然后设置好价格和Product ID以及购买介绍和截图即可，这里的Product ID是需要记住的，后面开发的时候需要。如下图所示： <img src="http://blog.devtang.com/images/iap-add-product-id.png"></li>
+<li> 添加一个用于在sandbox付费的测试用户，如下图所示。注意苹果对该测试用户的密码要求 和正式账号一样，必须是至少8位，并且同时包含数字和大小写字母： <img src="http://blog.devtang.com/images/iap-adduser-1.png"><img src="http://blog.devtang.com/images/iap-adduser-2.png"></li>
+<li> 填写相关的税务，银行，联系人信息。如下图所示： <img src="http://blog.devtang.com/images/iap-tax-info.png"></li>
+</ol>
+<h3 id="开发工作-ios端"><a href="#开发工作-ios端" class="headerlink" title="开发工作(ios端)"></a>开发工作(ios端)</h3><p>1、 在工程中引入 storekit.framework 和 #import &lt;StoreKit/StoreKit.h&gt; 2、 获得所有的付费Product ID列表。这个可以用常量存储在本地，也可以由自己的服务器返回。 3、 制作一个界面，展示所有的应用内付费项目。这些应用内付费项目的价格和介绍信息可以是自己的服务器返回。但如果是不带服务器的单机游戏应用或工具类应用，则可以通过向App Store查询获得。我在测试时发现，向App Store查询速度非常慢，通常需要2-3秒钟，所以不建议这么做，最好还是搞个自己的服务器吧。 4、当用户点击了一个IAP项目，我们先查询用户是否允许应用内付费，如果不允许则不用进行以下步骤了。代码如下：</p>
+<p>1<br>2<br>3<br>4<br>5<br>6</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if ([SKPaymentQueue canMakePayments]) &#123;</span><br><span class="line">    &#x2F;&#x2F; 执行下面提到的第5步：</span><br><span class="line">    [self getProductInfo];</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    NSLog(@&quot;失败，用户禁止应用内付费购买.&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5、 我们先通过该IAP的ProductID向AppStore查询，获得SKPayment实例，然后通过SKPaymentQueue的 addPayment方法发起一个购买的操作。</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 下面的ProductId应该是事先在itunesConnect中添加好的，已存在的付费项目。否则查询会失败。</span><br><span class="line">- (void)getProductInfo &#123;</span><br><span class="line">  NSSet * set &#x3D; [NSSet setWithArray:@[@&quot;ProductId&quot;]];</span><br><span class="line">  SKProductsRequest * request &#x3D; [[SKProductsRequest alloc] initWithProductIdentifiers:set];</span><br><span class="line">  request.delegate &#x3D; self;</span><br><span class="line">  [request start];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 以上查询的回调函数</span><br><span class="line">- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response &#123;</span><br><span class="line">    NSArray *myProduct &#x3D; response.products;</span><br><span class="line">    if (myProduct.count &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        NSLog(@&quot;无法获取产品信息，购买失败。&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    SKPayment * payment &#x3D; [SKPayment paymentWithProduct:myProduct[0]];</span><br><span class="line">    [[SKPaymentQueue defaultQueue] addPayment:payment];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6、 在viewDidLoad方法中，将购买页面设置成购买的Observer。</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    &#x2F;&#x2F; 监听购买结果</span><br><span class="line">    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidUnload &#123;</span><br><span class="line">    [super viewDidUnload];</span><br><span class="line">    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>7、 当用户购买的操作有结果时，就会触发下面的回调函数，相应进行处理即可。</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions &#123;</span><br><span class="line">    for (SKPaymentTransaction *transaction in transactions)</span><br><span class="line">    &#123;</span><br><span class="line">        switch (transaction.transactionState)</span><br><span class="line">        &#123;</span><br><span class="line">            case SKPaymentTransactionStatePurchased:&#x2F;&#x2F;交易完成</span><br><span class="line">                NSLog(@&quot;transactionIdentifier &#x3D; %@&quot;, transaction.transactionIdentifier);</span><br><span class="line">                [self completeTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStateFailed:&#x2F;&#x2F;交易失败</span><br><span class="line">                [self failedTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStateRestored:&#x2F;&#x2F;已经购买过该商品</span><br><span class="line">                [self restoreTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStatePurchasing:      &#x2F;&#x2F;商品添加进列表</span><br><span class="line">                NSLog(@&quot;商品添加进列表&quot;);</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)completeTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">    &#x2F;&#x2F; Your application should implement these two methods.</span><br><span class="line">    NSString * productIdentifier &#x3D; transaction.payment.productIdentifier;</span><br><span class="line">    NSString * receipt &#x3D; [transaction.transactionReceipt base64EncodedString];</span><br><span class="line">    if ([productIdentifier length] &gt; 0) &#123;</span><br><span class="line">        &#x2F;&#x2F; 向自己的服务器验证购买凭证</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Remove the transaction from the payment queue.</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)failedTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">    if(transaction.error.code !&#x3D; SKErrorPaymentCancelled) &#123;</span><br><span class="line">        NSLog(@&quot;购买失败&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        NSLog(@&quot;用户取消交易&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)restoreTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">  &#x2F;&#x2F; 对于已购商品，处理恢复购买的逻辑</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>8、服务器验证凭证(Optional)。如果购买成功，我们需要将凭证发送到服务器上进行验证。考虑到网络异常情况，iOS端的发送凭证操作应该进行持久化，如果程序退出，崩溃或网络异常，可以恢复重试。</p>
+<h3 id="开发工作-服务端"><a href="#开发工作-服务端" class="headerlink" title="开发工作(服务端)"></a>开发工作(服务端)</h3><p>服务端的工作比较简单，分4步：</p>
+<ol>
+<li> 接收ios端发过来的购买凭证。</li>
+<li> 判断凭证是否已经存在或验证过，然后存储该凭证。</li>
+<li> 将该凭证发送到苹果的服务器验证，并将验证结果返回给客户端。</li>
+<li> 如果需要，修改用户相应的会员权限。</li>
+</ol>
+<p>考虑到网络异常情况，服务器的验证应该是一个可恢复的队列，如果网络失败了，应该进行重试。 与苹果的验证接口文档在<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/StoreKitGuide/VerifyingStoreReceipts/VerifyingStoreReceipts.html#//apple_ref/doc/uid/TP40008267-CH104-SW3">这里</a>。简单来说就是将该购买凭证用Base64编码，然后POST给苹果的验证服务器，苹果将验证结果以JSON形式返回。 苹果AppStore线上的购买凭证验证地址是<a target="_blank" rel="noopener" href="https://buy.itunes.apple.com/verifyReceipt">https://buy.itunes.apple.com/verifyReceipt</a> ，测试的验证地址是：<a target="_blank" rel="noopener" href="https://sandbox.itunes.apple.com/verifyReceipt">https://sandbox.itunes.apple.com/verifyReceipt</a> 原文：<a target="_blank" rel="noopener" href="http://blog.devtang.com/blog/2012/12/09/in-app-purchase-check-list/">http://blog.devtang.com/blog/2012/12/09/in-app-purchase-check-list/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2011/02/15/%E4%B8%89%E5%9B%BD%C2%B7%E5%8A%A8%E6%80%81/" data-id="ckljj0p8x0074rpey5rng9clv" data-title="三国·游戏说明" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/" data-id="cklkonpdu003vcjey1zir1wlc" data-title="iOS应用内付费(IAP)开发步骤列表【转】" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RPG%E6%B8%B8%E6%88%8F/" rel="tag">RPG游戏</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-键盘事件，人物移动（keyboardevent）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2011/01/13/%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%EF%BC%8C%E4%BA%BA%E7%89%A9%E7%A7%BB%E5%8A%A8%EF%BC%88keyboardevent%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2011-01-13T11:53:54.000Z" itemprop="datePublished">2011-01-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2011/01/13/%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%EF%BC%8C%E4%BA%BA%E7%89%A9%E7%A7%BB%E5%8A%A8%EF%BC%88keyboardevent%EF%BC%89/">键盘事件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>在我们做游戏时，常常会用到用键盘事件来控制人物移动的情况，如果直接用（KeyboardEvent.KEY_DOWN）和（KeyboardEvent.KEY_UP）的话，往往会出现这样或那样的问题，不知道大家都是怎么解决的？  用键盘事件来控制人物移动，最常见的问题是：  1.如果用户按住一个键不释放，如何处理？比如长按向右键的话，会一直运行右键触发的函数！  2.如果用户同时按住多个方向键，如何处理？比如同时按住向右和向上，在前进过程中跳跃；用户还可能中间松开其中一个键等！  这些问题不解决好的话，有可能会造成电脑CPU飙升，严重拖慢系统运行速度，swf 的画面会变得非常卡。  我的思路是 当键盘按下的时候触发一个变量，可能首先大家会想到用布尔值（Boolean），按下为true，释放为false，没错，最初我也用的是布尔值，当用户长按某个键不松时，只是让系统在刷一个布尔值，这样会大大降低程序的运行成本。但是后来我发现用Int的0和1来表示按下和释放两种状态效果更佳，因为0和1这两个数值的本身还可以做为人物移动的坐标系数，这样右进一步简化代码！  最近在学Flash Builder，所以这次的案例是在Flash Builder下写的，用的时Flex3.5的框架，写的时候尽量运行一些架构的思想，就是尽量把视图层、数据层和控制层分开，特意又画了下UML图给大家贴出来！  [caption id=”attachment_138” align=”aligncenter” width=”600” caption=”键盘事件的UML图”]<a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/01/MoveKey.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/01/MoveKey.jpg" alt="键盘事件的UML图" title="MoveKey"></a>[/caption] 图比较简单，这次主要说的是键盘事件，这些东西顺带说一下，MoveMain是主类，NPCView是视图类，KeyLogic是进行逻辑判断的控制类，GameModel是数据类，　NPCVO声明了一些变量。  下面开始贴案例效果： </p>
-<p> </p>
-<p>说明：先用鼠标在下面的swf上点下，获取焦点，然后用上下左右方向键控制npc的移动！ </p>
-<p>接下来是代码： </p>
-<p>//  代码看不懂的地方可以跳过，只要看懂其中的大意，明白思路就好了！ </p>
-<p>MoveMain（主类）： </p>
-<p><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; &lt;mx:Application xmlns:mx=&quot;http://www.adobe.com/2006/mxml&quot; layout=&quot;absolute&quot; width=&quot;600&quot; height=&quot;400&quot; applicationComplete=&quot;application1_applicationCompleteHandler(event)&quot; xmlns:vo=&quot;com.nestor.vo.*&quot; xmlns:view=&quot;com.nestor.view.*&quot; &gt; &lt;mx:Script&gt; &lt;![CDATA[ import com.nestor.ctrl.KeyLogic; import com.nestor.model.GameModel; import com.nestor.vo.NPCVO; import mx.events.FlexEvent; private var keyLogic:KeyLogic=new KeyLogic()； private var playerVo:NPCVO=GameModel.getGameModel().playerVO; protected function application1_applicationCompleteHandler(event:FlexEvent):void &#123; stage.addEventListener(KeyboardEvent.KEY_DOWN,keyLogic.downHandler); stage.addEventListener(KeyboardEvent.KEY_UP,keyLogic.upHandler); var timer:Timer=new Timer(30); timer.addEventListener(TimerEvent.TIMER,tHandler) timer.start(); &#125; private function tHandler(e:TimerEvent):void&#123; var spdX:int=5; var spdY:int=5; Npc.x += (playerVo.isLeft * (-spdX) + playerVo.isRight * spdX); Npc.y += (playerVo.isUp * (-spdY) + playerVo.isDown * spdY); &#125; ]]&gt; &lt;/mx:Script&gt; &lt;view:NPCView id=&quot;Npc&quot; x=&quot;100&quot; y=&quot;100&quot;/&gt; &lt;/mx:Application&gt;</code>  </p>
-<p>NPCView类：（视图类） <code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; &lt;mx:Canvas xmlns:mx=&quot;http://www.adobe.com/2006/mxml&quot; width=&quot;100&quot; height=&quot;100&quot;&gt; &lt;mx:Button  label=&quot;NPC&quot; width=&quot;100&quot; height=&quot;100&quot; fontSize=&quot;32&quot; fontFamily=&quot;Georgia&quot;/&gt; &lt;/mx:Canvas&gt;</code>  KeyLogic类（逻辑控制类）  <code>package com.nestor.ctrl &#123; /* * @ Nestor/斯樵 */ import com.nestor.model.GameModel; import com.nestor.vo.NPCVO; import flash.events.KeyboardEvent; import flash.ui.Keyboard; public class KeyLogic &#123; private var playerVo:NPCVO=GameModel.getGameModel().playerVO; public function KeyLogic() &#123; &#125; public function downHandler(e:KeyboardEvent):void&#123; switch (e.keyCode)&#123; case Keyboard.UP: playerVo.isUp=1; break; case Keyboard.DOWN: playerVo.isDown=1; break; case Keyboard.LEFT: playerVo.isLeft=1; break; case Keyboard.RIGHT: playerVo.isRight=1; break; &#125; &#125; public function upHandler(e:KeyboardEvent):void&#123; switch (e.keyCode)&#123; case Keyboard.UP: playerVo.isUp=0; break; case Keyboard.DOWN: playerVo.isDown=0; break; case Keyboard.LEFT: playerVo.isLeft=0; break; case Keyboard.RIGHT: playerVo.isRight=0; break; &#125; &#125; &#125; &#125;</code>  GameModel类（数据类）  <code>package com.nestor.model &#123; import com.nestor.vo.NPCVO; public class GameModel &#123; public var playerVO:NPCVO; public var CrtLabel:String; private static var instance:GameModel=null; public function GameModel() &#123; playerVO=new NPCVO(); &#125; public static function getGameModel():GameModel&#123; return instance = new GameModel(); &#125; &#125; &#125;</code>   NPCVO类（声明Model中数据）  <code>package com.nestor.vo &#123; public class NPCVO &#123; public var isLeft:int=0; public var isRight:int=0; public var isUp:int=0; public var isDown:int=0; public function NPCVO() &#123; &#125; &#125; &#125;</code> 源码下载： [download id=”2”]</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2011/01/13/%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%EF%BC%8C%E4%BA%BA%E7%89%A9%E7%A7%BB%E5%8A%A8%EF%BC%88keyboardevent%EF%BC%89/" data-id="ckljj0pa0009arpey8ouhfums" data-title="键盘事件" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/keyboard/" rel="tag">keyboard</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-也说as3自定义事件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2011/01/12/%E4%B9%9F%E8%AF%B4as3%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/" class="article-date">
-  <time class="dt-published" datetime="2011-01-12T15:35:21.000Z" itemprop="datePublished">2011-01-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2011/01/12/%E4%B9%9F%E8%AF%B4as3%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/">也说AS3自定义事件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>看到网上有很多关于AS3自定义事件的文章，写的或简洁到不知所云，或复杂到云山雾罩，大多属于懂的人不用看，不懂的人看不懂。不禁想起前端时间刚接触自定义事件时的纠结，看了几篇相关的文章后，也明白作者的意思，结合自己工作中的一些想法，于是就也写篇文章说说自己的理解，凑凑热闹！ 自我感觉自定义事件并不太难，主要还是得理解自定义事件的意义，明白自定义事件有什么用处，懂得自定义事件用在什么地方。 下面就结合我最近做一个小游戏时用到自定义事件的情况介绍下用法。 思路：通过抛出自定义事件，改变当前游戏状态！ 由MainView来管理GameStartView、GamingView和GameEndView三个游戏状态，每个状态有一个按钮，点击后，抛出自定义事件，MainView侦听到事件后，根据参数改变游戏状态；自定义事件类MyGameEvent继承于Event，含有一个nextStatus的属性。 UML图：</p>
-<p><a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/01/GameEventUML.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2011/01/GameEventUML.jpg" title="GameEventUML"></a></p>
-<p>代码方面列出最关键的类：MyGameEvent类。 [codesyntax lang=”actionscript3” container=”pre”]</p>
-<p>package com.nestor.event<br>{<br>import flash.events.Event;</p>
-<p>public class MyGameEvent extends Event<br>{<br>// 默认事件类型<br>public static const Status_Change:String = “MyGameEvent.Status_Change”;<br>// 下一游戏状态；<br>public var nextStatus:String;<br>public function MyGameEvent(type:String=Status_Change, bubbles:Boolean=false, cancelable:Boolean=false)<br>{<br>super(type, bubbles, cancelable);<br>}<br>public function clone():MyGameEvent {<br>return new MyGameEvent (type, bubbles, cancelable);<br>}<br>}<br>}</p>
-<p>[/codesyntax]     源码下载： [download id=”3”]</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2011/01/12/%E4%B9%9F%E8%AF%B4as3%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/" data-id="ckljj0p8y0078rpeyg11t21u4" data-title="也说AS3自定义事件" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8B%E4%BB%B6/" rel="tag">事件</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-像素级移动（setpixel）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2011/01/03/%E5%83%8F%E7%B4%A0%E7%BA%A7%E7%A7%BB%E5%8A%A8%EF%BC%88setpixel%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2011-01-03T15:54:18.000Z" itemprop="datePublished">2011-01-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2011/01/03/%E5%83%8F%E7%B4%A0%E7%BA%A7%E7%A7%BB%E5%8A%A8%EF%BC%88setpixel%EF%BC%89/">像素级移动（SetPixel）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>常规的建个元件，做段时间轴动画，或者加上一些缓动代码，都可以实现移动的效果，这个是flash的入门知识。 今天要说的是，像素级的运动，通过BitmapData 的 setPixel和copyPixel 方法，改变位图的数据源，实现运动的效果，这个方法在项目实际运用中会大大提高系统的效率。 效果展示：</p>
-<p>思路：注册Enter_Frame事件，每次通过 setPixel 刷新 位图BMP的 数据源BMD，形成动画的效果！</p>
-<p>源码如下：</p>
-<p><code>/* by Nestor/斯樵 sqstudio.com */ package &#123; import flash.display.Bitmap; import flash.display.BitmapData; import flash.display.Sprite; import flash.events.Event; [SWF(width=&quot;600&quot;,height=&quot;300&quot;,frameRate=&quot;30&quot;)] public class setpixel extends Sprite &#123; private var bmd:BitmapData,bm:Bitmap private var id:int=1 public function setpixel() &#123; bmd=new BitmapData(800,600,true,0) bm=new Bitmap(bmd) addChild(bm) addEventListener(Event.ENTER_FRAME,efHandler) &#125; private function efHandler(e:Event):void&#123; bmd=new BitmapData(800,600,false,0x000000) bm.bitmapData=bmd bmd.lock(); for(var i:int=stage.stageHeight/2-5;i&lt;5+stage.stageHeight/2;i++)&#123; for (var j:int=id;j&lt; 10 +id ;j++)&#123; bmd.setPixel(j,i,0xffffff) &#125; &#125; bmd.unlock(); id +=10; if(id&gt;stage.stageWidth)&#123; id=0; &#125; &#125; &#125; &#125;</code></p>
-<p>下载地址：<a target="_blank" rel="noopener" href="http://down.qiannao.com/space/file/304149240/-4e0a-4f20-5206-4eab/wp/setpixel-3010-50cf-7d20-7ea7-79fb-52a8-3011.rar/.page">千脑网盘</a> 有问题，欢迎留言讨论！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2011/01/03/%E5%83%8F%E7%B4%A0%E7%BA%A7%E7%A7%BB%E5%8A%A8%EF%BC%88setpixel%EF%BC%89/" data-id="ckljj0p94007mrpey404o77ww" data-title="像素级移动（SetPixel）" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AS3%E6%8E%A2%E7%A9%B6/" rel="tag">AS3探究</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/copyPixel/" rel="tag">copyPixel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/setPixel/" rel="tag">setPixel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8/" rel="tag">移动</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-as3事件发送初识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2010/11/29/as3%E4%BA%8B%E4%BB%B6%E5%8F%91%E9%80%81%E5%88%9D%E8%AF%86/" class="article-date">
-  <time class="dt-published" datetime="2010-11-29T12:43:43.000Z" itemprop="datePublished">2010-11-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2010/11/29/as3%E4%BA%8B%E4%BB%B6%E5%8F%91%E9%80%81%E5%88%9D%E8%AF%86/">AS3事件机制初识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>昨天在做一个小游戏的时候，发现事件机制很不错，特地写一写，分享一下！ 我当时是把游戏时间控制单独写了一个time类，游戏开始时60秒倒计时启动，可是时间为0时，怎么通知Main类呢？ 以前也看过事件发送dispatchEvent，不过没怎么理解，不知道怎么用，后来就忘了，现在拾起来再一看，果然很有用，怪不得黑羽连发几篇文章，名为“AS3强大的事件机制”。 dispatchEvent就是可以把time的信息通过事件发送通知给Main类，发送的时候是time类里发送，接受的时候是Main类里的time类实例在侦听接收，所以从头到尾还是一个对象在完成，感觉很合理。 接下来贴效果：</p>
-<p>说明：time类的倒计时为0时，会发送事件给Main类，Main类里的time类实例收到信息后，执行下一步操作！</p>
-<p>代码如下：</p>
-<p>time类：</p>
-<p><code>package &#123; import flash.display.Sprite; import flash.utils.Timer; import flash.events.TimerEvent; import flash.events.Event; public class Time extends Sprite &#123; public var timer:Timer,tim:int; public function Time() &#123; init(); &#125; private function init() &#123; timer = new Timer(1000); tim = 5;//总时间 timer.start() tim_txt.text = String(tim); trace(tim_txt.text) timer.addEventListener(TimerEvent.TIMER,timeHandler); private function timeHandler(e:TimerEvent) &#123; tim_txt.text=String(tim) if (tim == 0) &#123; timer.stop(); //时间为0时，发送给Main主文档这一事件，让Main进行下一步处理 this.dispatchEvent(new TimerEvent(TimerEvent.TIMER_COMPLETE)); &#125; else &#123; tim--; &#125; &#125; &#125; &#125;</code></p>
-<p>Main类： <code>package &#123; import flash.display.Sprite; import flash.events.*; public class Main extends Sprite &#123; private var time_mc:Time; public function Main() &#123; init(); &#125; private function init() &#123; time_mc=new Time(); addChild(time_mc); time_mc.addEventListener(TimerEvent.TIMER_COMPLETE,timeCom); &#125; public function timeCom(e:TimerEvent ) &#123; timcom_txt.text = &quot;Main类收到time类所发送的信息，时间到，Main类可以进行下一步处理&quot;; &#125; &#125; &#125;</code> 源码下载：<a target="_blank" rel="noopener" href="http://down.qiannao.com/space/file/304149240/-4e0a-4f20-5206-4eab/wp/AS3-4e8b-4ef6-673a-5236-521d-59cb.rar/.page">千脑网盘</a> 上面写的属于事件机制里很简单的部分，随后在小游戏里我还用了自定义事件，但是理解的还不深，下次发文章时再写！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2010/11/29/as3%E4%BA%8B%E4%BB%B6%E5%8F%91%E9%80%81%E5%88%9D%E8%AF%86/" data-id="ckljj0p6s0026rpey9m1uf6t0" data-title="AS3事件机制初识" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AS3%E6%8E%A2%E7%A9%B6/" rel="tag">AS3探究</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8B%E4%BB%B6/" rel="tag">事件</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%91%E9%80%81/" rel="tag">发送</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%88%B6/" rel="tag">机制</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-flash变形相册" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2010/11/26/flash%E5%8F%98%E5%BD%A2%E7%9B%B8%E5%86%8C/" class="article-date">
-  <time class="dt-published" datetime="2010-11-26T14:54:40.000Z" itemprop="datePublished">2010-11-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2010/11/26/flash%E5%8F%98%E5%BD%A2%E7%9B%B8%E5%86%8C/">Flash变形相册</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>看到网上很多相册，或者是flash网站的展示页面，有下面这种flash加载下一张图片时的变形效果，感觉很不错，就尝试写了下这个效果。 只是一个很简单 的效果，有兴趣的朋友可扩展下做成相册，呵呵！（有人做的话，做好了记得分享下，我也围观下！） 效果如下：</p>
-<p><a target="_blank" rel="noopener" href="http://www.sqstudio.com/wp-content/uploads/exer/changephoto/changephoto.swf"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2010/11/changephoto.jpg" alt="变形相册截图" title="changephoto"></a></p>
-<p>注：1.点击图片  或<a target="_blank" rel="noopener" href="http://www.sqstudio.com/wp-content/uploads/exer/changephoto/changephoto.swf">此处</a> 查看效果， 下载载本地效果更佳！</p>
-<p>代码如下： <code>code: import com.greensock.TweenLite; import com.greensock.TweenLite; import flash.events.MouseEvent; import flash.display.Loader; import flash.net.URLRequest; import flash.events.Event; import flash.display.Sprite; import flash.events.ProgressEvent; /* by Nestor/斯樵 www.sqstudio.com */ var sp:Sprite =new Sprite(); var picLoader:Loader=new Loader(); var picArr = [&quot;image/1.jpg&quot;,&quot;image/2.jpg&quot;,&quot;image/3.jpg&quot;,&quot;image/4.jpg&quot;]; stage.addEventListener(MouseEvent.CLICK,onCK); var id:int = 0; init(); function onCK(e:MouseEvent):void &#123; sp.removeChild(picLoader); picLoader.unload(); init(); stage.removeEventListener(MouseEvent.CLICK,onCK); load_txt.visible = true; &#125; function picPro(e:ProgressEvent):void &#123; load_txt.text = Math.round(e.bytesLoaded / e.bytesTotal * 100).toString() + &quot;%&quot;; &#125; function picCom(e:Event) &#123; load_txt.visible = false; var wid:Number = Number(e.target.width) + 10; var hei:Number = Number(e.target.height) + 10; picLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE,picCom); TweenLite.to(sam_mc,1,&#123;width:wid,height:hei,onComplete:tweenCom&#125;); &#125; function tweenCom() &#123; sp.addChild(picLoader); sp.x = sam_mc.x - sam_mc.width / 2 + 5; sp.y = sam_mc.y - sam_mc.height / 2 + 5; addChild(sp); stage.addEventListener(MouseEvent.CLICK,onCK); &#125; function init() &#123; picLoader.load(new URLRequest(picArr[id])); picLoader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS,picPro); picLoader.contentLoaderInfo.addEventListener(Event.COMPLETE,picCom); if (id == picArr.length - 1) &#123; id = 0; &#125; else &#123; id++; &#125; &#125;</code> 源码下载：<a target="_blank" rel="noopener" href="http://down.qiannao.com/space/file/304149240/-4e0a-4f20-5206-4eab/wp/-76f8-518c-53d8-5f62(www.sqstudio.com).rar/.page">千脑网盘</a> 解压密码：<a target="_blank" rel="noopener" href="http://www.sqstudio.com/">www.sqstudio.com</a> 本实例用所用到的TweenLite类 可到<a target="_blank" rel="noopener" href="http://www.greensock.com/">官网下载</a>！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2010/11/26/flash%E5%8F%98%E5%BD%A2%E7%9B%B8%E5%86%8C/" data-id="ckljj0p7i003mrpey8l210abe" data-title="Flash变形相册" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AS3%E6%8E%A2%E7%A9%B6/" rel="tag">AS3探究</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flash/" rel="tag">flash</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2010/11/25/hello-world-2/" class="article-date">
-  <time class="dt-published" datetime="2010-11-25T02:47:03.000Z" itemprop="datePublished">2010-11-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2010/11/25/hello-world-2/">开通博客啦！</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>接触flash两年了，感悟很多，学的东西也比较乱，所以就想开个博客整理下。 最初关注flash，只是觉得好玩，感觉挺神奇。真正的上手入门，学习AS3也就是年初的事，刚开始是看金鹰的flash教程，现在看来这些教程确实很一般，不过确是给我打开了通向Flash AS3 的大门。之后就开始自学AS3，碰到有不懂的就百度，有时候费了很大劲儿，终于搞明白一个问题，那种激动和满足也是很让人难忘的，相信很多人都不会忘记那种恍然大悟的感觉。没事就逛逛天地会的论坛，看看绚丽的国外Flash全站，读读那些业内大牛的博客，倒也别有一番滋味。尤还记得，看到那些国外Flash全站特效的震撼，读完那些业内Flash大牛博文的仰慕，这些都成为我继续为Flash而努力的动力！ 我的水平不高，目前对于AS3 API 掌握不很透彻，对于类的写法，不很熟练，对于设计模式更是一知半解。 不过，所幸我还有些值得庆幸的地方，我知道怎么去寻找解决问题的办法或者方向，我愿意一直用一种兴趣爱好的态度去不断学习Flash。之前在百度空间也写过一段时间博客[Flash蛋蛋堂]，不过Flash蛋蛋堂那个博客上面有很多是转载的东西，很多并没有消化，就看到文章好就直接拿过来用了. 如今开通这个博客，我想尽量每一篇都是原创，即便是有别人的东西，那也是博采众家之长，经过融汇贯通的，力求对一个问题做出透彻的理解，并且尽量多做些实例，放出源码，既是对自己知识的梳理，也希望写的东西能给别人些许帮助吧！业内大牛的博客，我也收集了20多个，不过这些博客对我来说，更多的作用是了解业内的新闻动态，因为很多上面的技术要么很难看懂，要么暂时用不到。 鉴于我目前的水平有限，或许我写的东西对有的高手来说很简单，但是至少我每一篇都会再三斟酌，认真撰写，因为这也将做为我自己的技术资料存档，我想随着我技术的进步，这里的博客将会越来越有质量。 这个博客我会一直坚持下去！ 喜欢Flash的朋友，我们一起成长！</p>
-<p>2010.11.25</p>
-<hr>
-<p>如今回头看看以前文章，颇感稚嫩，曾一度想删去，恰好看到季羡林《牛棚杂记》的序，感觉直击内心，好吧，那就不删吧。2017.03.03</p>
-<p><a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2010/11/npzj.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2010/11/npzj.jpg"></a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2010/11/25/hello-world-2/" data-id="ckljj0p7p0045rpey5uahfmqm" data-title="开通博客啦！" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AS3%E6%8E%A2%E7%A9%B6/" rel="tag">AS3探究</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flash/" rel="tag">flash</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IAP/" rel="tag">IAP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/" rel="tag">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" rel="tag">应用内支付</a></li></ul>
 
     </footer>
   </div>
@@ -463,7 +579,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/11/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span>
+    <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -472,9 +588,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 
@@ -491,7 +607,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li></ul>
     </div>
@@ -501,7 +617,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         

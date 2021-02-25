@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>斯樵工坊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="斯樵工坊">
+<meta property="og:type" content="website">
+<meta property="og:title" content="斯樵工坊">
+<meta property="og:url" content="https://sqstudio.com/page/15/index.html">
+<meta property="og:site_name" content="斯樵工坊">
+<meta property="og:description" content="斯樵工坊">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="斯樵">
+<meta property="article:tag" content="斯樵工坊">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="斯樵工坊" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">斯樵工坊</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sqstudio.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-在mxml中addchild一个sprite" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/10/04/%E5%9C%A8mxml%E4%B8%ADaddchild%E4%B8%80%E4%B8%AAsprite/" class="article-date">
+  <time class="dt-published" datetime="2012-10-04T15:07:51.000Z" itemprop="datePublished">2012-10-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/10/04/%E5%9C%A8mxml%E4%B8%ADaddchild%E4%B8%80%E4%B8%AAsprite/">在mxml中addChild一个sprite</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在flex项目中讲一个没有继承UIComponent的flash的DisplayObject加载(addChild)到舞台上 [codesyntax lang=”actionscript3”]</p>
+<?xml version="1.0" encoding="utf-8"?>
+<p>&lt;s:Application name=”Spark_SpriteVisualElement_addChild_test”<br>        xmlns:fx=”<a target="_blank" rel="noopener" href="http://ns.adobe.com/mxml/2009&quot;">http://ns.adobe.com/mxml/2009&quot;</a><br>        xmlns:s=”library://ns.adobe.com/flex/spark”<br>        xmlns:mx=”library://ns.adobe.com/flex/halo”<br>        initialize=”init();”&gt;</p>
+<pre><code>&lt;fx:Script&gt;
+    &lt;!\[CDATA\[
+        private spr1:Sprite = new Sprite();
+
+        private function init():void &#123;
+            spr1.graphics.beginFill(0xFF0000, 0.5);
+            spr1.graphics.drawRect(10, 10, 100, 80);
+            spr1.graphics.endFill();
+            con.addChild(spr1);
+        &#125;
+    \]\]&gt;
+&lt;/fx:Script&gt;
+
+&lt;s:SpriteVisualElement id=&quot;con&quot; /&gt;
+</code></pre>
+<p></s:Application></p>
+<p>[/codesyntax]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2012/10/04/%E5%9C%A8mxml%E4%B8%ADaddchild%E4%B8%80%E4%B8%AAsprite/" data-id="cklkonpfj007rcjeya3i9dxo8" data-title="在mxml中addChild一个sprite" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-php生成html文件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/09/21/php%E7%94%9F%E6%88%90html%E6%96%87%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2012-09-21T01:31:53.000Z" itemprop="datePublished">2012-09-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/09/21/php%E7%94%9F%E6%88%90html%E6%96%87%E4%BB%B6/">php生成Html文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[codesyntax lang=”php”]</p>
+<?php
+$row = array (
+array (
+"新闻标题1",
+"新闻内容1"
+),
+array (
+"新闻标题2",
+"新闻内容2"
+)
+);
+for ($index = 0; $index < sizeof($row); $index++) {
+$title = $row\[$index\]\[0\];
+$content = $row\[$index\]\[1\];
+$path = "page" . $index . ".html";
+
+$fp = fopen("tmp.html", "r"); //只读
+$str = fread($fp, filesize("tmp.html")); //读取内容
+
+$str = str\_replace("{title}", $title, $str);
+$str = str\_replace("{content}", $content, $str);
+
+fclose($fp);
+
+$handle = fopen($path, "w");
+fwrite($handle, $str);
+fclose($handle);
+
+echo "成功！";
+}
+
+//unlink("page2.html"); //删除文件
+//mkdir("tmpdir"); //创建文件夹
+?>
+
+<p>[/codesyntax]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2012/09/21/php%E7%94%9F%E6%88%90html%E6%96%87%E4%BB%B6/" data-id="cklkonpee004ycjeyb6de5pq3" data-title="php生成Html文件" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%88%90Html/" rel="tag">生成Html</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-phpmysql分页练习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/08/28/phpmysql%E5%88%86%E9%A1%B5%E7%BB%83%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2012-08-28T01:36:32.000Z" itemprop="datePublished">2012-08-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/08/28/phpmysql%E5%88%86%E9%A1%B5%E7%BB%83%E4%B9%A0/">php+mysql分页练习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>php+mySql 分页练习 1.$url = $_SERVER[‘REQUEST_URI’]; 2.$page = $_GET[page]; 3.SELECT * FROM `message` limit $pageindex $pageSize   [codesyntax lang=”php”]</p>
+<?
+include ("conn.php");
+
+$pageSize = 4;
+$pageindex = "0,";
+
+$total = mysql\_query("SELECT count(1) FROM \`message\`");
+echo $total;
+if ($\_GET\[page\]) {
+$page = $\_GET\[page\];
+$page = $page < 0 ? 0 : $page;
+$page = $page >= $total ? $total -1 : $page;
+
+$pageindex = $page \* $pageSize;
+$pageindex .= ",";
+}
+
+$url = $\_SERVER\['REQUEST\_URI'\];
+$url = parse\_url($url);
+$url = $url\[path\];
+
+echo "<a href=$url?page=" . ($page -1) . ">上一页</a>" . "&nbsp&nbsp<a href=$url?page=" . ($page +1) . ">下一页</a>";
+
+$sql = "SELECT \* FROM \`message\` limit $pageindex $pageSize";
+$r = mysql\_query($sql);
+
+echo " 总页数" . $total . "<br><hr>";
+while ($ss = mysql\_fetch\_array($r)) {
+echo $ss\[user\] . "<br><hr>";
+}
+
+?>
+
+<p>[/codesyntax]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2012/08/28/phpmysql%E5%88%86%E9%A1%B5%E7%BB%83%E4%B9%A0/" data-id="cklkonped004ucjey0zyn8rth" data-title="php+mysql分页练习" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-as3-0-用代码设置调整颜色滤镜-即：亮度、对比" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/07/11/as3-0-%E7%94%A8%E4%BB%A3%E7%A0%81%E8%AE%BE%E7%BD%AE%E8%B0%83%E6%95%B4%E9%A2%9C%E8%89%B2%E6%BB%A4%E9%95%9C-%E5%8D%B3%EF%BC%9A%E4%BA%AE%E5%BA%A6%E3%80%81%E5%AF%B9%E6%AF%94/" class="article-date">
+  <time class="dt-published" datetime="2012-07-11T02:38:51.000Z" itemprop="datePublished">2012-07-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/07/11/as3-0-%E7%94%A8%E4%BB%A3%E7%A0%81%E8%AE%BE%E7%BD%AE%E8%B0%83%E6%95%B4%E9%A2%9C%E8%89%B2%E6%BB%A4%E9%95%9C-%E5%8D%B3%EF%BC%9A%E4%BA%AE%E5%BA%A6%E3%80%81%E5%AF%B9%E6%AF%94/">as3.0 用代码设置“调整颜色”滤镜--------即：亮度、对比度、饱和度、色相的调整</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>相信大家对滤镜这东西，在flash IDE内应用很熟吧？但是在as内怎么用代码实现呢？这个问题还别说，起初真有点犯难，后经高手指点，逐一化解。经验不敢独享，故与大家分享(高手可掠过)。如有疑问，请多多提出咯……   import fl.motion.ColorMatrix; import flash.filters.ColorMatrixFilter;   <strong>//**调整亮度**//</strong> var ld_Matrix:ColorMatrix=new ColorMatrix(); var ld_Filter:ColorMatrixFilter=new ColorMatrixFilter(); ld_Matrix.SetBrightnessMatrix(100);  //设置亮度值，值的大小是 -255–255   0为中间值，向右为亮向左为暗。 ld_Filter.matrix = ld_Matrix.GetFlatArray(); ld_MC.filters = [ld_Filter]; //ld_MC.filters = [];//去除滤镜   <strong>//**调整对比度**//</strong> var db_Matrix:ColorMatrix=new ColorMatrix(); var db_Filter:ColorMatrixFilter=new ColorMatrixFilter(); db_Matrix.SetContrastMatrix(255);  //设置对比度值，值的大小是 -255–255  127.5为中间值，向右对比鲜明向左对比偏暗。 db_Filter.matrix = db_Matrix.GetFlatArray(); db_MC.filters = [db_Filter]; //db_MC.filters = [];//去除滤镜   <strong>//**调整饱和度**//</strong> var bh_Matrix:ColorMatrix=new ColorMatrix(); var bh_Filter:ColorMatrixFilter=new ColorMatrixFilter(); bh_Matrix.SetSaturationMatrix(0);  //设置饱和度值，值的大小是 -255–255   1为中间值，0为灰度值（<strong>即黑白相片</strong>）。 bh_Filter.matrix = bh_Matrix.GetFlatArray(); bh_MC.filters = [bh_Filter]; //bh_MC.filters = [];//去除滤镜   <strong>//**调整色相**//</strong> var sx_Matrix:ColorMatrix=new ColorMatrix(); var sx_Filter:ColorMatrixFilter=new ColorMatrixFilter(); sx_Matrix.SetHueMatrix(1);  //设置色相值，值的大小是 -255–255  0为中间值，向右向左一试便知。 sx_Filter.matrix = sx_Matrix.GetFlatArray(); sx_MC.filters = [sx_Filter]; //sx_MC.filters = [];//去除滤镜   原文链接：<a target="_blank" rel="noopener" href="http://bbs.9ria.com/space.php?uid=112507&amp;do=blog&amp;id=12944">http://bbs.9ria.com/space.php?uid=112507&amp;do=blog&amp;id=12944</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2012/07/11/as3-0-%E7%94%A8%E4%BB%A3%E7%A0%81%E8%AE%BE%E7%BD%AE%E8%B0%83%E6%95%B4%E9%A2%9C%E8%89%B2%E6%BB%A4%E9%95%9C-%E5%8D%B3%EF%BC%9A%E4%BA%AE%E5%BA%A6%E3%80%81%E5%AF%B9%E6%AF%94/" data-id="cklkonpcs001dcjeyfmky9oxt" data-title="as3.0 用代码设置“调整颜色”滤镜--------即：亮度、对比度、饱和度、色相的调整" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-stage3d硬件检测和要求" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2012/05/26/stage3d%E7%A1%AC%E4%BB%B6%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A6%81%E6%B1%82/" class="article-date">
+  <time class="dt-published" datetime="2012-05-26T01:30:52.000Z" itemprop="datePublished">2012-05-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2012/05/26/stage3d%E7%A1%AC%E4%BB%B6%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A6%81%E6%B1%82/">Stage3D硬件检测和要求</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>一、官方要求：<a target="_blank" rel="noopener" href="http://helpx.adobe.com/x-productkb/multi/stage3d-unsupported-chipsets-drivers-flash.html">http://helpx.adobe.com/x-productkb/multi/stage3d-unsupported-chipsets-drivers-flash.html</a></p>
+<blockquote>
+<p>所有平台 任何不支持Pixel Shader 2.x及以上的GPU Intel GMAs that DON’T support Pixel Shader 2.x: 740, i752, IEG, IEG2, GMA 900, GMA 950, GMA 3000, GMA 3100, GMA 3150 Chrome VIA Chipset Windows</p>
+<p>任何早于2009年一月一日的驱动<br> NVIDIA driver 8.17.11.9621<br> NVIDIA driver 8.17.11.8267<br> Any Intel GMA driver before X.X.10.2021</p>
+<p>Macintosh</p>
+<p>All Intel GMAs<br>ATI Radeon X1600<br> ATI Radeon 2400<br> Firefox 3.6 and earlier<br> Mac OS X 10.5</p>
+<p>  *Linux系统仅支持软渲染 *Mac和Windows上Intel HD GPU完全支持 推荐 因为2009一月1号之前的驱动全部不支持，强烈推荐你升级显卡驱动。如果升级后仍只能使用软渲染，你的显卡很可能不被支持。</p>
+</blockquote>
+<p>二、硬件检测 （1）快速检测：<a target="_blank" rel="noopener" href="http://wonderfl.net/c/jJzk">http://wonderfl.net/c/jJzk</a> （2）另一种检测方式</p>
+<p>运行这个工具 <a target="_blank" rel="noopener" href="http://zp.amsnet.pl/cdragan/d3dcaps.html">http://zp.amsnet.pl/cdragan/d3dcaps.html</a> 得到一个叫 ‘devcaps.txt’ 的文件。 查看两个着色器的值。</p>
+<p>VERTEX_SHADER_VERSION FFFE0200</p>
+<p>PIXEL_SHADER_VERSION FFFF0200</p>
+<p>忽略FFFE/FFFF, 只看红色部分的值，这个值必须都大于0200 才能支持molehill, 否则就软解。 注意，这两个值会在devcaps.txt文件中出现两次，用后面出现的那一组 （第一组的值是0104，忽略即可），如果上述值正常，但让没有效果，那就参考上文 硬件要求，也许你的显卡不支持。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sqstudio.com/2012/05/26/stage3d%E7%A1%AC%E4%BB%B6%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A6%81%E6%B1%82/" data-id="cklkonpep005icjeyadu0gexb" data-title="Stage3D硬件检测和要求" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/14/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/16/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AS3%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">AS3定义变量</a> <a href="/tags/AS3%E6%8E%A2%E7%A9%B6/" style="font-size: 17.5px;">AS3探究</a> <a href="/tags/Air/" style="font-size: 17.5px;">Air</a> <a href="/tags/Air-for-Android/" style="font-size: 10px;">Air for Android</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Bitmap/" style="font-size: 10px;">Bitmap</a> <a href="/tags/ContextMenu/" style="font-size: 10px;">ContextMenu</a> <a href="/tags/File/" style="font-size: 10px;">File</a> <a href="/tags/File%E7%9B%AE%E5%BD%95/" style="font-size: 10px;">File目录</a> <a href="/tags/Find-References/" style="font-size: 10px;">Find References</a> <a href="/tags/Flash%E8%BF%90%E8%A1%8C%E6%97%B6%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">Flash运行时路线图</a> <a href="/tags/IAP/" style="font-size: 10px;">IAP</a> <a href="/tags/LitJson/" style="font-size: 10px;">LitJson</a> <a href="/tags/MonoDevelop/" style="font-size: 10px;">MonoDevelop</a> <a href="/tags/Particle/" style="font-size: 10px;">Particle</a> <a href="/tags/RPG%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">RPG游戏</a> <a href="/tags/Scale9Grid/" style="font-size: 10px;">Scale9Grid</a> <a href="/tags/Service/" style="font-size: 10px;">Service</a> <a href="/tags/Text/" style="font-size: 10px;">Text</a> <a href="/tags/TexturePacker/" style="font-size: 10px;">TexturePacker</a> <a href="/tags/UDID/" style="font-size: 10px;">UDID</a> <a href="/tags/Unity/" style="font-size: 15px;">Unity</a> <a href="/tags/XCode/" style="font-size: 10px;">XCode</a> <a href="/tags/adb/" style="font-size: 10px;">adb</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/adobe/" style="font-size: 10px;">adobe</a> <a href="/tags/adt%E6%89%93%E5%8C%85/" style="font-size: 10px;">adt打包</a> <a href="/tags/ane/" style="font-size: 15px;">ane</a> <a href="/tags/ant/" style="font-size: 10px;">ant</a> <a href="/tags/assets/" style="font-size: 10px;">assets</a> <a href="/tags/atf/" style="font-size: 10px;">atf</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/copyPixel/" style="font-size: 10px;">copyPixel</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/dex2jar/" style="font-size: 10px;">dex2jar</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/drag/" style="font-size: 10px;">drag</a> <a href="/tags/flash/" style="font-size: 15px;">flash</a> <a href="/tags/flash-builder/" style="font-size: 10px;">flash builder</a> <a href="/tags/flash-builder-4/" style="font-size: 10px;">flash builder 4</a> <a href="/tags/flash-player-10/" style="font-size: 10px;">flash player 10</a> <a href="/tags/flash-runtimes/" style="font-size: 10px;">flash runtimes</a> <a href="/tags/flv/" style="font-size: 10px;">flv</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/ios/" style="font-size: 20px;">ios</a> <a href="/tags/ipa/" style="font-size: 17.5px;">ipa</a> <a href="/tags/itms-services/" style="font-size: 10px;">itms-services</a> <a href="/tags/keyboard/" style="font-size: 10px;">keyboard</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mac/" style="font-size: 12.5px;">mac</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/player-11/" style="font-size: 10px;">player 11</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/react-native/" style="font-size: 10px;">react-native</a> <a href="/tags/setIndex/" style="font-size: 10px;">setIndex</a> <a href="/tags/setPixel/" style="font-size: 10px;">setPixel</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/socket%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">socket服务器</a> <a href="/tags/starling/" style="font-size: 15px;">starling</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/useLegacyAOT/" style="font-size: 10px;">useLegacyAOT</a> <a href="/tags/uwsgi/" style="font-size: 10px;">uwsgi</a> <a href="/tags/vbox/" style="font-size: 10px;">vbox</a> <a href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E7%9B%98/" style="font-size: 10px;">七牛云盘</a> <a href="/tags/%E4%BA%8B%E4%BB%B6/" style="font-size: 12.5px;">事件</a> <a href="/tags/%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">交互设计</a> <a href="/tags/%E4%BA%A7%E5%93%81%E7%A0%94%E5%8F%91/" style="font-size: 10px;">产品研发</a> <a href="/tags/%E5%8F%91%E9%80%81/" style="font-size: 10px;">发送</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%A4%A9%E6%B0%94API/" style="font-size: 10px;">天气API</a> <a href="/tags/%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F/" style="font-size: 10px;">定义变量</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">对象置顶</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 10px;">常用函数</a> <a href="/tags/%E5%B9%BF%E5%91%8A/" style="font-size: 10px;">广告</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" style="font-size: 10px;">应用内支付</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 10px;">快捷键</a> <a href="/tags/%E6%89%B9%E9%87%8F%E5%AE%9A%E4%B9%89/" style="font-size: 10px;">批量定义</a> <a href="/tags/%E6%8B%96%E5%85%A5/" style="font-size: 10px;">拖入</a> <a href="/tags/%E6%8B%96%E5%87%BA/" style="font-size: 10px;">拖出</a> <a href="/tags/%E6%8B%96%E6%8B%BD/" style="font-size: 12.5px;">拖拽</a> <a href="/tags/%E6%9C%BA%E5%88%B6/" style="font-size: 10px;">机制</a> <a href="/tags/%E6%A0%BC%E5%BC%8F/" style="font-size: 10px;">格式</a> <a href="/tags/%E6%AE%8B%E5%BD%B1/" style="font-size: 10px;">残影</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%88%90Html/" style="font-size: 10px;">生成Html</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 10px;">用户体验</a> <a href="/tags/%E7%9B%AE%E5%BD%95%E6%A0%91/" style="font-size: 10px;">目录树</a> <a href="/tags/%E7%A7%BB%E5%8A%A8/" style="font-size: 10px;">移动</a> <a href="/tags/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">粒子系统</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%89%98%E7%9B%98/" style="font-size: 10px;">系统托盘</a> <a href="/tags/%E7%BD%91%E6%B8%B8/" style="font-size: 10px;">网游</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">视频播放器</a> <a href="/tags/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" style="font-size: 10px;">转义字符</a> <a href="/tags/%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">配置</a> <a href="/tags/%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/" style="font-size: 10px;">需求管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/02/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/20/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/">Java高级特性——反射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/30/git%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4tag/">Git批量删除tag</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/01/%E6%9F%A5%E7%9C%8Bipa%E4%B8%AD%E5%8C%85%E5%90%AB%E7%9A%84%E8%AE%BE%E5%A4%87udid/">查看ipa中包含的设备UDID</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/18/ios-u2006-%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">iOS \u2006 中文输入法错误解决方案</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <a rel="license" href="http://beian.miit.gov.cn/" target="_blank">豫ICP备17001339号-1</a>
+      
+      &copy; 2021 斯樵<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

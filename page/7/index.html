@@ -6,12 +6,15 @@
   
   <title>斯樵工坊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+  <meta name="description" content="斯樵工坊">
+<meta property="og:type" content="website">
 <meta property="og:title" content="斯樵工坊">
-<meta property="og:url" content="http://sqstudio.com/page/7/index.html">
+<meta property="og:url" content="https://sqstudio.com/page/7/index.html">
 <meta property="og:site_name" content="斯樵工坊">
-<meta property="og:locale">
+<meta property="og:description" content="斯樵工坊">
+<meta property="og:locale" content="en_US">
 <meta property="article:author" content="斯樵">
+<meta property="article:tag" content="斯樵工坊">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="斯樵工坊" type="application/atom+xml">
@@ -59,10 +62,10 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sqstudio.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sqstudio.com"></form>
       </div>
     </div>
   </div>
@@ -71,14 +74,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-flash-runtime产品经理正能量地回复了air-is-dead【转】" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-在mac上配置adb命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2014/02/21/flash-runtime%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%AD%A3%E8%83%BD%E9%87%8F%E5%9C%B0%E5%9B%9E%E5%A4%8D%E4%BA%86air-is-dead%E3%80%90%E8%BD%AC%E3%80%91/" class="article-date">
-  <time class="dt-published" datetime="2014-02-21T02:33:36.000Z" itemprop="datePublished">2014-02-21</time>
+    <a href="/2016/01/07/%E5%9C%A8mac%E4%B8%8A%E9%85%8D%E7%BD%AEadb%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2016-01-07T12:28:23.000Z" itemprop="datePublished">2016-01-07</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
+    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
   </div>
 
   </div>
@@ -89,7 +92,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2014/02/21/flash-runtime%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%AD%A3%E8%83%BD%E9%87%8F%E5%9C%B0%E5%9B%9E%E5%A4%8D%E4%BA%86air-is-dead%E3%80%90%E8%BD%AC%E3%80%91/">Flash Runtime产品经理正能量地回复了”AIR is Dead”【转】</a>
+      <a class="p-name article-title" href="/2016/01/07/%E5%9C%A8mac%E4%B8%8A%E9%85%8D%E7%BD%AEadb%E5%91%BD%E4%BB%A4/">在Mac上配置adb命令</a>
     </h1>
   
 
@@ -97,36 +100,25 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>2014年的<a target="_blank" rel="noopener" href="http://www.adobe.com/devnet/flashplatform/whitepapers/roadmap.html" title="Adobe roadmap for the Flash runtimes">Flash Runtimes路线图</a>更新后，Adobe论坛上一个贴子被挖了出来，名为”<a target="_blank" rel="noopener" href="http://forums.adobe.com/message/6122473#6122473" title="AIR is NOT dead!">AIR is Dead</a>“。然后Flash Runtime产品经理正能量地回复了一下，翻译如下：</p>
+        <p>在Mac上配置adb命令 在Mac OS中使用adb命令时，应进行变量配置，步骤如下：</p>
+<p>一、终端中输入 cd ~</p>
+<p>二、输入touch .bash_profile 回车</p>
+<p>touch:如果没有，则创建文件，如果有，更新一下文件时间</p>
+<p>三、输入open -e .bash_profile</p>
+<p>open:打开文件 回车后会在TextEdit中打开这个文件（如果未配置过环境变量，应该是个空白文件）。在文件中加如以下内容</p>
 <blockquote>
-<h2 id="2014年的Flash-Player和AIR"><a href="#2014年的Flash-Player和AIR" class="headerlink" title="2014年的Flash Player和AIR"></a>2014年的Flash Player和AIR</h2><p>Adobe一如既往地发展和完善Flash Player和AIR。随着向前的发展，在每季度发布的版本里都会涌现我们提到过的新特性，每当有新特性出现了，我们会定期更新到发布文档中。在2014年，我们增加以下这些新东西：</p>
-<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>安全性依然是我们的首要任务、重中之重！我们会逐步解决安全性的相关问题。特别地，我们会继续积极主动地去研究并作出一些实质性的改变来减少Flash Player和AIR受到的黑客攻击。</p>
-<h3 id="质量和性能"><a href="#质量和性能" class="headerlink" title="质量和性能"></a>质量和性能</h3><p>数亿人在他们日常的在线生活中都会使用过Flash运行时，成千上万的企业都凭借着Flash运行时取得成功。我们意识到，他们都非常重视稳定性和性能效率。我们必须在发现严重问题时马上解决它，并且继续不断提升运行时的质量和性能。</p>
-<h3 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h3><p>以下这些新特性和新功能已经在我们的产品开发任务中，在未来的一些日子里我们会实现它们：</p>
-<ul>
-<li>  Final release of iOS packaging time reduction</li>
-<li>  Flash Player – Chrome debugger</li>
-<li>  AIR – Concurrency for iOS</li>
-<li>  AIR – Gamepad support for iOS 7</li>
-<li>  AIR – Game marketing and discovery</li>
-<li>  Stage3D – AGAL 2.0 support</li>
-<li>  Stage3D – Support for multiple render targets</li>
-<li>  Stage3D – Anti-Aliasing for render textures</li>
-<li>  Stage3D – New texture wrapping modes</li>
-<li>  Supplementary character enhancement support for the TextField control</li>
-</ul>
-<p><strong>注意：</strong>除了以上这些，我们也会在Bug库里（<a target="_blank" rel="noopener" href="http://bugbase.adobe.com/" title="Adobe Bugs">bugbase.adobe.com</a>），找出那些急需解决的问题，并解决它。 <strong>然后在移动设备方面，我特别需要说一下：</strong> Adobe AIR致力于支持iOS和Android平台。在目前来看，我们并不打算支持其它平台。<strong>但是！</strong>我们会评估以后的发展情况来作出新的考虑。 我想，我需要介绍一下我自己。目前我在Adobe担任Flash运行时的产品经理和客户经理，包括Flash Player、AIR和Gaming SDK。 在18年前，我进入了Adobe，担任Photoshop 3的软件测试工程师。曾经分别在Geoworks和Adaptec两家公司当过QE，那时开始我就对质量和性能方面产生激情。在经历过Photoshop 4的发布后，我得到快速的成长。我总是热衷于创新来帮助客户并且一直认为质量和性能是重中之重。当然，提高质量和性能并不是什么让人惊喜的创新点，但我觉得如果质量和性能都无法保证，那么，什么创新性的新功能都是无用的。 在定制2014年的开发计划时，在核心团队中，只有我一个把“提高质量和性能”提出来，正是“质量和性能是重中之重”这一信念驱动着我。在2013年里，我花了大部分时间和客户进行交流。这些客户包括开发者、战略合作伙伴，还有数亿的Flash Player和AIR使用者。他们当中有要求支持新平台和增加新功能，但绝大多数人关注的是质量和性能。这也是为什么我把安全性、质量和性能放在首位。 这是否意味着我们不需要添加新功能了吗？当然不是。上面列出的新特性只是我所知道的已经是确定下来并列入路线图而已。这并不意味着我们不会添加新功能，特别地，我们会在社区交流中发现用户需求。我们甚至会为合作伙伴解决急切的问题。随着思路的改进，我们会定期更新路线图。 感谢您们的反馈以及对Flash运行时的关注和热情，我们将一如既往地带领Flash Player和AIR前进！ Thanks, Chris</p>
+<p>export PATH=${PATH}:/Users/xxx/Library/Android/sdk/platform-tools</p>
 </blockquote>
-<p>仔细阅读全文，真是让人激动人心。多读几次，仿佛回到从前AS2被市场逼着要升级到AS3一样带来新气勃勃。Flash能不能发展，Adobe愿不愿意投入资源来发展Flash，完全是看我们是否真的想用它了，也就是要看市场大不大了，我们就是Flash的市场了。这是双方面的，相互影响的，应该要互利共赢。 adobe 要给力啊！ 原文：<a target="_blank" rel="noopener" href="http://riaoo.com/?p=2587">http://riaoo.com/?p=2587</a></p>
+<p>上面是我的电脑上的路径，请自行修改，其实就是你android sdk的路径</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2014/02/21/flash-runtime%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E6%AD%A3%E8%83%BD%E9%87%8F%E5%9C%B0%E5%9B%9E%E5%A4%8D%E4%BA%86air-is-dead%E3%80%90%E8%BD%AC%E3%80%91/" data-id="ckljj0p7g003krpeyfz57cdso" data-title="Flash Runtime产品经理正能量地回复了”AIR is Dead”【转】" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2016/01/07/%E5%9C%A8mac%E4%B8%8A%E9%85%8D%E7%BD%AEadb%E5%91%BD%E4%BB%A4/" data-id="cklkonpfh007ocjey5137319i" data-title="在Mac上配置adb命令" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flash%E8%BF%90%E8%A1%8C%E6%97%B6%E8%B7%AF%E7%BA%BF%E5%9B%BE/" rel="tag">Flash运行时路线图</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flash-runtimes/" rel="tag">flash runtimes</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adb/" rel="tag">adb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li></ul>
 
     </footer>
   </div>
@@ -136,14 +128,14 @@
 
 
   
-    <article id="post-关于starling丢失纹理的半天折腾" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-在设置了androidparentactivityname后，点击子activity返回键，父activity总会调" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2014/02/18/%E5%85%B3%E4%BA%8Estarling%E4%B8%A2%E5%A4%B1%E7%BA%B9%E7%90%86%E7%9A%84%E5%8D%8A%E5%A4%A9%E6%8A%98%E8%85%BE/" class="article-date">
-  <time class="dt-published" datetime="2014-02-18T07:06:56.000Z" itemprop="datePublished">2014-02-18</time>
+    <a href="/2015/12/13/%E5%9C%A8%E8%AE%BE%E7%BD%AE%E4%BA%86androidparentactivityname%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AD%90activity%E8%BF%94%E5%9B%9E%E9%94%AE%EF%BC%8C%E7%88%B6activity%E6%80%BB%E4%BC%9A%E8%B0%83/" class="article-date">
+  <time class="dt-published" datetime="2015-12-13T15:58:13.000Z" itemprop="datePublished">2015-12-13</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a>
+    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
   </div>
 
   </div>
@@ -154,7 +146,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2014/02/18/%E5%85%B3%E4%BA%8Estarling%E4%B8%A2%E5%A4%B1%E7%BA%B9%E7%90%86%E7%9A%84%E5%8D%8A%E5%A4%A9%E6%8A%98%E8%85%BE/">关于Starling丢失纹理的半天折腾</a>
+      <a class="p-name article-title" href="/2015/12/13/%E5%9C%A8%E8%AE%BE%E7%BD%AE%E4%BA%86androidparentactivityname%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AD%90activity%E8%BF%94%E5%9B%9E%E9%94%AE%EF%BC%8C%E7%88%B6activity%E6%80%BB%E4%BC%9A%E8%B0%83/">在设置了android:parentActivityName后，点击子Activity返回键，父Activity总会调用OnDestroy()的解决方案</a>
     </h1>
   
 
@@ -162,15 +154,25 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>在手机上调试自己开发的游戏时候，突然收到一条短信，结果造成了Starling的上下文丢失了，已经开启了Starling.handleLostContext = true; 结果恢复纹理的时候报错！！！ <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2014/02/QQ%E6%88%AA%E5%9B%BE20140218145830.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2014/02/QQ%E6%88%AA%E5%9B%BE20140218145830.jpg" alt="QQ截图20140218145830"></a>各种思考： 1.加载方式有问题？（没有用自带AssetManager，是自己写的加载） 2.atf版本有问题？（atf 有两个版本，老版本的Straling不能加载最新的atf格式） 3.没有更新到Starling 1.4.1版本？ ….. 各种测试，各种折腾，最后终于发现： 原来是这样的：游戏里有个loading 转圈圈的，常见的那种 小白点组成的，在创建的时候是通过draw sprite得到的 bitmapData，创建完loading的时候，直接把小bitmapData.dispose()了,结果在恢复纹理的时候，找不到这一小块 bmd，所以报了“#2015 Invalid BitmapData”，所以报错了； o(︶︿︶)o 唉，说多都是泪啊，教训深刻，中午都没休息！ 大意不得！！！ 总结：</p>
+        <p>一个Activity在manifet里声明了android:parentActivityName；这时候通过Activity左上角的返回按钮点击返回， 启动声明的父Activity，总会先调用父Activity的OnDestroy方法，具体如下面所说：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">    android:name&#x3D;&quot;com.example.helloworld.DisplayMessageActivity&quot;</span><br><span class="line">    android:label&#x3D;&quot;@string&#x2F;title_activity_display_message&quot;</span><br><span class="line">    android:parentActivityName&#x3D;&quot;com.example.helloworld.MainActivity&quot; &gt;</span><br><span class="line">    &lt;meta-data</span><br><span class="line">        android:name&#x3D;&quot;android.support.PARENT_ACTIVITY&quot;</span><br><span class="line">        android:value&#x3D;&quot;com.example.helloworld.MainActivity&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;activity&gt;</span><br></pre></td></tr></table></figure>
+
+<p>DisplayMessageActivity为子Activity，而MainActivity为父Activity，点击</p>
+<p>DisplayMessageActivity的左上角返回按钮的时候，调用逻辑如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MainActivity.onDestroy()</span><br><span class="line">MainActivity.onCreate(null)</span><br><span class="line">MainActivity.onStart()</span><br></pre></td></tr></table></figure>
+
+<p>解决方案是：</p>
+<p><strong>为设置MainActivity属性android:launchMode=singleTop</strong> </p>
+<p>顺便脑补android:parentActivityName的作用，就是为了左上角给子Activity加一个返回按钮，具体信息如下：</p>
 <blockquote>
-<p>虽然启用了Starling.handleLostContext = true;但是在游戏内通过代码创建的bmd要格外注意，这些个独立与加载系统之外的小杂毛，往往翻船到这阴沟里！</p>
+<p><strong>Android 4.1提高性能、增强用户体验</strong></p>
+<p>　　App 栈导航：通过设置android:parentActivityName改变回退栈的内容，如果栈中没有parentActivity，则合成栈，通过onPrepareNavigateUpTaskStack()改变parentActivity中的内容。</p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2014/02/18/%E5%85%B3%E4%BA%8Estarling%E4%B8%A2%E5%A4%B1%E7%BA%B9%E7%90%86%E7%9A%84%E5%8D%8A%E5%A4%A9%E6%8A%98%E8%85%BE/" data-id="ckljj0p96007trpey7bbm02qz" data-title="关于Starling丢失纹理的半天折腾" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2015/12/13/%E5%9C%A8%E8%AE%BE%E7%BD%AE%E4%BA%86androidparentactivityname%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AD%90activity%E8%BF%94%E5%9B%9E%E9%94%AE%EF%BC%8C%E7%88%B6activity%E6%80%BB%E4%BC%9A%E8%B0%83/" data-id="cklkonpfm007zcjey2sp58zao" data-title="在设置了android:parentActivityName后，点击子Activity返回键，父Activity总会调用OnDestroy()的解决方案" class="article-share-link">Share</a>
       
       
       
@@ -182,107 +184,10 @@
 
 
   
-    <article id="post-airsdk4-0之adt打包，速度快10倍" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-使用多个ios-ane的duplicate-symbol问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2014/01/24/airsdk4-0%E4%B9%8Badt%E6%89%93%E5%8C%85%EF%BC%8C%E9%80%9F%E5%BA%A6%E5%BF%AB10%E5%80%8D/" class="article-date">
-  <time class="dt-published" datetime="2014-01-24T08:02:42.000Z" itemprop="datePublished">2014-01-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2014/01/24/airsdk4-0%E4%B9%8Badt%E6%89%93%E5%8C%85%EF%BC%8C%E9%80%9F%E5%BA%A6%E5%BF%AB10%E5%80%8D/">AIRSDK4.0之ADT打包IPA，速度快10倍</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>更新了最新的AIR SDK 4.0，加入参数-useLegacyAOT no 打包ipa，果然快了很多，官方说的是快10倍，貌似差不多！   [codesyntax lang=”actionscript3”]</p>
-<p>@echo off<br>::<br>::   quickly package ipa<br>::    by nestor 2014.01.21<br>::<br>rem ————————<br>::change path（切换到当前目录下）<br>cd /d “%~dp0”<br>cd /d “%cd%\“<br>::cd /d ..</p>
-<p>echo “%~dp0”</p>
-<p>rem ———— set adt variable（设置adt变量） —————————-<br>::key（证书）<br>set KEY_PATH=”D:\keystore\wen\dev.p12”<br>set KEY_PASS=111111<br>set KEY_MOBILE_PROVISION=”D:\keystore\wen\dev.mobileprovision”<br>::all files（所有文件路径设置）<br>set ROOT_PATH=</p>
-<p>set FILE_SWF=%ROOT_PATH%sh.swf<br>set FILE_XML=%ROOT_PATH%sh-app.xml<br>set FILE_LOGO=%ROOT_PATH%bgLogo.png<br>set FILE_IPHONE4_DEFAULT=%ROOT_PATH%Default.png<br>set FILE_IPHONE5_DEFAULT=%ROOT_PATH%Default-568h@2x.png<br>set FILE_RES=%ROOT_PATH%res<br>::target ipa name（ipa包的名字）<br>set TARGET_NAME=sh%date:<del>5,2%%date:</del>8,2%.ipa</p>
-<p>rem ————package（打包）—————————–</p>
-<p>echo begin:%time%<br>adt -package -target ipa-app-store -useLegacyAOT no -storetype pkcs12 -keystore %KEY_PATH% -storepass %KEY_PASS% -provisioning-profile %KEY_MOBILE_PROVISION% %TARGET_NAME% %FILE_XML% %FILE_SWF% %FILE_LOGO% %FILE_IPHONE4_DEFAULT% %FILE_IPHONE5_DEFAULT% %FILE_RES%<br>echo end:%time%<br>pause</p>
-<p>[/codesyntax] 如果你用到了ane，别忘了加 -extdir . ！ 为什么注释写的也是英文呢？坑爹啊，批处理bat文件是ASNI编码格式，Fb里用的是UTF-8，本来像写中文的，结果要么编辑是中文乱码，要么运行时中文乱码，干脆拼几个英文单词算了！     后续：2014.03.06 这个功能目前还是测试版，打包demo或者小项目还是没问题的，但是打包公司的项目，各种bug，坐等adobe出正式版！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2014/01/24/airsdk4-0%E4%B9%8Badt%E6%89%93%E5%8C%85%EF%BC%8C%E9%80%9F%E5%BA%A6%E5%BF%AB10%E5%80%8D/" data-id="ckljj0p6a0012rpeye6hz7un7" data-title="AIRSDK4.0之ADT打包IPA，速度快10倍" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adt%E6%89%93%E5%8C%85/" rel="tag">adt打包</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ipa/" rel="tag">ipa</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/useLegacyAOT/" rel="tag">useLegacyAOT</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-air-p12证书签名apk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2014/01/03/air-p12%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8Dapk/" class="article-date">
-  <time class="dt-published" datetime="2014-01-03T11:26:18.000Z" itemprop="datePublished">2014-01-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2014/01/03/air-p12%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8Dapk/">AIR p12转keystore证书签名apk</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>需求背景：向平台提交apk时提示该id已经存在，需要应用认领，可以认领的方式是使用java的keystore对平台提供的空白为签名apk进行签名上传验证，我们知道使用AIR开发的apk，所用的证书是p12的，如果进行签名认证呢？ 猜想一：试图将p12证书直接转成keystore，各种找资料，耗时半天，没成功！（会遇到找不到证书链的问题） 猜想二：反编译了平台提供的未签名apk，获取id，版本等，通过Flash Builder创建一个类似的apk，企图骗过平台，结果被识破。 继续查找，终于在某篇文章的评论处找到解决办法了。 正确方法：将p12证书直接导入到一个keystore文件中，就可以正常签名了！（真TM的） [codesyntax lang=”actionscript3”]</p>
-<p>//讲p12导入至keystore<br>keytool -v -importkeystore -srckeystore temp.p12 -srcstoretype PKCS12 -destkeystore temp.keystore -deststoretype JKS<br>//查看keystore<br>keytool -v -list -keystore temp.keystore<br>签名（1-证书链别名）<br>jarsigner -verbose -keystore d:\key.keystore -signedjar d:\signed.apk d:\tap_unsign.apk 1<br>删除keystore中别名为help.com的证书链<br>keytool -delete -alias help.com -keystore key.keystore</p>
-<p>[/codesyntax] 签名后上传平台果然OK了！ 参考文章地址：<a target="_blank" rel="noopener" href="http://www.shadowkong.com/archives/1359">http://www.shadowkong.com/archives/1359</a> 这篇Rect的文章是介绍在adt命令里用keystore签名AIR生成的apk的方法，也很有用，建议还是通过keystore来进行签名，使AIR生成的apk更加接近java原生生成的！ 以下是Rect大神关于AIR生成的apk以及ANE等的研究：<a target="_blank" rel="noopener" href="https://github.com/recter/Anti-ADT/tree/master/RDT">https://github.com/recter/Anti-ADT/tree/master/RDT</a>（都很实用！）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2014/01/03/air-p12%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8Dapk/" data-id="ckljj0p690010rpey9ovp4895" data-title="AIR p12转keystore证书签名apk" class="article-share-link">Teilen</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-在未越狱iphone上安装测试版ipa" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/08/16/%E5%9C%A8%E6%9C%AA%E8%B6%8A%E7%8B%B1iphone%E4%B8%8A%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95%E7%89%88ipa/" class="article-date">
-  <time class="dt-published" datetime="2013-08-16T04:27:50.000Z" itemprop="datePublished">2013-08-16</time>
+    <a href="/2015/12/12/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAios-ane%E7%9A%84duplicate-symbol%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2015-12-12T09:31:47.000Z" itemprop="datePublished">2015-12-12</time>
 </a>
     
   <div class="article-category">
@@ -297,7 +202,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/08/16/%E5%9C%A8%E6%9C%AA%E8%B6%8A%E7%8B%B1iphone%E4%B8%8A%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95%E7%89%88ipa/">在未越狱iPhone上安装测试版ipa</a>
+      <a class="p-name article-title" href="/2015/12/12/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAios-ane%E7%9A%84duplicate-symbol%E9%97%AE%E9%A2%98/">使用多个iOS ANE的duplicate symbol问题</a>
     </h1>
   
 
@@ -305,83 +210,17 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><img src="http://cc.cocimg.com/bbs/attachment/thumb/Fid_6/6_112520_10520fdb5c8a186.png"></p>
-<p>对于未越狱的iPhone上安装测试版ipa，可通过itms-services协议来实现。 方法如下： 1.需要一个html文件,引导下载用户在线安装ipa [codesyntax lang=”php”]</p>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <title>一键安装掌上综调iPhone版</title>
-  </head>
-
-  <body>
-        <a href='itms-services://?action=download-manifest&url=http://222.177.4.242/ios/d.plist（plist地址）'>安装app</a>
-  </body>
-</html>
-
-<p>[/codesyntax] 2.plist文件 [codesyntax lang=”php”]</p>
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-   <key>items</key>
-   <array>
-       <dict>
-           <key>assets</key>
-           <array>
-               <dict>
-                   <key>kind</key>
-                   <string>software-package</string>
-                   <key>url</key>
-                   <string>http://127.0.0.1/latest/ipa/tue.ipa（安装包的url）</string>
-               </dict>
-               <dict>
-
-<pre><code>               &lt;key&gt;kind&lt;/key&gt;
-               &lt;string&gt;display-image&lt;/string&gt;
-               &lt;key&gt;needs-shine&lt;/key&gt;
-               &lt;true/&gt;
-               &lt;key&gt;url&lt;/key&gt;
-               &lt;string&gt;图片的地址&lt;/string&gt;
-           &lt;/dict&gt;
-  &lt;dict&gt;
-               &lt;key&gt;kind&lt;/key&gt;
-               &lt;string&gt;full-size-image&lt;/string&gt;
-               &lt;key&gt;needs-shine&lt;/key&gt;
-               &lt;true/&gt;
-               &lt;key&gt;url&lt;/key&gt;
-               &lt;string&gt;图片的地址&lt;/string&gt;
-           &lt;/dict&gt;
-       &lt;/array&gt;
-       &lt;key&gt;metadata&lt;/key&gt;
-       &lt;dict&gt;
-           &lt;key&gt;bundle-identifier&lt;/key&gt;
-           &lt;string&gt;com.xinchun（和ipa中的相同）&lt;/string&gt;
-           &lt;key&gt;bundle-version&lt;/key&gt;
-           &lt;string&gt;1.0.0&lt;/string&gt;
-           &lt;key&gt;kind&lt;/key&gt;
-           &lt;string&gt;software&lt;/string&gt;
-           &lt;key&gt;subtitle&lt;/key&gt;
-           &lt;string&gt;Tue&lt;/string&gt;
-           &lt;key&gt;title&lt;/key&gt;
-           &lt;string&gt;Tue&lt;/string&gt;
-       &lt;/dict&gt;
-   &lt;/dict&gt;
-</code></pre>
-   </array>
-</dict>
-</plist>
-
-<p>[/codesyntax] 3.使用iphone自带的safari浏览器，浏览<a target="_blank" rel="noopener" href="http://222.177.4.242/ios/d.html%E6%96%87%E4%BB%B6%EF%BC%8C%E5%8D%B3%E5%8F%AF%E5%AE%89%E8%A3%85%E4%BA%86%E3%80%82">http://222.177.4.242/ios/d.html文件，即可安装了。</a> 注意：有的iPhone上访问到网页，点击链接没有反映，这时候要查看safari浏览器的设置了，看有没有禁用弹出窗口什么的 相关文章：  <a target="_blank" rel="noopener" href="http://blog.sqstudio.com/other/ios/955.html" title="详细阅读 iOS 7.1下itms-services在线安装失败的解决方法">iOS 7.1下itms-services在线安装失败的解决方法</a></p>
+        <p>当使用AIR进行iOS应用开发时，如果用到了多个iOS ANE，有时在打包时会遇到duplicate symbol问题，比如：</p>
+<p>ld: duplicate symbol _ContextInitializer …..</p>
+<p>这个问题的原因是由于多个ANE的iOS原生代码中有同名的类或全局变量。解决方法便是统一给它们加上一个前缀，比如公司和产品的名字组合。 如果使用ANE模板项目创建的ANE，会有 ContextInitializer等同名方法，注意修改   其他关于开发ANE需要注意的问题可以参见这篇文章： 原文：<a target="_blank" rel="noopener" href="http://www.richardlord.net/blog/20-tips-for-creating-air-native-extensions-for-ios">20 tips for creating Air Native Extensions for iOS</a> 中文翻译：<a target="_blank" rel="noopener" href="http://jamesli.cn/blog/?p=1438">20条开发AIR Native Extension的建议</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2013/08/16/%E5%9C%A8%E6%9C%AA%E8%B6%8A%E7%8B%B1iphone%E4%B8%8A%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95%E7%89%88ipa/" data-id="ckljj0p9f008erpey5t9f7qpg" data-title="在未越狱iPhone上安装测试版ipa" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2015/12/12/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAios-ane%E7%9A%84duplicate-symbol%E9%97%AE%E9%A2%98/" data-id="cklkonpf80070cjey613k7orm" data-title="使用多个iOS ANE的duplicate symbol问题" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/" rel="tag">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ipa/" rel="tag">ipa</a></li></ul>
-
     </footer>
   </div>
   
@@ -390,14 +229,14 @@
 
 
   
-    <article id="post-第一个ios的ane苦逼之路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-androidstudio-svn使用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2013/07/06/%E7%AC%AC%E4%B8%80%E4%B8%AAios%E7%9A%84ane%E8%8B%A6%E9%80%BC%E4%B9%8B%E8%B7%AF/" class="article-date">
-  <time class="dt-published" datetime="2013-07-06T09:14:16.000Z" itemprop="datePublished">2013-07-06</time>
+    <a href="/2015/11/08/androidstudio-svn%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2015-11-08T07:22:40.000Z" itemprop="datePublished">2015-11-08</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
+    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
   </div>
 
   </div>
@@ -408,7 +247,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/07/06/%E7%AC%AC%E4%B8%80%E4%B8%AAios%E7%9A%84ane%E8%8B%A6%E9%80%BC%E4%B9%8B%E8%B7%AF/">第一个IOS的ANE苦逼之路</a>
+      <a class="p-name article-title" href="/2015/11/08/androidstudio-svn%E4%BD%BF%E7%94%A8/">AndroidStudio SVN使用</a>
     </h1>
   
 
@@ -416,34 +255,15 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>  概要：本文只是记录作者开发ANE的心得，并不会教你一步一步制作一个ANE，不过文中附有其他教程链接，可供参考！   作为一个只会as3的aser，想折腾个ANE实在太苦逼了，所幸，今天终于折腾出一个！ <a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2013/07/ane.jpg"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2013/07/ane.jpg" alt="ane"></a> 1.先装黑苹果，各种翻论坛，安装包已经不记得下了多少个，总是卡到这里或那里，搞了n天，终于用Vbox装上了mac 10.7（幸好之前买电脑时cpu是i5，内存又加了一根现在有6G了） 2.又在ucai.cn自学了一段时间objective-c，每天晚上看视频，学着敲代码，知道了一些基本的语法。 3.学了一段时间，看看github上别人的ANE，有的可以小改一下。 4.尝试着写ane，这中间真是各种坑，还好找到一些资料，推荐几篇不错的：</p>
-<blockquote>
-<ul>
-<li>  <a target="_blank" rel="noopener" href="http://www.iphil.cc/?p=135">IOS ANE写法指导</a></li>
-<li>  <a target="_blank" rel="noopener" href="http://rolfzhang.com/articles/1108.html">IOS ANE的坑爹之路</a></li>
-<li>  <a target="_blank" rel="noopener" href="http://plter.sinaapp.com/a/p/post/2274/">ANE打包工具2013版</a></li>
-<li>  <a target="_blank" rel="noopener" href="http://jamesli.cn/blog/?cat=19">jamesli的内支付系列</a></li>
-<li>  <a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_6471e1bb01012aql.html">如何打包ANE</a></li>
-</ul>
-</blockquote>
-<p>第一个ane，是做了一个获取设备mac地址的，其实实现什么功能都是浮云了，只要搞通了AS3和OC的相互调用，功能就看实际需求了！ 说起as+oc的对接，就不得不提一下 ANE的Xcode模版<a target="_blank" rel="noopener" href="https://github.com/divijkumar/xcode-template-ane">xcode-template-ane</a>,这个可以省不少代码，不用配置，还可以直接生成ane，不过要生成ane还需要AIR SDK环境等，如果你是直接用MAC PRO开发，Flash Builder和XCode一起用，就很方便了，像我这中苦逼的用虚拟机黑苹果不敢点太快怕机器卡死的aser开发者，只用下xcode生成的.a库文件就可以了！这个模版可以帮菜鸟oc同学设置好模版，我们只需要写逻辑就行了！ 在AS3和OC之间的数据交互是用的FREObejct，对于AS3来说 还是和平常用法一样，Boolean，String等随便传，但是在oc中得到的都是FREObejct类型，需要从FREObejct中提取转换成BOOL、NSString等，同样，oc方法的返回值也需要将BOOL、NSString等类型转换成FREObejct，传给as3，在as3中可以直接得到的就是Boolean、String不需要再转换，想必AIR已经自动转换好了。FREObejct和oc中的类型的转换建议还是再封装一个类比较好，这里是<a target="_blank" rel="noopener" href="https://github.com/zmLiu">Maom</a>的封装的方法<a target="_blank" rel="noopener" href="https://github.com/zmLiu/ANEList/blob/master/AneSDK_IOS/AneSDK_IOS/AneFunction.h">ANEFun</a>，可以参考一下，<a target="_blank" rel="noopener" href="https://github.com/zmLiu">Maom</a>的ANEList也蛮全面，很给力！ 另外一个坑就是打包ANE，前面说过用<a target="_blank" rel="noopener" href="https://github.com/divijkumar/xcode-template-ane">xcode-template-ane</a>模版的话，在创建.ane目标的时候，会自动调用<a target="_blank" rel="noopener" href="https://github.com/zmLiu/ANEList/blob/master/AneSDK_IOS/AneSDK_IOS/generateANE.sh" title="generateANE.sh">generateANE.sh</a>脚本，从而自动生成ANE。在window上呢？只有命令行了，当然那个《<a target="_blank" rel="noopener" href="http://plter.sinaapp.com/a/p/post/2274/">ANE打包工具2013版</a>》打包工具在不会打包的时候也可以用一下，推荐还是命令行，自己写个批处理工具最好！</p>
-<blockquote>
-<p>命令如下： bin/adt -package -storetype pkcs12 -keystore .p12文件名称.p12 -storepass .p12文件的密码 -target ane 需要生成的ane的名称.ane extension.xml -swc swc名称.swc -platform 平台名称 library.swf 本机扩展库 （我习惯把 bin/adt 直接改为FB安装包路径名）</p>
-</blockquote>
-<p>打包的细节可以参考上文提到的 ： <a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_6471e1bb01012aql.html">如何打包ANE</a>（前后几篇相关都看，有坑的，错误提示也很少，要靠自己想）； 这里还有最新发现的 <a target="_blank" rel="noopener" href="http://www.tudou.com/plcover/J2Bblm-XIhU/">打包ANE的视频教程</a> ！  </p>
-<blockquote>
-<p>小记：2014.03.06 项目引用多个ane的话，ios的ane中的类名不能相同，不然编译会冲突，不妨把多个功能些到一个ane里，或者在些单独的ane时候尽量类名长一点</p>
-</blockquote>
+        <p>断开svn： 将.idea构建目录下的vcs.xml中的<mapping directory="" vcs="svn" /> ，还原回<mapping directory="" vcs="" />即可。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2013/07/06/%E7%AC%AC%E4%B8%80%E4%B8%AAios%E7%9A%84ane%E8%8B%A6%E9%80%BC%E4%B9%8B%E8%B7%AF/" data-id="ckljj0p9p008xrpeyamooe59i" data-title="第一个IOS的ANE苦逼之路" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2015/11/08/androidstudio-svn%E4%BD%BF%E7%94%A8/" data-id="cklkonpch000rcjeygszuez7n" data-title="AndroidStudio SVN使用" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ane/" rel="tag">ane</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/" rel="tag">ios</a></li></ul>
-
     </footer>
   </div>
   
@@ -452,14 +272,14 @@
 
 
   
-    <article id="post-vbox扩容vdi硬盘大小" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-android文件读写操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2013/07/06/vbox%E6%89%A9%E5%AE%B9vdi%E7%A1%AC%E7%9B%98%E5%A4%A7%E5%B0%8F/" class="article-date">
-  <time class="dt-published" datetime="2013-07-06T02:20:03.000Z" itemprop="datePublished">2013-07-06</time>
+    <a href="/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2015-09-25T02:11:38.000Z" itemprop="datePublished">2015-09-25</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a>
+    <a class="article-category-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
   </div>
 
   </div>
@@ -470,7 +290,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/07/06/vbox%E6%89%A9%E5%AE%B9vdi%E7%A1%AC%E7%9B%98%E5%A4%A7%E5%B0%8F/">Vbox扩容VDI硬盘大小</a>
+      <a class="p-name article-title" href="/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/">Android文件读写操作</a>
     </h1>
   
 
@@ -478,346 +298,17 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2013/07/vbox_logo2_gradient.png"><img src="http://qxu2059920095.my3w.com/blog/wp-content/uploads/2013/07/vbox_logo2_gradient.png" alt="vbox_logo2_gradient"></a>用vbox装的黑mac，当时动态分配的20G，现在不太够用了，扩容方法如下： 命令参考：VBoxmanage modifyhd name.vdi/vhd –-resize size 1.打开cmd，进入vbox安装目录如（D:\Program Files (x86)\vbox） 2.在cmd提示符下面输入VBoxmanage modifyhd E:\mac\mac.vdi –resize 40960</p>
-<p>size是以M（兆）为单位的，我这里扩展为40G。执行完之后你会惊喜的发现，这个虚拟盘已经变大了。</p>
-<p>注：在扩展容量之前，需要先把虚拟机关掉</p>
+        <p>Assets：该目录只可读，不可写。使用getResource().getAssets().open(“file_name”)获得FileInputStream，进行读取操作 Raw：该目录和Assets一样，可读不可写。使用getResource().openRawResource(R.raw.file_name)获得FileInputSteam，进行读取操作。 外部SD：可读可写，外部可见。先用Environment.getExtenalStorageDirectory获得sd卡的目录File，先检测是否可用。如果可用，再file = new File(sd_dir,filename),进行读写操作。 内部文件：</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2013/07/06/vbox%E6%89%A9%E5%AE%B9vdi%E7%A1%AC%E7%9B%98%E5%A4%A7%E5%B0%8F/" data-id="ckljj0p8r006rrpey4met41z6" data-title="Vbox扩容VDI硬盘大小" class="article-share-link">Teilen</a>
+      <a data-url="https://sqstudio.com/2015/09/25/android%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/" data-id="cklkonpcn0018cjeyfdzbcv0q" data-title="Android文件读写操作" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vbox/" rel="tag">vbox</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/File/" rel="tag">File</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-flash-as3-0-常用函数收集总有几条你没注意的" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/05/30/flash-as3-0-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%94%B6%E9%9B%86%E6%80%BB%E6%9C%89%E5%87%A0%E6%9D%A1%E4%BD%A0%E6%B2%A1%E6%B3%A8%E6%84%8F%E7%9A%84/" class="article-date">
-  <time class="dt-published" datetime="2013-05-30T01:52:16.000Z" itemprop="datePublished">2013-05-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/05/30/flash-as3-0-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%94%B6%E9%9B%86%E6%80%BB%E6%9C%89%E5%87%A0%E6%9D%A1%E4%BD%A0%E6%B2%A1%E6%B3%A8%E6%84%8F%E7%9A%84/">Flash AS3.0 常用函数收集,总有几条你没注意的</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>以下知识点，适合初级和中级Aser，大牛无视！</p>
-<p>获得某个实例对象的类名：getQualifiedClassName (实例名字符串表达式);</p>
-<p>stage.addEventListener(MouseEvent.MOUSE_OVER, mouseOverHandle);</p>
-<p>function mouseOverHandle(e:Event):void {</p>
-<p> trace(“over”);</p>
-<p> //   返回instance**之类的 </p>
-<p> trace(e.target.name);</p>
-<p> //返回元件名 </p>
-<p> trace(getQualifiedClassName(e.target));</p>
-<p>}</p>
-<p>Math.random();</p>
-<p>范围为0~1</p>
-<p>如 果想要0~100的话就是</p>
-<p>Math.random()*100</p>
-<p>随机出 [n,m]范围的随机数</p>
-<p>function randRange(min:Number, max:Number):Number {</p>
-<p>var randomNum:Number = Math.floor(Math.random() * (max - min + 1)) + min;</p>
-<p>return randomNum;</p>
-<p>}</p>
-<p>应用例子:</p>
-<p>模拟投银币,即希望得到随机布尔值(true 或 false): randRange(0, 1);</p>
-<p>模拟投骰子,即希望得到随机六个值: randRange(1, 6);</p>
-<p>输出10个随机数</p>
-<p>for (var i = 0; i &lt; 10; i++) {</p>
-<p>var n:Number = randRange(1, 10)</p>
-<p>trace(n);</p>
-<p>}</p>
-<p>【把数字取至最近的小数点位,即指定精确度】</p>
-<p>1. 决定你要取的数字的小数点位数:例如,如果你想把90.337取成90.34,就表示你要取到两位小数点位,也就是说你想取至最近的0.01;</p>
-<p>2. 让输入值除以步骤1所选的数字(此例为0.01);</p>
-<p>3. 使用Math.round()把步骤2所计得的值取成最近的整数;</p>
-<p>4. 把步骤3所得的结果乘以步骤2用于除法的那个值.</p>
-<p>例如,要把90.337取成两个小数点位数,可以使用:</p>
-<p>trace(Math.round(90.337/0.01)*0.01); //输出:90.34</p>
-<p>【把数字取成一个整数的最接近倍数值】</p>
-<p>例1,这样会把92.5取成5的最近倍数值:</p>
-<p>trace(Math.round(92.5/5)*5); //输出:95</p>
-<p>例2,这样会把92.5取成10的最近倍数值:</p>
-<p>trace(Math.round(92.5/10)*10); //输出:90</p>
-<p>【private,protected,internal,public访问权限】</p>
-<p>private:只能在类本身内部访问,按惯例,命名私有成员时以下划线”_“开头;</p>
-<p>protected:可以由类本身或任何子类访问.但这是以实例为基础的.换言之,类实例可以访问自己的保护成员或者父类的保护成员,但不能访问相同类的其它实例的保护成员,按惯例,命名保护成员时以下划线”_“开头;</p>
-<p>internal:可以由类本身或者相同包内的任何类访问;</p>
-<p>public:可以在类内部访问,也可以由类实例访问,或者声明为static时,可以直接从类访问.</p>
-<p>【检查变量类型并返回布尔值】</p>
-<p>is</p>
-<p>【检查变量类型并返回类型】</p>
-<p>typeof</p>
-<p>【检查对象类型并返回该对象】</p>
-<p>as</p>
-<p>【Timer类注意事项】</p>
-<p>不要认为Timer可以极其准确;使用Timer时间间隔不要低于10毫秒.</p>
-<p>【一个函数具有未知个数的参数,用arguments对象或”…(rest)”符号访问它的参数】</p>
-<p>注意:使用”…(rest)”参数会使 arguments 对象不可用;</p>
-<p>private funciton average():void{</p>
-<p> trace(arguments.length); //输出参数的个数</p>
-<p> // arguments的类型是:object,但可以像访问数组一样去访问它</p>
-<p> trace(arguments[1]); //输出第二个参数</p>
-<p>}</p>
-<p>private function average(…argu):void{</p>
-<p> trace(argu[1]); //输出第二个参数,argu参数名是自定义的.</p>
-<p>}</p>
-<p>【隐式的取出方法(getter)和设定方法(setter)】</p>
-<p>public function get count():uint {</p>
-<p> return _count;</p>
-<p>}</p>
-<p>public function set count(value:uint):uint {</p>
-<p> if(value &lt; 100){</p>
-<p> _count = value;</p>
-<p> }else {</p>
-<p> throw Error();</p>
-<p> }</p>
-<p>}</p>
-<p>【确保类是绝不会有子类,使用final】</p>
-<p>final public class Example{}</p>
-<p>【super关键字的使用】</p>
-<p>super(); //父类的构造函数,只能在类实例构造函数内部使用</p>
-<p>super.propertyName; //调用父类的属性,属性需要声明为public或protected</p>
-<p>super.methodName(); //调用父类的方法,方法需要声明为public或protected</p>
-<p>【在数组中获取最小或最大值】</p>
-<p>var scores:Array = [10, 4, 15, 8];</p>
-<p>scores.sort(Array.NUMERIC);</p>
-<p>trace(“Minimum: “ + scores[0]);</p>
-<p>trace(“Maximum: “ + scores[scores.length - 1]);</p>
-<p>【计算两点之间的距离】</p>
-<p>勾股定理: c2 = a2 + b2</p>
-<p>假设有两个影片剪辑mc1和mc2,则它们两点间的距离c为:</p>
-<p>var c:Number = Math.sqrt(Math.pow(mc1.x - mc2.x, 2) + Math.pow(mc1.y - mc2.y, 2));</p>
-<p>【指出容器的显示清单中有多少显示对象】</p>
-<p>每个容器都有numChildren属性.</p>
-<p>【关于TextField以垂直方式把文字摆在按钮表面中心点的小技巧】</p>
-<p>textField.y = (_height - textField.textHeight) / 2;</p>
-<p>textField.y -= 2; //减2个像素以调整偏移量</p>
-<p>【过滤文字输入】</p>
-<p>TextField.restrict = “此处为可输入的内容”;</p>
-<p>field.restrict = “^此处为禁止输入的内容”;</p>
-<p>restrict属性支持一些类似正则表达式的样式:</p>
-<p>field.restrict = “a-zA-z”; //只允许大小字母</p>
-<p>field.restrict = “a-zA-z “; //只允许字母和空格</p>
-<p>field.restrict = “0-9”; //只允许数字</p>
-<p>field.restrict = “^abcdefg”; //除了小写字母abcdefg不允许外,其它都允许</p>
-<p>field.restrict = “^a-z”; //所有小写字母都不允许,但是,其它内容都允许,包括大写字母</p>
-<p>field.restrict = “0-9^5”; //只允许数字,但5例外</p>
-<p>让restrict字符包含具有特殊意义的字母(例如-和^):</p>
-<p>field.restrict = “0-9\\-“; //允许数字和破折号</p>
-<p>field.restrict = “0-9\\^”; //允许数字和^</p>
-<p>field.restrict = “0-9\\\\“; //允许数字和反斜杠</p>
-<p>你也可以使用Unicode转义序列,指定允许的内容.例如:</p>
-<p>field.restrict = “^\u001A”;</p>
-<p>注意:ActionScript有区分大小写的,如果restrict属性设为abc,允许字母的大写形式(A,B和C)输入时会变成小写对待形式(a,b和c),反之亦然.restrict属性只影响用户可以输入的内容,脚本可将任何文本放入文本字段中.</p>
-<p>【设定输入框的最大长度】</p>
-<p>TextField.maxChars:int</p>
-<p>【检测播放器版本】</p>
-<p>flash.system.Capabilities.version</p>
-<p>对于8.5版以前的任何Flash Player版本,这种方法都不适用.</p>
-<p>【判断客户端系统】</p>
-<p>flash.system.Capabilities.os</p>
-<p>【检测播放器类型】</p>
-<p>flash.system.Capabilities.playerType</p>
-<p>可能的值有:</p>
-<p>“StandAlone”，用于独立的 Flash Player</p>
-<p>“External”，用于外部的 Flash Player 或处于测试模式下</p>
-<p>“PlugIn”，用于 Flash Player 浏览器插件</p>
-<p>“ActiveX”，用于 Microsoft Internet Explorer 使用的 Flash Player ActiveX 控件</p>
-<p>【检测系统语言】</p>
-<p>flash.system.Capabilities.language</p>
-<p>【判断用户是否启用了IME(输入法编辑器)】</p>
-<p>flash.system.IME.enabled</p>
-<p>【检测屏幕的分辨率】</p>
-<p>flash.system.Capabilities.screenResolutionX</p>
-<p>flash.system.Capabilities.screenResolutionY</p>
-<p>【把弹出窗口居中的算法】</p>
-<p>X = (舞台宽/2)-(窗口宽/2)</p>
-<p>Y = (舞台高/2)-(窗口高/2)</p>
-<p>【控制影片配合Player的方式,包括缩放问题】</p>
-<p>stage.scaleMode</p>
-<p>可供选择值:flash.display.StageScaleMode</p>
-<p>【舞台的对齐方式】</p>
-<p>stage.align</p>
-<p>可供选择值:flash.display.StageAlign</p>
-<p>【隐藏Flash Player的右键菜单】</p>
-<p>stage.showDefaultContextMenu = false;</p>
-<p>【检测系统是否具有音频功能】</p>
-<p>flash.system.Capabilities.hasAudio</p>
-<p>【检测播放器是在具有MP3解码器的系统上运行,还是在没有MP3解码器的系统上运行】</p>
-<p>flash.system.Capabilities.hasMP3</p>
-<p>【检测播放器能 (true) 还是不能 (false) 播放流式视频】</p>
-<p>flash.system.Capabilities.hasStreamingVideo</p>
-<p>【检测播放器是在支持 (true) 嵌入视频的系统上运行，还是在不支持 (false) 嵌入视频的系统上运行】</p>
-<p>flash.system.Capabilities.hasEmbeddedVideo</p>
-<p>【检测播放器能 (true) 还是不能 (false) 对视频流（如来自 Web 摄像头的视频流）进行编码】</p>
-<p>flash.system.Capabilities.hasVideoEncoder</p>
-<p>【显示 Flash Player 中的”安全设置”面板】</p>
-<p>flash.system.Security.showSettings();</p>
-<p>可供选择项:flash.system.SecurityPanel</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2013/05/30/flash-as3-0-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%94%B6%E9%9B%86%E6%80%BB%E6%9C%89%E5%87%A0%E6%9D%A1%E4%BD%A0%E6%B2%A1%E6%B3%A8%E6%84%8F%E7%9A%84/" data-id="ckljj0p7d003crpey5obe0b5o" data-title="Flash AS3.0 常用函数收集,总有几条你没注意的" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">常用函数</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ios应用内付费iap开发步骤列表【转】" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/" class="article-date">
-  <time class="dt-published" datetime="2013-05-24T07:55:22.000Z" itemprop="datePublished">2013-05-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/">iOS应用内付费(IAP)开发步骤列表【转】</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>前两天和服务端同事一起，完成了应用内付费（以下简称IAP, In app purchase）的开发工作。步骤繁多，在此把开发步骤列表整理如下。因为只是步骤列表，所以并不含详细的说明教程，需要看教程的新手，可以看我附在最后的一些参考链接。</p>
-<h3 id="配置Developer-apple-com"><a href="#配置Developer-apple-com" class="headerlink" title="配置Developer.apple.com"></a>配置Developer.apple.com</h3><p>登录到<a target="_blank" rel="noopener" href="https://developer.apple.com/">Developer.apple.com</a>，然后进行以下步骤：</p>
-<ol>
-<li> 为应用建立建立一个不带通配符的App ID</li>
-<li> 用该App ID生成和安装相应的Provisioning Profile文件。</li>
-</ol>
-<h3 id="配置iTunes-Connect"><a href="#配置iTunes-Connect" class="headerlink" title="配置iTunes Connect"></a>配置iTunes Connect</h3><p>登录到<a target="_blank" rel="noopener" href="https://itunesconnect.apple.com/">iTunes Connet</a>，然后进行以下步骤：</p>
-<ol>
-<li> 用该App ID创建一个新的应用。</li>
-<li> 在该应用中，创建应用内付费项目，选择付费类型，通常可选的是可重复消费(Consumable)的或是永久有效(Non-Consumable)的2种，然后设置好价格和Product ID以及购买介绍和截图即可，这里的Product ID是需要记住的，后面开发的时候需要。如下图所示： <img src="http://blog.devtang.com/images/iap-add-product-id.png"></li>
-<li> 添加一个用于在sandbox付费的测试用户，如下图所示。注意苹果对该测试用户的密码要求 和正式账号一样，必须是至少8位，并且同时包含数字和大小写字母： <img src="http://blog.devtang.com/images/iap-adduser-1.png"><img src="http://blog.devtang.com/images/iap-adduser-2.png"></li>
-<li> 填写相关的税务，银行，联系人信息。如下图所示： <img src="http://blog.devtang.com/images/iap-tax-info.png"></li>
-</ol>
-<h3 id="开发工作-ios端"><a href="#开发工作-ios端" class="headerlink" title="开发工作(ios端)"></a>开发工作(ios端)</h3><p>1、 在工程中引入 storekit.framework 和 #import &lt;StoreKit/StoreKit.h&gt; 2、 获得所有的付费Product ID列表。这个可以用常量存储在本地，也可以由自己的服务器返回。 3、 制作一个界面，展示所有的应用内付费项目。这些应用内付费项目的价格和介绍信息可以是自己的服务器返回。但如果是不带服务器的单机游戏应用或工具类应用，则可以通过向App Store查询获得。我在测试时发现，向App Store查询速度非常慢，通常需要2-3秒钟，所以不建议这么做，最好还是搞个自己的服务器吧。 4、当用户点击了一个IAP项目，我们先查询用户是否允许应用内付费，如果不允许则不用进行以下步骤了。代码如下：</p>
-<p>1<br>2<br>3<br>4<br>5<br>6</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if ([SKPaymentQueue canMakePayments]) &#123;</span><br><span class="line">    &#x2F;&#x2F; 执行下面提到的第5步：</span><br><span class="line">    [self getProductInfo];</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    NSLog(@&quot;失败，用户禁止应用内付费购买.&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5、 我们先通过该IAP的ProductID向AppStore查询，获得SKPayment实例，然后通过SKPaymentQueue的 addPayment方法发起一个购买的操作。</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 下面的ProductId应该是事先在itunesConnect中添加好的，已存在的付费项目。否则查询会失败。</span><br><span class="line">- (void)getProductInfo &#123;</span><br><span class="line">  NSSet * set &#x3D; [NSSet setWithArray:@[@&quot;ProductId&quot;]];</span><br><span class="line">  SKProductsRequest * request &#x3D; [[SKProductsRequest alloc] initWithProductIdentifiers:set];</span><br><span class="line">  request.delegate &#x3D; self;</span><br><span class="line">  [request start];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 以上查询的回调函数</span><br><span class="line">- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response &#123;</span><br><span class="line">    NSArray *myProduct &#x3D; response.products;</span><br><span class="line">    if (myProduct.count &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        NSLog(@&quot;无法获取产品信息，购买失败。&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    SKPayment * payment &#x3D; [SKPayment paymentWithProduct:myProduct[0]];</span><br><span class="line">    [[SKPaymentQueue defaultQueue] addPayment:payment];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>6、 在viewDidLoad方法中，将购买页面设置成购买的Observer。</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    &#x2F;&#x2F; 监听购买结果</span><br><span class="line">    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidUnload &#123;</span><br><span class="line">    [super viewDidUnload];</span><br><span class="line">    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>7、 当用户购买的操作有结果时，就会触发下面的回调函数，相应进行处理即可。</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions &#123;</span><br><span class="line">    for (SKPaymentTransaction *transaction in transactions)</span><br><span class="line">    &#123;</span><br><span class="line">        switch (transaction.transactionState)</span><br><span class="line">        &#123;</span><br><span class="line">            case SKPaymentTransactionStatePurchased:&#x2F;&#x2F;交易完成</span><br><span class="line">                NSLog(@&quot;transactionIdentifier &#x3D; %@&quot;, transaction.transactionIdentifier);</span><br><span class="line">                [self completeTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStateFailed:&#x2F;&#x2F;交易失败</span><br><span class="line">                [self failedTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStateRestored:&#x2F;&#x2F;已经购买过该商品</span><br><span class="line">                [self restoreTransaction:transaction];</span><br><span class="line">                break;</span><br><span class="line">            case SKPaymentTransactionStatePurchasing:      &#x2F;&#x2F;商品添加进列表</span><br><span class="line">                NSLog(@&quot;商品添加进列表&quot;);</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)completeTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">    &#x2F;&#x2F; Your application should implement these two methods.</span><br><span class="line">    NSString * productIdentifier &#x3D; transaction.payment.productIdentifier;</span><br><span class="line">    NSString * receipt &#x3D; [transaction.transactionReceipt base64EncodedString];</span><br><span class="line">    if ([productIdentifier length] &gt; 0) &#123;</span><br><span class="line">        &#x2F;&#x2F; 向自己的服务器验证购买凭证</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Remove the transaction from the payment queue.</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)failedTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">    if(transaction.error.code !&#x3D; SKErrorPaymentCancelled) &#123;</span><br><span class="line">        NSLog(@&quot;购买失败&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        NSLog(@&quot;用户取消交易&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)restoreTransaction:(SKPaymentTransaction *)transaction &#123;</span><br><span class="line">  &#x2F;&#x2F; 对于已购商品，处理恢复购买的逻辑</span><br><span class="line">    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>8、服务器验证凭证(Optional)。如果购买成功，我们需要将凭证发送到服务器上进行验证。考虑到网络异常情况，iOS端的发送凭证操作应该进行持久化，如果程序退出，崩溃或网络异常，可以恢复重试。</p>
-<h3 id="开发工作-服务端"><a href="#开发工作-服务端" class="headerlink" title="开发工作(服务端)"></a>开发工作(服务端)</h3><p>服务端的工作比较简单，分4步：</p>
-<ol>
-<li> 接收ios端发过来的购买凭证。</li>
-<li> 判断凭证是否已经存在或验证过，然后存储该凭证。</li>
-<li> 将该凭证发送到苹果的服务器验证，并将验证结果返回给客户端。</li>
-<li> 如果需要，修改用户相应的会员权限。</li>
-</ol>
-<p>考虑到网络异常情况，服务器的验证应该是一个可恢复的队列，如果网络失败了，应该进行重试。 与苹果的验证接口文档在<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/StoreKitGuide/VerifyingStoreReceipts/VerifyingStoreReceipts.html#//apple_ref/doc/uid/TP40008267-CH104-SW3">这里</a>。简单来说就是将该购买凭证用Base64编码，然后POST给苹果的验证服务器，苹果将验证结果以JSON形式返回。 苹果AppStore线上的购买凭证验证地址是<a target="_blank" rel="noopener" href="https://buy.itunes.apple.com/verifyReceipt">https://buy.itunes.apple.com/verifyReceipt</a> ，测试的验证地址是：<a target="_blank" rel="noopener" href="https://sandbox.itunes.apple.com/verifyReceipt">https://sandbox.itunes.apple.com/verifyReceipt</a> 原文：<a target="_blank" rel="noopener" href="http://blog.devtang.com/blog/2012/12/09/in-app-purchase-check-list/">http://blog.devtang.com/blog/2012/12/09/in-app-purchase-check-list/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2013/05/24/ios%E5%BA%94%E7%94%A8%E5%86%85%E4%BB%98%E8%B4%B9iap%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E5%88%97%E8%A1%A8%E3%80%90%E8%BD%AC%E3%80%91/" data-id="ckljj0p7t004erpeydet86o79" data-title="iOS应用内付费(IAP)开发步骤列表【转】" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IAP/" rel="tag">IAP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/" rel="tag">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BA%94%E7%94%A8%E5%86%85%E6%94%AF%E4%BB%98/" rel="tag">应用内支付</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-页游那些事儿" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/05/09/%E9%A1%B5%E6%B8%B8%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" class="article-date">
-  <time class="dt-published" datetime="2013-05-09T07:31:13.000Z" itemprop="datePublished">2013-05-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/05/09/%E9%A1%B5%E6%B8%B8%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">页游那些事儿</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>本文是转载，作者说出了程序猿的心声啊！</p>
-<blockquote>
-<p>页游么，无非：战争策略、模拟经营、社区养成、休闲竞技、角色扮演、社交游戏 等这几种常见类型。 游戏画面又分为： 3D、2D、2.5D、纯网页、横版。 战斗形式分为：即时、回合、战棋、文字、半即时、卡牌、自动。 游戏题材分为：音乐、武侠、科幻、魔幻、动漫、历史、射击、体育、棋牌、竞速、商业、儿童、格斗、修真、航海、玄幻、仙侠。 平台么：PC、iPhone、iPad、Android、aPad、微端（ps:WP将来也会有）。 页游测试的几个状态我们也得了解：封测、内测、公测、测试、研发中。 一般页游常用的标签有：经营、三国、隋唐、养成、塔防、海贼王、火影、足球、篮球、战机、坦克、军事、交友、Q版、西游、穿越、写实。 一般页游开发公司与运营公司的分成：1：9、2：8（居多）、3：7、4：6（极少）。。。。。再往后是个例了。 说明了一个问题，运营公司都是拿大头的，开发公司拿小的。然而现实是，很多游戏开发好了，但找不到合适的运营商。最终，这款页游就这么失败了。貌似是神仙道还是哪一款啊，本来没有找到运营商，快要破产了，但最终还是奇迹发生了，业绩是相当的那个啥的，大家都知道的，我就不说数字了。 页游么，如果抄袭的话，开发周期相对是很短的，而且相对安全性要好点，因为抄袭的对象往往是页游届最赚钱的游戏之一，抄袭了人家的赢利模式，反正不赚也不会亏多少。相反，如果自主创新研发的话，那不确定因素那就太多了，比如研发周期、技术瓶颈、资金投入、人员动荡、后期推广等系列问题都有可能导致项目的失败。一般的小公司的话，前期创业都是采用抄袭，然后赚了一点现钱，才敢去和大公司一样，自主研发。 页游圈内有个怪现象，就是同一家研发公司，有了一个成功的作品后，很难出第二款很成功的作品，即使有 也是少数。有时候，一款页游肯能是换了几批程序员的修修改改才推到玩家的窗口。 对于开发者来说，跟着小公司创业的话，机遇与风险一样的大。如果一款页游火爆了，那么你以后可以靠着这款游戏的分成、奖金快活好多年，当然前提是你的老板是很大方的。相反呢，没有成功，可能面临的是，项目奖金：无，年终奖金：无，最后呢，没办法，大家都是为了生计，程序员只能跳槽。 现状，大部分页游程序员对自己的现状都是不满意的，原因之一就是加班太多，主要是没有加班费，身为天朝的子民，你懂的。收入么，确实还可以，但其实都是加班加出来的。但话又说回来，搞页游的地方都是大城市，上海、北京、广州、深圳、杭州等。尤其前几个地方，那房价，那消费，程序员那点工资也就不算什么了。如果你的梦想是在这些地方买个房，除非你的游戏很成功很成功，并且你的老板很慷慨。不然的话，买辆车还是有可能的，这就是现实。 所以，作为程序员，赚大钱的可能性会低一点，毕竟是替别人打工么。自己创业的话，又没那么多资金、人脉关系。如果结了婚的话，那压力也就更大了，买不起房到不说。陪老婆孩子的时间都不多。 最后，说一句：程序员，你们辛苦了！（ps：也是对自己说的） 原文链接：<a target="_blank" rel="noopener" href="http://bbs.9ria.com/thread-193209-1-1.html">页游那些事儿之一</a></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://sqstudio.com/2013/05/09/%E9%A1%B5%E6%B8%B8%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" data-id="ckljj0pa4009hrpey6t5m41yt" data-title="页游那些事儿" class="article-share-link">Teilen</a>
-      
-      
-      
     </footer>
   </div>
   
@@ -830,7 +321,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/8/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -839,9 +330,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AS3%E6%8E%A2%E7%A9%B6/">AS3探究</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rebotlegs/">Rebotlegs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%8F%E7%AE%97%E6%B3%95/">公式算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%91%A8%E8%BE%B9%E6%8A%80%E6%9C%AF/">周边技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88%E5%A4%A9%E4%B8%8B/">杂谈天下</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E6%8E%A2%E7%B4%A2/">移动探索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E9%95%BF%E6%8B%99%E4%BD%9C/">站长拙作</a></li></ul>
     </div>
   </div>
 
@@ -858,7 +349,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li></ul>
     </div>
@@ -868,7 +359,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
